@@ -75,13 +75,17 @@ static NSString *const TTGTagCollectionCellIdentifier = @"TTGTagCollectionCell";
 #pragma mark - Private methods
 
 - (void)commonInit {
+    if (_collectionView) {
+        return;
+    }
+    
     // Property
     _horizontalSpacing = 4;
     _verticalSpacing = 4;
 
     // Init layout
     TTGTagCollectionLayout *layout = [TTGTagCollectionLayout new];
-//    layout.sectionInset = UIEdgeInsetsZero;
+    layout.sectionInset = UIEdgeInsetsZero;
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     layout.minimumInteritemSpacing = _horizontalSpacing;
     layout.minimumLineSpacing = _verticalSpacing;

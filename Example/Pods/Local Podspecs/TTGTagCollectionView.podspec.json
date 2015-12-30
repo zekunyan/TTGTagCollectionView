@@ -12,10 +12,16 @@
     "git": "https://github.com/zekunyan/TTGTagCollectionView.git",
     "tag": "0.1.0"
   },
+  "social_media_url": "https://twitter.com/zorro_tutuge",
   "platforms": {
     "ios": "7.0"
   },
   "requires_arc": true,
   "source_files": "Pod/Classes/**/*",
+  "resource_bundles": {
+    "TTGEmojiRate": [
+      "Pod/Assets/*.png"
+    ]
+  },
   "public_header_files": "Pod/Classes/**/*.h"
 }

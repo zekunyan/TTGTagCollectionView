@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  TTGTagCollectionView: 46b845723720aaaf0023725833d3335ff55790ba
+  TTGTagCollectionView: 620e5ae1eba6fbe2d686b15e28e0df5d2b761163
 
 COCOAPODS: 0.39.0

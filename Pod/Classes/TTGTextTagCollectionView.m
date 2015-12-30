@@ -46,6 +46,10 @@
 }
 
 - (void)commonInit {
+    if (_tagCollectionView) {
+        return;
+    }
+    
     _enableTagSelection = YES;
     _tagLabels = [NSMutableArray new];
 
@@ -146,6 +150,18 @@
 
     for (TTGTextTagLabel *label in _tagLabels) {
         if (label.selected) {
+            [allTags addObject:label.text];
+        }
+    }
+
+    return allTags.copy;
+}
+
+- (NSArray <NSString *> *)allNotSelectedTags {
+    NSMutableArray *allTags = [NSMutableArray new];
+
+    for (TTGTextTagLabel *label in _tagLabels) {
+        if (!label.selected) {
             [allTags addObject:label.text];
         }
     }

@@ -48,4 +48,7 @@
 - (NSArray <NSString *> *)allTags;
 
 - (NSArray <NSString *> *)allSelectedTags;
+
+- (NSArray <NSString *> *)allNotSelectedTags;
+
 @end

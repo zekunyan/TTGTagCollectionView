@@ -18,6 +18,7 @@
 		7E072012B4BFE1312961709E791F1866 /* TTGTagCollectionView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A11E2C7CE782E93463DBD2F5E1CFB37F /* TTGTagCollectionView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8921E08E5E1A5B91E29EDC539DAD0723 /* TTGTagCollectionView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A29458F14830B70EBBA142E82E73F16 /* TTGTagCollectionView-dummy.m */; };
 		95CAAEB0B9A46F4DC1A1EB1C96BE0577 /* TTGTextTagCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A1991B70C33B99BD0E366AE1949875 /* TTGTextTagCollectionView.m */; };
+		A1DAF534FFBAAE90AB2B8D610DC25DF6 /* TTGEmojiRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 39E50A32188232B457DF0F3FA2BF66BE /* TTGEmojiRate.bundle */; };
 		B4607B42882BDB4306250BE364C15864 /* TTGTagCollectionUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = B9BEDB9106689E81049409EC3B407C25 /* TTGTagCollectionUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B9D5CE52D9403C46815B00D67C113934 /* TTGTagCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A416F5D2032DB1ED3150D140647D3A /* TTGTagCollectionView.m */; };
 		DBB62075E08BD4242E856C7FD700C478 /* Pods-TTGTagCollectionView_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DFDF38154235E0E4B8CE0859E8F23E /* Pods-TTGTagCollectionView_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -43,25 +44,33 @@
 			remoteGlobalIDString = C72495E49709A0FF647712AD318424E7;
 			remoteInfo = TTGTagCollectionView;
 		};
+		DA48681DFECDB3DEB078F8DAE6B053B2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8CB796A89AA722A1BE6A0173591C7F13;
+			remoteInfo = "TTGTagCollectionView-TTGEmojiRate";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		10A1991B70C33B99BD0E366AE1949875 /* TTGTextTagCollectionView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagCollectionView.m; sourceTree = "<group>"; };
 		1658ED89AB9C6CEB557ED5CDFF001592 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1BEC79A9649AE9DFE45C7B4B3D36A743 /* TTGTagCollectionView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TTGTagCollectionView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		264987916F920268DBD891EE6A48DC15 /* Pods-TTGTagCollectionView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TTGTagCollectionView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		34D263543C3F91673665F49F9A91AFC0 /* Pods-TTGTagCollectionView_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-TTGTagCollectionView_Example.modulemap"; sourceTree = "<group>"; };
+		39E50A32188232B457DF0F3FA2BF66BE /* TTGEmojiRate.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TTGEmojiRate.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		4AF48742DC6639F84A05C87A519CE8E2 /* Pods_TTGTagCollectionView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TTGTagCollectionView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		55D8A38C3F7B9E44DECAD7A620DBB9E1 /* TTGTagCollectionView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TTGTagCollectionView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55FE675F341440D58A11FD21B6852CFA /* Pods-TTGTagCollectionView_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TTGTagCollectionView_Tests-dummy.m"; sourceTree = "<group>"; };
 		57D8B6059535A7B1C0C68F176354CA78 /* TTGTagCollectionUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTGTagCollectionUtil.m; sourceTree = "<group>"; };
 		5A3E5516FB923F6FEFAA945F2B42FA79 /* Pods-TTGTagCollectionView_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TTGTagCollectionView_Example-frameworks.sh"; sourceTree = "<group>"; };
 		620247CF36BBA64F9A4284DD9D078205 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65C1F9A0FD479BBF3A78C9A42F4A9115 /* TTGTextTagCollectionView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTGTextTagCollectionView.h; sourceTree = "<group>"; };
 		66B1D655BFF97A2F7401C211C0EB8535 /* Pods-TTGTagCollectionView_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TTGTagCollectionView_Tests-resources.sh"; sourceTree = "<group>"; };
+		67EEB85BDD3A797D3E1E207DE722E6A2 /* Pods_TTGTagCollectionView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TTGTagCollectionView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75ED9A8A0FAB18F8B70FA89C7F44ED4B /* Pods-TTGTagCollectionView_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TTGTagCollectionView_Example-resources.sh"; sourceTree = "<group>"; };
-		795554639624C1FAB6775340709658A1 /* Pods_TTGTagCollectionView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TTGTagCollectionView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A29458F14830B70EBBA142E82E73F16 /* TTGTagCollectionView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TTGTagCollectionView-dummy.m"; sourceTree = "<group>"; };
+		7E2029C3D64B744D6CADDEBBC19F4013 /* Pods_TTGTagCollectionView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TTGTagCollectionView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86945870BD8D00398A3A8A1E3571179C /* TTGTagCollectionCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTGTagCollectionCell.m; sourceTree = "<group>"; };
 		99F872EC0F492F72C400AEF2D9680106 /* TTGTagCollectionView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TTGTagCollectionView-prefix.pch"; sourceTree = "<group>"; };
 		A11E2C7CE782E93463DBD2F5E1CFB37F /* TTGTagCollectionView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TTGTagCollectionView-umbrella.h"; sourceTree = "<group>"; };
@@ -106,6 +115,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AA91EAA16C42B892B550B2DCE4950356 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C0F4511882DD7C4C271B28675799C20E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -132,6 +148,17 @@
 				10A1991B70C33B99BD0E366AE1949875 /* TTGTextTagCollectionView.m */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		10372AE4A39BC183A48459D92F36E1FE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				67EEB85BDD3A797D3E1E207DE722E6A2 /* Pods_TTGTagCollectionView_Example.framework */,
+				7E2029C3D64B744D6CADDEBBC19F4013 /* Pods_TTGTagCollectionView_Tests.framework */,
+				39E50A32188232B457DF0F3FA2BF66BE /* TTGEmojiRate.bundle */,
+				55D8A38C3F7B9E44DECAD7A620DBB9E1 /* TTGTagCollectionView.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		487DE96FAF146EC8ADC25F09BC98B3B5 /* Targets Support Files */ = {
@@ -203,7 +230,7 @@
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
 				AA6B47DA3CC0E9B1388C4D7F28D35AE3 /* Development Pods */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				EAF190CE085D2A6AF1732BA968925976 /* Products */,
+				10372AE4A39BC183A48459D92F36E1FE /* Products */,
 				487DE96FAF146EC8ADC25F09BC98B3B5 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -246,16 +273,6 @@
 			path = "Example/Pods/Target Support Files/TTGTagCollectionView";
 			sourceTree = "<group>";
 		};
-		EAF190CE085D2A6AF1732BA968925976 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				4AF48742DC6639F84A05C87A519CE8E2 /* Pods_TTGTagCollectionView_Example.framework */,
-				795554639624C1FAB6775340709658A1 /* Pods_TTGTagCollectionView_Tests.framework */,
-				1BEC79A9649AE9DFE45C7B4B3D36A743 /* TTGTagCollectionView.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -291,6 +308,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		8CB796A89AA722A1BE6A0173591C7F13 /* TTGTagCollectionView-TTGEmojiRate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8190C9204DA653A784ABC95138B409B5 /* Build configuration list for PBXNativeTarget "TTGTagCollectionView-TTGEmojiRate" */;
+			buildPhases = (
+				C527B5DC4687866974C1856227E93C47 /* Sources */,
+				AA91EAA16C42B892B550B2DCE4950356 /* Frameworks */,
+				B8EEB31AEA8FB98549C20FC19672C3D5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TTGTagCollectionView-TTGEmojiRate";
+			productName = "TTGTagCollectionView-TTGEmojiRate";
+			productReference = 39E50A32188232B457DF0F3FA2BF66BE /* TTGEmojiRate.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
 		940F4A2BC6E1F83115C077C8EDEDD583 /* Pods-TTGTagCollectionView_Example */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9370471FA282E68A1762D8B5C342EE40 /* Build configuration list for PBXNativeTarget "Pods-TTGTagCollectionView_Example" */;
@@ -306,7 +340,7 @@
 			);
 			name = "Pods-TTGTagCollectionView_Example";
 			productName = "Pods-TTGTagCollectionView_Example";
-			productReference = 4AF48742DC6639F84A05C87A519CE8E2 /* Pods_TTGTagCollectionView_Example.framework */;
+			productReference = 67EEB85BDD3A797D3E1E207DE722E6A2 /* Pods_TTGTagCollectionView_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		A16465412509A41BD063D606DC42D254 /* Pods-TTGTagCollectionView_Tests */ = {
@@ -324,7 +358,7 @@
 			);
 			name = "Pods-TTGTagCollectionView_Tests";
 			productName = "Pods-TTGTagCollectionView_Tests";
-			productReference = 795554639624C1FAB6775340709658A1 /* Pods_TTGTagCollectionView_Tests.framework */;
+			productReference = 7E2029C3D64B744D6CADDEBBC19F4013 /* Pods_TTGTagCollectionView_Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		C72495E49709A0FF647712AD318424E7 /* TTGTagCollectionView */ = {
@@ -333,15 +367,17 @@
 			buildPhases = (
 				A244E68E4354D92B1044DE33DA257DE8 /* Sources */,
 				74863974347D846CB1EA341D96D4E054 /* Frameworks */,
+				75E74A0818C551E7C96D2B0B0B6A97E5 /* Resources */,
 				08BB694AFD18AA9C3ADB97005532B839 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CDF18D48E66276EC4208A78A237582A6 /* PBXTargetDependency */,
 			);
 			name = TTGTagCollectionView;
 			productName = TTGTagCollectionView;
-			productReference = 1BEC79A9649AE9DFE45C7B4B3D36A743 /* TTGTagCollectionView.framework */;
+			productReference = 55D8A38C3F7B9E44DECAD7A620DBB9E1 /* TTGTagCollectionView.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -361,16 +397,35 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = EAF190CE085D2A6AF1732BA968925976 /* Products */;
+			productRefGroup = 10372AE4A39BC183A48459D92F36E1FE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				940F4A2BC6E1F83115C077C8EDEDD583 /* Pods-TTGTagCollectionView_Example */,
 				A16465412509A41BD063D606DC42D254 /* Pods-TTGTagCollectionView_Tests */,
 				C72495E49709A0FF647712AD318424E7 /* TTGTagCollectionView */,
+				8CB796A89AA722A1BE6A0173591C7F13 /* TTGTagCollectionView-TTGEmojiRate */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		75E74A0818C551E7C96D2B0B0B6A97E5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1DAF534FFBAAE90AB2B8D610DC25DF6 /* TTGEmojiRate.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8EEB31AEA8FB98549C20FC19672C3D5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		68DEEEBB03EBBD73AF4A698671C62A42 /* Sources */ = {
@@ -402,6 +457,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C527B5DC4687866974C1856227E93C47 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -416,6 +478,12 @@
 			name = TTGTagCollectionView;
 			target = C72495E49709A0FF647712AD318424E7 /* TTGTagCollectionView */;
 			targetProxy = BAF561FE4DF99F04782E24436AF3DF56 /* PBXContainerItemProxy */;
+		};
+		CDF18D48E66276EC4208A78A237582A6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "TTGTagCollectionView-TTGEmojiRate";
+			target = 8CB796A89AA722A1BE6A0173591C7F13 /* TTGTagCollectionView-TTGEmojiRate */;
+			targetProxy = DA48681DFECDB3DEB078F8DAE6B053B2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -478,6 +546,30 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		369BA849870A4458D5DF63B3852DA645 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A9C87DC9AC47204AC7FE309A258A9944 /* TTGTagCollectionView.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = TTGEmojiRate;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		457C6920A56E4882C6A48A63A75AC044 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A9C87DC9AC47204AC7FE309A258A9944 /* TTGTagCollectionView.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = TTGEmojiRate;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
 		};
@@ -693,6 +785,15 @@
 			buildConfigurations = (
 				55F54C3BAA878C2B6C908BBA0748D08A /* Debug */,
 				1D665C5EDB6DD7F3344D5541014FE894 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8190C9204DA653A784ABC95138B409B5 /* Build configuration list for PBXNativeTarget "TTGTagCollectionView-TTGEmojiRate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				369BA849870A4458D5DF63B3852DA645 /* Debug */,
+				457C6920A56E4882C6A48A63A75AC044 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
