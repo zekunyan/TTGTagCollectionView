@@ -1,0 +1,14 @@
+PODS:
+  - TTGTagCollectionView (0.1.0)
+
+DEPENDENCIES:
+  - TTGTagCollectionView (from `../`)
+
+EXTERNAL SOURCES:
+  TTGTagCollectionView:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  TTGTagCollectionView: 46b845723720aaaf0023725833d3335ff55790ba
+
+COCOAPODS: 0.39.0

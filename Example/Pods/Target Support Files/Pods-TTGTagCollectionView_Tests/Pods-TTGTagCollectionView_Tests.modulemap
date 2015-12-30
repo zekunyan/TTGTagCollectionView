@@ -1,0 +1,6 @@
+framework module Pods_TTGTagCollectionView_Tests {
+  umbrella header "Pods-TTGTagCollectionView_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

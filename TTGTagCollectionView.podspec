@@ -1,40 +1,18 @@
-#
-# Be sure to run `pod lib lint TTGTagCollectionView.podspec' to ensure this is a
-# valid spec before submitting.
-#
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
-#
-
 Pod::Spec.new do |s|
   s.name             = "TTGTagCollectionView"
   s.version          = "0.1.0"
-  s.summary          = "A short description of TTGTagCollectionView."
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!  
+  s.summary          = "Show simple text tags or custom tag views in a vertical scrollable view."
   s.description      = <<-DESC
+                       TTGTagCollectionView is useful for showing different size tag views in a vertical scrollable view. And if you only want to show text tags, you can use TTGTextTagCollectionView instead, which has more simple api. At the same time, It is highly customizable that many features of the text tag can be configured, like the tag font size and the background color.
                        DESC
 
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/TTGTagCollectionView"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
+  s.homepage         = "https://github.com/zekunyan/TTGTagCollectionView"
   s.license          = 'MIT'
   s.author           = { "zekunyan" => "zekunyan@163.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/TTGTagCollectionView.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source           = { :git => "https://github.com/zekunyan/TTGTagCollectionView.git", :tag => s.version.to_s }
+  s.platform         = :ios, '7.0'
+  s.requires_arc     = true
 
-  s.platform     = :ios, '7.0'
-  s.requires_arc = true
-
-  s.source_files = 'Pod/Classes/**/*'
-  s.resource_bundles = {
-    'TTGTagCollectionView' => ['Pod/Assets/*.png']
-  }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.source_files     = 'Pod/Classes/**/*'
+  s.public_header_files = 'Pod/Classes/**/*.h'
 end
