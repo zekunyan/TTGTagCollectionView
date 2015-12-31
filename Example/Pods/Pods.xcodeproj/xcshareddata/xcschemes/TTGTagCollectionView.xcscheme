@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '1114E47A65C17987F8D7A8A2'
-               BlueprintName = 'TTGTagCollectionView'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'TTGTagCollectionView.framework'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C72495E49709A0FF647712AD318424E7"
+               BlueprintName = "TTGTagCollectionView"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "TTGTagCollectionView.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

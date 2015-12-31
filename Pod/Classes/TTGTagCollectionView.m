@@ -106,6 +106,12 @@ static NSString *const TTGTagCollectionCellIdentifier = @"TTGTagCollectionCell";
 
     _layout = layout;
     _collectionView = collectionView;
+    
+    [_collectionView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
+}
+
+- (void)dealloc {
+    [_collectionView removeObserver:self forKeyPath:@"contentSize"];
 }
 
 #pragma mark - Setter Getter
@@ -120,6 +126,15 @@ static NSString *const TTGTagCollectionCellIdentifier = @"TTGTagCollectionCell";
     _verticalSpacing = verticalSpacing;
     _layout.minimumLineSpacing = verticalSpacing;
     [_collectionView reloadData];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"contentSize"]) {
+        CGSize contentSize = ((NSValue *)change[NSKeyValueChangeNewKey]).CGSizeValue;
+        if ([_delegate respondsToSelector:@selector(tagCollectionView:updateContentHeight:)]) {
+            [_delegate tagCollectionView:self updateContentHeight:contentSize.height];
+        }
+    }
 }
 
 @end

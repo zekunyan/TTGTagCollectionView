@@ -16,6 +16,8 @@
 
 @optional
 - (void)tagCollectionView:(TTGTagCollectionView *)tagCollectionView didSelectTag:(UIView *)tagView atIndex:(NSUInteger)index;
+
+- (void)tagCollectionView:(TTGTagCollectionView *)tagCollectionView updateContentHeight:(CGFloat)newContentHeight;
 @end
 
 @protocol TTGTagCollectionViewDataSource <NSObject>
