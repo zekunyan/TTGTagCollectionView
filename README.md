@@ -17,10 +17,6 @@ TTGTagCollectionView is useful for showing different size tag views in a vertica
 * Vertical scrollable
 * Power by UICollectionView
 
-## Usage
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
 ## Requirements
 iOS 7 and later.
 
@@ -32,6 +28,133 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod "TTGTagCollectionView"
 ```
+
+## Usage
+### TTGTextTagCollectionView
+Use TTGTextTagCollectionView to show text tags.
+
+#### Basic usage
+```
+TTGTextTagCollectionView *tagCollectionView = [[TTGTextTagCollectionView alloc] initWithFrame:CGRectMake(20, 20, 200, 200)];
+[self.view addSubview:tagCollectionView];
+[tagCollectionView addTags:@[@"TTG", @"Tag", @"collection", @"view"]];
+
+```
+
+#### Delegate
+Conform the `TTGTextTagCollectionViewDelegate` protocol to get callback when you select the tag.
+
+```
+@protocol TTGTextTagCollectionViewDelegate <NSObject>
+@optional
+- (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView didTapTag:(NSString *)tagText atIndex:(NSUInteger)index selected:(BOOL)selected;
+@end
+```
+
+#### Customization
+```
+// Define if the tag can be selected.
+@property (assign, nonatomic) BOOL enableTagSelection;
+
+// Text font
+@property (strong, nonatomic) UIFont *tagTextFont;
+
+// Text color
+@property (strong, nonatomic) UIColor *tagTextColor;
+@property (strong, nonatomic) UIColor *tagSelectedTextColor;
+
+// Background color
+@property (strong, nonatomic) UIColor *tagBackgroundColor;
+@property (strong, nonatomic) UIColor *tagSelectedBackgroundColor;
+
+// Corner radius
+@property (assign, nonatomic) CGFloat tagCornerRadius;
+
+// Border
+@property (assign, nonatomic) CGFloat tagBorderWidth;
+@property (strong, nonatomic) UIColor *tagBorderColor;
+
+// Extra space for width and height
+@property (assign, nonatomic) CGSize extraSpace;
+```
+
+#### Config tags
+
+```
+// Add tags
+- (void)addTag:(NSString *)tag;
+
+- (void)addTags:(NSArray <NSString *> *)tags;
+
+/// Remove tags
+- (void)removeTag:(NSString *)tag;
+
+- (void)removeTagAtIndex:(NSUInteger)index;
+
+- (void)removeAllTags;
+```
+
+#### Config tag selection
+
+```
+- (void)setTagAtIndex:(NSUInteger)index selected:(BOOL)selected;
+```
+
+#### Get tag information
+
+```
+- (NSArray <NSString *> *)allTags;
+
+- (NSArray <NSString *> *)allSelectedTags;
+
+- (NSArray <NSString *> *)allNotSelectedTags;
+```
+
+### TTGTagCollectionView
+Use `TTGTagCollectionView` to show custom tag views.
+
+#### DataSource and Delegate
+Just like the UITableView, you must conform and implement the required methods of `TTGTagCollectionViewDelegate` and `TTGTagCollectionViewDataSource` to get `TTGTagCollectionView` work.
+
+**DataSource**
+```
+@protocol TTGTagCollectionViewDataSource <NSObject>
+@required
+- (NSUInteger)numberOfTagsInTagCollectionView:(TTGTagCollectionView *)tagCollectionView;
+
+- (UIView *)tagCollectionView:(TTGTagCollectionView *)tagCollectionView tagViewForIndex:(NSUInteger)index;
+@end
+```
+
+**Delegate**
+```
+@protocol TTGTagCollectionViewDelegate <NSObject>
+@required
+- (CGSize)tagCollectionView:(TTGTagCollectionView *)tagCollectionView sizeForTagAtIndex:(NSUInteger)index;
+
+@optional
+- (void)tagCollectionView:(TTGTagCollectionView *)tagCollectionView didSelectTag:(UIView *)tagView atIndex:(NSUInteger)index;
+
+- (void)tagCollectionView:(TTGTagCollectionView *)tagCollectionView updateContentHeight:(CGFloat)newContentHeight;
+@end
+```
+
+#### Customization
+
+You can config the horizontal and vertical space between tags.
+```
+@property (assign, nonatomic) CGFloat horizontalSpacing;
+@property (assign, nonatomic) CGFloat verticalSpacing;
+```
+
+#### Reload
+You can reload tags programmatically.
+```
+- (void)reload;
+```
+
+## Example
+For more information, you can download the zip and run the example.
 
 ## Author
 
