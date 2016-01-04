@@ -10,6 +10,8 @@
 @protocol TTGTextTagCollectionViewDelegate <NSObject>
 @optional
 - (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView didTapTag:(NSString *)tagText atIndex:(NSUInteger)index selected:(BOOL)selected;
+
+- (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView updateContentHeight:(CGFloat)newContentHeight;
 @end
 
 @interface TTGTextTagCollectionView : UIView

@@ -72,4 +72,8 @@
     _logLabel.text = [NSString stringWithFormat:@"Tap tag: %@, at: %ld, selected: %d", tagText, (long) index, selected];
 }
 
+- (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView updateContentHeight:(CGFloat)newContentHeight {
+    NSLog(@"text tag collection: %@ new content height: %g", textTagCollectionView, newContentHeight);
+}
+
 @end

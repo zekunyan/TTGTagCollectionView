@@ -200,6 +200,12 @@
     return _tagLabels[index].frame.size;
 }
 
+- (void)tagCollectionView:(TTGTagCollectionView *)tagCollectionView updateContentHeight:(CGFloat)newContentHeight {
+    if ([_delegate respondsToSelector:@selector(textTagCollectionView:updateContentHeight:)]) {
+        [_delegate textTagCollectionView:self updateContentHeight:newContentHeight];
+    }
+}
+
 #pragma mark - Setter
 
 - (void)setTagTextFont:(UIFont *)tagTextFont {
