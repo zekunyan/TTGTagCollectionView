@@ -63,6 +63,9 @@
     _tagBorderWidth = 1.0f;
     _tagBorderColor = [UIColor lightGrayColor];
 
+    _horizontalSpacing = 4.0f;
+    _verticalSpacing = 4.0f;
+
     _tagCollectionView = [TTGTagCollectionView new];
     _tagCollectionView.delegate = self;
     _tagCollectionView.dataSource = self;
@@ -256,6 +259,18 @@
 - (void)setEnableTagSelection:(BOOL)enableTagSelection {
     _enableTagSelection = enableTagSelection;
     [self refreshAllLabels];
+}
+
+- (void)setHorizontalSpacing:(CGFloat)horizontalSpacing {
+    _horizontalSpacing = horizontalSpacing;
+    _tagCollectionView.horizontalSpacing = horizontalSpacing;
+    [_tagCollectionView reload];
+}
+
+- (void)setVerticalSpacing:(CGFloat)verticalSpacing {
+    _verticalSpacing = verticalSpacing;
+    _tagCollectionView.verticalSpacing = verticalSpacing;
+    [_tagCollectionView reload];
 }
 
 #pragma mark - Private methods

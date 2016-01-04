@@ -38,6 +38,8 @@
 
     // Style1
     _textTagCollectionView1.tagTextFont = [UIFont boldSystemFontOfSize:22.0f];
+    _textTagCollectionView1.horizontalSpacing = 6.0;
+    _textTagCollectionView1.verticalSpacing = 12.0;
 
     // Style2
     _textTagCollectionView2.tagTextFont = [UIFont systemFontOfSize:14.0f];

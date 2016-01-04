@@ -35,6 +35,10 @@
 @property (assign, nonatomic) CGFloat tagBorderWidth;
 @property (strong, nonatomic) UIColor *tagBorderColor;
 
+// Space
+@property (assign, nonatomic) CGFloat horizontalSpacing;
+@property (assign, nonatomic) CGFloat verticalSpacing;
+
 - (void)addTag:(NSString *)tag;
 
 - (void)addTags:(NSArray <NSString *> *)tags;
