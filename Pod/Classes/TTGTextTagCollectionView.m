@@ -76,6 +76,10 @@
 
 #pragma mark - Public methods
 
+- (void)reload {
+    [_tagCollectionView reload];
+}
+
 - (void)addTag:(NSString *)tag {
     if (!tag || tag.length == 0) {
         return;

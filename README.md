@@ -42,12 +42,14 @@ TTGTextTagCollectionView *tagCollectionView = [[TTGTextTagCollectionView alloc] 
 ```
 
 #### Delegate
-Conform the `TTGTextTagCollectionViewDelegate` protocol to get callback when you select the tag.
+Conform the `TTGTextTagCollectionViewDelegate` protocol to get callback when you select the tag or content height changes.
 
 ```
 @protocol TTGTextTagCollectionViewDelegate <NSObject>
 @optional
 - (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView didTapTag:(NSString *)tagText atIndex:(NSUInteger)index selected:(BOOL)selected;
+
+- (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView updateContentHeight:(CGFloat)newContentHeight;
 @end
 ```
 
@@ -76,6 +78,10 @@ Conform the `TTGTextTagCollectionViewDelegate` protocol to get callback when you
 
 // Extra space for width and height
 @property (assign, nonatomic) CGSize extraSpace;
+
+// Horizontal and veritical space between tags
+@property (assign, nonatomic) CGFloat horizontalSpacing;
+@property (assign, nonatomic) CGFloat verticalSpacing;
 ```
 
 #### Config tags
@@ -108,6 +114,12 @@ Conform the `TTGTextTagCollectionViewDelegate` protocol to get callback when you
 - (NSArray <NSString *> *)allSelectedTags;
 
 - (NSArray <NSString *> *)allNotSelectedTags;
+```
+
+#### Reload
+You can reload tags programmatically.
+```
+- (void)reload;
 ```
 
 ### TTGTagCollectionView

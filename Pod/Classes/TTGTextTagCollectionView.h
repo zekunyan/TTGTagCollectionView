@@ -39,6 +39,8 @@
 @property (assign, nonatomic) CGFloat horizontalSpacing;
 @property (assign, nonatomic) CGFloat verticalSpacing;
 
+- (void)reload;
+
 - (void)addTag:(NSString *)tag;
 
 - (void)addTags:(NSArray <NSString *> *)tags;
