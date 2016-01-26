@@ -21,6 +21,10 @@
 @interface TTGTextTagCollectionView () <TTGTagCollectionViewDataSource, TTGTagCollectionViewDelegate>
 @property (strong, nonatomic) NSMutableArray <TTGTextTagLabel *> *tagLabels;
 @property (strong, nonatomic) TTGTagCollectionView *tagCollectionView;
+
+// Flag
+@property (assign, nonatomic) BOOL tagSelectedBorderWidthHasBeenConfigured;
+@property (assign, nonatomic) BOOL tagSelectedCornerRadiusHasBeenConfigured;
 @end
 
 @implementation TTGTextTagCollectionView
@@ -215,10 +219,14 @@
 
 #pragma mark - Setter
 
+// Font
+
 - (void)setTagTextFont:(UIFont *)tagTextFont {
     _tagTextFont = tagTextFont;
     [self refreshAllLabels];
 }
+
+// Text color
 
 - (void)setTagTextColor:(UIColor *)tagTextColor {
     _tagTextColor = tagTextColor;
@@ -230,6 +238,8 @@
     [self refreshAllLabels];
 }
 
+// Background color
+
 - (void)setTagBackgroundColor:(UIColor *)tagBackgroundColor {
     _tagBackgroundColor = tagBackgroundColor;
     [self refreshAllLabels];
@@ -240,13 +250,29 @@
     [self refreshAllLabels];
 }
 
+// Corner radius
+
 - (void)setTagCornerRadius:(CGFloat)tagCornerRadius {
     _tagCornerRadius = tagCornerRadius;
     [self refreshAllLabels];
 }
 
+- (void)setTagSelectedCornerRadius:(CGFloat)tagSelectedCornerRadius {
+    _tagSelectedCornerRadius = tagSelectedCornerRadius;
+    _tagSelectedCornerRadiusHasBeenConfigured = YES;
+    [self refreshAllLabels];
+}
+
+// Border
+
 - (void)setTagBorderWidth:(CGFloat)tagBorderWidth {
     _tagBorderWidth = tagBorderWidth;
+    [self refreshAllLabels];
+}
+
+- (void)setTagSelectedBorderWidth:(CGFloat)tagSelectedBorderWidth {
+    _tagSelectedBorderWidth = tagSelectedBorderWidth;
+    _tagSelectedBorderWidthHasBeenConfigured = YES;
     [self refreshAllLabels];
 }
 
@@ -254,6 +280,13 @@
     _tagBorderColor = tagBorderColor;
     [self refreshAllLabels];
 }
+
+- (void)setTagSelectedBorderColor:(UIColor *)tagSelectedBorderColor {
+    _tagSelectedBorderColor = tagSelectedBorderColor;
+    [self refreshAllLabels];
+}
+
+// Other
 
 - (void)setExtraSpace:(CGSize)extraSpace {
     _extraSpace = extraSpace;
@@ -291,9 +324,9 @@
     label.font = _tagTextFont;
     label.textColor = label.selected ? _tagSelectedTextColor : _tagTextColor;
     label.backgroundColor = label.selected ? _tagSelectedBackgroundColor : _tagBackgroundColor;
-    label.layer.cornerRadius = _tagCornerRadius;
-    label.layer.borderWidth = _tagBorderWidth;
-    label.layer.borderColor = _tagBorderColor.CGColor;
+    label.layer.cornerRadius = (label.selected && _tagSelectedCornerRadiusHasBeenConfigured) ? _tagSelectedCornerRadius : _tagCornerRadius;
+    label.layer.borderWidth = (label.selected && _tagSelectedBorderWidthHasBeenConfigured) ? _tagSelectedBorderWidth : _tagBorderWidth;
+    label.layer.borderColor = (label.selected && _tagSelectedBorderColor) ? _tagSelectedBorderColor.CGColor : _tagBorderColor.CGColor;
 
     // Resize
     [label sizeToFit];

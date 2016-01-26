@@ -49,8 +49,11 @@
     _textTagCollectionView2.tagBackgroundColor = [UIColor colorWithRed:215 / 256.0f green:204 / 256.0f blue:200 / 256.0f alpha:1];
     _textTagCollectionView2.tagSelectedBackgroundColor = [UIColor colorWithRed:255 / 256.0f green:193 / 256.0f blue:7 / 256.0f alpha:1];
     _textTagCollectionView2.tagCornerRadius = 8.0f;
+    _textTagCollectionView2.tagSelectedCornerRadius = 14.0f;
     _textTagCollectionView2.tagBorderWidth = 2.0f;
+    _textTagCollectionView2.tagSelectedBorderWidth = 4.0f;
     _textTagCollectionView2.tagBorderColor = [UIColor colorWithRed:33 / 256.0f green:33 / 256.0f blue:33 / 256.0f alpha:1];
+    _textTagCollectionView2.tagSelectedBorderColor = [UIColor colorWithRed:93 / 256.0f green:64 / 256.0f blue:55 / 256.0f alpha:1];
 
     // Set tags
     [_textTagCollectionView1 addTags:_tags];

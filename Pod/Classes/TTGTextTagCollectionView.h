@@ -30,10 +30,15 @@
 @property (strong, nonatomic) UIColor *tagBackgroundColor;
 @property (strong, nonatomic) UIColor *tagSelectedBackgroundColor;
 
-// Border
+// Corner radius
 @property (assign, nonatomic) CGFloat tagCornerRadius;
+@property (assign, nonatomic) CGFloat tagSelectedCornerRadius;
+
+// Border
 @property (assign, nonatomic) CGFloat tagBorderWidth;
+@property (assign, nonatomic) CGFloat tagSelectedBorderWidth;
 @property (strong, nonatomic) UIColor *tagBorderColor;
+@property (strong, nonatomic) UIColor *tagSelectedBorderColor;
 
 // Space
 @property (assign, nonatomic) CGFloat horizontalSpacing;
