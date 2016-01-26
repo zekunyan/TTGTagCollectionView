@@ -71,10 +71,13 @@ Conform the `TTGTextTagCollectionViewDelegate` protocol to get callback when you
 
 // Corner radius
 @property (assign, nonatomic) CGFloat tagCornerRadius;
+@property (assign, nonatomic) CGFloat tagSelectedCornerRadius; // Default is tagCornerRadius
 
 // Border
 @property (assign, nonatomic) CGFloat tagBorderWidth;
+@property (assign, nonatomic) CGFloat tagSelectedBorderWidth; // Default is tagBorderWidth
 @property (strong, nonatomic) UIColor *tagBorderColor;
+@property (strong, nonatomic) UIColor *tagSelectedBorderColor; // Default is tagBorderColor
 
 // Extra space for width and height
 @property (assign, nonatomic) CGSize extraSpace;
