@@ -53,7 +53,7 @@
     if (_tagCollectionView) {
         return;
     }
-    
+
     _enableTagSelection = YES;
     _tagLabels = [NSMutableArray new];
 
@@ -142,7 +142,7 @@
     }
 
     _tagLabels[index].selected = selected;
-    [self resetLabel:_tagLabels[index]];
+    [self resetStyleForLabel:_tagLabels[index]];
     [_tagCollectionView reload];
 }
 
@@ -199,7 +199,7 @@
 
     if (_enableTagSelection) {
         label.selected = !label.selected;
-        [self resetLabel:label];
+        [self resetStyleForLabel:label];
     }
 
     if ([_delegate respondsToSelector:@selector(textTagCollectionView:didTapTag:atIndex:selected:)]) {
@@ -208,7 +208,14 @@
 }
 
 - (CGSize)tagCollectionView:(TTGTagCollectionView *)tagCollectionView sizeForTagAtIndex:(NSUInteger)index {
-    return _tagLabels[index].frame.size;
+    CGRect frame = _tagLabels[index].frame;
+
+    if (CGRectGetWidth(frame) > CGRectGetWidth(tagCollectionView.frame)) {
+        frame.size.width = CGRectGetWidth(tagCollectionView.frame);
+        _tagLabels[index].frame = frame;
+    }
+
+    return frame.size;
 }
 
 - (void)tagCollectionView:(TTGTagCollectionView *)tagCollectionView updateContentHeight:(CGFloat)newContentHeight {
@@ -223,79 +230,81 @@
 
 - (void)setTagTextFont:(UIFont *)tagTextFont {
     _tagTextFont = tagTextFont;
-    [self refreshAllLabels];
+    [self resetAllLabelStyle];
+    [self resetAllLabelFrame];
 }
 
 // Text color
 
 - (void)setTagTextColor:(UIColor *)tagTextColor {
     _tagTextColor = tagTextColor;
-    [self refreshAllLabels];
+    [self resetAllLabelStyle];
 }
 
 - (void)setTagSelectedTextColor:(UIColor *)tagSelectedTextColor {
     _tagSelectedTextColor = tagSelectedTextColor;
-    [self refreshAllLabels];
+    [self resetAllLabelStyle];
 }
 
 // Background color
 
 - (void)setTagBackgroundColor:(UIColor *)tagBackgroundColor {
     _tagBackgroundColor = tagBackgroundColor;
-    [self refreshAllLabels];
+    [self resetAllLabelStyle];
 }
 
 - (void)setTagSelectedBackgroundColor:(UIColor *)tagSelectedBackgroundColor {
     _tagSelectedBackgroundColor = tagSelectedBackgroundColor;
-    [self refreshAllLabels];
+    [self resetAllLabelStyle];
 }
 
 // Corner radius
 
 - (void)setTagCornerRadius:(CGFloat)tagCornerRadius {
     _tagCornerRadius = tagCornerRadius;
-    [self refreshAllLabels];
+    [self resetAllLabelStyle];
 }
 
 - (void)setTagSelectedCornerRadius:(CGFloat)tagSelectedCornerRadius {
     _tagSelectedCornerRadius = tagSelectedCornerRadius;
     _tagSelectedCornerRadiusHasBeenConfigured = YES;
-    [self refreshAllLabels];
+    [self resetAllLabelStyle];
 }
 
 // Border
 
 - (void)setTagBorderWidth:(CGFloat)tagBorderWidth {
     _tagBorderWidth = tagBorderWidth;
-    [self refreshAllLabels];
+    [self resetAllLabelStyle];
 }
 
 - (void)setTagSelectedBorderWidth:(CGFloat)tagSelectedBorderWidth {
     _tagSelectedBorderWidth = tagSelectedBorderWidth;
     _tagSelectedBorderWidthHasBeenConfigured = YES;
-    [self refreshAllLabels];
+    [self resetAllLabelStyle];
 }
 
 - (void)setTagBorderColor:(UIColor *)tagBorderColor {
     _tagBorderColor = tagBorderColor;
-    [self refreshAllLabels];
+    [self resetAllLabelStyle];
 }
 
 - (void)setTagSelectedBorderColor:(UIColor *)tagSelectedBorderColor {
     _tagSelectedBorderColor = tagSelectedBorderColor;
-    [self refreshAllLabels];
+    [self resetAllLabelStyle];
 }
 
 // Other
 
 - (void)setExtraSpace:(CGSize)extraSpace {
     _extraSpace = extraSpace;
-    [self refreshAllLabels];
+    [self resetAllLabelStyle];
+    [self resetAllLabelFrame];
 }
 
 - (void)setEnableTagSelection:(BOOL)enableTagSelection {
     _enableTagSelection = enableTagSelection;
-    [self refreshAllLabels];
+    [self resetAllLabelStyle];
 }
 
 - (void)setHorizontalSpacing:(CGFloat)horizontalSpacing {
@@ -312,23 +321,30 @@
 
 #pragma mark - Private methods
 
-- (void)refreshAllLabels {
+- (void)resetAllLabelStyle {
     for (TTGTextTagLabel *label in _tagLabels) {
-        [self resetLabel:label];
+        [self resetStyleForLabel:label];
     }
     [_tagCollectionView reload];
 }
 
-- (void)resetLabel:(TTGTextTagLabel *)label {
-    // Reset property
+- (void)resetAllLabelFrame {
+    for (TTGTextTagLabel *label in _tagLabels) {
+        [self resetFrameForLabel:label];
+    }
+    [_tagCollectionView reload];
+}
+
+- (void)resetStyleForLabel:(TTGTextTagLabel *)label {
     label.font = _tagTextFont;
     label.textColor = label.selected ? _tagSelectedTextColor : _tagTextColor;
     label.backgroundColor = label.selected ? _tagSelectedBackgroundColor : _tagBackgroundColor;
     label.layer.cornerRadius = (label.selected && _tagSelectedCornerRadiusHasBeenConfigured) ? _tagSelectedCornerRadius : _tagCornerRadius;
     label.layer.borderWidth = (label.selected && _tagSelectedBorderWidthHasBeenConfigured) ? _tagSelectedBorderWidth : _tagBorderWidth;
     label.layer.borderColor = (label.selected && _tagSelectedBorderColor) ? _tagSelectedBorderColor.CGColor : _tagBorderColor.CGColor;
+}
 
-    // Resize
+- (void)resetFrameForLabel:(UILabel *)label {
     [label sizeToFit];
     CGRect frame = label.frame;
     frame.size.width += _extraSpace.width;
@@ -342,7 +358,8 @@
     label.text = tagText;
     label.layer.masksToBounds = YES;
 
-    [self resetLabel:label];
+    [self resetStyleForLabel:label];
+    [self resetFrameForLabel:label];
 
     return label;
 }
