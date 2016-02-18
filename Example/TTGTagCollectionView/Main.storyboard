@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uvs-rh-UDH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uvs-rh-UDH">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -71,18 +71,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bMB-WG-iah" customClass="TTGTextTagCollectionView">
-                                <rect key="frame" x="20" y="119" width="280" height="230"/>
-                                <color key="backgroundColor" red="0.95686274770000002" green="0.95686274770000002" blue="0.95686274770000002" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="230" id="wj8-z7-8jz"/>
-                                </constraints>
+                                <rect key="frame" x="20" y="119" width="280" height="217.5"/>
+                                <color key="backgroundColor" red="0.95686274770000002" green="0.95686274770000002" blue="0.95686274770000002" alpha="0.5" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EhY-Hn-okd" customClass="TTGTextTagCollectionView">
-                                <rect key="frame" x="20" y="359" width="280" height="165"/>
-                                <color key="backgroundColor" red="0.95686274770000002" green="0.95686274770000002" blue="0.95686274770000002" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="165" id="OdO-zq-02s"/>
-                                </constraints>
+                                <rect key="frame" x="20" y="346.5" width="280" height="177.5"/>
+                                <color key="backgroundColor" red="0.95686274770000002" green="0.95686274770000002" blue="0.95686274770000002" alpha="0.5" colorSpace="calibratedRGB"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Simple text tag" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lA6-gw-6Nz">
                                 <rect key="frame" x="20" y="86" width="280" height="21"/>
@@ -106,17 +100,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Utc-bj-h9q" secondAttribute="trailing" constant="20" id="50Z-fy-mdO"/>
-                            <constraint firstItem="EhY-Hn-okd" firstAttribute="top" secondItem="bMB-WG-iah" secondAttribute="bottom" constant="10" id="8cg-6V-1Tu"/>
-                            <constraint firstAttribute="trailing" secondItem="bMB-WG-iah" secondAttribute="trailing" constant="20" id="Gij-9i-tNK"/>
-                            <constraint firstAttribute="trailing" secondItem="EhY-Hn-okd" secondAttribute="trailing" constant="20" id="JwP-QE-PEx"/>
-                            <constraint firstItem="bMB-WG-iah" firstAttribute="top" secondItem="FdA-i7-Unk" secondAttribute="bottom" constant="55" id="Wi7-QN-CJj"/>
+                            <constraint firstItem="EhY-Hn-okd" firstAttribute="leading" secondItem="BWo-W4-mVd" secondAttribute="leading" constant="20" id="AHG-dr-SuE"/>
+                            <constraint firstItem="EhY-Hn-okd" firstAttribute="height" secondItem="bMB-WG-iah" secondAttribute="height" constant="-40" id="JLC-xo-rdT"/>
+                            <constraint firstItem="Utc-bj-h9q" firstAttribute="top" secondItem="EhY-Hn-okd" secondAttribute="bottom" constant="15" id="NUn-yR-EdY"/>
                             <constraint firstItem="oOh-9l-ihZ" firstAttribute="top" secondItem="Utc-bj-h9q" secondAttribute="bottom" constant="8" id="YX2-v3-YqB"/>
                             <constraint firstAttribute="trailing" secondItem="lA6-gw-6Nz" secondAttribute="trailing" constant="20" id="YtP-IJ-drK"/>
                             <constraint firstItem="lA6-gw-6Nz" firstAttribute="top" secondItem="FdA-i7-Unk" secondAttribute="bottom" constant="22" id="bBo-zn-fRZ"/>
-                            <constraint firstItem="bMB-WG-iah" firstAttribute="leading" secondItem="BWo-W4-mVd" secondAttribute="leading" constant="20" id="cbS-TI-m4B"/>
+                            <constraint firstItem="EhY-Hn-okd" firstAttribute="top" secondItem="bMB-WG-iah" secondAttribute="bottom" constant="10" id="bNH-mT-n6P"/>
+                            <constraint firstAttribute="trailing" secondItem="EhY-Hn-okd" secondAttribute="trailing" constant="20" id="h5h-N4-c2V"/>
                             <constraint firstItem="lA6-gw-6Nz" firstAttribute="leading" secondItem="BWo-W4-mVd" secondAttribute="leading" constant="20" id="ieB-fD-bgO"/>
+                            <constraint firstItem="bMB-WG-iah" firstAttribute="leading" secondItem="BWo-W4-mVd" secondAttribute="leading" constant="20" id="kZS-VX-qSG"/>
                             <constraint firstItem="Utc-bj-h9q" firstAttribute="leading" secondItem="BWo-W4-mVd" secondAttribute="leading" constant="20" id="mda-bt-9tB"/>
-                            <constraint firstItem="EhY-Hn-okd" firstAttribute="leading" secondItem="BWo-W4-mVd" secondAttribute="leading" constant="20" id="obr-Zo-zzZ"/>
+                            <constraint firstItem="bMB-WG-iah" firstAttribute="top" secondItem="lA6-gw-6Nz" secondAttribute="bottom" constant="12" id="sCZ-E3-Y2h"/>
+                            <constraint firstAttribute="trailing" secondItem="bMB-WG-iah" secondAttribute="trailing" constant="20" id="tfy-Js-ePM"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
