@@ -85,6 +85,9 @@ Conform the `TTGTextTagCollectionViewDelegate` protocol to get callback when you
 // Horizontal and veritical space between tags
 @property (assign, nonatomic) CGFloat horizontalSpacing;
 @property (assign, nonatomic) CGFloat verticalSpacing;
+
+// Content height
+@property (assign, nonatomic, readonly) CGFloat contentHeight;
 ```
 
 #### Config tags
@@ -158,8 +161,12 @@ Just like the UITableView, you must conform and implement the required methods o
 
 You can config the horizontal and vertical space between tags.
 ```
+// Space
 @property (assign, nonatomic) CGFloat horizontalSpacing;
 @property (assign, nonatomic) CGFloat verticalSpacing;
+
+// Content height
+@property (assign, nonatomic, readonly) CGFloat contentHeight;
 ```
 
 #### Reload
