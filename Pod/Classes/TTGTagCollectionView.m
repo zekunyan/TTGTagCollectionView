@@ -16,6 +16,7 @@ static NSString *const TTGTagCollectionCellIdentifier = @"TTGTagCollectionCell";
 @interface TTGTagCollectionView () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 @property (strong, nonatomic) UICollectionView *collectionView;
 @property (strong, nonatomic) TTGTagCollectionLayout *layout;
+@property (assign, nonatomic) CGFloat contentHeight;
 @end
 
 @implementation TTGTagCollectionView
@@ -143,6 +144,11 @@ static NSString *const TTGTagCollectionCellIdentifier = @"TTGTagCollectionCell";
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     if ([keyPath isEqualToString:@"contentSize"]) {
         CGSize contentSize = ((NSValue *)change[NSKeyValueChangeNewKey]).CGSizeValue;
+        
+        // Update height
+        _contentHeight = contentSize.height;
+        
+        // Call back
         if ([_delegate respondsToSelector:@selector(tagCollectionView:updateContentHeight:)]) {
             [_delegate tagCollectionView:self updateContentHeight:contentSize.height];
         }

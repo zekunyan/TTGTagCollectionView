@@ -31,8 +31,12 @@
 @property (weak, nonatomic) id <TTGTagCollectionViewDataSource> dataSource;
 @property (weak, nonatomic) id <TTGTagCollectionViewDelegate> delegate;
 
+// Space
 @property (assign, nonatomic) CGFloat horizontalSpacing;
 @property (assign, nonatomic) CGFloat verticalSpacing;
+
+// Content height
+@property (assign, nonatomic, readonly) CGFloat contentHeight;
 
 - (void)reload;
 @end

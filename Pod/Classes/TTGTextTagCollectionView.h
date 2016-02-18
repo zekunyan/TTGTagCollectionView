@@ -44,6 +44,9 @@
 @property (assign, nonatomic) CGFloat horizontalSpacing;
 @property (assign, nonatomic) CGFloat verticalSpacing;
 
+// Content heigth
+@property (assign, nonatomic, readonly) CGFloat contentHeight;
+
 - (void)reload;
 
 - (void)addTag:(NSString *)tag;

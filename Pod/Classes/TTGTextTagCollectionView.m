@@ -312,6 +312,10 @@
     [_tagCollectionView reload];
 }
 
+- (CGFloat)contentHeight {
+    return _tagCollectionView.contentHeight;
+}
+
 #pragma mark - Private methods
 
 - (void)resetAllLabelStyle {
