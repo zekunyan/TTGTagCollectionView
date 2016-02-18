@@ -208,14 +208,7 @@
 }
 
 - (CGSize)tagCollectionView:(TTGTagCollectionView *)tagCollectionView sizeForTagAtIndex:(NSUInteger)index {
-    CGRect frame = _tagLabels[index].frame;
-
-    if (CGRectGetWidth(frame) > CGRectGetWidth(tagCollectionView.frame)) {
-        frame.size.width = CGRectGetWidth(tagCollectionView.frame);
-        _tagLabels[index].frame = frame;
-    }
-
-    return frame.size;
+    return _tagLabels[index].frame.size;
 }
 
 - (void)tagCollectionView:(TTGTagCollectionView *)tagCollectionView updateContentHeight:(CGFloat)newContentHeight {

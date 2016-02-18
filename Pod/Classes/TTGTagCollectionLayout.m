@@ -14,17 +14,22 @@
     NSMutableArray *attributes = [[NSMutableArray alloc] initWithArray:[super layoutAttributesForElementsInRect:rect]];
 
     CGFloat xOffset = 0.0f;
+    CGFloat lastCenterY = 0.0f, newCenterY;
+    CGRect frame;
 
     for (UICollectionViewLayoutAttributes *attribute in attributes) {
-        if (attribute.frame.origin.x == self.sectionInset.left) {
+        frame = attribute.frame;
+        newCenterY = frame.origin.y + frame.size.height / 2;
+
+        if (frame.origin.x == self.sectionInset.left || abs((int) (newCenterY - lastCenterY)) > 1) {
             xOffset = self.sectionInset.left;
-        } else {
-            CGRect frame = attribute.frame;
-            frame.origin.x = xOffset;
-            attribute.frame = frame;
+            lastCenterY = newCenterY;
         }
 
-        xOffset += CGRectGetWidth(attribute.frame) + self.minimumInteritemSpacing;
+        frame.origin.x = xOffset;
+        attribute.frame = frame;
+
+        xOffset += CGRectGetWidth(frame) + self.minimumInteritemSpacing;
     }
 
     return attributes;

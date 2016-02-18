@@ -69,7 +69,19 @@ static NSString *const TTGTagCollectionCellIdentifier = @"TTGTagCollectionCell";
 #pragma mark - UICollectionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return [_delegate tagCollectionView:self sizeForTagAtIndex:(NSUInteger) indexPath.row];
+    CGSize size = [_delegate tagCollectionView:self sizeForTagAtIndex:(NSUInteger) indexPath.row];
+
+    if (size.width > CGRectGetWidth(self.frame)) {
+        size.width = CGRectGetWidth(self.frame);
+
+        // Update tag view width
+        UIView *tagView = [_dataSource tagCollectionView:self tagViewForIndex:(NSUInteger) indexPath.row];
+        CGRect frame = tagView.frame;
+        frame.size = size;
+        tagView.frame = frame;
+    }
+
+    return size;
 }
 
 #pragma mark - Private methods
