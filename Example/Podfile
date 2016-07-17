@@ -1,12 +1,10 @@
-source 'https://github.com/CocoaPods/Specs.git'
-use_frameworks!
+platform :ios, ‘7.0’
 
-target 'TTGTagCollectionView_Example', :exclusive => true do
-  pod "TTGTagCollectionView", :path => "../"
-end
+target 'TTGTagCollectionView_Example' do
+  pod 'TTGTagCollectionView', :path => '../'
 
-target 'TTGTagCollectionView_Tests', :exclusive => true do
-  pod "TTGTagCollectionView", :path => "../"
+  target 'TTGTagCollectionView_Tests' do
+    inherit! :search_paths
 
-  
+  end
 end
