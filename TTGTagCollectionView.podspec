@@ -11,15 +11,11 @@ Pod::Spec.new do |s|
   s.license          = 'MIT'
   s.author           = { "zekunyan" => "zekunyan@163.com" }
   s.source           = { :git => "https://github.com/zekunyan/TTGTagCollectionView.git", :tag => s.version.to_s }
-  s.social_media_url = 'https://twitter.com/zorro_tutuge'
+  s.social_media_url = 'http://tutuge.me'
   
   s.platform         = :ios, '7.0'
   s.requires_arc     = true
 
   s.source_files = 'Pod/Classes/**/*'
-  s.resource_bundles = {
-    'TTGEmojiRate' => ['Pod/Assets/*.png']
-  }
-
   s.public_header_files = 'Pod/Classes/**/*.h'
 end
