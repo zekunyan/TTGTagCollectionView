@@ -28,15 +28,18 @@
 @end
 
 @interface TTGTagCollectionView : UIView
-@property (weak, nonatomic) id <TTGTagCollectionViewDataSource> dataSource;
-@property (weak, nonatomic) id <TTGTagCollectionViewDelegate> delegate;
+@property (nonatomic, weak) id <TTGTagCollectionViewDataSource> dataSource;
+@property (nonatomic, weak) id <TTGTagCollectionViewDelegate> delegate;
 
 // Space
-@property (assign, nonatomic) CGFloat horizontalSpacing;
-@property (assign, nonatomic) CGFloat verticalSpacing;
+@property (nonatomic, assign) CGFloat horizontalSpacing;
+@property (nonatomic, assign) CGFloat verticalSpacing;
 
 // Content height
-@property (assign, nonatomic, readonly) CGFloat contentHeight;
+@property (nonatomic, assign, readonly) CGFloat contentHeight;
+
+// Content size
+@property (nonatomic, assign, readonly) CGSize contentSize;
 
 - (void)reload;
 @end

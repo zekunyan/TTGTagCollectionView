@@ -75,6 +75,9 @@
     [_textTagCollectionView2 setTagAtIndex:4 selected:YES];
     [_textTagCollectionView2 setTagAtIndex:6 selected:YES];
     [_textTagCollectionView2 setTagAtIndex:17 selected:YES];
+    
+    [_textTagCollectionView1 reload];
+    [_textTagCollectionView2 reload];
 }
 
 #pragma mark - TTGTextTagCollectionViewDelegate

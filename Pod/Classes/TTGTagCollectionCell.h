@@ -6,5 +6,7 @@
 #import <UIKit/UIKit.h>
 
 @interface TTGTagCollectionCell : UICollectionViewCell
+
 - (void)setTagView:(UIView *)tagView;
+
 @end

@@ -23,6 +23,7 @@
 		823A27193677DC4185787716 /* libPods-TTGTagCollectionView_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D14CA92F5E1D5E796C527F72 /* libPods-TTGTagCollectionView_Tests.a */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		A40AD7D77226231FFC52EC6C /* libPods-TTGTagCollectionView_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDC07429B7F76E6BFDE2C54D /* libPods-TTGTagCollectionView_Example.a */; };
+		BFC839F01D9C370D008A9790 /* TTGExample3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC839EF1D9C370D008A9790 /* TTGExample3ViewController.m */; };
 		F4A244011C32309000F6F150 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4A244001C32309000F6F150 /* Launch Screen.storyboard */; };
 		F4A244041C32351100F6F150 /* TTGExample1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A244031C32351100F6F150 /* TTGExample1ViewController.m */; };
 		F4A244071C32351C00F6F150 /* TTGExample2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A244061C32351C00F6F150 /* TTGExample2ViewController.m */; };
@@ -64,6 +65,8 @@
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		AC835E855F7C837C30593A3A /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		BDA2D30EEDDDA8EB922D1D45 /* Pods-TTGTagCollectionView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTGTagCollectionView_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TTGTagCollectionView_Example/Pods-TTGTagCollectionView_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		BFC839EE1D9C370D008A9790 /* TTGExample3ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGExample3ViewController.h; sourceTree = "<group>"; };
+		BFC839EF1D9C370D008A9790 /* TTGExample3ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGExample3ViewController.m; sourceTree = "<group>"; };
 		C51C40939D1A0BBE0DB1A48D /* Pods-TTGTagCollectionView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTGTagCollectionView_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TTGTagCollectionView_Tests/Pods-TTGTagCollectionView_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		C644FFDB6900BF422EDCCB0E /* TTGTagCollectionView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = TTGTagCollectionView.podspec; path = ../TTGTagCollectionView.podspec; sourceTree = "<group>"; };
 		CDC07429B7F76E6BFDE2C54D /* libPods-TTGTagCollectionView_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TTGTagCollectionView_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +153,8 @@
 				F4A244031C32351100F6F150 /* TTGExample1ViewController.m */,
 				F4A244051C32351C00F6F150 /* TTGExample2ViewController.h */,
 				F4A244061C32351C00F6F150 /* TTGExample2ViewController.m */,
+				BFC839EE1D9C370D008A9790 /* TTGExample3ViewController.h */,
+				BFC839EF1D9C370D008A9790 /* TTGExample3ViewController.m */,
 			);
 			name = "Example for TTGTagCollectionView";
 			path = TTGTagCollectionView;
@@ -409,6 +414,7 @@
 				F4A244041C32351100F6F150 /* TTGExample1ViewController.m in Sources */,
 				6003F5A7195388D20070C39A /* TTGViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				BFC839F01D9C370D008A9790 /* TTGExample3ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

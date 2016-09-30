@@ -3,7 +3,6 @@
 //
 
 #import "TTGTagCollectionCell.h"
-#import "TTGTagCollectionUtil.h"
 
 @implementation TTGTagCollectionCell
 
@@ -27,6 +26,13 @@
     return self;
 }
 
+#pragma mark - Override
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    [self.contentView.subviews.firstObject setFrame:self.contentView.bounds];
+}
+
 #pragma mark - Public methods
 
 - (void)setTagView:(UIView *)tagView {
@@ -40,10 +46,6 @@
     // Add tag view
     [tagView removeFromSuperview];
     [self.contentView addSubview:tagView];
-    tagView.translatesAutoresizingMaskIntoConstraints = NO;
-
-    // Add constraint
-    [self.contentView addConstraints:[TTGTagCollectionUtil edgeConstraintsWithView1:tagView view2:self.contentView]];
 }
 
 #pragma mark - Private methods

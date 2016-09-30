@@ -4,7 +4,6 @@
 
 #import "TTGTextTagCollectionView.h"
 #import "TTGTagCollectionView.h"
-#import "TTGTagCollectionUtil.h"
 
 #pragma mark - -----TTGTextTagLabel-----
 
@@ -73,9 +72,21 @@
     _tagCollectionView = [TTGTagCollectionView new];
     _tagCollectionView.delegate = self;
     _tagCollectionView.dataSource = self;
-    _tagCollectionView.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:_tagCollectionView];
-    [self addConstraints:[TTGTagCollectionUtil edgeConstraintsWithView1:_tagCollectionView view2:self]];
+}
+
+#pragma mark - Override
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    _tagCollectionView.frame = self.bounds;
+    if (!CGSizeEqualToSize(self.bounds.size, [self intrinsicContentSize])) {
+        [self invalidateIntrinsicContentSize];
+    }
+}
+
+- (CGSize)intrinsicContentSize {
+    return [_tagCollectionView intrinsicContentSize];
 }
 
 #pragma mark - Public methods

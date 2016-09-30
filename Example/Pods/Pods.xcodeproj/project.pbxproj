@@ -15,8 +15,6 @@
 		3CC599317E9DE87DE2D3EBAA364D66A4 /* TTGTextTagCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA87BE3ECE18E56FAE1625DADC82F295 /* TTGTextTagCollectionView.m */; };
 		5565B3170057EBAF191CF97FEAE22616 /* TTGTextTagCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = CC1F82859B1045060DBCE32B9CF88A71 /* TTGTextTagCollectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		660482728F83ADE4B24D4F68B3BBCA60 /* TTGTagCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7283BD56A1B11DFE0EEA80863AAFF0B4 /* TTGTagCollectionCell.m */; };
-		7899E3C4BA2E1C5D1D9EA08CE227CCDE /* TTGTagCollectionUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 338B4999528A26C1ABD809B87AFEF8CC /* TTGTagCollectionUtil.m */; };
-		7901C77935584FC8D73872CC8B712BC2 /* TTGTagCollectionUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 08960CB95B10C64939EE4EEE7E217680 /* TTGTagCollectionUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7ABE3CFB06E8049D35612360DEFEAE7D /* Pods-TTGTagCollectionView_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B318545E01DE71AA4258DE6FE99822D9 /* Pods-TTGTagCollectionView_Tests-dummy.m */; };
 		7C2B485E4D8A0C2C5F8B4F9AD8806B10 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		D53E599A212FCF99E2370E83B717A028 /* TTGTagCollectionView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF5461B2B15AAA6D66F7D4710A4E228 /* TTGTagCollectionView-dummy.m */; };
@@ -43,12 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		08960CB95B10C64939EE4EEE7E217680 /* TTGTagCollectionUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTGTagCollectionUtil.h; sourceTree = "<group>"; };
 		15463069C1B08D9CC407425D9AD42009 /* TTGTagCollectionCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTGTagCollectionCell.h; sourceTree = "<group>"; };
 		213F66F12D6F5B9CB862E51D5B69584D /* Pods-TTGTagCollectionView_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TTGTagCollectionView_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		287BF4264A7DAAA2A21601DFCD337B60 /* Pods-TTGTagCollectionView_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TTGTagCollectionView_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		288533EFACAA58EC9F658CC2F760E433 /* Pods-TTGTagCollectionView_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TTGTagCollectionView_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		338B4999528A26C1ABD809B87AFEF8CC /* TTGTagCollectionUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTGTagCollectionUtil.m; sourceTree = "<group>"; };
 		3BF5461B2B15AAA6D66F7D4710A4E228 /* TTGTagCollectionView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TTGTagCollectionView-dummy.m"; sourceTree = "<group>"; };
 		3D18E9C1DB7285B22939A8DDFCFEFE5C /* TTGEmojiRate.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TTGEmojiRate.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F08DD56B21473A43A5A1D6F5856A52A /* Pods-TTGTagCollectionView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TTGTagCollectionView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -151,8 +147,6 @@
 				7283BD56A1B11DFE0EEA80863AAFF0B4 /* TTGTagCollectionCell.m */,
 				6C592A934421B30D901DDF9E551E01EE /* TTGTagCollectionLayout.h */,
 				EB63DF1D14B42E5D7B6FD2EB27666450 /* TTGTagCollectionLayout.m */,
-				08960CB95B10C64939EE4EEE7E217680 /* TTGTagCollectionUtil.h */,
-				338B4999528A26C1ABD809B87AFEF8CC /* TTGTagCollectionUtil.m */,
 				B8B898C8A1CFE431FE367DD012AD70FE /* TTGTagCollectionView.h */,
 				89AFE7321024CABAA28C1BE1739E0B70 /* TTGTagCollectionView.m */,
 				CC1F82859B1045060DBCE32B9CF88A71 /* TTGTextTagCollectionView.h */,
@@ -255,7 +249,6 @@
 			files = (
 				D5F87C484DA912B82EE9E7268E3F150D /* TTGTagCollectionCell.h in Headers */,
 				2291A521949400F973AC23E83AC66BBF /* TTGTagCollectionLayout.h in Headers */,
-				7901C77935584FC8D73872CC8B712BC2 /* TTGTagCollectionUtil.h in Headers */,
 				281B0903B30820BD6D572F6BE2315135 /* TTGTagCollectionView.h in Headers */,
 				5565B3170057EBAF191CF97FEAE22616 /* TTGTextTagCollectionView.h in Headers */,
 			);
@@ -386,7 +379,6 @@
 			files = (
 				660482728F83ADE4B24D4F68B3BBCA60 /* TTGTagCollectionCell.m in Sources */,
 				21F8AA74087A6C3A15D344A37AFB5EF5 /* TTGTagCollectionLayout.m in Sources */,
-				7899E3C4BA2E1C5D1D9EA08CE227CCDE /* TTGTagCollectionUtil.m in Sources */,
 				D53E599A212FCF99E2370E83B717A028 /* TTGTagCollectionView-dummy.m in Sources */,
 				E64EFEB06FE90A6D26C3A31A1C21C2E7 /* TTGTagCollectionView.m in Sources */,
 				3CC599317E9DE87DE2D3EBAA364D66A4 /* TTGTextTagCollectionView.m in Sources */,

@@ -9,7 +9,6 @@
 #import "TTGTagCollectionView.h"
 #import "TTGTagCollectionLayout.h"
 #import "TTGTagCollectionCell.h"
-#import "TTGTagCollectionUtil.h"
 
 static NSString *const TTGTagCollectionCellIdentifier = @"TTGTagCollectionCell";
 
@@ -41,10 +40,25 @@ static NSString *const TTGTagCollectionCellIdentifier = @"TTGTagCollectionCell";
     return self;
 }
 
+#pragma mark - Override
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    _collectionView.frame = self.bounds;
+    if (!CGSizeEqualToSize(self.bounds.size, [self intrinsicContentSize])) {
+        [self invalidateIntrinsicContentSize];
+    }
+}
+
+- (CGSize)intrinsicContentSize {
+    return _layout.collectionViewContentSize;
+}
+
 #pragma mark - Public methods
 
 - (void)reload {
     [_collectionView reloadData];
+    [self invalidateIntrinsicContentSize];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -109,10 +123,6 @@ static NSString *const TTGTagCollectionCellIdentifier = @"TTGTagCollectionCell";
     collectionView.delegate = self;
     collectionView.dataSource = self;
     collectionView.backgroundColor = [UIColor clearColor];
-    collectionView.translatesAutoresizingMaskIntoConstraints = NO;
-
-    // Add constraint
-    [self addConstraints:[TTGTagCollectionUtil edgeConstraintsWithView1:collectionView view2:self]];
 
     // Register cell
     [collectionView registerClass:[TTGTagCollectionCell class] forCellWithReuseIdentifier:TTGTagCollectionCellIdentifier];
@@ -128,6 +138,9 @@ static NSString *const TTGTagCollectionCellIdentifier = @"TTGTagCollectionCell";
 }
 
 #pragma mark - Setter Getter
+- (CGSize)contentSize {
+    return _layout.collectionViewContentSize;
+}
 
 - (void)setHorizontalSpacing:(CGFloat)horizontalSpacing {
     _horizontalSpacing = horizontalSpacing;
