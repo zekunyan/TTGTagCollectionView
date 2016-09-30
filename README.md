@@ -16,6 +16,7 @@ TTGTagCollectionView is useful for showing different size tag views in a vertica
 * Highly customizable
 * Vertical scrollable
 * Power by UICollectionView
+* Support Autolayout `intrinsicContentSize` to auto determine height based on content size
 
 ## Requirements
 iOS 7 and later.

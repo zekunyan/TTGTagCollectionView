@@ -1,5 +1,5 @@
 PODS:
-  - TTGTagCollectionView (0.4.0)
+  - TTGTagCollectionView (0.5.0)
 
 DEPENDENCIES:
   - TTGTagCollectionView (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  TTGTagCollectionView: a3d94004f4d58a6f57089ba60940f53dc47d21b6
+  TTGTagCollectionView: 94c43e13df2e39bdd8f37bd038438f183add84a4
 
 PODFILE CHECKSUM: f0fc553868b0459c5bd7ac738bceafe55aa8f98d
 

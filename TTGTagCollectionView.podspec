@@ -1,10 +1,10 @@
 Pod::Spec.new do |s|
   s.name             = "TTGTagCollectionView"
-  s.version          = "0.4.0"
+  s.version          = "0.5.0"
   s.summary          = "Show simple text tags or custom tag views in a vertical scrollable view."
   
   s.description      = <<-DESC
-                       TTGTagCollectionView is useful for showing different size tag views in a vertical scrollable view. And if you only want to show text tags, you can use TTGTextTagCollectionView instead, which has more simple api. At the same time, It is highly customizable that many features of the text tag can be configured, like the tag font size and the background color.
+                       TTGTagCollectionView is useful for showing different size tag views in a vertical scrollable view and support Autolayout intrinsicContentSize at the same time. And if you only want to show text tags, you can use TTGTextTagCollectionView instead, which has more simple api. At the same time, It is highly customizable that many features of the text tag can be configured, like the tag font size and the background color.
                        DESC
 
   s.homepage         = "https://github.com/zekunyan/TTGTagCollectionView"
