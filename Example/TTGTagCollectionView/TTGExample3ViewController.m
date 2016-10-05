@@ -39,6 +39,11 @@
     [_tagView setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
     
     [_tagView addTags:tags];
+    
+    // Random selected
+    for (NSInteger i = 0; i < 5; i++) {
+        [_tagView setTagAtIndex:arc4random_uniform((uint32_t)tags.count) selected:YES];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
