@@ -163,6 +163,16 @@ static NSString *const TTGTagCollectionCellIdentifier = @"TTGTagCollectionCell";
     [self reload];
 }
 
+- (NSUInteger)numberOfLinesForHorizontalScrollDirection {
+    return _layout.numberOfLines;
+}
+
+- (void)setNumberOfLinesForHorizontalScrollDirection:(NSUInteger)numberOfLinesForHorizontalScrollDirection {
+    numberOfLinesForHorizontalScrollDirection = numberOfLinesForHorizontalScrollDirection == 0 ? 1 : numberOfLinesForHorizontalScrollDirection;
+    _layout.numberOfLines = numberOfLinesForHorizontalScrollDirection;
+    [self reload];
+}
+
 #pragma mark - KVO
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *, id> *)change context:(void *)context {

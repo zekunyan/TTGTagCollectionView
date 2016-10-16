@@ -65,9 +65,6 @@
     _tagBorderWidth = 1.0f / [UIScreen mainScreen].scale;
     _tagBorderColor = [UIColor lightGrayColor];
 
-    _horizontalSpacing = 4.0f;
-    _verticalSpacing = 4.0f;
-
     _tagCollectionView = [TTGTagCollectionView new];
     _tagCollectionView.delegate = self;
     _tagCollectionView.dataSource = self;
@@ -310,13 +307,19 @@
     [self resetAllLabelStyle];
 }
 
+- (CGFloat)horizontalSpacing {
+    return _tagCollectionView.horizontalSpacing;
+}
+
 - (void)setHorizontalSpacing:(CGFloat)horizontalSpacing {
-    _horizontalSpacing = horizontalSpacing;
     _tagCollectionView.horizontalSpacing = horizontalSpacing;
 }
 
+- (CGFloat)verticalSpacing {
+    return _tagCollectionView.verticalSpacing;
+}
+
 - (void)setVerticalSpacing:(CGFloat)verticalSpacing {
-    _verticalSpacing = verticalSpacing;
     _tagCollectionView.verticalSpacing = verticalSpacing;
 }
 
@@ -324,9 +327,20 @@
     return _tagCollectionView.contentSize;
 }
 
+- (TTGTagCollectionScrollDirection)scrollDirection {
+    return _tagCollectionView.scrollDirection;
+}
+
 - (void)setScrollDirection:(TTGTagCollectionScrollDirection)scrollDirection {
-    _scrollDirection = scrollDirection;
     _tagCollectionView.scrollDirection = scrollDirection;
+}
+
+- (NSUInteger)numberOfLinesForHorizontalScrollDirection {
+    return _tagCollectionView.numberOfLinesForHorizontalScrollDirection;
+}
+
+- (void)setNumberOfLinesForHorizontalScrollDirection:(NSUInteger)numberOfLinesForHorizontalScrollDirection {
+    _tagCollectionView.numberOfLinesForHorizontalScrollDirection = numberOfLinesForHorizontalScrollDirection;
 }
 
 #pragma mark - Private methods

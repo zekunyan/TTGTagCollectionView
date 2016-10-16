@@ -51,6 +51,9 @@
 // Scroll direction. Default is vertical
 @property (nonatomic, assign) TTGTagCollectionScrollDirection scrollDirection;
 
+// Number of lines for horizontal direction
+@property (nonatomic, assign) NSUInteger numberOfLinesForHorizontalScrollDirection;
+
 - (void)reload;
 
 - (void)addTag:(NSString *)tag;

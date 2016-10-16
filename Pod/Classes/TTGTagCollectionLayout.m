@@ -174,6 +174,11 @@
     [self invalidateLayout];
 }
 
+- (void)setNumberOfLines:(NSUInteger)numberOfLines {
+    _numberOfLines = numberOfLines;
+    [self invalidateLayout];
+}
+
 - (void)setVerticalSpacing:(CGFloat)verticalSpacing {
     _verticalSpacing = verticalSpacing;
     [self invalidateLayout];

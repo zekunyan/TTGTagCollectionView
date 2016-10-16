@@ -51,6 +51,11 @@ typedef NS_ENUM(NSInteger, TTGTagCollectionScrollDirection) {
 @property (nonatomic, assign) TTGTagCollectionScrollDirection scrollDirection;
 
 /**
+ * Number of lines for horizontal scroll direction
+ */
+@property (nonatomic, assign) NSUInteger numberOfLinesForHorizontalScrollDirection;
+
+/**
  * Horizontal space between tags
  */
 @property (nonatomic, assign) CGFloat horizontalSpacing;
