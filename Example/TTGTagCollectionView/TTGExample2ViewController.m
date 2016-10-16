@@ -54,10 +54,6 @@
     _logLabel.text = [NSString stringWithFormat:@"Tap tag: %@, at: %ld", tagView.class, (long) index];
 }
 
-- (void)tagCollectionView:(TTGTagCollectionView *)tagCollectionView updateContentHeight:(CGFloat)newContentHeight {
-    NSLog(@"tag collection content height: %g", newContentHeight);
-}
-
 #pragma mark - TTGTagCollectionViewDataSource
 
 - (NSUInteger)numberOfTagsInTagCollectionView:(TTGTagCollectionView *)tagCollectionView {
@@ -120,7 +116,7 @@
 #pragma mark - Action
 
 - (void)onTap:(UIButton *)button {
-    NSLog(@"Tap button !");
+    _logLabel.text = @"Tap tag button !";
 }
 
 @end

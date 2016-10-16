@@ -7,18 +7,23 @@
 //
 
 #import "TTGTagCollectionView.h"
-#import "TTGTagCollectionLayout.h"
 #import "TTGTagCollectionCell.h"
+#import "TTGTagCollectionLayout.h"
 
 static NSString *const TTGTagCollectionCellIdentifier = @"TTGTagCollectionCell";
 
 @interface TTGTagCollectionView () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 @property (strong, nonatomic) UICollectionView *collectionView;
 @property (strong, nonatomic) TTGTagCollectionLayout *layout;
-@property (assign, nonatomic) CGFloat contentHeight;
 @end
 
 @implementation TTGTagCollectionView
+
+#pragma mark - Dealloc
+
+- (void)dealloc {
+    [_collectionView removeObserver:self forKeyPath:@"contentSize"];
+}
 
 #pragma mark - Init
 
@@ -40,7 +45,7 @@ static NSString *const TTGTagCollectionCellIdentifier = @"TTGTagCollectionCell";
     return self;
 }
 
-#pragma mark - Override
+#pragma mark - Layout
 
 - (void)layoutSubviews {
     [super layoutSubviews];
@@ -105,65 +110,68 @@ static NSString *const TTGTagCollectionCellIdentifier = @"TTGTagCollectionCell";
     if (_collectionView) {
         return;
     }
-    
-    // Property
-    _horizontalSpacing = 4;
-    _verticalSpacing = 4;
 
-    // Init layout
-    TTGTagCollectionLayout *layout = [TTGTagCollectionLayout new];
-    layout.sectionInset = UIEdgeInsetsZero;
-    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    layout.minimumInteritemSpacing = _horizontalSpacing;
-    layout.minimumLineSpacing = _verticalSpacing;
+    _layout = [TTGTagCollectionLayout new];
+    _layout.scrollDirection = TTGTagCollectionScrollDirectionVertical;
+    _layout.horizontalSpacing = 4;
+    _layout.verticalSpacing = 4;
 
     // Init collection view
-    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-    [self addSubview:collectionView];
-    collectionView.delegate = self;
-    collectionView.dataSource = self;
-    collectionView.backgroundColor = [UIColor clearColor];
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:_layout];
+    [self addSubview:_collectionView];
+    _collectionView.delegate = self;
+    _collectionView.dataSource = self;
+    _collectionView.backgroundColor = [UIColor clearColor];
 
     // Register cell
-    [collectionView registerClass:[TTGTagCollectionCell class] forCellWithReuseIdentifier:TTGTagCollectionCellIdentifier];
+    [_collectionView registerClass:[TTGTagCollectionCell class] forCellWithReuseIdentifier:TTGTagCollectionCellIdentifier];
 
-    _layout = layout;
-    _collectionView = collectionView;
-    
+    // Add KVO
     [_collectionView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
 }
 
-- (void)dealloc {
-    [_collectionView removeObserver:self forKeyPath:@"contentSize"];
-}
-
 #pragma mark - Setter Getter
+
 - (CGSize)contentSize {
     return _layout.collectionViewContentSize;
 }
 
+- (CGFloat)horizontalSpacing {
+    return _layout.horizontalSpacing;
+}
+
 - (void)setHorizontalSpacing:(CGFloat)horizontalSpacing {
-    _horizontalSpacing = horizontalSpacing;
-    _layout.minimumInteritemSpacing = horizontalSpacing;
-    [_collectionView reloadData];
+    _layout.horizontalSpacing = horizontalSpacing;
+    [self reload];
+}
+
+- (CGFloat)verticalSpacing {
+    return _layout.verticalSpacing;
 }
 
 - (void)setVerticalSpacing:(CGFloat)verticalSpacing {
-    _verticalSpacing = verticalSpacing;
-    _layout.minimumLineSpacing = verticalSpacing;
-    [_collectionView reloadData];
+    _layout.verticalSpacing = verticalSpacing;
+    [self reload];
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+- (TTGTagCollectionScrollDirection)scrollDirection {
+    return _layout.scrollDirection;
+}
+
+- (void)setScrollDirection:(TTGTagCollectionScrollDirection)scrollDirection {
+    _layout.scrollDirection = scrollDirection;
+    [self reload];
+}
+
+#pragma mark - KVO
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *, id> *)change context:(void *)context {
     if ([keyPath isEqualToString:@"contentSize"]) {
-        CGSize contentSize = ((NSValue *)change[NSKeyValueChangeNewKey]).CGSizeValue;
-        
-        // Update height
-        _contentHeight = contentSize.height;
-        
+        CGSize contentSize = ((NSValue *) change[NSKeyValueChangeNewKey]).CGSizeValue;
+
         // Call back
-        if ([_delegate respondsToSelector:@selector(tagCollectionView:updateContentHeight:)]) {
-            [_delegate tagCollectionView:self updateContentHeight:contentSize.height];
+        if ([_delegate respondsToSelector:@selector(tagCollectionView:updateContentSize:)]) {
+            [_delegate tagCollectionView:self updateContentSize:contentSize];
         }
     }
 }

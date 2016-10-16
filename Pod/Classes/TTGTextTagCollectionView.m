@@ -3,7 +3,6 @@
 //
 
 #import "TTGTextTagCollectionView.h"
-#import "TTGTagCollectionView.h"
 
 #pragma mark - -----TTGTextTagLabel-----
 
@@ -63,7 +62,7 @@
     _tagBackgroundColor = [UIColor whiteColor];
     _tagSelectedBackgroundColor = [UIColor colorWithRed:3 / 256.0f green:169 / 256.0f blue:244 / 256.0f alpha:1];
     _tagCornerRadius = 4.0f;
-    _tagBorderWidth = 1.0f;
+    _tagBorderWidth = 1.0f / [UIScreen mainScreen].scale;
     _tagBorderColor = [UIColor lightGrayColor];
 
     _horizontalSpacing = 4.0f;
@@ -222,9 +221,9 @@
     return _tagLabels[index].frame.size;
 }
 
-- (void)tagCollectionView:(TTGTagCollectionView *)tagCollectionView updateContentHeight:(CGFloat)newContentHeight {
-    if ([_delegate respondsToSelector:@selector(textTagCollectionView:updateContentHeight:)]) {
-        [_delegate textTagCollectionView:self updateContentHeight:newContentHeight];
+- (void)tagCollectionView:(TTGTagCollectionView *)tagCollectionView updateContentSize:(CGSize)contentSize {
+    if ([_delegate respondsToSelector:@selector(textTagCollectionView:updateContentSize:)]) {
+        [_delegate textTagCollectionView:self updateContentSize:contentSize];
     }
 }
 
@@ -314,17 +313,20 @@
 - (void)setHorizontalSpacing:(CGFloat)horizontalSpacing {
     _horizontalSpacing = horizontalSpacing;
     _tagCollectionView.horizontalSpacing = horizontalSpacing;
-    [_tagCollectionView reload];
 }
 
 - (void)setVerticalSpacing:(CGFloat)verticalSpacing {
     _verticalSpacing = verticalSpacing;
     _tagCollectionView.verticalSpacing = verticalSpacing;
-    [_tagCollectionView reload];
 }
 
-- (CGFloat)contentHeight {
-    return _tagCollectionView.contentHeight;
+- (CGSize)contentSize {
+    return _tagCollectionView.contentSize;
+}
+
+- (void)setScrollDirection:(TTGTagCollectionScrollDirection)scrollDirection {
+    _scrollDirection = scrollDirection;
+    _tagCollectionView.scrollDirection = scrollDirection;
 }
 
 #pragma mark - Private methods

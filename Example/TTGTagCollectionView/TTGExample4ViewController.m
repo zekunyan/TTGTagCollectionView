@@ -42,7 +42,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TTGExample4TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TTGExample4TableViewCell class])
                                                             forIndexPath:indexPath];
-    [cell setTags:_cellInfos[indexPath.row]];
+    [cell setTags:_cellInfos[(NSUInteger) indexPath.row]];
     return cell;
 }
 

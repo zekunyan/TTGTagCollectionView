@@ -54,7 +54,7 @@
                                     <constraint firstAttribute="height" constant="30" id="Zb5-gh-f4i"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                <state key="normal" title="Use in UITableViewCell"/>
+                                <state key="normal" title="Used in UITableViewCell"/>
                                 <connections>
                                     <segue destination="JqT-qC-OHQ" kind="show" id="3dU-zy-eWq"/>
                                 </connections>
@@ -82,10 +82,10 @@
             </objects>
             <point key="canvasLocation" x="-892" y="853"/>
         </scene>
-        <!--Example 1-->
+        <!--Simple Text Tag-->
         <scene sceneID="a8g-5e-fnx">
             <objects>
-                <viewController title="Example 1" automaticallyAdjustsScrollViewInsets="NO" id="aJL-vo-W36" customClass="TTGExample1ViewController" sceneMemberID="viewController">
+                <viewController title="Simple Text Tag" automaticallyAdjustsScrollViewInsets="NO" id="aJL-vo-W36" customClass="TTGExample1ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FdA-i7-Unk"/>
                         <viewControllerLayoutGuide type="bottom" id="oOh-9l-ihZ"/>
@@ -100,14 +100,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EhY-Hn-okd" customClass="TTGTextTagCollectionView">
                                 <color key="backgroundColor" red="0.95686274770000002" green="0.95686274770000002" blue="0.95686274770000002" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Simple text tag" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lA6-gw-6Nz">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="z8e-jL-ox8"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                <color key="textColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="log..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Utc-bj-h9q">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="vCI-IF-stn"/>
@@ -123,32 +115,29 @@
                             <constraint firstItem="EhY-Hn-okd" firstAttribute="leading" secondItem="BWo-W4-mVd" secondAttribute="leading" constant="20" id="AHG-dr-SuE"/>
                             <constraint firstItem="EhY-Hn-okd" firstAttribute="height" secondItem="bMB-WG-iah" secondAttribute="height" constant="-40" id="JLC-xo-rdT"/>
                             <constraint firstItem="Utc-bj-h9q" firstAttribute="top" secondItem="EhY-Hn-okd" secondAttribute="bottom" constant="15" id="NUn-yR-EdY"/>
+                            <constraint firstItem="bMB-WG-iah" firstAttribute="top" secondItem="FdA-i7-Unk" secondAttribute="bottom" constant="8" id="Pbx-Tp-Rfk"/>
                             <constraint firstItem="oOh-9l-ihZ" firstAttribute="top" secondItem="Utc-bj-h9q" secondAttribute="bottom" constant="8" id="YX2-v3-YqB"/>
-                            <constraint firstAttribute="trailing" secondItem="lA6-gw-6Nz" secondAttribute="trailing" constant="20" id="YtP-IJ-drK"/>
-                            <constraint firstItem="lA6-gw-6Nz" firstAttribute="top" secondItem="FdA-i7-Unk" secondAttribute="bottom" constant="22" id="bBo-zn-fRZ"/>
                             <constraint firstItem="EhY-Hn-okd" firstAttribute="top" secondItem="bMB-WG-iah" secondAttribute="bottom" constant="10" id="bNH-mT-n6P"/>
                             <constraint firstAttribute="trailing" secondItem="EhY-Hn-okd" secondAttribute="trailing" constant="20" id="h5h-N4-c2V"/>
-                            <constraint firstItem="lA6-gw-6Nz" firstAttribute="leading" secondItem="BWo-W4-mVd" secondAttribute="leading" constant="20" id="ieB-fD-bgO"/>
                             <constraint firstItem="bMB-WG-iah" firstAttribute="leading" secondItem="BWo-W4-mVd" secondAttribute="leading" constant="20" id="kZS-VX-qSG"/>
                             <constraint firstItem="Utc-bj-h9q" firstAttribute="leading" secondItem="BWo-W4-mVd" secondAttribute="leading" constant="20" id="mda-bt-9tB"/>
-                            <constraint firstItem="bMB-WG-iah" firstAttribute="top" secondItem="lA6-gw-6Nz" secondAttribute="bottom" constant="12" id="sCZ-E3-Y2h"/>
                             <constraint firstAttribute="trailing" secondItem="bMB-WG-iah" secondAttribute="trailing" constant="20" id="tfy-Js-ePM"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="logLabel" destination="Utc-bj-h9q" id="fzW-8S-sZX"/>
                         <outlet property="textTagCollectionView1" destination="bMB-WG-iah" id="jfl-9D-t5p"/>
-                        <outlet property="textTagCollectionView2" destination="EhY-Hn-okd" id="KST-kU-SSC"/>
+                        <outlet property="textTagCollectionView2" destination="EhY-Hn-okd" id="Z65-xH-8il"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Etl-Qq-3mI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="177" y="520"/>
         </scene>
-        <!--Example 2-->
+        <!--Custom Tag View-->
         <scene sceneID="Iyd-U8-kYb">
             <objects>
-                <viewController title="Example 2" automaticallyAdjustsScrollViewInsets="NO" id="9Ao-sJ-Q2s" customClass="TTGExample2ViewController" sceneMemberID="viewController">
+                <viewController title="Custom Tag View" automaticallyAdjustsScrollViewInsets="NO" id="9Ao-sJ-Q2s" customClass="TTGExample2ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tdD-rv-c2a"/>
                         <viewControllerLayoutGuide type="bottom" id="uXm-tO-SBw"/>
@@ -157,14 +146,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Custom tag view" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgn-jj-QEB">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="kmz-uY-Yyh"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="akD-GQ-DNe" customClass="TTGTagCollectionView">
                                 <color key="backgroundColor" red="0.79607844350000001" green="0.79607844350000001" blue="0.79607844350000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -184,11 +165,8 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="6mU-OS-f99" secondAttribute="trailing" constant="20" id="222-hI-nxY"/>
                             <constraint firstAttribute="trailing" secondItem="akD-GQ-DNe" secondAttribute="trailing" constant="20" id="B4b-W8-qBW"/>
-                            <constraint firstItem="akD-GQ-DNe" firstAttribute="top" secondItem="rgn-jj-QEB" secondAttribute="bottom" constant="28" id="Cwn-Ab-5sw"/>
-                            <constraint firstItem="rgn-jj-QEB" firstAttribute="top" secondItem="tdD-rv-c2a" secondAttribute="bottom" constant="22" id="YWg-ZX-gdU"/>
-                            <constraint firstAttribute="trailing" secondItem="rgn-jj-QEB" secondAttribute="trailing" constant="20" id="d0i-xy-twP"/>
+                            <constraint firstItem="akD-GQ-DNe" firstAttribute="top" secondItem="tdD-rv-c2a" secondAttribute="bottom" constant="20" id="OgE-rz-NZj"/>
                             <constraint firstItem="uXm-tO-SBw" firstAttribute="top" secondItem="6mU-OS-f99" secondAttribute="bottom" constant="8" id="fSM-3s-2d4"/>
-                            <constraint firstItem="rgn-jj-QEB" firstAttribute="leading" secondItem="TsU-E4-J5B" secondAttribute="leading" constant="20" id="iu6-uL-1wM"/>
                             <constraint firstItem="6mU-OS-f99" firstAttribute="leading" secondItem="TsU-E4-J5B" secondAttribute="leading" constant="20" id="nFw-kf-WUm"/>
                             <constraint firstItem="akD-GQ-DNe" firstAttribute="leading" secondItem="TsU-E4-J5B" secondAttribute="leading" constant="20" id="o7N-V8-648"/>
                         </constraints>
@@ -202,10 +180,10 @@
             </objects>
             <point key="canvasLocation" x="177" y="1188"/>
         </scene>
-        <!--Example3 View Controller-->
+        <!--Auto Height-->
         <scene sceneID="X6d-Eg-A4D">
             <objects>
-                <viewController id="SYg-bd-7pS" customClass="TTGExample3ViewController" sceneMemberID="viewController">
+                <viewController title="Auto Height" id="SYg-bd-7pS" customClass="TTGExample3ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dKK-He-jyi"/>
                         <viewControllerLayoutGuide type="bottom" id="5dX-Gv-7Dk"/>
@@ -237,10 +215,10 @@ to auto fix height</string>
             </objects>
             <point key="canvasLocation" x="176.80000000000001" y="1943.4782608695655"/>
         </scene>
-        <!--Example4 View Controller-->
+        <!--Used in UITableViewCell-->
         <scene sceneID="02n-e3-BRE">
             <objects>
-                <tableViewController id="JqT-qC-OHQ" customClass="TTGExample4ViewController" sceneMemberID="viewController">
+                <tableViewController title="Used in UITableViewCell" id="JqT-qC-OHQ" customClass="TTGExample4ViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="JNu-yG-Xfh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

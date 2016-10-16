@@ -28,7 +28,7 @@
     [self.view addSubview:_tagView];
     
     NSArray *hConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[tagView]-20-|"
-                                                                    options:0 metrics:nil
+                                                                    options:(NSLayoutFormatOptions) 0 metrics:nil
                                                                       views:@{@"tagView": _tagView}];
     
     NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:_tagView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1 constant:160];

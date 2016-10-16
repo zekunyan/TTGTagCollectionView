@@ -4,6 +4,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "TTGTagCollectionView.h"
 
 @class TTGTextTagCollectionView;
 
@@ -11,7 +12,7 @@
 @optional
 - (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView didTapTag:(NSString *)tagText atIndex:(NSUInteger)index selected:(BOOL)selected;
 
-- (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView updateContentHeight:(CGFloat)newContentHeight;
+- (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView updateContentSize:(CGSize)contentSize;
 @end
 
 @interface TTGTextTagCollectionView : UIView
@@ -44,8 +45,11 @@
 @property (assign, nonatomic) CGFloat horizontalSpacing;
 @property (assign, nonatomic) CGFloat verticalSpacing;
 
-// Content heigth
-@property (assign, nonatomic, readonly) CGFloat contentHeight;
+// Content size
+@property (nonatomic, assign, readonly) CGSize contentSize;
+
+// Scroll direction. Default is vertical
+@property (nonatomic, assign) TTGTagCollectionScrollDirection scrollDirection;
 
 - (void)reload;
 
