@@ -3,7 +3,7 @@ This application makes use of the following third party libraries:
 
 ## TTGTagCollectionView
 
-Copyright (c) 2015 zekunyan <zekunyan@163.com>
+Copyright (c) 2016 zekunyan <zekunyan@163.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

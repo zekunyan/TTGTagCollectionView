@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "46A45471D548A6D787B015807D01491F"
-               BuildableName = "libTTGTagCollectionView.a"
+               BlueprintIdentifier = "EB799A1D5A0487057019CC5004970718"
+               BuildableName = "TTGTagCollectionView.framework"
                BlueprintName = "TTGTagCollectionView"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
@@ -45,8 +45,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "46A45471D548A6D787B015807D01491F"
-            BuildableName = "libTTGTagCollectionView.a"
+            BlueprintIdentifier = "EB799A1D5A0487057019CC5004970718"
+            BuildableName = "TTGTagCollectionView.framework"
             BlueprintName = "TTGTagCollectionView"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>

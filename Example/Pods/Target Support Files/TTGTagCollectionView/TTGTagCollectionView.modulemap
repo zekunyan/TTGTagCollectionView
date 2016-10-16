@@ -1,0 +1,6 @@
+framework module TTGTagCollectionView {
+  umbrella header "TTGTagCollectionView-umbrella.h"
+
+  export *
+  module * { export * }
+}

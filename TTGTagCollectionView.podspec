@@ -16,6 +16,6 @@ Pod::Spec.new do |s|
   s.platform         = :ios, '7.0'
   s.requires_arc     = true
 
-  s.source_files = 'Pod/Classes/**/*'
-  s.public_header_files = 'Pod/Classes/**/*.h'
+  s.source_files = 'TTGTagCollectionView/Classes/**/*'
+  s.public_header_files = 'TTGTagCollectionView/Classes/**/*.h'
 end
