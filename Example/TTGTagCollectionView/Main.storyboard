@@ -89,7 +89,7 @@
                             <constraint firstItem="FgE-N2-9mm" firstAttribute="trailing" secondItem="TpU-gO-2f1" secondAttribute="trailingMargin" id="yK2-gz-kpL"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="1kH-BO-Stk"/>
+                    <navigationItem key="navigationItem" title="TTGTagCollectionView" id="1kH-BO-Stk"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tc2-Qw-aMS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

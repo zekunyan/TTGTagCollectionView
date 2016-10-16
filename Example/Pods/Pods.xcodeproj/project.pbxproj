@@ -11,14 +11,15 @@
 		164067D9BA5BC6336321DEEE7875AC3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		1BAD6647181994B942EEF5AA3484FF73 /* TTGTagCollectionView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBA7121463CF9CB17D9EFB7C0D2C404 /* TTGTagCollectionView-dummy.m */; };
 		1C7CF2B39B101CDDF152750875FC7CFF /* TTGTagCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = C54D6509B4125C0A2CA80BD6FAD5894D /* TTGTagCollectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		267A187FFEACEEDE627177E86EF71F90 /* TTGTagCollectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3D4DCD910EC38CCF002BF15EC57D97 /* TTGTagCollectionLayout.m */; };
 		33B2BB79B3ADADBAC87E11DE186C47A9 /* TTGTagCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A334435A9E9BE3BC0FD316B52261BA60 /* TTGTagCollectionView.m */; };
 		426DF14C704C91F82F0145579C3A6A63 /* TTGTextTagCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 906FD2017FFEC78A8BC0E2988F967C90 /* TTGTextTagCollectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		59EB3A37D5EC6D956D1239AF5C3D19FC /* TTGTagCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6DCD3C4195995F2A46C35178868BBE1 /* TTGTagCollectionCell.m */; };
 		7ABE3CFB06E8049D35612360DEFEAE7D /* Pods-TTGTagCollectionView_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B318545E01DE71AA4258DE6FE99822D9 /* Pods-TTGTagCollectionView_Tests-dummy.m */; };
 		7C2B485E4D8A0C2C5F8B4F9AD8806B10 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		9DE5D393CED08467C67DF45B09F5D230 /* TTGTagCollectionLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = A60E4F7980D9E497F032A05CCCE8F85E /* TTGTagCollectionLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A967C556B071C11F9CB3F4038F063217 /* TTGTextTagCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED53D40DBFB99B257D34A3560ECAA4E2 /* TTGTextTagCollectionView.m */; };
 		A9B873B0ED82D5DAA0BDBB922F44FF15 /* TTGTagCollectionCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D787BB36184371B2CF82BE01F9D7F88 /* TTGTagCollectionCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BF3253E51DB3600C00AF4CFC /* TTGTagCollectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3253E41DB3600C00AF4CFC /* TTGTagCollectionLayout.m */; };
 		F20A330FD863D1CD8D64438A3CCC89DD /* Pods-TTGTagCollectionView_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 680F279C808803955B73C4AB43398BB8 /* Pods-TTGTagCollectionView_Example-dummy.m */; };
 /* End PBXBuildFile section */
 
@@ -53,10 +54,10 @@
 		A06E2B2067B1C3E2F98A48E3A8575405 /* TTGTagCollectionView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TTGTagCollectionView.xcconfig; sourceTree = "<group>"; };
 		A2437D585D2011C9A373A6FFE2A61805 /* Pods-TTGTagCollectionView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TTGTagCollectionView_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		A334435A9E9BE3BC0FD316B52261BA60 /* TTGTagCollectionView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTGTagCollectionView.m; sourceTree = "<group>"; };
+		A60E4F7980D9E497F032A05CCCE8F85E /* TTGTagCollectionLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTGTagCollectionLayout.h; sourceTree = "<group>"; };
+		AB3D4DCD910EC38CCF002BF15EC57D97 /* TTGTagCollectionLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTGTagCollectionLayout.m; sourceTree = "<group>"; };
 		B318545E01DE71AA4258DE6FE99822D9 /* Pods-TTGTagCollectionView_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TTGTagCollectionView_Tests-dummy.m"; sourceTree = "<group>"; };
 		B6DCD3C4195995F2A46C35178868BBE1 /* TTGTagCollectionCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTGTagCollectionCell.m; sourceTree = "<group>"; };
-		BF3253E31DB3600C00AF4CFC /* TTGTagCollectionLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGTagCollectionLayout.h; sourceTree = "<group>"; };
-		BF3253E41DB3600C00AF4CFC /* TTGTagCollectionLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGTagCollectionLayout.m; sourceTree = "<group>"; };
 		C54D6509B4125C0A2CA80BD6FAD5894D /* TTGTagCollectionView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTGTagCollectionView.h; sourceTree = "<group>"; };
 		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		E18978E2F9FAB2A0DE160EDD62F481D2 /* libPods-TTGTagCollectionView_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TTGTagCollectionView_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,8 +174,8 @@
 			children = (
 				9D787BB36184371B2CF82BE01F9D7F88 /* TTGTagCollectionCell.h */,
 				B6DCD3C4195995F2A46C35178868BBE1 /* TTGTagCollectionCell.m */,
-				BF3253E31DB3600C00AF4CFC /* TTGTagCollectionLayout.h */,
-				BF3253E41DB3600C00AF4CFC /* TTGTagCollectionLayout.m */,
+				A60E4F7980D9E497F032A05CCCE8F85E /* TTGTagCollectionLayout.h */,
+				AB3D4DCD910EC38CCF002BF15EC57D97 /* TTGTagCollectionLayout.m */,
 				C54D6509B4125C0A2CA80BD6FAD5894D /* TTGTagCollectionView.h */,
 				A334435A9E9BE3BC0FD316B52261BA60 /* TTGTagCollectionView.m */,
 				906FD2017FFEC78A8BC0E2988F967C90 /* TTGTextTagCollectionView.h */,
@@ -229,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9B873B0ED82D5DAA0BDBB922F44FF15 /* TTGTagCollectionCell.h in Headers */,
+				9DE5D393CED08467C67DF45B09F5D230 /* TTGTagCollectionLayout.h in Headers */,
 				1C7CF2B39B101CDDF152750875FC7CFF /* TTGTagCollectionView.h in Headers */,
 				426DF14C704C91F82F0145579C3A6A63 /* TTGTextTagCollectionView.h in Headers */,
 			);
@@ -328,7 +330,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF3253E51DB3600C00AF4CFC /* TTGTagCollectionLayout.m in Sources */,
 				F20A330FD863D1CD8D64438A3CCC89DD /* Pods-TTGTagCollectionView_Example-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,6 +339,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59EB3A37D5EC6D956D1239AF5C3D19FC /* TTGTagCollectionCell.m in Sources */,
+				267A187FFEACEEDE627177E86EF71F90 /* TTGTagCollectionLayout.m in Sources */,
 				1BAD6647181994B942EEF5AA3484FF73 /* TTGTagCollectionView-dummy.m in Sources */,
 				33B2BB79B3ADADBAC87E11DE186C47A9 /* TTGTagCollectionView.m in Sources */,
 				A967C556B071C11F9CB3F4038F063217 /* TTGTextTagCollectionView.m in Sources */,
@@ -356,11 +358,13 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		1C0F463EC69D9124BA7F518C4C177979 /* Release */ = {
+		18E03BB5A6EDDA765A37EF0F750B3E03 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A2437D585D2011C9A373A6FFE2A61805 /* Pods-TTGTagCollectionView_Tests.release.xcconfig */;
+			baseConfigurationReference = 7F375FD294D307200587A5B549B06378 /* Pods-TTGTagCollectionView_Example.release.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -377,7 +381,76 @@
 			};
 			name = Release;
 		};
-		3FA2475660FFC880302AD18E29B2E5FC /* Debug */ = {
+		20A4C20379AFDF08FAB4C6DED594DEFE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A06E2B2067B1C3E2F98A48E3A8575405 /* TTGTagCollectionView.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/TTGTagCollectionView/TTGTagCollectionView-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		558358DC08CABA2DBC7F2443DA7EF887 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2437D585D2011C9A373A6FFE2A61805 /* Pods-TTGTagCollectionView_Tests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		5609CD973074B04C12F825B6AE5F494D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F08DD56B21473A43A5A1D6F5856A52A /* Pods-TTGTagCollectionView_Tests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		79B0C2E66EFA9917ED6EDDB8FC6A7684 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -395,6 +468,70 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CA94F64D78F4DECB3E237E054333D9A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 660218B1D4061B674A674D2603DB2C62 /* Pods-TTGTagCollectionView_Example.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		CF7953F66E785E8876EB4D370D777D50 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -414,138 +551,19 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
 		};
-		5DB1896928CD3E5AF63204EF276E9731 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7F375FD294D307200587A5B549B06378 /* Pods-TTGTagCollectionView_Example.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		715B738E4E858F4D59FB169DDD19932A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 660218B1D4061B674A674D2603DB2C62 /* Pods-TTGTagCollectionView_Example.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		D04EF67C809107E3B92A7AAB2415CAD8 /* Debug */ = {
+		D4965756E137BC9A9B840AE78E8EC2DF /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A06E2B2067B1C3E2F98A48E3A8575405 /* TTGTagCollectionView.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/TTGTagCollectionView/TTGTagCollectionView-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		EE5D3918188A0F754CFB84D3488C0777 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4F08DD56B21473A43A5A1D6F5856A52A /* Pods-TTGTagCollectionView_Tests.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		F325026B55060D3B22BEC0BAB5FA7344 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		FAF4F044426B104EF2C7D704924C0A04 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A06E2B2067B1C3E2F98A48E3A8575405 /* TTGTagCollectionView.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -568,8 +586,8 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3FA2475660FFC880302AD18E29B2E5FC /* Debug */,
-				F325026B55060D3B22BEC0BAB5FA7344 /* Release */,
+				CF7953F66E785E8876EB4D370D777D50 /* Debug */,
+				79B0C2E66EFA9917ED6EDDB8FC6A7684 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -577,8 +595,8 @@
 		6089257E76CCD032D90FEE1C0384DE3D /* Build configuration list for PBXNativeTarget "TTGTagCollectionView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D04EF67C809107E3B92A7AAB2415CAD8 /* Debug */,
-				FAF4F044426B104EF2C7D704924C0A04 /* Release */,
+				20A4C20379AFDF08FAB4C6DED594DEFE /* Debug */,
+				D4965756E137BC9A9B840AE78E8EC2DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -586,8 +604,8 @@
 		9971B3989FF3FA9C24BD13B5B64449DC /* Build configuration list for PBXNativeTarget "Pods-TTGTagCollectionView_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EE5D3918188A0F754CFB84D3488C0777 /* Debug */,
-				1C0F463EC69D9124BA7F518C4C177979 /* Release */,
+				5609CD973074B04C12F825B6AE5F494D /* Debug */,
+				558358DC08CABA2DBC7F2443DA7EF887 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -595,8 +613,8 @@
 		CC5E58A939BB2CBF08C97B3CCCC067A4 /* Build configuration list for PBXNativeTarget "Pods-TTGTagCollectionView_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				715B738E4E858F4D59FB169DDD19932A /* Debug */,
-				5DB1896928CD3E5AF63204EF276E9731 /* Release */,
+				CA94F64D78F4DECB3E237E054333D9A0 /* Debug */,
+				18E03BB5A6EDDA765A37EF0F750B3E03 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -5,16 +5,16 @@
 [![License](https://img.shields.io/cocoapods/l/TTGTagCollectionView.svg?style=flat)](http://cocoapods.org/pods/TTGTagCollectionView)
 [![Platform](https://img.shields.io/cocoapods/p/TTGTagCollectionView.svg?style=flat)](http://cocoapods.org/pods/TTGTagCollectionView)
 
-![Screenshot](http://7nj2iz.com1.z0.glb.clouddn.com/TTGTagCollectionView_screenshot.jpeg)
+![Screenshot](https://github.com/zekunyan/TTGTagCollectionView/raw/master/Resources/screen_shot.jpeg)
 
 ## What 
 
-TTGTagCollectionView is useful for showing different size tag views in a vertical scrollable view. And if you only want to show text tags, you can use TTGTextTagCollectionView instead, which has more simple api. At the same time, It is highly customizable that many features of the text tag can be configured, like the tag font size and the background color.
+TTGTagCollectionView is useful for showing different size tag views in a vertical or horizontal scrollable view. And if you only want to show text tags, you can use TTGTextTagCollectionView instead, which has more simple api. At the same time, It is highly customizable that many features of the text tag can be configured, like the tag font size and the background color.
 
 ## Features
 * Both text tag and custom view tag supported.
 * Highly customizable
-* Vertical scrollable
+* Vertical and horizontal scrollable
 * Power by UICollectionView
 * Support Autolayout `intrinsicContentSize` to auto determine height based on content size
 
@@ -50,7 +50,7 @@ Conform the `TTGTextTagCollectionViewDelegate` protocol to get callback when you
 @optional
 - (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView didTapTag:(NSString *)tagText atIndex:(NSUInteger)index selected:(BOOL)selected;
 
-- (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView updateContentHeight:(CGFloat)newContentHeight;
+- (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView updateContentSize:(CGSize)contentSize;
 @end
 ```
 
@@ -87,8 +87,14 @@ Conform the `TTGTextTagCollectionViewDelegate` protocol to get callback when you
 @property (assign, nonatomic) CGFloat horizontalSpacing;
 @property (assign, nonatomic) CGFloat verticalSpacing;
 
-// Content height
-@property (assign, nonatomic, readonly) CGFloat contentHeight;
+// Content size
+@property (nonatomic, assign, readonly) CGSize contentSize;
+
+// Scroll direction. Default is vertical
+@property (nonatomic, assign) TTGTagCollectionScrollDirection scrollDirection;
+
+// Number of lines for horizontal direction
+@property (nonatomic, assign) NSUInteger numberOfLinesForHorizontalScrollDirection;
 ```
 
 #### Config tags
@@ -125,6 +131,7 @@ Conform the `TTGTextTagCollectionViewDelegate` protocol to get callback when you
 
 #### Reload
 You can reload tags programmatically.
+
 ```
 - (void)reload;
 ```
@@ -136,6 +143,7 @@ Use `TTGTagCollectionView` to show custom tag views.
 Just like the UITableView, you must conform and implement the required methods of `TTGTagCollectionViewDelegate` and `TTGTagCollectionViewDataSource` to get `TTGTagCollectionView` work.
 
 **DataSource**
+
 ```
 @protocol TTGTagCollectionViewDataSource <NSObject>
 @required
@@ -146,6 +154,7 @@ Just like the UITableView, you must conform and implement the required methods o
 ```
 
 **Delegate**
+
 ```
 @protocol TTGTagCollectionViewDelegate <NSObject>
 @required
@@ -154,20 +163,39 @@ Just like the UITableView, you must conform and implement the required methods o
 @optional
 - (void)tagCollectionView:(TTGTagCollectionView *)tagCollectionView didSelectTag:(UIView *)tagView atIndex:(NSUInteger)index;
 
-- (void)tagCollectionView:(TTGTagCollectionView *)tagCollectionView updateContentHeight:(CGFloat)newContentHeight;
+- (void)tagCollectionView:(TTGTagCollectionView *)tagCollectionView updateContentSize:(CGSize)contentSize;
 @end
 ```
 
 #### Customization
 
 You can config the horizontal and vertical space between tags.
-```
-// Space
-@property (assign, nonatomic) CGFloat horizontalSpacing;
-@property (assign, nonatomic) CGFloat verticalSpacing;
 
-// Content height
-@property (assign, nonatomic, readonly) CGFloat contentHeight;
+```
+/**
+ * Tags scroll direction, default is veritical
+ */
+@property (nonatomic, assign) TTGTagCollectionScrollDirection scrollDirection;
+
+/**
+ * Number of lines for horizontal scroll direction
+ */
+@property (nonatomic, assign) NSUInteger numberOfLinesForHorizontalScrollDirection;
+
+/**
+ * Horizontal space between tags
+ */
+@property (nonatomic, assign) CGFloat horizontalSpacing;
+
+/**
+ * Vertical space between tags
+ */
+@property (nonatomic, assign) CGFloat verticalSpacing;
+
+/**
+ * The true tags content size
+ */
+@property (nonatomic, assign, readonly) CGSize contentSize;
 ```
 
 #### Reload
