@@ -23,11 +23,18 @@ iOS 7 and later.
 
 ## Installation
 
+### CocoaPods
 TTGTagCollectionView is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
 pod "TTGTagCollectionView"
+```
+
+### Carthage
+You can use [Carthage](https://github.com/Carthage/Carthage) to install `TTGTagCollectionView` by adding it to your `Cartfile`:
+```
+github "zekunyan/TTGTagCollectionView"
 ```
 
 ## Usage
