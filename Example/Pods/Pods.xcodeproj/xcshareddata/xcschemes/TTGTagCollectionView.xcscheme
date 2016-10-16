@@ -17,7 +17,7 @@
                BlueprintIdentifier = "46A45471D548A6D787B015807D01491F"
                BuildableName = "libTTGTagCollectionView.a"
                BlueprintName = "TTGTagCollectionView"
-               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -48,7 +48,7 @@
             BlueprintIdentifier = "46A45471D548A6D787B015807D01491F"
             BuildableName = "libTTGTagCollectionView.a"
             BlueprintName = "TTGTagCollectionView"
-            ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
