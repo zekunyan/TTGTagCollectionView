@@ -56,11 +56,11 @@
 #pragma mark - Private methods
 
 - (void)prepareForScrollVertical {
-    CGFloat currentX = 0, currentYBase = -_verticalSpacing, tmpHeight = 0;
+    CGFloat currentX = _contentInset.left, currentYBase = -_verticalSpacing + _contentInset.top, tmpHeight = 0;
     CGRect frame;
     NSMutableArray <NSNumber *> *eachLineMaxHeightNumbers = [NSMutableArray new];
 
-    CGFloat visibleWidth = CGRectGetWidth(self.collectionView.frame);
+    CGFloat visibleWidth = CGRectGetWidth(self.collectionView.frame) - _contentInset.right;
     NSInteger count = [self.collectionView numberOfItemsInSection:0];
     _totalAttributes = [[NSMutableArray alloc] initWithCapacity:(NSUInteger) count];
 
@@ -71,11 +71,11 @@
 
         frame = attributes.frame;
 
-        if (currentX + CGRectGetWidth(frame) + _horizontalSpacing > visibleWidth) {
+        if (currentX + CGRectGetWidth(frame) > visibleWidth) {
             // New Line
             [eachLineMaxHeightNumbers addObject:@(tmpHeight)];
             tmpHeight = 0;
-            currentX = 0;
+            currentX = _contentInset.left;
         }
 
         frame.origin.x = currentX;
@@ -95,7 +95,7 @@
     for (UICollectionViewLayoutAttributes *attributes in _totalAttributes) {
         frame = attributes.frame;
 
-        if (frame.origin.x == 0 && currentLineIndex < eachLineMaxHeightNumbers.count) {
+        if (frame.origin.x == _contentInset.left && currentLineIndex < eachLineMaxHeightNumbers.count) {
             currentYBase += currentLineMaxHeight + _verticalSpacing;
             currentLineMaxHeight = eachLineMaxHeightNumbers[currentLineIndex].floatValue;
             currentLineIndex += 1;
@@ -105,8 +105,8 @@
         attributes.frame = frame;
     }
 
-    _contentWidth = visibleWidth;
-    _contentHeight = currentYBase + currentLineMaxHeight;
+    _contentWidth = visibleWidth - _contentInset.left;
+    _contentHeight = currentYBase + currentLineMaxHeight + _contentInset.bottom;
 }
 
 - (void)prepareForScrollHorizontal {
@@ -164,7 +164,8 @@
         attributes.frame = frame;
     }
 
-    _contentHeight = currentYBase + currentLineMaxHeight;
+    _contentWidth += self.collectionView.contentInset.left + self.collectionView.contentInset.right;
+    _contentHeight = currentYBase + currentLineMaxHeight + self.collectionView.contentInset.top + self.collectionView.contentInset.bottom;
 }
 
 #pragma mark - Setter

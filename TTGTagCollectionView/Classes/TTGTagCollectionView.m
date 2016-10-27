@@ -75,6 +75,13 @@ static NSString *const TTGTagCollectionCellIdentifier = @"TTGTagCollectionCell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     TTGTagCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:TTGTagCollectionCellIdentifier forIndexPath:indexPath];
     [cell setTagView:[_dataSource tagCollectionView:self tagViewForIndex:(NSUInteger) indexPath.row]];
+
+    cell.layer.shadowColor = _shadowColor.CGColor;
+    cell.layer.shadowOffset = _shadowOffset;
+    cell.layer.shadowRadius = _shadowRadius;
+    cell.layer.shadowOpacity = _shadowOpacity;
+    cell.layer.masksToBounds = NO;
+    
     return cell;
 }
 
@@ -110,11 +117,19 @@ static NSString *const TTGTagCollectionCellIdentifier = @"TTGTagCollectionCell";
     if (_collectionView) {
         return;
     }
+    
+    // Shadow
+    _shadowColor = [UIColor blackColor];
+    _shadowOffset = CGSizeZero;
+    _shadowRadius = 0.0f;
+    _shadowOpacity = 0.5f;
 
+    // Layout
     _layout = [TTGTagCollectionLayout new];
     _layout.scrollDirection = TTGTagCollectionScrollDirectionVertical;
     _layout.horizontalSpacing = 4;
     _layout.verticalSpacing = 4;
+    _layout.contentInset = UIEdgeInsetsMake(2, 2, 2, 2);
 
     // Init collection view
     _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:_layout];
@@ -171,6 +186,14 @@ static NSString *const TTGTagCollectionCellIdentifier = @"TTGTagCollectionCell";
     numberOfLinesForHorizontalScrollDirection = numberOfLinesForHorizontalScrollDirection == 0 ? 1 : numberOfLinesForHorizontalScrollDirection;
     _layout.numberOfLines = numberOfLinesForHorizontalScrollDirection;
     [self reload];
+}
+
+- (UIEdgeInsets)contentInset {
+    return _layout.contentInset;
+}
+
+- (void)setContentInset:(UIEdgeInsets)contentInset {
+    _layout.contentInset = contentInset;
 }
 
 #pragma mark - KVO

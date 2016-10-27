@@ -54,6 +54,15 @@
 // Number of lines for horizontal direction
 @property (nonatomic, assign) NSUInteger numberOfLinesForHorizontalScrollDirection;
 
+// Tag shadow
+@property (nonatomic, copy) UIColor *shadowColor; // Default is [UIColor black]
+@property (nonatomic, assign) CGSize shadowOffset; // Default is CGSizeZero
+@property (nonatomic, assign) CGFloat shadowRadius; // Default is 0f
+@property (nonatomic, assign) CGFloat shadowOpacity; // Default is 0.5f
+
+// Content inset, default is UIEdgeInsetsMake(2, 2, 2, 2)
+@property (nonatomic, assign) UIEdgeInsets contentInset;
+
 - (void)reload;
 
 - (void)addTag:(NSString *)tag;

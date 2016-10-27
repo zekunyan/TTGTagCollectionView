@@ -56,19 +56,28 @@ typedef NS_ENUM(NSInteger, TTGTagCollectionScrollDirection) {
 @property (nonatomic, assign) NSUInteger numberOfLinesForHorizontalScrollDirection;
 
 /**
- * Horizontal space between tags
+ * Horizontal and Vertical space between tags
  */
 @property (nonatomic, assign) CGFloat horizontalSpacing;
-
-/**
- * Vertical space between tags
- */
 @property (nonatomic, assign) CGFloat verticalSpacing;
 
 /**
- * The true tags content size
+ * The true tags content size, readonly
  */
 @property (nonatomic, assign, readonly) CGSize contentSize;
+
+/**
+ * Tag shadow
+ */
+@property (nonatomic, strong) UIColor *shadowColor; // Default is [UIColor black]
+@property (nonatomic, assign) CGSize shadowOffset; // Default is CGSizeZero
+@property (nonatomic, assign) CGFloat shadowRadius; // Default is 0f
+@property (nonatomic, assign) CGFloat shadowOpacity; // Default is 0.5f
+
+/**
+ * Content inset, default is UIEdgeInsetsMake(2, 2, 2, 2)
+ */
+@property (nonatomic, assign) UIEdgeInsets contentInset;
 
 /**
  * Reload all tag cells

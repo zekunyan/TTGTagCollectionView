@@ -46,6 +46,10 @@
     _textTagCollectionView1.tagTextFont = [UIFont boldSystemFontOfSize:22.0f];
     _textTagCollectionView1.horizontalSpacing = 6.0;
     _textTagCollectionView1.verticalSpacing = 12.0;
+    _textTagCollectionView1.shadowColor = [UIColor blackColor];
+    _textTagCollectionView1.shadowOffset = CGSizeMake(0, 0.3);
+    _textTagCollectionView1.shadowOpacity = 0.5f;
+    _textTagCollectionView1.shadowRadius = 0.5f;
 
     // Style2
     _textTagCollectionView2.tagTextFont = [UIFont systemFontOfSize:14.0f];

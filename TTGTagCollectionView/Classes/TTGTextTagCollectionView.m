@@ -343,6 +343,46 @@
     _tagCollectionView.numberOfLinesForHorizontalScrollDirection = numberOfLinesForHorizontalScrollDirection;
 }
 
+- (UIColor *)shadowColor {
+    return _tagCollectionView.shadowColor;
+}
+
+- (void)setShadowColor:(UIColor *)shadowColor {
+    _tagCollectionView.shadowColor = shadowColor;
+}
+
+- (CGSize)shadowOffset {
+    return _tagCollectionView.shadowOffset;
+}
+
+- (void)setShadowOffset:(CGSize)shadowOffset {
+    _tagCollectionView.shadowOffset = shadowOffset;
+}
+
+- (CGFloat)shadowRadius {
+    return _tagCollectionView.shadowRadius;
+}
+
+- (void)setShadowRadius:(CGFloat)shadowRadius {
+    _tagCollectionView.shadowRadius = shadowRadius;
+}
+
+- (CGFloat)shadowOpacity {
+    return _tagCollectionView.shadowOpacity;
+}
+
+- (void)setShadowOpacity:(CGFloat)shadowOpacity {
+    _tagCollectionView.shadowOpacity = shadowOpacity;
+}
+
+- (UIEdgeInsets)contentInset {
+    return _tagCollectionView.contentInset;
+}
+
+- (void)setContentInset:(UIEdgeInsets)contentInset {
+    _tagCollectionView.contentInset = contentInset;
+}
+
 #pragma mark - Private methods
 
 - (void)resetAllLabelStyle {
