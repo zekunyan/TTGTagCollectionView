@@ -45,17 +45,17 @@
     // Style1
     _textTagCollectionView1.tagTextFont = [UIFont boldSystemFontOfSize:18.0f];
     
-    _textTagCollectionView1.tagTextColor = [UIColor whiteColor];
-    _textTagCollectionView1.tagSelectedTextColor = [UIColor whiteColor];
+    _textTagCollectionView1.tagTextColor = [UIColor colorWithRed:0.18 green:0.19 blue:0.22 alpha:1.00];
+    _textTagCollectionView1.tagSelectedTextColor = [UIColor colorWithRed:0.18 green:0.19 blue:0.22 alpha:1.00];
     
-    _textTagCollectionView1.tagBackgroundColor = [UIColor colorWithRed:0.30 green:0.72 blue:0.53 alpha:1.00];
-    _textTagCollectionView1.tagSelectedBackgroundColor = [UIColor colorWithRed:0.22 green:0.29 blue:0.36 alpha:1.00];
+    _textTagCollectionView1.tagBackgroundColor = [UIColor colorWithRed:0.98 green:0.91 blue:0.43 alpha:1.00];
+    _textTagCollectionView1.tagSelectedBackgroundColor = [UIColor colorWithRed:0.97 green:0.64 blue:0.27 alpha:1.00];
     
     _textTagCollectionView1.horizontalSpacing = 6.0;
     _textTagCollectionView1.verticalSpacing = 8.0;
     
-    _textTagCollectionView1.tagBorderColor = [UIColor whiteColor];
-    _textTagCollectionView1.tagSelectedBorderColor = [UIColor whiteColor];
+    _textTagCollectionView1.tagBorderColor = [UIColor colorWithRed:0.18 green:0.19 blue:0.22 alpha:1.00];
+    _textTagCollectionView1.tagSelectedBorderColor = [UIColor colorWithRed:0.18 green:0.19 blue:0.22 alpha:1.00];
     _textTagCollectionView1.tagBorderWidth = 1;
     _textTagCollectionView1.tagSelectedBorderWidth = 1;
     

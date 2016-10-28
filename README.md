@@ -8,7 +8,7 @@
 [![Apps Using](https://img.shields.io/badge/Apps%20Using-%3E%20100-blue.svg)](https://github.com/zekunyan/TTGTagCollectionView)
 [![Total Download](https://img.shields.io/badge/Total%20Download-%3E%207848-blue.svg)](https://github.com/zekunyan/TTGTagCollectionView)
 
-![Screenshot](https://github.com/zekunyan/TTGTagCollectionView/raw/master/Resources/screen_shot.jpeg)
+![Screenshot](https://github.com/zekunyan/TTGTagCollectionView/raw/master/Resources/screen_shot.png)
 
 ## What 
 
@@ -105,6 +105,15 @@ Conform the `TTGTextTagCollectionViewDelegate` protocol to get callback when you
 
 // Number of lines for horizontal direction
 @property (nonatomic, assign) NSUInteger numberOfLinesForHorizontalScrollDirection;
+
+// Tag shadow
+@property (nonatomic, copy) UIColor *shadowColor; // Default is [UIColor black]
+@property (nonatomic, assign) CGSize shadowOffset; // Default is CGSizeZero
+@property (nonatomic, assign) CGFloat shadowRadius; // Default is 0f
+@property (nonatomic, assign) CGFloat shadowOpacity; // Default is 0.5f
+
+// Content inset, default is UIEdgeInsetsMake(2, 2, 2, 2)
+@property (nonatomic, assign) UIEdgeInsets contentInset;
 ```
 
 #### Config tags
@@ -206,6 +215,19 @@ You can config the horizontal and vertical space between tags.
  * The true tags content size
  */
 @property (nonatomic, assign, readonly) CGSize contentSize;
+
+/**
+ * Tag shadow
+ */
+@property (nonatomic, strong) UIColor *shadowColor; // Default is [UIColor black]
+@property (nonatomic, assign) CGSize shadowOffset; // Default is CGSizeZero
+@property (nonatomic, assign) CGFloat shadowRadius; // Default is 0f
+@property (nonatomic, assign) CGFloat shadowOpacity; // Default is 0.5f
+
+/**
+ * Content inset, default is UIEdgeInsetsMake(2, 2, 2, 2)
+ */
+@property (nonatomic, assign) UIEdgeInsets contentInset;
 ```
 
 #### Reload
