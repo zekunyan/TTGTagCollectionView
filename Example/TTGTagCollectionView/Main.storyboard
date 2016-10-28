@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="uvs-rh-UDH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="uvs-rh-UDH">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,6 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZxK-53-tqj">
+                                <rect key="frame" x="16" y="136" width="343" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="9w2-Ne-ttS"/>
                                 </constraints>
@@ -30,6 +34,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ddv-Vy-gWI">
+                                <rect key="frame" x="16" y="203" width="343" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="1fH-b6-xpq"/>
                                 </constraints>
@@ -40,6 +45,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FgE-N2-9mm">
+                                <rect key="frame" x="16" y="269" width="343" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Pgh-Ug-TdX"/>
                                 </constraints>
@@ -50,6 +56,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00i-am-dgt">
+                                <rect key="frame" x="16" y="336" width="343" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Zb5-gh-f4i"/>
                                 </constraints>
@@ -60,6 +67,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rf1-TF-wGE">
+                                <rect key="frame" x="16" y="404" width="343" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="vNR-WS-kaH"/>
                                 </constraints>
@@ -108,12 +116,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bMB-WG-iah" customClass="TTGTextTagCollectionView">
-                                <color key="backgroundColor" red="0.95686274770000002" green="0.95686274770000002" blue="0.95686274770000002" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="20" y="72" width="335" height="290.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EhY-Hn-okd" customClass="TTGTextTagCollectionView">
-                                <color key="backgroundColor" red="0.95686274770000002" green="0.95686274770000002" blue="0.95686274770000002" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="20" y="372.5" width="335" height="250.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="log..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Utc-bj-h9q">
+                                <rect key="frame" x="20" y="638" width="335" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="vCI-IF-stn"/>
                                 </constraints>
@@ -160,12 +171,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="akD-GQ-DNe" customClass="TTGTagCollectionView">
+                                <rect key="frame" x="20" y="84" width="335" height="320"/>
                                 <color key="backgroundColor" red="0.79607844350000001" green="0.79607844350000001" blue="0.79607844350000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="320" placeholder="YES" id="Dhx-3e-KvX"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="log..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mU-OS-f99">
+                                <rect key="frame" x="20" y="638" width="335" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="nnU-7q-PRB"/>
                                 </constraints>
@@ -206,6 +219,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S5n-IQ-t22">
+                                <rect key="frame" x="20" y="72" width="335" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="HgK-sN-ert"/>
                                 </constraints>
@@ -241,33 +255,39 @@ to auto fix height</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="One line" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxV-Ye-mUD">
+                                <rect key="frame" x="20" y="72" width="335" height="21.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                 <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="sQE-q1-McT" customClass="TTGTextTagCollectionView">
+                                <rect key="frame" x="20" y="232.5" width="335" height="80"/>
                                 <color key="backgroundColor" red="0.79607844350000001" green="0.79607844350000001" blue="0.79607844350000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" placeholder="YES" id="bvZ-sy-5w2"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Two line" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ev-iK-M9u">
+                                <rect key="frame" x="20" y="203" width="335" height="21.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                 <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="2fu-PB-Z2Q" customClass="TTGTextTagCollectionView">
+                                <rect key="frame" x="20" y="363" width="335" height="80"/>
                                 <color key="backgroundColor" red="0.79607844350000001" green="0.79607844350000001" blue="0.79607844350000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" placeholder="YES" id="Uin-vb-Vk0"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Three line" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fAU-RH-bis">
+                                <rect key="frame" x="20" y="333.5" width="335" height="21.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                 <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="zDD-fs-QuC" customClass="TTGTextTagCollectionView">
+                                <rect key="frame" x="20" y="101" width="335" height="80"/>
                                 <color key="backgroundColor" red="0.79607844350000001" green="0.79607844350000001" blue="0.79607844350000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" placeholder="YES" id="Zf1-ou-TQG"/>
@@ -317,26 +337,40 @@ to auto fix height</string>
                         <color key="separatorColor" red="0.79607844350000001" green="0.79607844350000001" blue="0.79607844350000001" alpha="1" colorSpace="calibratedRGB"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TTGExample4TableViewCell" rowHeight="80" id="wsw-fP-pAT" customClass="TTGExample4TableViewCell">
-                                <rect key="frame" x="0.0" y="92" width="375" height="80"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TTGExample4TableViewCell" rowHeight="120" id="wsw-fP-pAT" customClass="TTGExample4TableViewCell">
+                                <rect key="frame" x="0.0" y="28" width="375" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wsw-fP-pAT" id="HQa-Bp-uox">
-                                    <frame key="frameInset" width="375" height="79"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="HyK-bd-ONM" customClass="TTGTextTagCollectionView">
+                                            <rect key="frame" x="8" y="40" width="359" height="72"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cell" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3E-vS-Ghh">
+                                            <rect key="frame" x="8" y="8" width="359" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="24" id="ahl-TL-ch7"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="HyK-bd-ONM" firstAttribute="leading" secondItem="HQa-Bp-uox" secondAttribute="leading" constant="8" id="ejt-rQ-LaY"/>
-                                        <constraint firstAttribute="bottom" secondItem="HyK-bd-ONM" secondAttribute="bottom" constant="8" id="ezd-b7-F2g"/>
-                                        <constraint firstAttribute="trailing" secondItem="HyK-bd-ONM" secondAttribute="trailing" constant="8" id="uc0-oL-OLl"/>
-                                        <constraint firstItem="HyK-bd-ONM" firstAttribute="top" secondItem="HQa-Bp-uox" secondAttribute="top" constant="8" id="zZh-IJ-RkS"/>
+                                        <constraint firstItem="h3E-vS-Ghh" firstAttribute="trailing" secondItem="HQa-Bp-uox" secondAttribute="trailingMargin" id="8uy-o4-w1v"/>
+                                        <constraint firstAttribute="trailing" secondItem="HyK-bd-ONM" secondAttribute="trailing" constant="8" id="95l-6f-Xlf"/>
+                                        <constraint firstItem="h3E-vS-Ghh" firstAttribute="leading" secondItem="HQa-Bp-uox" secondAttribute="leadingMargin" id="E0Q-Rp-k5z"/>
+                                        <constraint firstItem="HyK-bd-ONM" firstAttribute="leading" secondItem="HQa-Bp-uox" secondAttribute="leading" constant="8" id="Hzm-PO-UwZ"/>
+                                        <constraint firstItem="h3E-vS-Ghh" firstAttribute="top" secondItem="HQa-Bp-uox" secondAttribute="topMargin" id="OTU-GI-gM1"/>
+                                        <constraint firstAttribute="bottom" secondItem="HyK-bd-ONM" secondAttribute="bottom" constant="8" id="pTn-el-ip1"/>
+                                        <constraint firstItem="HyK-bd-ONM" firstAttribute="top" secondItem="h3E-vS-Ghh" secondAttribute="bottom" constant="8" id="qMY-SH-kON"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
+                                    <outlet property="label" destination="h3E-vS-Ghh" id="Alr-eE-ZFG"/>
                                     <outlet property="tagView" destination="HyK-bd-ONM" id="Ld7-lv-ifG"/>
                                 </connections>
                             </tableViewCell>
@@ -349,7 +383,7 @@ to auto fix height</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hDP-Y5-dan" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-892" y="1675"/>
+            <point key="canvasLocation" x="-892" y="1674.5127436281859"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Yqx-JK-lQn">

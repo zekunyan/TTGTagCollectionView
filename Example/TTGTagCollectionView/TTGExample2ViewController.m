@@ -26,18 +26,24 @@
     _logLabel.adjustsFontSizeToFitWidth = YES;
     _tagViews = [NSMutableArray new];
 
-    [_tagViews addObject:[self newLabelWithText:@"AutoLayout" fontSize:14.0f textColor:[UIColor whiteColor] backgroundColor:[UIColor blueColor]]];
-    [_tagViews addObject:[self newButtonWithTitle:@"Button1" fontSize:18.0f backgroundColor:[UIColor lightGrayColor]]];
+    UIColor *backgroundColor1 = [UIColor colorWithRed:0.30 green:0.72 blue:0.53 alpha:1.00];
+    UIColor *backgroundColor2 = [UIColor colorWithRed:0.10 green:0.53 blue:0.85 alpha:1.00];
+    UIColor *backgroundColor3 = [UIColor colorWithRed:0.97 green:0.64 blue:0.27 alpha:1.00];
+    
+    [_tagViews addObject:[self newLabelWithText:@"AutoLayout" fontSize:14.0f textColor:[UIColor whiteColor] backgroundColor:backgroundColor1]];
+    [_tagViews addObject:[self newButtonWithTitle:@"Button1" fontSize:18.0f backgroundColor:backgroundColor2]];
     [_tagViews addObject:[self newImageViewWithImage:[UIImage imageNamed:@"bluefaces_1"]]];
-    [_tagViews addObject:[self newLabelWithText:@"dynamically" fontSize:20.0f textColor:[UIColor whiteColor] backgroundColor:[UIColor brownColor]]];
-    [_tagViews addObject:[self newButtonWithTitle:@"Button2" fontSize:16.0f backgroundColor:[UIColor yellowColor]]];
-    [_tagViews addObject:[self newButtonWithTitle:@"Button3" fontSize:15.0f backgroundColor:[UIColor brownColor]]];
+    [_tagViews addObject:[self newLabelWithText:@"dynamically" fontSize:20.0f textColor:[UIColor whiteColor] backgroundColor:backgroundColor1]];
+    [_tagViews addObject:[self newButtonWithTitle:@"Button2" fontSize:16.0f backgroundColor:backgroundColor3]];
+    [_tagViews addObject:[self newButtonWithTitle:@"Button3" fontSize:15.0f backgroundColor:backgroundColor2]];
     [_tagViews addObject:[self newImageViewWithImage:[UIImage imageNamed:@"bluefaces_2"]]];
-    [_tagViews addObject:[self newLabelWithText:@"the" fontSize:16.0f textColor:[UIColor blackColor] backgroundColor:[UIColor grayColor]]];
-    [_tagViews addObject:[self newButtonWithTitle:@"Button4" fontSize:22.0f backgroundColor:[UIColor grayColor]]];
+    [_tagViews addObject:[self newLabelWithText:@"the" fontSize:16.0f textColor:[UIColor blackColor] backgroundColor:backgroundColor1]];
+    [_tagViews addObject:[self newButtonWithTitle:@"Button4" fontSize:22.0f backgroundColor:backgroundColor2]];
     [_tagViews addObject:[self newImageViewWithImage:[UIImage imageNamed:@"bluefaces_3"]]];
-    [_tagViews addObject:[self newLabelWithText:@"views" fontSize:12.0f textColor:[UIColor brownColor] backgroundColor:[UIColor yellowColor]]];
-    [_tagViews addObject:[self newButtonWithTitle:@"Button5" fontSize:15.0f backgroundColor:[UIColor lightGrayColor]]];
+    [_tagViews addObject:[self newLabelWithText:@"views" fontSize:12.0f
+                                      textColor:[UIColor colorWithRed:0.21 green:0.29 blue:0.36 alpha:1.00]
+                                backgroundColor:backgroundColor3]];
+    [_tagViews addObject:[self newButtonWithTitle:@"Button5" fontSize:15.0f backgroundColor:backgroundColor1]];
     [_tagViews addObject:[self newImageViewWithImage:[UIImage imageNamed:@"bluefaces_4"]]];
     [_tagViews addObject:[self newImageViewWithImage:[UIImage imageNamed:@"bluefaces_4"]]];
 

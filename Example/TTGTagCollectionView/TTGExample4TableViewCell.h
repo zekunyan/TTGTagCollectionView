@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class TTGTextTagCollectionView;
+
 @interface TTGExample4TableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet TTGTextTagCollectionView *tagView;
+@property (weak, nonatomic) IBOutlet UILabel *label;
 
 - (void)setTags:(NSArray <NSString *> *)tags;
 

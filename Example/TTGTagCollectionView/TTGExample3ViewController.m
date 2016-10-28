@@ -23,7 +23,8 @@
                       @"on", @"constraints", @"placed", @"on", @"those", @"views"];
     
     _tagView = [TTGTextTagCollectionView new];
-    _tagView.backgroundColor = [UIColor lightGrayColor];
+    _tagView.layer.borderColor = [UIColor grayColor].CGColor;
+    _tagView.layer.borderWidth = 1;
     _tagView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:_tagView];
     
@@ -31,7 +32,7 @@
                                                                     options:(NSLayoutFormatOptions) 0 metrics:nil
                                                                       views:@{@"tagView": _tagView}];
     
-    NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:_tagView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1 constant:160];
+    NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:_tagView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1 constant:130];
     
     [self.view addConstraint:topConstraint];
     [self.view addConstraints:hConstraints];

@@ -10,7 +10,6 @@
 #import <TTGTagCollectionView/TTGTextTagCollectionView.h>
 
 @interface TTGExample4TableViewCell ()
-@property (weak, nonatomic) IBOutlet TTGTextTagCollectionView *tagView;
 @end
 
 @implementation TTGExample4TableViewCell

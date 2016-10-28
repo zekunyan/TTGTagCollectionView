@@ -55,15 +55,27 @@
     _enableTagSelection = YES;
     _tagLabels = [NSMutableArray new];
 
-    _tagTextFont = [UIFont systemFontOfSize:18.0f];
-    _tagTextColor = [UIColor lightGrayColor];
+    _tagTextFont = [UIFont systemFontOfSize:20.0f];
+    
+    _tagTextColor = [UIColor whiteColor];
     _tagSelectedTextColor = [UIColor whiteColor];
-    _extraSpace = CGSizeMake(8, 8);
-    _tagBackgroundColor = [UIColor whiteColor];
-    _tagSelectedBackgroundColor = [UIColor colorWithRed:3 / 256.0f green:169 / 256.0f blue:244 / 256.0f alpha:1];
+    
+    _extraSpace = CGSizeMake(14, 14);
+    self.horizontalSpacing = 8;
+    self.verticalSpacing = 8;
+    
+    _tagBackgroundColor = [UIColor colorWithRed:0.30 green:0.72 blue:0.53 alpha:1.00];
+    _tagSelectedBackgroundColor = [UIColor colorWithRed:0.22 green:0.29 blue:0.36 alpha:1.00];
+    
     _tagCornerRadius = 4.0f;
-    _tagBorderWidth = 1.0f / [UIScreen mainScreen].scale;
-    _tagBorderColor = [UIColor lightGrayColor];
+    
+    _tagBorderWidth = 1.0f;
+    _tagBorderColor = [UIColor whiteColor];
+    
+    self.shadowColor = [UIColor blackColor];
+    self.shadowOffset = CGSizeMake(2, 2);
+    self.shadowRadius = 2;
+    self.shadowOpacity = 0.3f;
 
     _tagCollectionView = [TTGTagCollectionView new];
     _tagCollectionView.delegate = self;
