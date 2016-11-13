@@ -98,8 +98,8 @@ static NSString *const TTGTagCollectionCellIdentifier = @"TTGTagCollectionCell";
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGSize size = [_delegate tagCollectionView:self sizeForTagAtIndex:(NSUInteger) indexPath.row];
 
-    if (size.width > CGRectGetWidth(self.frame)) {
-        size.width = CGRectGetWidth(self.frame);
+    if (size.width > CGRectGetWidth(self.frame) - self.contentInset.left - self.contentInset.right) {
+        size.width = CGRectGetWidth(self.frame) - self.contentInset.left - self.contentInset.right;
 
         // Update tag view width
         UIView *tagView = [_dataSource tagCollectionView:self tagViewForIndex:(NSUInteger) indexPath.row];
