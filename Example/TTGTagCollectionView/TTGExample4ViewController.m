@@ -28,9 +28,11 @@
                  @"on", @"constraints", @"placed", @"on", @"those", @"views"
                  ];
     _cellInfos = [NSMutableArray new];
-    for (NSInteger i = 0; i < 20; i++) {
-        [_cellInfos addObject:[self randomTags]];
+    for (NSInteger i = 0; i < 50; i++) {
+        [_cellInfos addObject:[_allTags subarrayWithRange:NSMakeRange(0, i % (_allTags.count + 1))]];
     }
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -44,15 +46,12 @@
                                                             forIndexPath:indexPath];
     [cell setTags:_cellInfos[(NSUInteger) indexPath.row]];
     cell.label.text = [NSString stringWithFormat:@"Cell: %ld", indexPath.row];
+    
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return UITableViewAutomaticDimension;
-}
-
-- (NSArray <NSString *> *)randomTags {
-    return [_allTags subarrayWithRange:NSMakeRange(0, (NSUInteger)arc4random_uniform((uint32_t)_allTags.count))];
 }
 
 @end

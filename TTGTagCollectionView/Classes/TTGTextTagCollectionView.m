@@ -347,12 +347,20 @@
     _tagCollectionView.scrollDirection = scrollDirection;
 }
 
-- (NSUInteger)numberOfLinesForHorizontalScrollDirection {
-    return _tagCollectionView.numberOfLinesForHorizontalScrollDirection;
+- (TTGTagCollectionAlignment)alignment {
+    return _tagCollectionView.alignment;
 }
 
-- (void)setNumberOfLinesForHorizontalScrollDirection:(NSUInteger)numberOfLinesForHorizontalScrollDirection {
-    _tagCollectionView.numberOfLinesForHorizontalScrollDirection = numberOfLinesForHorizontalScrollDirection;
+- (void)setAlignment:(TTGTagCollectionAlignment)alignment {
+    _tagCollectionView.alignment = alignment;
+}
+
+- (NSUInteger)numberOfLines {
+    return _tagCollectionView.numberOfLines;
+}
+
+- (void)setNumberOfLines:(NSUInteger)numberOfLines {
+    _tagCollectionView.numberOfLines = numberOfLines;
 }
 
 - (UIColor *)shadowColor {

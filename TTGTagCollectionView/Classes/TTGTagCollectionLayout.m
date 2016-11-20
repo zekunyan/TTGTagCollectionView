@@ -56,116 +56,161 @@
 #pragma mark - Private methods
 
 - (void)prepareForScrollVertical {
-    CGFloat currentX = _contentInset.left, currentYBase = -_verticalSpacing + _contentInset.top, tmpHeight = 0;
+    CGFloat currentLineX = 0;
+    CGFloat tmpHeight = 0;
     CGRect frame;
-    NSMutableArray <NSNumber *> *eachLineMaxHeightNumbers = [NSMutableArray new];
-
-    CGFloat visibleWidth = CGRectGetWidth(self.collectionView.frame) - _contentInset.right;
+    
+    CGFloat visibleWidth = CGRectGetWidth(self.collectionView.frame) - _contentInset.left - _contentInset.right;
     NSInteger count = [self.collectionView numberOfItemsInSection:0];
+    
     _totalAttributes = [[NSMutableArray alloc] initWithCapacity:(NSUInteger) count];
+    NSMutableArray <NSNumber *> *eachLineMaxHeightNumbers = [NSMutableArray new];
+    NSMutableArray <NSNumber *> *eachLineWidthNumbers = [NSMutableArray new];
 
-    // Create attributes, set X and Get each line max height
-    for (NSInteger i = 0; i < count; i++) {
+    // Create attributes and get each line max height and width
+    for (NSUInteger i = 0; i < count; i++) {
+        // Create attributes
         UICollectionViewLayoutAttributes *attributes = [self layoutAttributesForItemAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
         [_totalAttributes addObject:attributes];
 
         frame = attributes.frame;
 
-        if (currentX + CGRectGetWidth(frame) > visibleWidth) {
+        if (currentLineX + CGRectGetWidth(frame) > visibleWidth) {
             // New Line
             [eachLineMaxHeightNumbers addObject:@(tmpHeight)];
+            [eachLineWidthNumbers addObject:@(currentLineX - _horizontalSpacing)];
             tmpHeight = 0;
-            currentX = _contentInset.left;
+            currentLineX = 0;
         }
-
-        frame.origin.x = currentX;
-        attributes.frame = frame;
-
-        currentX += CGRectGetWidth(frame) + _horizontalSpacing;
-        tmpHeight = CGRectGetHeight(frame) > tmpHeight ? CGRectGetHeight(frame) : tmpHeight;
+        
+        // Line number limit
+        if (_numberOfLines != 0) {
+            attributes.hidden = eachLineWidthNumbers.count >= _numberOfLines;
+        }
+        
+        currentLineX += CGRectGetWidth(frame) + _horizontalSpacing;
+        tmpHeight = MAX(CGRectGetHeight(frame), tmpHeight);
     }
 
     // Add last
     [eachLineMaxHeightNumbers addObject:@(tmpHeight)];
+    [eachLineWidthNumbers addObject:@(currentLineX - _horizontalSpacing)];
+    
+    // Line limit
+    if (_numberOfLines != 0) {
+        eachLineWidthNumbers = [[eachLineWidthNumbers subarrayWithRange:NSMakeRange(0, MIN(eachLineWidthNumbers.count, _numberOfLines))] mutableCopy];
+        eachLineMaxHeightNumbers = [[eachLineMaxHeightNumbers subarrayWithRange:NSMakeRange(0, MIN(eachLineMaxHeightNumbers.count, _numberOfLines))] mutableCopy];
+    }
+    
+    // Check
+    NSAssert(eachLineMaxHeightNumbers.count == eachLineWidthNumbers.count, @"eachLineMaxHeightNumbers and eachLineWidthNumbers not equal.");
 
-    NSUInteger currentLineIndex = 0;
+    // Prepare
+    currentLineX = 0;
+    CGFloat currentYBase = _contentInset.top;
+    NSUInteger currentAttributesIndex = 0;
     CGFloat currentLineMaxHeight = 0;
-
-    // Set Y
-    for (UICollectionViewLayoutAttributes *attributes in _totalAttributes) {
-        frame = attributes.frame;
-
-        if (frame.origin.x == _contentInset.left && currentLineIndex < eachLineMaxHeightNumbers.count) {
-            currentYBase += currentLineMaxHeight + _verticalSpacing;
-            currentLineMaxHeight = eachLineMaxHeightNumbers[currentLineIndex].floatValue;
-            currentLineIndex += 1;
+    CGFloat currentLineWidth = 0;
+    
+    // Set X and Y
+    for (NSUInteger i = 0; i < eachLineWidthNumbers.count; i++) {
+        currentLineWidth = eachLineWidthNumbers[i].floatValue;
+        currentLineMaxHeight = eachLineMaxHeightNumbers[i].floatValue;
+        
+        // Alignment x offset
+        CGFloat currentLineXOffset = 0;
+        switch (_alignment) {
+            case TTGTagCollectionAlignmentLeft:
+                currentLineXOffset = _contentInset.left;
+                break;
+            case TTGTagCollectionAlignmentCenter:
+                currentLineXOffset = (visibleWidth - currentLineWidth) / 2 + _contentInset.left;
+                break;
+            case TTGTagCollectionAlignmentRight:
+                currentLineXOffset = visibleWidth - currentLineWidth + _contentInset.left;
+                break;
         }
-
-        frame.origin.y = currentYBase + (currentLineMaxHeight - CGRectGetHeight(frame)) / 2;
-        attributes.frame = frame;
+        
+        // Current line
+        while (currentLineX < currentLineWidth && currentAttributesIndex < _totalAttributes.count) {
+            UICollectionViewLayoutAttributes *attributes = _totalAttributes[currentAttributesIndex];
+            frame = attributes.frame;
+            frame.origin.x = currentLineXOffset + currentLineX;
+            frame.origin.y = currentYBase + (currentLineMaxHeight - CGRectGetHeight(frame)) / 2;
+            attributes.frame = frame;
+            
+            currentLineX += CGRectGetWidth(frame) + _horizontalSpacing;
+            currentAttributesIndex += 1;
+        }
+        
+        // Next line
+        currentLineX = 0;
+        currentYBase += currentLineMaxHeight + _verticalSpacing;
     }
 
-    _contentWidth = visibleWidth - _contentInset.left;
-    _contentHeight = currentYBase + currentLineMaxHeight + _contentInset.bottom;
+    _contentWidth = CGRectGetWidth(self.collectionView.frame);
+    _contentHeight = currentYBase - _verticalSpacing + _contentInset.bottom;
 }
 
 - (void)prepareForScrollHorizontal {
-    CGFloat totalWidthInOneLine = 0, averageWidthEachLine = 0, currentX = 0, currentYBase = -_verticalSpacing, tmpHeight = 0;
+    CGFloat totalWidthInOneLine = 0, averageWidthEachLine = 0, currentX = _contentInset.left, currentYBase = -_verticalSpacing + _contentInset.top, tmpHeight = 0;
     CGRect frame;
-
+    _contentWidth = 0;
+    _contentHeight = 0;
+    
     NSMutableArray <NSNumber *> *eachLineMaxHeightNumbers = [NSMutableArray new];
     NSInteger count = [self.collectionView numberOfItemsInSection:0];
     _totalAttributes = [[NSMutableArray alloc] initWithCapacity:(NSUInteger) count];
     _numberOfLines = _numberOfLines == 0 ? 1 : _numberOfLines;
-
+    
     // Create attributes
     for (NSInteger i = 0; i < count; i++) {
         UICollectionViewLayoutAttributes *attributes = [self layoutAttributesForItemAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
         [_totalAttributes addObject:attributes];
         totalWidthInOneLine += CGRectGetWidth(attributes.frame) + _horizontalSpacing;
     }
-
+    
     // Calculate each line width
     averageWidthEachLine = totalWidthInOneLine / (CGFloat)_numberOfLines;
-
+    
     // Set X and Get each line max height
     for (UICollectionViewLayoutAttributes *attributes in _totalAttributes) {
         frame = attributes.frame;
         frame.origin.x = currentX;
         attributes.frame = frame;
-
+        
         currentX += CGRectGetWidth(frame) + _horizontalSpacing;
-        _contentWidth = currentX > _contentWidth ? currentX : _contentWidth;
-        tmpHeight = CGRectGetHeight(frame) > tmpHeight ? CGRectGetHeight(frame) : tmpHeight;
-
+        _contentWidth = MAX(currentX, _contentWidth);
+        tmpHeight = MAX(CGRectGetHeight(frame), tmpHeight);
+        
         if (currentX > averageWidthEachLine && eachLineMaxHeightNumbers.count < _numberOfLines) {
             [eachLineMaxHeightNumbers addObject:@(tmpHeight)];
             tmpHeight = 0;
-            currentX = 0;
+            currentX = _contentInset.left;
         }
     }
-
+    
     // Add last
     [eachLineMaxHeightNumbers addObject:@(tmpHeight)];
-
+    
     // Set Y
     NSUInteger currentLineIndex = 0;
     CGFloat currentLineMaxHeight = 0;
     for (UICollectionViewLayoutAttributes *attributes in _totalAttributes) {
         frame = attributes.frame;
-
-        if (frame.origin.x == 0 && currentLineIndex < eachLineMaxHeightNumbers.count) {
+        
+        if (frame.origin.x == _contentInset.left && currentLineIndex < eachLineMaxHeightNumbers.count) {
             currentYBase += currentLineMaxHeight + _verticalSpacing;
             currentLineMaxHeight = eachLineMaxHeightNumbers[currentLineIndex].floatValue;
             currentLineIndex += 1;
         }
-
+        
         frame.origin.y = currentYBase + (currentLineMaxHeight - CGRectGetHeight(frame)) / 2;
         attributes.frame = frame;
     }
-
-    _contentWidth += self.collectionView.contentInset.left + self.collectionView.contentInset.right;
-    _contentHeight = currentYBase + currentLineMaxHeight + self.collectionView.contentInset.top + self.collectionView.contentInset.bottom;
+    
+    _contentWidth += _contentInset.right;
+    _contentHeight = currentYBase + currentLineMaxHeight + _contentInset.bottom;
 }
 
 #pragma mark - Setter
@@ -187,6 +232,11 @@
 
 - (void)setHorizontalSpacing:(CGFloat)horizontalSpacing {
     _horizontalSpacing = horizontalSpacing;
+    [self invalidateLayout];
+}
+
+- (void)setAlignment:(TTGTagCollectionAlignment)alignment {
+    _alignment = alignment;
     [self invalidateLayout];
 }
 

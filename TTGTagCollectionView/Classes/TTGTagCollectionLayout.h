@@ -11,6 +11,7 @@
 
 @interface TTGTagCollectionLayout : UICollectionViewLayout
 @property (nonatomic, assign) TTGTagCollectionScrollDirection scrollDirection; // Default = vertical
+@property (nonatomic, assign) TTGTagCollectionAlignment alignment; // Default = left
 
 @property (nonatomic, assign) NSUInteger numberOfLines; // Default = 1
 

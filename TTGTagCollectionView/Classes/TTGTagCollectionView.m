@@ -178,13 +178,13 @@ static NSString *const TTGTagCollectionCellIdentifier = @"TTGTagCollectionCell";
     [self reload];
 }
 
-- (NSUInteger)numberOfLinesForHorizontalScrollDirection {
+- (NSUInteger)numberOfLines {
     return _layout.numberOfLines;
 }
 
-- (void)setNumberOfLinesForHorizontalScrollDirection:(NSUInteger)numberOfLinesForHorizontalScrollDirection {
-    numberOfLinesForHorizontalScrollDirection = numberOfLinesForHorizontalScrollDirection == 0 ? 1 : numberOfLinesForHorizontalScrollDirection;
-    _layout.numberOfLines = numberOfLinesForHorizontalScrollDirection;
+- (void)setNumberOfLines:(NSUInteger)numberOfLines {
+    numberOfLines = numberOfLines == 0 ? 1 : numberOfLines;
+    _layout.numberOfLines = numberOfLines;
     [self reload];
 }
 
@@ -194,6 +194,14 @@ static NSString *const TTGTagCollectionCellIdentifier = @"TTGTagCollectionCell";
 
 - (void)setContentInset:(UIEdgeInsets)contentInset {
     _layout.contentInset = contentInset;
+}
+
+- (TTGTagCollectionAlignment)alignment {
+    return _layout.alignment;
+}
+
+- (void)setAlignment:(TTGTagCollectionAlignment)alignment {
+    _layout.alignment = alignment;
 }
 
 #pragma mark - KVO

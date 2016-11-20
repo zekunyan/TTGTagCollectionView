@@ -19,6 +19,15 @@ typedef NS_ENUM(NSInteger, TTGTagCollectionScrollDirection) {
 };
 
 /**
+ * Tags alignment
+ */
+typedef NS_ENUM(NSInteger, TTGTagCollectionAlignment) {
+    TTGTagCollectionAlignmentLeft = 0, // Default
+    TTGTagCollectionAlignmentCenter,
+    TTGTagCollectionAlignmentRight
+};
+
+/**
  * Tags delegate
  */
 @protocol TTGTagCollectionViewDelegate <NSObject>
@@ -46,14 +55,19 @@ typedef NS_ENUM(NSInteger, TTGTagCollectionScrollDirection) {
 @property (nonatomic, weak) id <TTGTagCollectionViewDelegate> delegate;
 
 /**
- * Tags scroll direction, default is veritical
+ * Tags scroll direction, default is vertical
  */
 @property (nonatomic, assign) TTGTagCollectionScrollDirection scrollDirection;
 
 /**
- * Number of lines for horizontal scroll direction
+ * Tags layout alignment, default is left, only work when scroll vertically
  */
-@property (nonatomic, assign) NSUInteger numberOfLinesForHorizontalScrollDirection;
+@property (nonatomic, assign) TTGTagCollectionAlignment alignment;
+
+/**
+ * Number of lines
+ */
+@property (nonatomic, assign) NSUInteger numberOfLines;
 
 /**
  * Horizontal and Vertical space between tags

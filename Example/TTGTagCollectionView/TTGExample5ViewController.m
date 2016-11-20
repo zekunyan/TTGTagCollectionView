@@ -29,9 +29,9 @@
     _twoLineTagView.scrollDirection = TTGTagCollectionScrollDirectionHorizontal;
     _threeLineTagView.scrollDirection = TTGTagCollectionScrollDirectionHorizontal;
 
-    _oneLineTagView.numberOfLinesForHorizontalScrollDirection = 1;
-    _twoLineTagView.numberOfLinesForHorizontalScrollDirection = 2;
-    _threeLineTagView.numberOfLinesForHorizontalScrollDirection = 3;
+    _oneLineTagView.numberOfLines = 1;
+    _twoLineTagView.numberOfLines = 2;
+    _threeLineTagView.numberOfLines = 3;
 
     [_oneLineTagView addTags:tags];
     [_twoLineTagView addTags:tags];

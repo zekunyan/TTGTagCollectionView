@@ -48,11 +48,14 @@
 // Content size
 @property (nonatomic, assign, readonly) CGSize contentSize;
 
-// Scroll direction. Default is vertical
+// Scroll direction. Default is vertical.
 @property (nonatomic, assign) TTGTagCollectionScrollDirection scrollDirection;
 
+// Tags layout alignment, default is left, only work when scroll vertically
+@property (nonatomic, assign) TTGTagCollectionAlignment alignment;
+
 // Number of lines for horizontal direction
-@property (nonatomic, assign) NSUInteger numberOfLinesForHorizontalScrollDirection;
+@property (nonatomic, assign) NSUInteger numberOfLines;
 
 // Tag shadow
 @property (nonatomic, copy) UIColor *shadowColor; // Default is [UIColor black]
