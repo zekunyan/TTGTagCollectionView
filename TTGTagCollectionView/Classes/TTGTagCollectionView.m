@@ -185,7 +185,6 @@ static NSString *const TTGTagCollectionCellIdentifier = @"TTGTagCollectionCell";
 - (void)setNumberOfLines:(NSUInteger)numberOfLines {
     numberOfLines = numberOfLines == 0 ? 1 : numberOfLines;
     _layout.numberOfLines = numberOfLines;
-    [self reload];
 }
 
 - (UIEdgeInsets)contentInset {
