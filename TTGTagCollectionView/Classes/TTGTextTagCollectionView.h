@@ -51,16 +51,16 @@
 // Scroll direction. Default is vertical.
 @property (nonatomic, assign) TTGTagCollectionScrollDirection scrollDirection;
 
-// Tags layout alignment, default is left, only work when scroll vertically
+// Tags layout alignment, default is left
 @property (nonatomic, assign) TTGTagCollectionAlignment alignment;
 
 // Number of lines for horizontal direction
 @property (nonatomic, assign) NSUInteger numberOfLines;
 
 // Tag shadow
-@property (nonatomic, copy) UIColor *shadowColor; // Default is [UIColor black]
-@property (nonatomic, assign) CGSize shadowOffset; // Default is CGSizeZero
-@property (nonatomic, assign) CGFloat shadowRadius; // Default is 0f
+@property (nonatomic, copy) UIColor *shadowColor;    // Default is [UIColor black]
+@property (nonatomic, assign) CGSize shadowOffset;   // Default is CGSizeZero
+@property (nonatomic, assign) CGFloat shadowRadius;  // Default is 0f
 @property (nonatomic, assign) CGFloat shadowOpacity; // Default is 0.5f
 
 // Content inset, default is UIEdgeInsetsMake(2, 2, 2, 2)
