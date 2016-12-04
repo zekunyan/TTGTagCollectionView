@@ -159,6 +159,7 @@
     _contentHeight = 0;
     
     NSMutableArray <NSNumber *> *eachLineMaxHeightNumbers = [NSMutableArray new];
+    NSMutableArray <NSNumber *> *eachLineTrueWidthNumbers = [NSMutableArray new];
     NSInteger count = [self.collectionView numberOfItemsInSection:0];
     _totalAttributes = [[NSMutableArray alloc] initWithCapacity:(NSUInteger) count];
     _numberOfLines = _numberOfLines == 0 ? 1 : _numberOfLines;
@@ -180,11 +181,12 @@
         attributes.frame = frame;
         
         currentX += CGRectGetWidth(frame) + _horizontalSpacing;
-        _contentWidth = MAX(currentX, _contentWidth);
+        _contentWidth = MAX(currentX - _horizontalSpacing, _contentWidth);
         tmpHeight = MAX(CGRectGetHeight(frame), tmpHeight);
         
         if (currentX > averageWidthEachLine && eachLineMaxHeightNumbers.count < _numberOfLines) {
             [eachLineMaxHeightNumbers addObject:@(tmpHeight)];
+            [eachLineTrueWidthNumbers addObject:@(currentX - _contentInset.left - _horizontalSpacing)];
             tmpHeight = 0;
             currentX = _contentInset.left;
         }
@@ -192,23 +194,43 @@
     
     // Add last
     [eachLineMaxHeightNumbers addObject:@(tmpHeight)];
+    [eachLineTrueWidthNumbers addObject:@(currentX - _contentInset.left - _horizontalSpacing)];
     
     // Set Y
     NSUInteger currentLineIndex = 0;
     CGFloat currentLineMaxHeight = 0;
+    CGFloat currentLineTrueWidth = 0;
+    CGFloat currentLineXOffset = 0;
+    
     for (UICollectionViewLayoutAttributes *attributes in _totalAttributes) {
         frame = attributes.frame;
         
         if (frame.origin.x == _contentInset.left && currentLineIndex < eachLineMaxHeightNumbers.count) {
             currentYBase += currentLineMaxHeight + _verticalSpacing;
             currentLineMaxHeight = eachLineMaxHeightNumbers[currentLineIndex].floatValue;
+            currentLineTrueWidth = eachLineTrueWidthNumbers[currentLineIndex].floatValue;
             currentLineIndex += 1;
+            
+            // Calculate x offset
+            switch (_alignment) {
+                case TTGTagCollectionAlignmentLeft:
+                    currentLineXOffset = 0;
+                    break;
+                case TTGTagCollectionAlignmentCenter:
+                    currentLineXOffset = (_contentWidth - currentLineTrueWidth - _contentInset.left) / 2;
+                    break;
+                case TTGTagCollectionAlignmentRight:
+                    currentLineXOffset = _contentWidth - currentLineTrueWidth - _contentInset.left;
+                    break;
+            }
         }
         
         frame.origin.y = currentYBase + (currentLineMaxHeight - CGRectGetHeight(frame)) / 2;
+        frame.origin.x += currentLineXOffset;
         attributes.frame = frame;
     }
     
+    // Final content size
     _contentWidth += _contentInset.right;
     _contentHeight = currentYBase + currentLineMaxHeight + _contentInset.bottom;
 }

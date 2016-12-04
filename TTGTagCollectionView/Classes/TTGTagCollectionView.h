@@ -60,7 +60,7 @@ typedef NS_ENUM(NSInteger, TTGTagCollectionAlignment) {
 @property (nonatomic, assign) TTGTagCollectionScrollDirection scrollDirection;
 
 /**
- * Tags layout alignment, default is left, only work when scroll vertically
+ * Tags layout alignment, default is left.
  */
 @property (nonatomic, assign) TTGTagCollectionAlignment alignment;
 
