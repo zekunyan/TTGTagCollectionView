@@ -98,7 +98,10 @@ static NSString *const TTGTagCollectionCellIdentifier = @"TTGTagCollectionCell";
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGSize size = [_delegate tagCollectionView:self sizeForTagAtIndex:(NSUInteger) indexPath.row];
 
-    if (size.width > CGRectGetWidth(self.frame) - self.contentInset.left - self.contentInset.right) {
+    if (self.scrollDirection == TTGTagCollectionScrollDirectionVertical &&
+        size.width > CGRectGetWidth(self.frame) - self.contentInset.left - self.contentInset.right) {
+        
+        // Limit width when scroll vertical
         size.width = CGRectGetWidth(self.frame) - self.contentInset.left - self.contentInset.right;
 
         // Update tag view width
