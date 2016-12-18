@@ -4,8 +4,8 @@
 [![Version](https://img.shields.io/cocoapods/v/TTGTagCollectionView.svg?style=flat)](http://cocoapods.org/pods/TTGTagCollectionView)
 [![License](https://img.shields.io/cocoapods/l/TTGTagCollectionView.svg?style=flat)](http://cocoapods.org/pods/TTGTagCollectionView)
 [![Platform](https://img.shields.io/cocoapods/p/TTGTagCollectionView.svg?style=flat)](http://cocoapods.org/pods/TTGTagCollectionView)
-[![Apps Using](https://img.shields.io/badge/Apps%20Using-%3E%20100-blue.svg)](https://github.com/zekunyan/TTGTagCollectionView)
-[![Total Download](https://img.shields.io/badge/Total%20Download-%3E%207848-blue.svg)](https://github.com/zekunyan/TTGTagCollectionView)
+[![Apps Using](https://img.shields.io/badge/Apps%20Using-%3E%20150-blue.svg)](https://github.com/zekunyan/TTGTagCollectionView)
+[![Total Download](https://img.shields.io/badge/Total%20Download-%3E%209948-blue.svg)](https://github.com/zekunyan/TTGTagCollectionView)
 
 ![Screenshot](https://github.com/zekunyan/TTGTagCollectionView/raw/master/Resources/screen_shot.png)
 
@@ -19,7 +19,6 @@ TTGTagCollectionView is useful for showing different size tag views in a vertica
 * Vertical and horizontal scrollable
 * Support left, center and right aligment
 * Support specifying number of lines
-* Power by UICollectionView
 * Support Autolayout `intrinsicContentSize` to auto determine height based on content size
 
 ## Requirements
@@ -70,7 +69,7 @@ Conform the `TTGTextTagCollectionViewDelegate` protocol to get callback when you
 // Define if the tag can be selected.
 @property (assign, nonatomic) BOOL enableTagSelection;
 
-// Text font
+// Text
 @property (strong, nonatomic) UIFont *tagTextFont;
 
 // Text color
@@ -83,42 +82,41 @@ Conform the `TTGTextTagCollectionViewDelegate` protocol to get callback when you
 
 // Corner radius
 @property (assign, nonatomic) CGFloat tagCornerRadius;
-@property (assign, nonatomic) CGFloat tagSelectedCornerRadius; // Default is tagCornerRadius
+@property (assign, nonatomic) CGFloat tagSelectedCornerRadius;
 
 // Border
 @property (assign, nonatomic) CGFloat tagBorderWidth;
-@property (assign, nonatomic) CGFloat tagSelectedBorderWidth; // Default is tagBorderWidth
+@property (assign, nonatomic) CGFloat tagSelectedBorderWidth;
 @property (strong, nonatomic) UIColor *tagBorderColor;
-@property (strong, nonatomic) UIColor *tagSelectedBorderColor; // Default is tagBorderColor
+@property (strong, nonatomic) UIColor *tagSelectedBorderColor;
 
-// Extra space for width and height
-@property (assign, nonatomic) CGSize extraSpace;
+// Tag shadow.
+@property (nonatomic, copy) UIColor *tagShadowColor;    // Default is [UIColor black]
+@property (nonatomic, assign) CGSize tagShadowOffset;   // Default is (2, 2)
+@property (nonatomic, assign) CGFloat tagShadowRadius;  // Default is 2f
+@property (nonatomic, assign) CGFloat tagShadowOpacity; // Default is 0.3f
 
-// Horizontal and veritical space between tags
+// Tags scroll direction, default is vertical.
+@property (nonatomic, assign) TTGTagCollectionScrollDirection scrollDirection;
+
+// Tags layout alignment, default is left.
+@property (nonatomic, assign) TTGTagCollectionAlignment alignment;
+
+// Number of lines. 0 means no limit, default is 0 for vertical and 1 for horizontal.
+@property (nonatomic, assign) NSUInteger numberOfLines;
+
+// Each tag extra space in width and height
+@property (assign, nonatomic) CGSize tagExtraSpace;
+
+// Horizontal and vertical space between tags, default is 4.
 @property (assign, nonatomic) CGFloat horizontalSpacing;
 @property (assign, nonatomic) CGFloat verticalSpacing;
 
-// Content size
-@property (nonatomic, assign, readonly) CGSize contentSize;
-
-// Scroll direction. Default is vertical
-@property (nonatomic, assign) TTGTagCollectionScrollDirection scrollDirection;
-
-// Tags layout alignment, default is left
-@property (nonatomic, assign) TTGTagCollectionAlignment alignment;
-
-// Number of lines for horizontal direction
-@property (nonatomic, assign) NSUInteger numberOfLines;
-
-// Tag shadow
-@property (nonatomic, copy) UIColor *shadowColor; // Default is [UIColor black]
-@property (nonatomic, assign) CGSize shadowOffset; // Default is CGSizeZero
-@property (nonatomic, assign) CGFloat shadowRadius; // Default is 0f
-@property (nonatomic, assign) CGFloat shadowOpacity; // Default is 0.5f
-
-// Content inset, default is UIEdgeInsetsMake(2, 2, 2, 2)
+// Content inset, default is UIEdgeInsetsMake(2, 2, 2, 2).
 @property (nonatomic, assign) UIEdgeInsets contentInset;
 
+// The true tags content size, readonly
+@property (nonatomic, assign, readonly) CGSize contentSize;
 ```
 
 #### Config tags
@@ -193,48 +191,25 @@ Just like the UITableView, you must conform and implement the required methods o
 
 #### Customization
 
-You can config the horizontal and vertical space between tags.
-
 ```
-/**
- * Tags scroll direction, default is veritical
- */
+// Tags scroll direction, default is vertical.
 @property (nonatomic, assign) TTGTagCollectionScrollDirection scrollDirection;
 
-/**
- * Tags layout alignment, default is left.
- */
+// Tags layout alignment, default is left.
 @property (nonatomic, assign) TTGTagCollectionAlignment alignment;
 
-/**
- * Number of lines
- */
+// Number of lines. 0 means no limit, default is 0 for vertical and 1 for horizontal.
 @property (nonatomic, assign) NSUInteger numberOfLines;
 
-/**
- * Horizontal and Vertical space between tags
- */
+// Horizontal and vertical space between tags, default is 4.
 @property (nonatomic, assign) CGFloat horizontalSpacing;
 @property (nonatomic, assign) CGFloat verticalSpacing;
 
-/**
- * The true tags content size, readonly
- */
-@property (nonatomic, assign, readonly) CGSize contentSize;
-
-/**
- * Tag shadow
- */
-@property (nonatomic, strong) UIColor *shadowColor;  // Default is [UIColor black]
-@property (nonatomic, assign) CGSize shadowOffset;   // Default is CGSizeZero
-@property (nonatomic, assign) CGFloat shadowRadius;  // Default is 0f
-@property (nonatomic, assign) CGFloat shadowOpacity; // Default is 0.5f
-
-/**
- * Content inset, default is UIEdgeInsetsMake(2, 2, 2, 2)
- */
+// Content inset, default is UIEdgeInsetsMake(2, 2, 2, 2).
 @property (nonatomic, assign) UIEdgeInsets contentInset;
 
+// The true tags content size, readonly
+@property (nonatomic, assign, readonly) CGSize contentSize;
 ```
 
 #### Reload

@@ -17,15 +17,16 @@
 
 @interface TTGTextTagCollectionView : UIView
 @property (weak, nonatomic) id <TTGTextTagCollectionViewDelegate> delegate;
+
+// Define if the tag can be selected.
 @property (assign, nonatomic) BOOL enableTagSelection;
 
 // Text
 @property (strong, nonatomic) UIFont *tagTextFont;
+
+// Text color
 @property (strong, nonatomic) UIColor *tagTextColor;
 @property (strong, nonatomic) UIColor *tagSelectedTextColor;
-
-// Extra space
-@property (assign, nonatomic) CGSize tagExtraSpace;
 
 // Background color
 @property (strong, nonatomic) UIColor *tagBackgroundColor;
@@ -41,6 +42,12 @@
 @property (strong, nonatomic) UIColor *tagBorderColor;
 @property (strong, nonatomic) UIColor *tagSelectedBorderColor;
 
+// Tag shadow.
+@property (nonatomic, copy) UIColor *tagShadowColor;    // Default is [UIColor black]
+@property (nonatomic, assign) CGSize tagShadowOffset;   // Default is (2, 2)
+@property (nonatomic, assign) CGFloat tagShadowRadius;  // Default is 2f
+@property (nonatomic, assign) CGFloat tagShadowOpacity; // Default is 0.3f
+
 // Tags scroll direction, default is vertical.
 @property (nonatomic, assign) TTGTagCollectionScrollDirection scrollDirection;
 
@@ -49,6 +56,9 @@
 
 // Number of lines. 0 means no limit, default is 0 for vertical and 1 for horizontal.
 @property (nonatomic, assign) NSUInteger numberOfLines;
+
+// Each tag extra space in width and height
+@property (assign, nonatomic) CGSize tagExtraSpace;
 
 // Horizontal and vertical space between tags, default is 4.
 @property (assign, nonatomic) CGFloat horizontalSpacing;
@@ -59,12 +69,6 @@
 
 // The true tags content size, readonly
 @property (nonatomic, assign, readonly) CGSize contentSize;
-
-// Tag shadow.
-@property (nonatomic, copy) UIColor *tagShadowColor;    // Default is [UIColor black]
-@property (nonatomic, assign) CGSize tagShadowOffset;   // Default is (2, 2)
-@property (nonatomic, assign) CGFloat tagShadowRadius;  // Default is 2f
-@property (nonatomic, assign) CGFloat tagShadowOpacity; // Default is 0.3f
 
 - (void)reload;
 
