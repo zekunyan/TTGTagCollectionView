@@ -31,26 +31,24 @@
     NSArray *hConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[tagView]-20-|"
                                                                     options:(NSLayoutFormatOptions) 0 metrics:nil
                                                                       views:@{@"tagView": _tagView}];
-    
-    NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:_tagView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1 constant:130];
-    
+    NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:_tagView
+                                                                     attribute:NSLayoutAttributeTop
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:self.view
+                                                                     attribute:NSLayoutAttributeTop
+                                                                    multiplier:1 constant:130];
     [self.view addConstraint:topConstraint];
     [self.view addConstraints:hConstraints];
     
-    [_tagView setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
-    
     [_tagView addTags:tags];
-    
-    // Random selected
     for (NSInteger i = 0; i < 5; i++) {
         [_tagView setTagAtIndex:arc4random_uniform((uint32_t)tags.count) selected:YES];
     }
+    [_tagView reload];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    [_tagView reload];
 }
 
 @end

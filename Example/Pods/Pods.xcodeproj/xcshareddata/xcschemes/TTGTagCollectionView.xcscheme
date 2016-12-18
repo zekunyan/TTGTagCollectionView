@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0820"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EB799A1D5A0487057019CC5004970718"
+               BlueprintIdentifier = "5A98956C303F775426FE9A0553E5CDBF"
                BuildableName = "TTGTagCollectionView.framework"
                BlueprintName = "TTGTagCollectionView"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EB799A1D5A0487057019CC5004970718"
+            BlueprintIdentifier = "5A98956C303F775426FE9A0553E5CDBF"
             BuildableName = "TTGTagCollectionView.framework"
             BlueprintName = "TTGTagCollectionView"
             ReferencedContainer = "container:Pods.xcodeproj">

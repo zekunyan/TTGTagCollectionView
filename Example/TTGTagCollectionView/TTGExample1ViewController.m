@@ -60,16 +60,16 @@
     _textTagCollectionView1.tagBorderWidth = 1;
     _textTagCollectionView1.tagSelectedBorderWidth = 1;
     
-    _textTagCollectionView1.shadowColor = [UIColor blackColor];
-    _textTagCollectionView1.shadowOffset = CGSizeMake(0, 0.3);
-    _textTagCollectionView1.shadowOpacity = 0.3f;
-    _textTagCollectionView1.shadowRadius = 0.5f;
+    _textTagCollectionView1.tagShadowColor = [UIColor blackColor];
+    _textTagCollectionView1.tagShadowOffset = CGSizeMake(0, 0.3);
+    _textTagCollectionView1.tagShadowOpacity = 0.3f;
+    _textTagCollectionView1.tagShadowRadius = 0.5f;
     
     _textTagCollectionView1.tagCornerRadius = 2;
 
     // Style2
     _textTagCollectionView2.tagTextFont = [UIFont systemFontOfSize:20.0f];
-    _textTagCollectionView2.extraSpace = CGSizeMake(12, 12);
+    _textTagCollectionView2.tagExtraSpace = CGSizeMake(12, 12);
     
     _textTagCollectionView2.tagTextColor = [UIColor whiteColor];
     _textTagCollectionView2.tagSelectedTextColor = [UIColor whiteColor];
@@ -85,10 +85,10 @@
     _textTagCollectionView2.tagBorderColor = [UIColor whiteColor];
     _textTagCollectionView2.tagSelectedBorderColor = [UIColor whiteColor];
     
-    _textTagCollectionView2.shadowColor = [UIColor blackColor];
-    _textTagCollectionView2.shadowOffset = CGSizeMake(0, 1);
-    _textTagCollectionView2.shadowOpacity = 0.3f;
-    _textTagCollectionView2.shadowRadius = 2;
+    _textTagCollectionView2.tagShadowColor = [UIColor blackColor];
+    _textTagCollectionView2.tagShadowOffset = CGSizeMake(0, 1);
+    _textTagCollectionView2.tagShadowOpacity = 0.3f;
+    _textTagCollectionView2.tagShadowRadius = 2;
     
     _textTagCollectionView2.horizontalSpacing = 8;
     _textTagCollectionView2.verticalSpacing = 8;

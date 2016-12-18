@@ -54,44 +54,24 @@ typedef NS_ENUM(NSInteger, TTGTagCollectionAlignment) {
 @property (nonatomic, weak) id <TTGTagCollectionViewDataSource> dataSource;
 @property (nonatomic, weak) id <TTGTagCollectionViewDelegate> delegate;
 
-/**
- * Tags scroll direction, default is vertical
- */
+// Tags scroll direction, default is vertical.
 @property (nonatomic, assign) TTGTagCollectionScrollDirection scrollDirection;
 
-/**
- * Tags layout alignment, default is left.
- */
+// Tags layout alignment, default is left.
 @property (nonatomic, assign) TTGTagCollectionAlignment alignment;
 
-/**
- * Number of lines
- */
+// Number of lines. 0 means no limit, default is 0 for vertical and 1 for horizontal.
 @property (nonatomic, assign) NSUInteger numberOfLines;
 
-/**
- * Horizontal and Vertical space between tags
- */
+// Horizontal and vertical space between tags, default is 4.
 @property (nonatomic, assign) CGFloat horizontalSpacing;
 @property (nonatomic, assign) CGFloat verticalSpacing;
 
-/**
- * The true tags content size, readonly
- */
-@property (nonatomic, assign, readonly) CGSize contentSize;
-
-/**
- * Tag shadow
- */
-@property (nonatomic, strong) UIColor *shadowColor;  // Default is [UIColor black]
-@property (nonatomic, assign) CGSize shadowOffset;   // Default is CGSizeZero
-@property (nonatomic, assign) CGFloat shadowRadius;  // Default is 0f
-@property (nonatomic, assign) CGFloat shadowOpacity; // Default is 0.5f
-
-/**
- * Content inset, default is UIEdgeInsetsMake(2, 2, 2, 2)
- */
+// Content inset, default is UIEdgeInsetsMake(2, 2, 2, 2).
 @property (nonatomic, assign) UIEdgeInsets contentInset;
+
+// The true tags content size, readonly
+@property (nonatomic, assign, readonly) CGSize contentSize;
 
 /**
  * Reload all tag cells

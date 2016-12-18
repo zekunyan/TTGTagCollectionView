@@ -45,7 +45,7 @@
     TTGExample4TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TTGExample4TableViewCell class])
                                                             forIndexPath:indexPath];
     [cell setTags:_cellInfos[(NSUInteger) indexPath.row]];
-    cell.label.text = [NSString stringWithFormat:@"Cell: %ld", indexPath.row];
+    cell.label.text = [NSString stringWithFormat:@"Cell: %ld", (long)indexPath.row];
     
     return cell;
 }
