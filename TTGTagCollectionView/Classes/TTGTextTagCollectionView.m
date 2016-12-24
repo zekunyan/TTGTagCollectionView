@@ -6,6 +6,7 @@
 
 #pragma mark - -----TTGTextTagLabel-----
 
+// UILabel wrapper for round corner and shadow at the same time.
 @interface TTGTextTagLabel : UIView
 @property (nonatomic, strong) UILabel *label;
 @property (assign, nonatomic) BOOL selected;
@@ -345,6 +346,9 @@
     label.layer.shadowOffset = _tagShadowOffset;
     label.layer.shadowRadius = _tagShadowRadius;
     label.layer.shadowOpacity = _tagShadowOpacity;
+    label.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:label.bounds cornerRadius:label.label.layer.cornerRadius].CGPath;
+    label.layer.shouldRasterize = YES;
+    [label.layer setRasterizationScale:[[UIScreen mainScreen] scale]];
     
     // Update frame
     [label sizeToFit];
