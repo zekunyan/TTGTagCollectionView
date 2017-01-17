@@ -323,6 +323,22 @@
     _tagCollectionView.contentInset = contentInset;
 }
 
+- (void)setShowsHorizontalScrollIndicator:(BOOL)showsHorizontalScrollIndicator {
+    _tagCollectionView.showsHorizontalScrollIndicator = showsHorizontalScrollIndicator;
+}
+
+- (BOOL)showsHorizontalScrollIndicator {
+    return _tagCollectionView.showsHorizontalScrollIndicator;
+}
+
+- (void)setShowsVerticalScrollIndicator:(BOOL)showsVerticalScrollIndicator {
+    _tagCollectionView.showsVerticalScrollIndicator = showsVerticalScrollIndicator;
+}
+
+- (BOOL)showsVerticalScrollIndicator {
+    return _tagCollectionView.showsVerticalScrollIndicator;
+}
+
 #pragma mark - Private methods
 
 - (void)updateAllLabelStyleAndFrame {

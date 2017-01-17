@@ -23,8 +23,8 @@ typedef NS_ENUM(NSInteger, TTGTagCollectionScrollDirection) {
  */
 typedef NS_ENUM(NSInteger, TTGTagCollectionAlignment) {
     TTGTagCollectionAlignmentLeft = 0, // Default
-    TTGTagCollectionAlignmentCenter,
-    TTGTagCollectionAlignmentRight
+    TTGTagCollectionAlignmentCenter,   // Center
+    TTGTagCollectionAlignmentRight,    // Right
 };
 
 /**
@@ -72,6 +72,10 @@ typedef NS_ENUM(NSInteger, TTGTagCollectionAlignment) {
 
 // The true tags content size, readonly
 @property (nonatomic, assign, readonly) CGSize contentSize;
+
+// Scroll indicator
+@property (nonatomic, assign) BOOL showsHorizontalScrollIndicator;
+@property (nonatomic, assign) BOOL showsVerticalScrollIndicator;
 
 /**
  * Reload all tag cells

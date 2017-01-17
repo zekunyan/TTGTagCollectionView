@@ -70,6 +70,10 @@
 // The true tags content size, readonly
 @property (nonatomic, assign, readonly) CGSize contentSize;
 
+// Scroll indicator
+@property (nonatomic, assign) BOOL showsHorizontalScrollIndicator;
+@property (nonatomic, assign) BOOL showsVerticalScrollIndicator;
+
 - (void)reload;
 
 - (void)addTag:(NSString *)tag;

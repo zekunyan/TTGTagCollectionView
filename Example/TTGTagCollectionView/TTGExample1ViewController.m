@@ -42,6 +42,9 @@
     _logLabel.adjustsFontSizeToFitWidth = YES;
     _textTagCollectionView1.delegate = self;
     _textTagCollectionView2.delegate = self;
+    
+    _textTagCollectionView1.showsVerticalScrollIndicator = NO;
+    _textTagCollectionView2.showsVerticalScrollIndicator = NO;
 
     // Style1
     _textTagCollectionView1.tagTextFont = [UIFont boldSystemFontOfSize:18.0f];
