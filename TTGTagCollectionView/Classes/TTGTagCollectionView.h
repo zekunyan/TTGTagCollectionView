@@ -22,9 +22,11 @@ typedef NS_ENUM(NSInteger, TTGTagCollectionScrollDirection) {
  * Tags alignment
  */
 typedef NS_ENUM(NSInteger, TTGTagCollectionAlignment) {
-    TTGTagCollectionAlignmentLeft = 0, // Default
-    TTGTagCollectionAlignmentCenter,   // Center
-    TTGTagCollectionAlignmentRight,    // Right
+    TTGTagCollectionAlignmentLeft = 0,             // Default
+    TTGTagCollectionAlignmentCenter,               // Center
+    TTGTagCollectionAlignmentRight,                // Right
+    TTGTagCollectionAlignmentFillByExpandingSpace, // Expand horizontal spacing and fill, only work for vertical scroll
+    TTGTagCollectionAlignmentFillByExpandingWidth  // Expand width and fill, only work for vertical scroll
 };
 
 /**
@@ -35,6 +37,8 @@ typedef NS_ENUM(NSInteger, TTGTagCollectionAlignment) {
 - (CGSize)tagCollectionView:(TTGTagCollectionView *)tagCollectionView sizeForTagAtIndex:(NSUInteger)index;
 
 @optional
+- (BOOL)tagCollectionView:(TTGTagCollectionView *)tagCollectionView shouldSelectTag:(UIView *)tagView atIndex:(NSUInteger)index;
+
 - (void)tagCollectionView:(TTGTagCollectionView *)tagCollectionView didSelectTag:(UIView *)tagView atIndex:(NSUInteger)index;
 
 - (void)tagCollectionView:(TTGTagCollectionView *)tagCollectionView updateContentSize:(CGSize)contentSize;

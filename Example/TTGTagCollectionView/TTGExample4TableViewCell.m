@@ -20,6 +20,7 @@
 
 - (void)setTags:(NSArray<NSString *> *)tags {
     [_tagView removeAllTags];
+    _tagView.alignment = TTGTagCollectionAlignmentFillByExpandingWidth;
     [_tagView addTags:tags];
     
     // Random selected

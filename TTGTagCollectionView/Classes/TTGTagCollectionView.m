@@ -82,6 +82,7 @@
 
 - (void)onTapGesture:(UITapGestureRecognizer *)tapGesture {
     if (![self.dataSource respondsToSelector:@selector(numberOfTagsInTagCollectionView:)] ||
+        ![self.dataSource respondsToSelector:@selector(tagCollectionView:tagViewForIndex:)] ||
         ![self.delegate respondsToSelector:@selector(tagCollectionView:didSelectTag:atIndex:)]) {
         return;
     }
@@ -91,7 +92,13 @@
     for (NSUInteger i = 0; i < [self.dataSource numberOfTagsInTagCollectionView:self]; i++) {
         UIView *tagView = [self.dataSource tagCollectionView:self tagViewForIndex:i];
         if (CGRectContainsPoint(tagView.frame, tapPoint)) {
-            [self.delegate tagCollectionView:self didSelectTag:tagView atIndex:i];
+            if ([self.delegate respondsToSelector:@selector(tagCollectionView:shouldSelectTag:atIndex:)]) {
+                if ([self.delegate tagCollectionView:self shouldSelectTag:tagView atIndex:i]) {
+                    [self.delegate tagCollectionView:self didSelectTag:tagView atIndex:i];
+                }
+            } else {
+                [self.delegate tagCollectionView:self didSelectTag:tagView atIndex:i];
+            }
         }
     }
 }
@@ -132,6 +139,7 @@
 
 - (void)layoutTagViewsForVerticalDirection {
     NSUInteger count = [_dataSource numberOfTagsInTagCollectionView:self];
+    NSUInteger tmpCount = 0;
     CGFloat visibleWidth = CGRectGetWidth(self.bounds) - _contentInset.left - _contentInset.right;
     CGFloat currentLineX = 0;
     CGFloat tmpHeight = 0;
@@ -139,6 +147,7 @@
     
     NSMutableArray <NSNumber *> *eachLineMaxHeightNumbers = [NSMutableArray new];
     NSMutableArray <NSNumber *> *eachLineWidthNumbers = [NSMutableArray new];
+    NSMutableArray <NSNumber *> *eachLineTagCountNumbers = [NSMutableArray new];
     
     // Set frame size and get each line max height and width
     for (NSUInteger i = 0; i < count; i++) {
@@ -155,6 +164,8 @@
             // New Line
             [eachLineMaxHeightNumbers addObject:@(tmpHeight)];
             [eachLineWidthNumbers addObject:@(currentLineX - _horizontalSpacing)];
+            [eachLineTagCountNumbers addObject:@(tmpCount)];
+            tmpCount = 0;
             tmpHeight = 0;
             currentLineX = 0;
         }
@@ -165,6 +176,7 @@
         }
         
         currentLineX += tagSize.width + _horizontalSpacing;
+        tmpCount += 1;
         tmpHeight = MAX(tagSize.height, tmpHeight);
         
         frame.size = tagSize;
@@ -174,11 +186,13 @@
     // Add last
     [eachLineMaxHeightNumbers addObject:@(tmpHeight)];
     [eachLineWidthNumbers addObject:@(currentLineX - _horizontalSpacing)];
+    [eachLineTagCountNumbers addObject:@(tmpCount)];
     
     // Line limit
     if (_numberOfLines != 0) {
         eachLineWidthNumbers = [[eachLineWidthNumbers subarrayWithRange:NSMakeRange(0, MIN(eachLineWidthNumbers.count, _numberOfLines))] mutableCopy];
         eachLineMaxHeightNumbers = [[eachLineMaxHeightNumbers subarrayWithRange:NSMakeRange(0, MIN(eachLineMaxHeightNumbers.count, _numberOfLines))] mutableCopy];
+        eachLineTagCountNumbers = [[eachLineTagCountNumbers subarrayWithRange:NSMakeRange(0, MIN(eachLineTagCountNumbers.count, _numberOfLines))] mutableCopy];
     }
     
     // Check
@@ -188,13 +202,17 @@
     currentLineX = 0;
     CGFloat currentYBase = _contentInset.top;
     NSUInteger currentTagIndex = 0;
+    NSUInteger currentLineTagsCount = 0;
     CGFloat currentLineMaxHeight = 0;
     CGFloat currentLineWidth = 0;
+    CGFloat currentLineAdditionWidth = 0;
+    CGFloat acturalHorizontalSpacing = _horizontalSpacing;
     
     // Set X and Y
     for (NSUInteger i = 0; i < eachLineWidthNumbers.count; i++) {
         currentLineWidth = eachLineWidthNumbers[i].floatValue;
         currentLineMaxHeight = eachLineMaxHeightNumbers[i].floatValue;
+        currentLineTagsCount = eachLineTagCountNumbers[i].unsignedIntegerValue;
         
         // Alignment x offset
         CGFloat currentLineXOffset = 0;
@@ -208,6 +226,17 @@
             case TTGTagCollectionAlignmentRight:
                 currentLineXOffset = visibleWidth - currentLineWidth + _contentInset.left;
                 break;
+            case TTGTagCollectionAlignmentFillByExpandingSpace:
+                currentLineXOffset = _contentInset.left;
+                acturalHorizontalSpacing = _horizontalSpacing +
+                    (visibleWidth - currentLineWidth) / (CGFloat)(currentLineTagsCount - 1);
+                currentLineWidth = visibleWidth;
+                break;
+            case TTGTagCollectionAlignmentFillByExpandingWidth:
+                currentLineXOffset = _contentInset.left;
+                currentLineAdditionWidth = (visibleWidth - currentLineWidth) / (CGFloat)currentLineTagsCount;
+                currentLineWidth = visibleWidth;
+                break;
         }
         
         // Current line
@@ -217,9 +246,10 @@
             
             frame.origin.x = currentLineXOffset + currentLineX;
             frame.origin.y = currentYBase + (currentLineMaxHeight - CGRectGetHeight(frame)) / 2;
+            frame.size.width += currentLineAdditionWidth;
             tagView.frame = frame;
             
-            currentLineX += CGRectGetWidth(frame) + _horizontalSpacing;
+            currentLineX += CGRectGetWidth(frame) + acturalHorizontalSpacing;
             currentTagIndex += 1;
         }
         
@@ -303,6 +333,8 @@
             
             // Calculate x offset
             switch (_alignment) {
+                case TTGTagCollectionAlignmentFillByExpandingSpace:
+                case TTGTagCollectionAlignmentFillByExpandingWidth:
                 case TTGTagCollectionAlignmentLeft:
                     currentLineXOffset = 0;
                     break;

@@ -246,16 +246,39 @@
 
 #pragma mark - TTGTagCollectionViewDelegate
 
-- (void)tagCollectionView:(TTGTagCollectionView *)tagCollectionView didSelectTag:(UIView *)tagView atIndex:(NSUInteger)index {
-    TTGTextTagLabel *label = _tagLabels[index];
-
+- (BOOL)tagCollectionView:(TTGTagCollectionView *)tagCollectionView shouldSelectTag:(UIView *)tagView atIndex:(NSUInteger)index {
     if (_enableTagSelection) {
-        label.selected = !label.selected;
-        [self updateStyleAndFrameForLabel:label];
+        TTGTextTagLabel *label = _tagLabels[index];
+        
+        if ([self.delegate respondsToSelector:@selector(textTagCollectionView:canTapTag:atIndex:currentSelected:)]) {
+            return [self.delegate textTagCollectionView:self canTapTag:label.label.text atIndex:index currentSelected:label.selected];
+        } else {
+            return YES;
+        }
+    } else {
+        return NO;
     }
+}
 
-    if ([_delegate respondsToSelector:@selector(textTagCollectionView:didTapTag:atIndex:selected:)]) {
-        [_delegate textTagCollectionView:self didTapTag:label.label.text atIndex:index selected:label.selected];
+- (void)tagCollectionView:(TTGTagCollectionView *)tagCollectionView didSelectTag:(UIView *)tagView atIndex:(NSUInteger)index {
+    if (_enableTagSelection) {
+        TTGTextTagLabel *label = _tagLabels[index];
+        
+        if (!label.selected && _selectionLimit > 0 && [self allSelectedTags].count + 1 > _selectionLimit) {
+            return;
+        }
+        
+        label.selected = !label.selected;
+        
+        if (self.alignment == TTGTagCollectionAlignmentFillByExpandingWidth) {
+            [self reload];
+        } else {
+            [self updateStyleAndFrameForLabel:label];
+        }
+        
+        if ([_delegate respondsToSelector:@selector(textTagCollectionView:didTapTag:atIndex:selected:)]) {
+            [_delegate textTagCollectionView:self didTapTag:label.label.text atIndex:index selected:label.selected];
+        }
     }
 }
 

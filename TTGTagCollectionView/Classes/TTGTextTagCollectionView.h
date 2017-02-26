@@ -10,6 +10,8 @@
 
 @protocol TTGTextTagCollectionViewDelegate <NSObject>
 @optional
+- (BOOL)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView canTapTag:(NSString *)tagText atIndex:(NSUInteger)index currentSelected:(BOOL)currentSelected;
+
 - (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView didTapTag:(NSString *)tagText atIndex:(NSUInteger)index selected:(BOOL)selected;
 
 - (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView updateContentSize:(CGSize)contentSize;
@@ -56,6 +58,9 @@
 
 // Number of lines. 0 means no limit, default is 0 for vertical and 1 for horizontal.
 @property (nonatomic, assign) NSUInteger numberOfLines;
+
+// Tag selection limit, default is 0, means no limit
+@property (nonatomic, assign) NSUInteger selectionLimit;
 
 // Each tag extra space in width and height
 @property (assign, nonatomic) CGSize tagExtraSpace;

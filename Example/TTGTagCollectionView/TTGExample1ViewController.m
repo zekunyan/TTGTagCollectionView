@@ -111,6 +111,10 @@
     [_textTagCollectionView2 setTagAtIndex:6 selected:YES];
     [_textTagCollectionView2 setTagAtIndex:17 selected:YES];
     
+    // Change alignment
+    _textTagCollectionView1.alignment = TTGTagCollectionAlignmentFillByExpandingWidth;
+    
+    // Load data
     [_textTagCollectionView1 reload];
     [_textTagCollectionView2 reload];
 }
