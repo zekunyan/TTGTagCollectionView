@@ -23,6 +23,7 @@
                       @"on", @"constraints", @"placed", @"on", @"those", @"views"];
     
     _tagView = [TTGTextTagCollectionView new];
+    _tagView.alignment = TTGTagCollectionAlignmentFillByExpandingWidth;
     _tagView.layer.borderColor = [UIColor grayColor].CGColor;
     _tagView.layer.borderWidth = 1;
     _tagView.translatesAutoresizingMaskIntoConstraints = NO;
