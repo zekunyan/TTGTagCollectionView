@@ -32,6 +32,8 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     _label.frame = self.bounds;
+    self.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:_label.bounds
+                                                       cornerRadius:_label.layer.cornerRadius].CGPath;
 }
 
 - (void)sizeToFit {
