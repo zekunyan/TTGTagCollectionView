@@ -4,8 +4,8 @@
 [![Version](https://img.shields.io/cocoapods/v/TTGTagCollectionView.svg?style=flat)](http://cocoapods.org/pods/TTGTagCollectionView)
 [![License](https://img.shields.io/cocoapods/l/TTGTagCollectionView.svg?style=flat)](http://cocoapods.org/pods/TTGTagCollectionView)
 [![Platform](https://img.shields.io/cocoapods/p/TTGTagCollectionView.svg?style=flat)](http://cocoapods.org/pods/TTGTagCollectionView)
-[![Apps Using](https://img.shields.io/badge/Apps%20Using-%3E%20150-blue.svg)](https://github.com/zekunyan/TTGTagCollectionView)
-[![Total Download](https://img.shields.io/badge/Total%20Download-%3E%209948-blue.svg)](https://github.com/zekunyan/TTGTagCollectionView)
+[![Apps Using](https://img.shields.io/badge/Apps%20Using-%3E%20255-blue.svg)](https://github.com/zekunyan/TTGTagCollectionView)
+[![Total Download](https://img.shields.io/badge/Total%20Download-%3E%2014,454-blue.svg)](https://github.com/zekunyan/TTGTagCollectionView)
 
 ![Screenshot](https://github.com/zekunyan/TTGTagCollectionView/raw/master/Resources/screen_shot.png)
 
