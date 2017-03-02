@@ -1,7 +1,9 @@
 PODS:
-  - TTGTagCollectionView (1.2.1)
+  - SVPullToRefresh (0.4.1)
+  - TTGTagCollectionView (1.4.0)
 
 DEPENDENCIES:
+  - SVPullToRefresh
   - TTGTagCollectionView (from `../`)
 
 EXTERNAL SOURCES:
@@ -9,8 +11,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  TTGTagCollectionView: 475b5502633c4062ea9e2280b427a662ac36a943
+  SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
+  TTGTagCollectionView: f553758f584635c162ccad6a3600cc0494b2d173
 
-PODFILE CHECKSUM: 89cd1180b1dd8ff7edf84fc8d641e441fd9cd1d8
+PODFILE CHECKSUM: 0e33b51aeed0ef5e83dbdb28e3464492012c5054
 
-COCOAPODS: 1.2.0.beta.1
+COCOAPODS: 1.2.0

@@ -8,6 +8,7 @@
 
 #import <TTGTagCollectionView/TTGTextTagCollectionView.h>
 #import "TTGExample1ViewController.h"
+#import "SVPullToRefresh.h"
 
 @interface TTGExample1ViewController () <TTGTextTagCollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet TTGTextTagCollectionView *textTagCollectionView1;

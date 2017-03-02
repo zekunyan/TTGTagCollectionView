@@ -58,6 +58,9 @@ typedef NS_ENUM(NSInteger, TTGTagCollectionAlignment) {
 @property (nonatomic, weak) id <TTGTagCollectionViewDataSource> dataSource;
 @property (nonatomic, weak) id <TTGTagCollectionViewDelegate> delegate;
 
+// Inside scrollView
+@property (nonatomic, strong, readonly) UIScrollView *scrollView;
+
 // Tags scroll direction, default is vertical.
 @property (nonatomic, assign) TTGTagCollectionScrollDirection scrollDirection;
 

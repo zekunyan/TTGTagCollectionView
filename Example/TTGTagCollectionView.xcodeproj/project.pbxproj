@@ -29,6 +29,7 @@
 		BF018B121DB3D8F700EF8F4E /* TTGExample4ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF018B071DB3D8F700EF8F4E /* TTGExample4ViewController.m */; };
 		BF018B131DB3D8F700EF8F4E /* TTGExample4TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BF018B081DB3D8F700EF8F4E /* TTGExample4TableViewCell.m */; };
 		BF018B151DB3D9F600EF8F4E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF018B141DB3D9F600EF8F4E /* Launch Screen.storyboard */; };
+		BF29CA901E673C430048B927 /* TTGExample6ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF29CA8F1E673C430048B927 /* TTGExample6ViewController.m */; };
 		FF2E8B6D955A0F4C8695F2E6 /* Pods_TTGTagCollectionView_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C64667CDC91C1D25C00F6F /* Pods_TTGTagCollectionView_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,8 @@
 		BF018B0C1DB3D8F700EF8F4E /* TTGExample2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGExample2ViewController.h; sourceTree = "<group>"; };
 		BF018B0D1DB3D8F700EF8F4E /* TTGExample1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGExample1ViewController.h; sourceTree = "<group>"; };
 		BF018B141DB3D9F600EF8F4E /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		BF29CA8E1E673C430048B927 /* TTGExample6ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGExample6ViewController.h; sourceTree = "<group>"; };
+		BF29CA8F1E673C430048B927 /* TTGExample6ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGExample6ViewController.m; sourceTree = "<group>"; };
 		F1C64667CDC91C1D25C00F6F /* Pods_TTGTagCollectionView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TTGTagCollectionView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -170,6 +173,8 @@
 				BF018B021DB3D8F700EF8F4E /* TTGExample5ViewController.m */,
 				6003F5A5195388D20070C39A /* TTGViewController.h */,
 				6003F5A6195388D20070C39A /* TTGViewController.m */,
+				BF29CA8E1E673C430048B927 /* TTGExample6ViewController.h */,
+				BF29CA8F1E673C430048B927 /* TTGExample6ViewController.m */,
 			);
 			name = "Example for TTGTagCollectionView";
 			path = TTGTagCollectionView;
@@ -434,6 +439,7 @@
 				6003F5A7195388D20070C39A /* TTGViewController.m in Sources */,
 				BF018B121DB3D8F700EF8F4E /* TTGExample4ViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				BF29CA901E673C430048B927 /* TTGExample6ViewController.m in Sources */,
 				BF018B101DB3D8F700EF8F4E /* TTGExample3ViewController.m in Sources */,
 				BF018B131DB3D8F700EF8F4E /* TTGExample4TableViewCell.m in Sources */,
 				BF018B111DB3D8F700EF8F4E /* TTGExample2ViewController.m in Sources */,

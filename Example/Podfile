@@ -2,6 +2,7 @@ use_frameworks!
 
 target 'TTGTagCollectionView_Example' do
   pod 'TTGTagCollectionView', :path => '../'
+  pod 'SVPullToRefresh'
 
   target 'TTGTagCollectionView_Tests' do
     inherit! :search_paths

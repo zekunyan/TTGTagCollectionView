@@ -20,6 +20,9 @@
 @interface TTGTextTagCollectionView : UIView
 @property (weak, nonatomic) id <TTGTextTagCollectionViewDelegate> delegate;
 
+// Inside scrollView
+@property (nonatomic, strong, readonly) UIScrollView *scrollView;
+
 // Define if the tag can be selected.
 @property (assign, nonatomic) BOOL enableTagSelection;
 

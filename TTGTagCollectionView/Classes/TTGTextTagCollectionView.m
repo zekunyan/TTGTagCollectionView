@@ -294,7 +294,11 @@
     }
 }
 
-#pragma mark - Setter
+#pragma mark - Setter and Getter
+
+- (UIScrollView *)scrollView {
+    return _tagCollectionView.scrollView;
+}
 
 - (CGFloat)horizontalSpacing {
     return _tagCollectionView.horizontalSpacing;

@@ -10,6 +10,7 @@
 
 @interface TTGTagCollectionView ()
 @property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) UIView *containerView;
 @property (nonatomic, assign) BOOL needsLayoutTagViews;
 @end
 
@@ -49,9 +50,14 @@
     _scrollView.userInteractionEnabled = YES;
     [self addSubview:_scrollView];
     
+    _containerView = [[UIView alloc] initWithFrame:_scrollView.bounds];
+    _containerView.backgroundColor = [UIColor clearColor];
+    _containerView.userInteractionEnabled = YES;
+    [_scrollView addSubview:_containerView];
+    
     UITapGestureRecognizer *tapGesture = [UITapGestureRecognizer new];
     [tapGesture addTarget:self action:@selector(onTapGesture:)];
-    [_scrollView addGestureRecognizer:tapGesture];
+    [_containerView addGestureRecognizer:tapGesture];
     
     [self setNeedsLayoutTagViews];
 }
@@ -64,7 +70,7 @@
     }
     
     // Remove all tag views
-    [_scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [_containerView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     // Update tag view frame
     [self setNeedsLayoutTagViews];
@@ -72,7 +78,7 @@
     
     // Add tag view
     for (NSUInteger i = 0; i < [_dataSource numberOfTagsInTagCollectionView:self]; i++) {
-        [_scrollView addSubview:[_dataSource tagCollectionView:self tagViewForIndex:i]];
+        [_containerView addSubview:[_dataSource tagCollectionView:self tagViewForIndex:i]];
     }
     
     [self invalidateIntrinsicContentSize];
@@ -87,7 +93,7 @@
         return;
     }
     
-    CGPoint tapPoint = [tapGesture locationInView:_scrollView];
+    CGPoint tapPoint = [tapGesture locationInView:_containerView];
     
     for (NSUInteger i = 0; i < [self.dataSource numberOfTagsInTagCollectionView:self]; i++) {
         UIView *tagView = [self.dataSource tagCollectionView:self tagViewForIndex:i];
@@ -110,6 +116,7 @@
     
     if (!CGRectEqualToRect(_scrollView.frame, self.bounds)) {
         _scrollView.frame = self.bounds;
+        _containerView.frame = (CGRect){CGPointZero, _scrollView.contentSize};
         [self setNeedsLayoutTagViews];
     }
     
@@ -262,6 +269,7 @@
     CGSize contentSize = CGSizeMake(CGRectGetWidth(self.bounds), currentYBase - _verticalSpacing + _contentInset.bottom);
     if (!CGSizeEqualToSize(contentSize, _scrollView.contentSize)) {
         _scrollView.contentSize = contentSize;
+        _containerView.frame = (CGRect){CGPointZero, contentSize};
         
         if ([self.delegate respondsToSelector:@selector(tagCollectionView:updateContentSize:)]) {
             [self.delegate tagCollectionView:self updateContentSize:contentSize];
@@ -357,6 +365,7 @@
     CGSize contentSize = CGSizeMake(contentWidth, currentYBase + currentLineMaxHeight + _contentInset.bottom);
     if (!CGSizeEqualToSize(contentSize, _scrollView.contentSize)) {
         _scrollView.contentSize = contentSize;
+        _containerView.frame = (CGRect){CGPointZero, contentSize};
         
         if ([self.delegate respondsToSelector:@selector(tagCollectionView:updateContentSize:)]) {
             [self.delegate tagCollectionView:self updateContentSize:contentSize];
@@ -379,6 +388,10 @@
 }
 
 #pragma mark - Setter Getter
+
+- (UIScrollView *)scrollView {
+    return _scrollView;
+}
 
 - (void)setScrollDirection:(TTGTagCollectionScrollDirection)scrollDirection {
     _scrollDirection = scrollDirection;

@@ -22,6 +22,7 @@ TTGTagCollectionView is useful for showing different size tag views in a vertica
 * Support left, center and right aligment
 * Support specifying number of lines
 * Support Autolayout `intrinsicContentSize` to auto determine height based on content size
+* Support pull to refresh, like `SVPullToRefresh`
 
 ## Requirements
 iOS 7 and later.

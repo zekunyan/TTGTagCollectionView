@@ -7,75 +7,121 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16C51FAECDA889EA41B47EB8E752E5F7 /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = B39911BB420820A00E48BB55A026AD22 /* UIScrollView+SVPullToRefresh.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		1777722CE220CC1B9053B2CDBAEF72C5 /* UIScrollView+SVInfiniteScrolling.h in Headers */ = {isa = PBXBuildFile; fileRef = E004693281D5068D8EAD57796E986464 /* UIScrollView+SVInfiniteScrolling.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1A3CFAAA98FF91AC5440AA959B054A31 /* Pods-TTGTagCollectionView_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FE675F341440D58A11FD21B6852CFA /* Pods-TTGTagCollectionView_Tests-dummy.m */; };
-		1A7D8E174B8CF7703E4E7B9F4E8E7CC3 /* TTGTagCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 48246034374A451D065871E91FCEB452 /* TTGTagCollectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1F92A51E8F5D566F8C45C6052740ABD3 /* TTGTextTagCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC1934442C6EB56EEC44578AE614DB4 /* TTGTextTagCollectionView.m */; };
-		205912069680F59792B69C853310243E /* Pods-TTGTagCollectionView_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F56290F61FDDE664DB7945FE8D21A2B7 /* Pods-TTGTagCollectionView_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		374AE042F2D4C1F2F145A46D3EC6D366 /* TTGTagCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9ADC1A8330E2EE282DD2DA4A15250 /* TTGTagCollectionView.m */; };
-		40A09ECC5805E59B1BFE473CF502F473 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		4B3AF30DDE4BBD1AFC73F32C4FD362DF /* Pods-TTGTagCollectionView_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DE4E532D863BEC0AF3D4DA34D0396AFA /* Pods-TTGTagCollectionView_Example-dummy.m */; };
-		72C79AE3779A183CE13CD37C4A811C3D /* TTGTagCollectionView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9858952B77350ABA409F65FB3ADECFAE /* TTGTagCollectionView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B933BD877C6477B020E600EC86506613 /* TTGTextTagCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CB84571F559049D2069FA042055CEE3 /* TTGTextTagCollectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BC7E4654244D4CEAA54023B7BE9728BF /* TTGTagCollectionView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F033C4BFF10F8FA0FF110772DF4045EC /* TTGTagCollectionView-dummy.m */; };
-		BFB8A5DF6853C2B0C57DCBE4872F7C79 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		CB4573E70F4D5D22F686797244633819 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		204E01BC7F70578E98ECFAA23A013F9A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACC64101FAE4862F8806DB02FC71B0E /* QuartzCore.framework */; };
+		278DEC3A8A0A6AF990E6F930E9DABC1E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC5D9C5B838BE747D0154460D02F926 /* Foundation.framework */; };
+		37735490B434977215D25EEEBD01C63F /* Pods-TTGTagCollectionView_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DE4E532D863BEC0AF3D4DA34D0396AFA /* Pods-TTGTagCollectionView_Example-dummy.m */; };
+		40A09ECC5805E59B1BFE473CF502F473 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC5D9C5B838BE747D0154460D02F926 /* Foundation.framework */; };
+		4804F9C500317EB41586672ACFB8660F /* UIScrollView+SVPullToRefresh.h in Headers */ = {isa = PBXBuildFile; fileRef = 80E96F3E49A6526351D2FC6C34954605 /* UIScrollView+SVPullToRefresh.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4FDDB5EC1E1F3F86445D7DEE030E85CC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC5D9C5B838BE747D0154460D02F926 /* Foundation.framework */; };
+		54A395C1388EE27544479A44E2559DF3 /* TTGTagCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 48246034374A451D065871E91FCEB452 /* TTGTagCollectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		72950E1AB066C6210BE228DC8272D5EF /* TTGTagCollectionView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F033C4BFF10F8FA0FF110772DF4045EC /* TTGTagCollectionView-dummy.m */; };
+		862E9C74210A746BCC691589A2B71EC8 /* SVPullToRefresh-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DBCE7DEB19903594D5D0C47ADB12 /* SVPullToRefresh-dummy.m */; };
+		B8A166474B58F6F1DFB2CD7FE3224E7F /* TTGTagCollectionView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9858952B77350ABA409F65FB3ADECFAE /* TTGTagCollectionView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC1B9468BB09AA55170CF6F57C6A585D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC5D9C5B838BE747D0154460D02F926 /* Foundation.framework */; };
+		D299836F1E4B1B32C63472A765866587 /* TTGTagCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9ADC1A8330E2EE282DD2DA4A15250 /* TTGTagCollectionView.m */; };
+		D3AEFF3A7E6D5E5DE4057B1C72C985E1 /* SVPullToRefresh-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C6A57D858EF8C5226B7D8D0B851796 /* SVPullToRefresh-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D4E89E79C1F81C3E36CB84FC0A68FE71 /* TTGTextTagCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CB84571F559049D2069FA042055CEE3 /* TTGTextTagCollectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D53A369E33934D5AD507397B1738CFAF /* Pods-TTGTagCollectionView_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DFDF38154235E0E4B8CE0859E8F23E /* Pods-TTGTagCollectionView_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DBE6D93B482C12007FCAB721A55803C8 /* TTGTextTagCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC1934442C6EB56EEC44578AE614DB4 /* TTGTextTagCollectionView.m */; };
+		E2DA0C1FA77FAAD5CED2F5AC3D30BB68 /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 24ADBE64E230E62914F960D74320C4DC /* UIScrollView+SVInfiniteScrolling.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		EFEB168CCAA811A6D9B666A212EBE4AF /* SVPullToRefresh.h in Headers */ = {isa = PBXBuildFile; fileRef = F7660ECE56F3E9AB32400FCA502D6E72 /* SVPullToRefresh.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F93F6102712AB9D24174F6BF702B5422 /* Pods-TTGTagCollectionView_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F56290F61FDDE664DB7945FE8D21A2B7 /* Pods-TTGTagCollectionView_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		76E60273770A0A8AA2C9C980E4609BD5 /* PBXContainerItemProxy */ = {
+		14B1EBED46DC5355C3F35CB2A86836B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 5A98956C303F775426FE9A0553E5CDBF;
+			remoteGlobalIDString = 6455FD81D0603972CC782B764B3FE18D;
+			remoteInfo = SVPullToRefresh;
+		};
+		70D04506B4C0FDE8616EEB021DA329E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E1914641887765BFFCD605EA9B4C910D;
 			remoteInfo = TTGTagCollectionView;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C24B1824C3CF57779BF412D8FF23C26 /* SVPullToRefresh.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SVPullToRefresh.xcconfig; sourceTree = "<group>"; };
 		0EE9ADC1A8330E2EE282DD2DA4A15250 /* TTGTagCollectionView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTGTagCollectionView.m; sourceTree = "<group>"; };
 		1658ED89AB9C6CEB557ED5CDFF001592 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1DC9481ECD040EC8E1551242D86D5B3C /* Pods_TTGTagCollectionView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TTGTagCollectionView_Tests.framework; path = "Pods-TTGTagCollectionView_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FBD4A68FDC96E4B1D46D2B8D63E6E1C /* Pods_TTGTagCollectionView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TTGTagCollectionView_Example.framework; path = "Pods-TTGTagCollectionView_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		24ADBE64E230E62914F960D74320C4DC /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+SVInfiniteScrolling.m"; path = "SVPullToRefresh/UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
 		264987916F920268DBD891EE6A48DC15 /* Pods-TTGTagCollectionView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TTGTagCollectionView_Example.release.xcconfig"; sourceTree = "<group>"; };
+		266E36A0485390CDD00D7D6416DE7944 /* TTGTagCollectionView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TTGTagCollectionView.framework; path = TTGTagCollectionView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29CDBEF4E9AE8FD6F3B266C3CBAB0FA1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34D263543C3F91673665F49F9A91AFC0 /* Pods-TTGTagCollectionView_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-TTGTagCollectionView_Example.modulemap"; sourceTree = "<group>"; };
+		3AC5D9C5B838BE747D0154460D02F926 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		3FE4CEA6B9432B7CEBB13DB68C66C465 /* TTGTagCollectionView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = TTGTagCollectionView.modulemap; sourceTree = "<group>"; };
 		48246034374A451D065871E91FCEB452 /* TTGTagCollectionView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTGTagCollectionView.h; sourceTree = "<group>"; };
-		4BCF82918A794EDAFC704952B436EFB1 /* TTGTagCollectionView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TTGTagCollectionView.framework; path = TTGTagCollectionView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		482C19CB08972A8708DF919ECB0F2DA0 /* SVPullToRefresh-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SVPullToRefresh-prefix.pch"; sourceTree = "<group>"; };
 		533F3AC57A7A6803BB4176721C10D924 /* TTGTagCollectionView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TTGTagCollectionView.xcconfig; sourceTree = "<group>"; };
 		55FE675F341440D58A11FD21B6852CFA /* Pods-TTGTagCollectionView_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TTGTagCollectionView_Tests-dummy.m"; sourceTree = "<group>"; };
 		5A3E5516FB923F6FEFAA945F2B42FA79 /* Pods-TTGTagCollectionView_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TTGTagCollectionView_Example-frameworks.sh"; sourceTree = "<group>"; };
 		66B1D655BFF97A2F7401C211C0EB8535 /* Pods-TTGTagCollectionView_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TTGTagCollectionView_Tests-resources.sh"; sourceTree = "<group>"; };
 		75ED9A8A0FAB18F8B70FA89C7F44ED4B /* Pods-TTGTagCollectionView_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TTGTagCollectionView_Example-resources.sh"; sourceTree = "<group>"; };
+		785373C0356D9588613E46153892DA27 /* Pods_TTGTagCollectionView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TTGTagCollectionView_Tests.framework; path = "Pods-TTGTagCollectionView_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		80E96F3E49A6526351D2FC6C34954605 /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+SVPullToRefresh.h"; path = "SVPullToRefresh/UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
+		86BAEBF17ACA4A47394ED9C3BFA17CAC /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9858952B77350ABA409F65FB3ADECFAE /* TTGTagCollectionView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TTGTagCollectionView-umbrella.h"; sourceTree = "<group>"; };
 		9CB84571F559049D2069FA042055CEE3 /* TTGTextTagCollectionView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTGTextTagCollectionView.h; sourceTree = "<group>"; };
 		A44F5BF206B5A710B033FD9F70FFD0C9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A81630016C1C7150FF768BC57FF259C0 /* Pods-TTGTagCollectionView_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TTGTagCollectionView_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		ABC05BF655997BEFC3D82C41756DC1D0 /* SVPullToRefresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SVPullToRefresh.framework; path = SVPullToRefresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACB5DBCE7DEB19903594D5D0C47ADB12 /* SVPullToRefresh-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SVPullToRefresh-dummy.m"; sourceTree = "<group>"; };
 		B0DE0D536EA20BAF12BE7DABB9A1C93D /* TTGTagCollectionView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TTGTagCollectionView-prefix.pch"; sourceTree = "<group>"; };
+		B39911BB420820A00E48BB55A026AD22 /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+SVPullToRefresh.m"; path = "SVPullToRefresh/UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
 		B4BD0C364C30D2C959E7B465BBF841A1 /* Pods-TTGTagCollectionView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TTGTagCollectionView_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		B7DFDF38154235E0E4B8CE0859E8F23E /* Pods-TTGTagCollectionView_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TTGTagCollectionView_Tests-umbrella.h"; sourceTree = "<group>"; };
-		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		BACC64101FAE4862F8806DB02FC71B0E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		CFCFE6C3BD4ABD63BD44315F13EF4CD8 /* Pods-TTGTagCollectionView_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-TTGTagCollectionView_Tests.modulemap"; sourceTree = "<group>"; };
 		D2DAD505D715924BD8EEDBFF12189823 /* Pods-TTGTagCollectionView_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TTGTagCollectionView_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		D3C6A57D858EF8C5226B7D8D0B851796 /* SVPullToRefresh-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SVPullToRefresh-umbrella.h"; sourceTree = "<group>"; };
 		D767762EEC213A46BAC7DE405C2AE06F /* Pods-TTGTagCollectionView_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TTGTagCollectionView_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		D90D384090BFA6B8C818580F2B7EB91C /* Pods-TTGTagCollectionView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TTGTagCollectionView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		DC1E8C30C5440FE09846669241D0F760 /* Pods-TTGTagCollectionView_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TTGTagCollectionView_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		DDEFFFF33FA847E8B1B88C46782B6FB1 /* Pods_TTGTagCollectionView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TTGTagCollectionView_Example.framework; path = "Pods-TTGTagCollectionView_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE4E532D863BEC0AF3D4DA34D0396AFA /* Pods-TTGTagCollectionView_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TTGTagCollectionView_Example-dummy.m"; sourceTree = "<group>"; };
+		E004693281D5068D8EAD57796E986464 /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+SVInfiniteScrolling.h"; path = "SVPullToRefresh/UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
 		E0BF6B8E5B54E8A6C9308DCD26187114 /* Pods-TTGTagCollectionView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TTGTagCollectionView_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		E23098F33E7CA69BDAD45FF415672C83 /* Pods-TTGTagCollectionView_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TTGTagCollectionView_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		EAC1331B0B4ADFE85360AB1B137C8644 /* SVPullToRefresh.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SVPullToRefresh.modulemap; sourceTree = "<group>"; };
 		F033C4BFF10F8FA0FF110772DF4045EC /* TTGTagCollectionView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TTGTagCollectionView-dummy.m"; sourceTree = "<group>"; };
 		F56290F61FDDE664DB7945FE8D21A2B7 /* Pods-TTGTagCollectionView_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TTGTagCollectionView_Example-umbrella.h"; sourceTree = "<group>"; };
+		F7660ECE56F3E9AB32400FCA502D6E72 /* SVPullToRefresh.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVPullToRefresh.h; path = SVPullToRefresh/SVPullToRefresh.h; sourceTree = "<group>"; };
 		FBC1934442C6EB56EEC44578AE614DB4 /* TTGTextTagCollectionView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagCollectionView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		66B15993A68D5411CA896D64A265EC73 /* Frameworks */ = {
+		8C8160332416B4C2FC9A56D9B639639E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB4573E70F4D5D22F686797244633819 /* Foundation.framework in Frameworks */,
+				4FDDB5EC1E1F3F86445D7DEE030E85CC /* Foundation.framework in Frameworks */,
+				204E01BC7F70578E98ECFAA23A013F9A /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		99356DCED62B1382FB26C83D956091C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC1B9468BB09AA55170CF6F57C6A585D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A85F84660CFF366E661C877CBD86CA4F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				278DEC3A8A0A6AF990E6F930E9DABC1E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,17 +133,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FE51678F1A3F621720692304F27B082F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BFB8A5DF6853C2B0C57DCBE4872F7C79 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0696342F9AB809AECA3AC9C379B2FDF5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1FBD4A68FDC96E4B1D46D2B8D63E6E1C /* Pods_TTGTagCollectionView_Example.framework */,
+				785373C0356D9588613E46153892DA27 /* Pods_TTGTagCollectionView_Tests.framework */,
+				ABC05BF655997BEFC3D82C41756DC1D0 /* SVPullToRefresh.framework */,
+				266E36A0485390CDD00D7D6416DE7944 /* TTGTagCollectionView.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		3D92B99A59BA06F0C3B9A34C4D26A35E /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +161,14 @@
 			path = "Example/Pods/Target Support Files/TTGTagCollectionView";
 			sourceTree = "<group>";
 		};
+		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C7AB6F27FF3606F9360547F8F1977A63 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		487DE96FAF146EC8ADC25F09BC98B3B5 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +176,20 @@
 				75276F25E2FF54A717551666DA3F0FDA /* Pods-TTGTagCollectionView_Tests */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		4FB2344E5FDBE774604C806F6E722938 /* SVPullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				F7660ECE56F3E9AB32400FCA502D6E72 /* SVPullToRefresh.h */,
+				E004693281D5068D8EAD57796E986464 /* UIScrollView+SVInfiniteScrolling.h */,
+				24ADBE64E230E62914F960D74320C4DC /* UIScrollView+SVInfiniteScrolling.m */,
+				80E96F3E49A6526351D2FC6C34954605 /* UIScrollView+SVPullToRefresh.h */,
+				B39911BB420820A00E48BB55A026AD22 /* UIScrollView+SVPullToRefresh.m */,
+				C14DB43F1CE596E8A3A635CF811CF58F /* Support Files */,
+			);
+			name = SVPullToRefresh;
+			path = SVPullToRefresh;
 			sourceTree = "<group>";
 		};
 		75276F25E2FF54A717551666DA3F0FDA /* Pods-TTGTagCollectionView_Tests */ = {
@@ -137,14 +208,6 @@
 			);
 			name = "Pods-TTGTagCollectionView_Tests";
 			path = "Target Support Files/Pods-TTGTagCollectionView_Tests";
-			sourceTree = "<group>";
-		};
-		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */,
-			);
-			name = iOS;
 			sourceTree = "<group>";
 		};
 		779E62FB717B756955812BED4F0706A3 /* TTGTagCollectionView */ = {
@@ -180,8 +243,9 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				AA6B47DA3CC0E9B1388C4D7F28D35AE3 /* Development Pods */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				F136BE6D2B0ED8EA8B1BC0A478A071B1 /* Products */,
+				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
+				DF778C85FBC002C7F842FF13F4F538BB /* Pods */,
+				0696342F9AB809AECA3AC9C379B2FDF5 /* Products */,
 				487DE96FAF146EC8ADC25F09BC98B3B5 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -203,14 +267,6 @@
 			path = TTGTagCollectionView;
 			sourceTree = "<group>";
 		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		BD5FD93429D3EB9493BDBA66242E9196 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,19 +279,58 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		F136BE6D2B0ED8EA8B1BC0A478A071B1 /* Products */ = {
+		C14DB43F1CE596E8A3A635CF811CF58F /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				DDEFFFF33FA847E8B1B88C46782B6FB1 /* Pods_TTGTagCollectionView_Example.framework */,
-				1DC9481ECD040EC8E1551242D86D5B3C /* Pods_TTGTagCollectionView_Tests.framework */,
-				4BCF82918A794EDAFC704952B436EFB1 /* TTGTagCollectionView.framework */,
+				86BAEBF17ACA4A47394ED9C3BFA17CAC /* Info.plist */,
+				EAC1331B0B4ADFE85360AB1B137C8644 /* SVPullToRefresh.modulemap */,
+				0C24B1824C3CF57779BF412D8FF23C26 /* SVPullToRefresh.xcconfig */,
+				ACB5DBCE7DEB19903594D5D0C47ADB12 /* SVPullToRefresh-dummy.m */,
+				482C19CB08972A8708DF919ECB0F2DA0 /* SVPullToRefresh-prefix.pch */,
+				D3C6A57D858EF8C5226B7D8D0B851796 /* SVPullToRefresh-umbrella.h */,
 			);
-			name = Products;
+			name = "Support Files";
+			path = "../Target Support Files/SVPullToRefresh";
+			sourceTree = "<group>";
+		};
+		C7AB6F27FF3606F9360547F8F1977A63 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3AC5D9C5B838BE747D0154460D02F926 /* Foundation.framework */,
+				BACC64101FAE4862F8806DB02FC71B0E /* QuartzCore.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		DF778C85FBC002C7F842FF13F4F538BB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4FB2344E5FDBE774604C806F6E722938 /* SVPullToRefresh */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		20D40115E919E2A73A7A6F3530AC5002 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8A166474B58F6F1DFB2CD7FE3224E7F /* TTGTagCollectionView-umbrella.h in Headers */,
+				54A395C1388EE27544479A44E2559DF3 /* TTGTagCollectionView.h in Headers */,
+				D4E89E79C1F81C3E36CB84FC0A68FE71 /* TTGTextTagCollectionView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		53740236E512663A3FCD0C3D0D006EEC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F93F6102712AB9D24174F6BF702B5422 /* Pods-TTGTagCollectionView_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		94B793E7B9C87F91D29899D817664FA3 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -244,45 +339,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E1F5C97F3738D4E741A9FA3B1028EA1E /* Headers */ = {
+		A6E442A7A80A9BE03DB1E7F45DEA48AB /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				205912069680F59792B69C853310243E /* Pods-TTGTagCollectionView_Example-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F3950A4878E4B87A30C32D84E462C880 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				72C79AE3779A183CE13CD37C4A811C3D /* TTGTagCollectionView-umbrella.h in Headers */,
-				1A7D8E174B8CF7703E4E7B9F4E8E7CC3 /* TTGTagCollectionView.h in Headers */,
-				B933BD877C6477B020E600EC86506613 /* TTGTextTagCollectionView.h in Headers */,
+				D3AEFF3A7E6D5E5DE4057B1C72C985E1 /* SVPullToRefresh-umbrella.h in Headers */,
+				EFEB168CCAA811A6D9B666A212EBE4AF /* SVPullToRefresh.h in Headers */,
+				1777722CE220CC1B9053B2CDBAEF72C5 /* UIScrollView+SVInfiniteScrolling.h in Headers */,
+				4804F9C500317EB41586672ACFB8660F /* UIScrollView+SVPullToRefresh.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		0BCF38FC274E1ED3239B036F2BDBBB80 /* Pods-TTGTagCollectionView_Example */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 69DDDD73E1463EDA0B496084E885A849 /* Build configuration list for PBXNativeTarget "Pods-TTGTagCollectionView_Example" */;
-			buildPhases = (
-				649C3E8C2109B99BC34CBB9689801579 /* Sources */,
-				FE51678F1A3F621720692304F27B082F /* Frameworks */,
-				E1F5C97F3738D4E741A9FA3B1028EA1E /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8A5892BE3DDAB619E906724EE5A96F8B /* PBXTargetDependency */,
-			);
-			name = "Pods-TTGTagCollectionView_Example";
-			productName = "Pods-TTGTagCollectionView_Example";
-			productReference = DDEFFFF33FA847E8B1B88C46782B6FB1 /* Pods_TTGTagCollectionView_Example.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		4319EBB7AA24F87169EC942D6617ACD3 /* Pods-TTGTagCollectionView_Tests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 58EEB1938591557419200EDA7423D31D /* Build configuration list for PBXNativeTarget "Pods-TTGTagCollectionView_Tests" */;
@@ -297,16 +367,52 @@
 			);
 			name = "Pods-TTGTagCollectionView_Tests";
 			productName = "Pods-TTGTagCollectionView_Tests";
-			productReference = 1DC9481ECD040EC8E1551242D86D5B3C /* Pods_TTGTagCollectionView_Tests.framework */;
+			productReference = 785373C0356D9588613E46153892DA27 /* Pods_TTGTagCollectionView_Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		5A98956C303F775426FE9A0553E5CDBF /* TTGTagCollectionView */ = {
+		6455FD81D0603972CC782B764B3FE18D /* SVPullToRefresh */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00F8A1CA348CBBD239678F1EEDD6B1BE /* Build configuration list for PBXNativeTarget "TTGTagCollectionView" */;
+			buildConfigurationList = 7D7AF0F2AD948D8A5EC9626404021F0F /* Build configuration list for PBXNativeTarget "SVPullToRefresh" */;
 			buildPhases = (
-				DC24C7060FFCA03EE83AC834BD8592BA /* Sources */,
-				66B15993A68D5411CA896D64A265EC73 /* Frameworks */,
-				F3950A4878E4B87A30C32D84E462C880 /* Headers */,
+				40F2981D4D8374146697CAAC310C43C3 /* Sources */,
+				8C8160332416B4C2FC9A56D9B639639E /* Frameworks */,
+				A6E442A7A80A9BE03DB1E7F45DEA48AB /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SVPullToRefresh;
+			productName = SVPullToRefresh;
+			productReference = ABC05BF655997BEFC3D82C41756DC1D0 /* SVPullToRefresh.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D835F7A8B43ED55BA50B7AC988E7BDB3 /* Pods-TTGTagCollectionView_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 482B631B7FC04C827CC57421E9859DCC /* Build configuration list for PBXNativeTarget "Pods-TTGTagCollectionView_Example" */;
+			buildPhases = (
+				E3051E6C9052CC5D407832ACDAB1B2EC /* Sources */,
+				99356DCED62B1382FB26C83D956091C7 /* Frameworks */,
+				53740236E512663A3FCD0C3D0D006EEC /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D1CE6562237EC59AF683DDCC596F954C /* PBXTargetDependency */,
+				3800443E06152FFCF935D70C26590F60 /* PBXTargetDependency */,
+			);
+			name = "Pods-TTGTagCollectionView_Example";
+			productName = "Pods-TTGTagCollectionView_Example";
+			productReference = 1FBD4A68FDC96E4B1D46D2B8D63E6E1C /* Pods_TTGTagCollectionView_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E1914641887765BFFCD605EA9B4C910D /* TTGTagCollectionView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C7B1576162C8499323891A0C9759FF6 /* Build configuration list for PBXNativeTarget "TTGTagCollectionView" */;
+			buildPhases = (
+				6CC525A8BFF3ABFDA147FDDAF4B64F17 /* Sources */,
+				A85F84660CFF366E661C877CBD86CA4F /* Frameworks */,
+				20D40115E919E2A73A7A6F3530AC5002 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -314,7 +420,7 @@
 			);
 			name = TTGTagCollectionView;
 			productName = TTGTagCollectionView;
-			productReference = 4BCF82918A794EDAFC704952B436EFB1 /* TTGTagCollectionView.framework */;
+			productReference = 266E36A0485390CDD00D7D6416DE7944 /* TTGTagCollectionView.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -334,18 +440,29 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = F136BE6D2B0ED8EA8B1BC0A478A071B1 /* Products */;
+			productRefGroup = 0696342F9AB809AECA3AC9C379B2FDF5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0BCF38FC274E1ED3239B036F2BDBBB80 /* Pods-TTGTagCollectionView_Example */,
+				D835F7A8B43ED55BA50B7AC988E7BDB3 /* Pods-TTGTagCollectionView_Example */,
 				4319EBB7AA24F87169EC942D6617ACD3 /* Pods-TTGTagCollectionView_Tests */,
-				5A98956C303F775426FE9A0553E5CDBF /* TTGTagCollectionView */,
+				6455FD81D0603972CC782B764B3FE18D /* SVPullToRefresh */,
+				E1914641887765BFFCD605EA9B4C910D /* TTGTagCollectionView */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		40F2981D4D8374146697CAAC310C43C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				862E9C74210A746BCC691589A2B71EC8 /* SVPullToRefresh-dummy.m in Sources */,
+				E2DA0C1FA77FAAD5CED2F5AC3D30BB68 /* UIScrollView+SVInfiniteScrolling.m in Sources */,
+				16C51FAECDA889EA41B47EB8E752E5F7 /* UIScrollView+SVPullToRefresh.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		620CEF08DB52958F6BFC335FBEC18F4D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -354,32 +471,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		649C3E8C2109B99BC34CBB9689801579 /* Sources */ = {
+		6CC525A8BFF3ABFDA147FDDAF4B64F17 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B3AF30DDE4BBD1AFC73F32C4FD362DF /* Pods-TTGTagCollectionView_Example-dummy.m in Sources */,
+				72950E1AB066C6210BE228DC8272D5EF /* TTGTagCollectionView-dummy.m in Sources */,
+				D299836F1E4B1B32C63472A765866587 /* TTGTagCollectionView.m in Sources */,
+				DBE6D93B482C12007FCAB721A55803C8 /* TTGTextTagCollectionView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DC24C7060FFCA03EE83AC834BD8592BA /* Sources */ = {
+		E3051E6C9052CC5D407832ACDAB1B2EC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC7E4654244D4CEAA54023B7BE9728BF /* TTGTagCollectionView-dummy.m in Sources */,
-				374AE042F2D4C1F2F145A46D3EC6D366 /* TTGTagCollectionView.m in Sources */,
-				1F92A51E8F5D566F8C45C6052740ABD3 /* TTGTextTagCollectionView.m in Sources */,
+				37735490B434977215D25EEEBD01C63F /* Pods-TTGTagCollectionView_Example-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		8A5892BE3DDAB619E906724EE5A96F8B /* PBXTargetDependency */ = {
+		3800443E06152FFCF935D70C26590F60 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = TTGTagCollectionView;
-			target = 5A98956C303F775426FE9A0553E5CDBF /* TTGTagCollectionView */;
-			targetProxy = 76E60273770A0A8AA2C9C980E4609BD5 /* PBXContainerItemProxy */;
+			target = E1914641887765BFFCD605EA9B4C910D /* TTGTagCollectionView */;
+			targetProxy = 70D04506B4C0FDE8616EEB021DA329E8 /* PBXContainerItemProxy */;
+		};
+		D1CE6562237EC59AF683DDCC596F954C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SVPullToRefresh;
+			target = 6455FD81D0603972CC782B764B3FE18D /* SVPullToRefresh */;
+			targetProxy = 14B1EBED46DC5355C3F35CB2A86836B8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -428,38 +551,7 @@
 			};
 			name = Debug;
 		};
-		110C355CEA474E2E6D371AD031437F1F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 533F3AC57A7A6803BB4176721C10D924 /* TTGTagCollectionView.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/TTGTagCollectionView/TTGTagCollectionView-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/TTGTagCollectionView/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/TTGTagCollectionView/TTGTagCollectionView.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = TTGTagCollectionView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		24D47B9D83C38496274345FF1AB198C3 /* Release */ = {
+		41E91D3FFFCD69882B4B53ECBF1C2D17 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 264987916F920268DBD891EE6A48DC15 /* Pods-TTGTagCollectionView_Example.release.xcconfig */;
 			buildSettings = {
@@ -569,6 +661,37 @@
 			};
 			name = Release;
 		};
+		8E9821486F37AD255D77D7709FA7C0B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 533F3AC57A7A6803BB4176721C10D924 /* TTGTagCollectionView.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/TTGTagCollectionView/TTGTagCollectionView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TTGTagCollectionView/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/TTGTagCollectionView/TTGTagCollectionView.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = TTGTagCollectionView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		90DDC951686415D69873E640E820415F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D90D384090BFA6B8C818580F2B7EB91C /* Pods-TTGTagCollectionView_Tests.debug.xcconfig */;
@@ -604,7 +727,7 @@
 			};
 			name = Debug;
 		};
-		AE07BA4019E63525C341D04CBCE2AF88 /* Release */ = {
+		BFDD9A2513A1FD78CFAB42E00262A92C /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 533F3AC57A7A6803BB4176721C10D924 /* TTGTagCollectionView.xcconfig */;
 			buildSettings = {
@@ -635,7 +758,69 @@
 			};
 			name = Release;
 		};
-		C783AAA57E2784FC1BEEA56752380AE9 /* Debug */ = {
+		D3BD9508AB305B6CAD91C2C6F6CA98A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C24B1824C3CF57779BF412D8FF23C26 /* SVPullToRefresh.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SVPullToRefresh/SVPullToRefresh-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SVPullToRefresh/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SVPullToRefresh/SVPullToRefresh.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SVPullToRefresh;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		DDD33C877D3C90E9EBC002E63B819E29 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C24B1824C3CF57779BF412D8FF23C26 /* SVPullToRefresh.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SVPullToRefresh/SVPullToRefresh-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SVPullToRefresh/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SVPullToRefresh/SVPullToRefresh.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SVPullToRefresh;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		FE09B767EE0BB785E41D912953316D11 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E0BF6B8E5B54E8A6C9308DCD26187114 /* Pods-TTGTagCollectionView_Example.debug.xcconfig */;
 			buildSettings = {
@@ -673,11 +858,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00F8A1CA348CBBD239678F1EEDD6B1BE /* Build configuration list for PBXNativeTarget "TTGTagCollectionView" */ = {
+		2C7B1576162C8499323891A0C9759FF6 /* Build configuration list for PBXNativeTarget "TTGTagCollectionView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				110C355CEA474E2E6D371AD031437F1F /* Debug */,
-				AE07BA4019E63525C341D04CBCE2AF88 /* Release */,
+				8E9821486F37AD255D77D7709FA7C0B3 /* Debug */,
+				BFDD9A2513A1FD78CFAB42E00262A92C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -691,6 +876,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		482B631B7FC04C827CC57421E9859DCC /* Build configuration list for PBXNativeTarget "Pods-TTGTagCollectionView_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE09B767EE0BB785E41D912953316D11 /* Debug */,
+				41E91D3FFFCD69882B4B53ECBF1C2D17 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		58EEB1938591557419200EDA7423D31D /* Build configuration list for PBXNativeTarget "Pods-TTGTagCollectionView_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -700,11 +894,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		69DDDD73E1463EDA0B496084E885A849 /* Build configuration list for PBXNativeTarget "Pods-TTGTagCollectionView_Example" */ = {
+		7D7AF0F2AD948D8A5EC9626404021F0F /* Build configuration list for PBXNativeTarget "SVPullToRefresh" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C783AAA57E2784FC1BEEA56752380AE9 /* Debug */,
-				24D47B9D83C38496274345FF1AB198C3 /* Release */,
+				DDD33C877D3C90E9EBC002E63B819E29 /* Debug */,
+				D3BD9508AB305B6CAD91C2C6F6CA98A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
