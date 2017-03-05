@@ -6,27 +6,10 @@
 #import <UIKit/UIKit.h>
 #import "TTGTagCollectionView.h"
 
-@class TTGTextTagCollectionView;
+/// TTGTextTagConfig
 
-@protocol TTGTextTagCollectionViewDelegate <NSObject>
-@optional
-- (BOOL)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView canTapTag:(NSString *)tagText atIndex:(NSUInteger)index currentSelected:(BOOL)currentSelected;
-
-- (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView didTapTag:(NSString *)tagText atIndex:(NSUInteger)index selected:(BOOL)selected;
-
-- (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView updateContentSize:(CGSize)contentSize;
-@end
-
-@interface TTGTextTagCollectionView : UIView
-@property (weak, nonatomic) id <TTGTextTagCollectionViewDelegate> delegate;
-
-// Inside scrollView
-@property (nonatomic, strong, readonly) UIScrollView *scrollView;
-
-// Define if the tag can be selected.
-@property (assign, nonatomic) BOOL enableTagSelection;
-
-// Text
+@interface TTGTextTagConfig : NSObject
+// Text font
 @property (strong, nonatomic) UIFont *tagTextFont;
 
 // Text color
@@ -53,6 +36,36 @@
 @property (nonatomic, assign) CGFloat tagShadowRadius;  // Default is 2f
 @property (nonatomic, assign) CGFloat tagShadowOpacity; // Default is 0.3f
 
+// Tag extra space in width and height, will expand each tag's size
+@property (assign, nonatomic) CGSize tagExtraSpace;
+@end
+
+/// TTGTextTagCollectionView
+
+@class TTGTextTagCollectionView;
+
+@protocol TTGTextTagCollectionViewDelegate <NSObject>
+@optional
+- (BOOL)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView canTapTag:(NSString *)tagText atIndex:(NSUInteger)index currentSelected:(BOOL)currentSelected;
+
+- (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView didTapTag:(NSString *)tagText atIndex:(NSUInteger)index selected:(BOOL)selected;
+
+- (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView updateContentSize:(CGSize)contentSize;
+@end
+
+@interface TTGTextTagCollectionView : UIView
+// Delegate
+@property (weak, nonatomic) id <TTGTextTagCollectionViewDelegate> delegate;
+
+// Inside scrollView
+@property (nonatomic, strong, readonly) UIScrollView *scrollView;
+
+// Define if the tag can be selected.
+@property (assign, nonatomic) BOOL enableTagSelection;
+
+// Default tag config
+@property (nonatomic, strong) TTGTextTagConfig *defaultConfig;
+
 // Tags scroll direction, default is vertical.
 @property (nonatomic, assign) TTGTagCollectionScrollDirection scrollDirection;
 
@@ -65,14 +78,11 @@
 // Tag selection limit, default is 0, means no limit
 @property (nonatomic, assign) NSUInteger selectionLimit;
 
-// Each tag extra space in width and height
-@property (assign, nonatomic) CGSize tagExtraSpace;
-
 // Horizontal and vertical space between tags, default is 4.
 @property (assign, nonatomic) CGFloat horizontalSpacing;
 @property (assign, nonatomic) CGFloat verticalSpacing;
 
-// Content inset, default is UIEdgeInsetsMake(2, 2, 2, 2).
+// Content inset, like padding, default is UIEdgeInsetsMake(2, 2, 2, 2).
 @property (nonatomic, assign) UIEdgeInsets contentInset;
 
 // The true tags content size, readonly
@@ -82,20 +92,55 @@
 @property (nonatomic, assign) BOOL showsHorizontalScrollIndicator;
 @property (nonatomic, assign) BOOL showsVerticalScrollIndicator;
 
+// Reload
 - (void)reload;
 
+// Add tag with detalt config
 - (void)addTag:(NSString *)tag;
 
 - (void)addTags:(NSArray <NSString *> *)tags;
 
+// Add tag with custom config
+- (void)addTag:(NSString *)tag withConfig:(TTGTextTagConfig *)config;
+
+- (void)addTags:(NSArray <NSString *> *)tags withConfig:(TTGTextTagConfig *)config;
+
+// Insert tag with default config
+- (void)insertTag:(NSString *)tag atIndex:(NSUInteger)index;
+
+- (void)insertTags:(NSArray <NSString *> *)tags atIndex:(NSUInteger)index;
+
+// Insert tag with custom config
+- (void)insertTag:(NSString *)tag atIndex:(NSUInteger)index withConfig:(TTGTextTagConfig *)config;
+
+- (void)insertTags:(NSArray <NSString *> *)tags atIndex:(NSUInteger)index withConfig:(TTGTextTagConfig *)config;
+
+// Remove tag
 - (void)removeTag:(NSString *)tag;
 
 - (void)removeTagAtIndex:(NSUInteger)index;
 
 - (void)removeAllTags;
 
+// Update tag selected state
 - (void)setTagAtIndex:(NSUInteger)index selected:(BOOL)selected;
 
+// Update tag config
+- (void)setTagAtIndex:(NSUInteger)index withConfig:(TTGTextTagConfig *)config;
+
+- (void)setTagsInRange:(NSRange)range withConfig:(TTGTextTagConfig *)config;
+
+// Get tag
+- (NSString *)getTagAtIndex:(NSUInteger)index;
+
+- (NSArray <NSString *> *)getTagsInRange:(NSRange)range;
+
+// Get tag config
+- (TTGTextTagConfig *)getConfigAtIndex:(NSUInteger)index;
+
+- (NSArray <TTGTextTagConfig *> *)getConfigsInRange:(NSRange)range;
+
+// Get all
 - (NSArray <NSString *> *)allTags;
 
 - (NSArray <NSString *> *)allSelectedTags;

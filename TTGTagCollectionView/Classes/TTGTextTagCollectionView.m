@@ -4,13 +4,78 @@
 
 #import "TTGTextTagCollectionView.h"
 
+#pragma mark - -----TTGTextTagConfig-----
+
+@implementation TTGTextTagConfig
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _tagTextFont = [UIFont systemFontOfSize:16.0f];
+        
+        _tagTextColor = [UIColor whiteColor];
+        _tagSelectedTextColor = [UIColor whiteColor];
+        
+        _tagBackgroundColor = [UIColor colorWithRed:0.30 green:0.72 blue:0.53 alpha:1.00];
+        _tagSelectedBackgroundColor = [UIColor colorWithRed:0.22 green:0.29 blue:0.36 alpha:1.00];
+        
+        _tagCornerRadius = 4.0f;
+        _tagSelectedCornerRadius = 4.0f;
+        
+        _tagBorderWidth = 1.0f;
+        _tagSelectedBorderWidth = 1.0f;
+        
+        _tagBorderColor = [UIColor whiteColor];
+        _tagSelectedBorderColor = [UIColor whiteColor];
+        
+        _tagShadowColor = [UIColor blackColor];
+        _tagShadowOffset = CGSizeMake(2, 2);
+        _tagShadowRadius = 2;
+        _tagShadowOpacity = 0.3f;
+        
+        _tagExtraSpace = CGSizeMake(14, 14);
+    }
+    return self;
+}
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+    TTGTextTagConfig *newConfig = [TTGTextTagConfig new];
+    newConfig.tagTextFont = [_tagTextFont copyWithZone:zone];
+    
+    newConfig.tagTextColor = [_tagTextColor copyWithZone:zone];
+    newConfig.tagSelectedTextColor = [_tagSelectedTextColor copyWithZone:zone];
+    
+    newConfig.tagBackgroundColor = [_tagBackgroundColor copyWithZone:zone];
+    newConfig.tagSelectedBackgroundColor = [_tagSelectedBackgroundColor copyWithZone:zone];
+    
+    newConfig.tagCornerRadius = _tagCornerRadius;
+    newConfig.tagSelectedCornerRadius = _tagSelectedCornerRadius;
+    
+    newConfig.tagBorderWidth = _tagBorderWidth;
+    newConfig.tagSelectedBorderWidth = _tagSelectedBorderWidth;
+    
+    newConfig.tagBorderColor = [_tagBorderColor copyWithZone:zone];
+    newConfig.tagSelectedBorderColor = [_tagSelectedBorderColor copyWithZone:zone];
+    
+    newConfig.tagShadowColor = [_tagShadowColor copyWithZone:zone];
+    newConfig.tagShadowOffset = _tagShadowOffset;
+    newConfig.tagShadowRadius = _tagShadowRadius;
+    newConfig.tagShadowOpacity = _tagShadowOpacity;
+    
+    newConfig.tagExtraSpace = _tagExtraSpace;
+    
+    return newConfig;
+}
+
+@end
+
 #pragma mark - -----TTGTextTagLabel-----
 
 // UILabel wrapper for round corner and shadow at the same time.
 @interface TTGTextTagLabel : UIView
+@property (nonatomic, strong) TTGTextTagConfig *config;
 @property (nonatomic, strong) UILabel *label;
 @property (assign, nonatomic) BOOL selected;
-@property (assign, nonatomic) NSUInteger index;
 @end
 
 @implementation TTGTextTagLabel
@@ -45,6 +110,10 @@
 
 - (CGSize)sizeThatFits:(CGSize)size {
     return [_label sizeThatFits:size];
+}
+
+- (CGSize)intrinsicContentSize {
+    return _label.intrinsicContentSize;
 }
 
 @end
@@ -86,29 +155,7 @@
     _enableTagSelection = YES;
     _tagLabels = [NSMutableArray new];
 
-    _tagTextFont = [UIFont systemFontOfSize:20.0f];
-    
-    _tagTextColor = [UIColor whiteColor];
-    _tagSelectedTextColor = [UIColor whiteColor];
-    
-    _tagBackgroundColor = [UIColor colorWithRed:0.30 green:0.72 blue:0.53 alpha:1.00];
-    _tagSelectedBackgroundColor = [UIColor colorWithRed:0.22 green:0.29 blue:0.36 alpha:1.00];
-    
-    _tagCornerRadius = 4.0f;
-    _tagSelectedCornerRadius = 4.0f;
-    
-    _tagBorderWidth = 1.0f;
-    _tagSelectedBorderWidth = 1.0f;
-    
-    _tagBorderColor = [UIColor whiteColor];
-    _tagSelectedBorderColor = [UIColor whiteColor];
-    
-    _tagShadowColor = [UIColor blackColor];
-    _tagShadowOffset = CGSizeMake(2, 2);
-    _tagShadowRadius = 2;
-    _tagShadowOpacity = 0.3f;
-    
-    _tagExtraSpace = CGSizeMake(14, 14);
+    _defaultConfig = [TTGTextTagConfig new];
 
     _tagCollectionView = [[TTGTagCollectionView alloc] initWithFrame:self.bounds];
     _tagCollectionView.delegate = self;
@@ -127,8 +174,11 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     if (!CGRectEqualToRect(_tagCollectionView.frame, self.bounds)) {
+        [self updateAllLabelStyleAndFrame];
         _tagCollectionView.frame = self.bounds;
-        [self reload];
+        [_tagCollectionView setNeedsLayout];
+        [_tagCollectionView layoutIfNeeded];
+        [self invalidateIntrinsicContentSize];
     }
 }
 
@@ -141,29 +191,61 @@
 }
 
 - (void)addTag:(NSString *)tag {
-    if (!tag || tag.length == 0) {
-        return;
-    }
+    [self insertTag:tag atIndex:_tagLabels.count];
+}
 
-    TTGTextTagLabel *label = [self newLabelForTagText:tag];
-    [_tagLabels addObject:label];
-    [self reload];
+- (void)addTag:(NSString *)tag withConfig:(TTGTextTagConfig *)config {
+    [self insertTag:tag atIndex:_tagLabels.count withConfig:config];
 }
 
 - (void)addTags:(NSArray <NSString *> *)tags {
-    if (!tags) {
+    [self insertTags:tags atIndex:_tagLabels.count withConfig:_defaultConfig copyConfig:NO];
+}
+
+- (void)addTags:(NSArray<NSString *> *)tags withConfig:(TTGTextTagConfig *)config {
+    [self insertTags:tags atIndex:_tagLabels.count withConfig:config copyConfig:YES];
+}
+
+- (void)insertTag:(NSString *)tag atIndex:(NSUInteger)index {
+    if ([tag isKindOfClass:[NSString class]]) {
+        [self insertTags:@[tag] atIndex:index withConfig:_defaultConfig copyConfig:NO];
+    }
+}
+
+- (void)insertTag:(NSString *)tag atIndex:(NSUInteger)index withConfig:(TTGTextTagConfig *)config {
+    if ([tag isKindOfClass:[NSString class]]) {
+        [self insertTags:@[tag] atIndex:index withConfig:config copyConfig:YES];
+    }
+}
+
+- (void)insertTags:(NSArray<NSString *> *)tags atIndex:(NSUInteger)index {
+    [self insertTags:tags atIndex:index withConfig:_defaultConfig copyConfig:NO];
+}
+
+- (void)insertTags:(NSArray<NSString *> *)tags atIndex:(NSUInteger)index withConfig:(TTGTextTagConfig *)config {
+    [self insertTags:tags atIndex:index withConfig:config copyConfig:YES];
+}
+
+- (void)insertTags:(NSArray<NSString *> *)tags atIndex:(NSUInteger)index withConfig:(TTGTextTagConfig *)config copyConfig:(BOOL)copyConfig {
+    if (![tags isKindOfClass:[NSArray class]] || index > _tagLabels.count || ![config isKindOfClass:[TTGTextTagConfig class]]) {
         return;
     }
-
-    for (NSString *tagText in tags) {
-        TTGTextTagLabel *label = [self newLabelForTagText:tagText];
-        [_tagLabels addObject:label];
+    
+    if (copyConfig) {
+        config = [config copy];
     }
+    
+    NSMutableArray *newTagLabels = [NSMutableArray new];
+    for (NSString *tagText in tags) {
+        TTGTextTagLabel *label = [self newLabelForTagText:[tagText description] withConfig:config];
+        [newTagLabels addObject:label];
+    }
+    [_tagLabels insertObjects:newTagLabels atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(index, newTagLabels.count)]];
     [self reload];
 }
 
 - (void)removeTag:(NSString *)tag {
-    if (!tag || tag.length == 0) {
+    if (![tag isKindOfClass:[NSString class]] || tag.length == 0) {
         return;
     }
 
@@ -197,17 +279,79 @@
     }
 
     _tagLabels[index].selected = selected;
-    [self updateStyleAndFrameForLabel:_tagLabels[index]];
+    [self reload];
+}
+
+- (void)setTagAtIndex:(NSUInteger)index withConfig:(TTGTextTagConfig *)config {
+    if (index >= _tagLabels.count || ![config isKindOfClass:[TTGTextTagConfig class]]) {
+        return;
+    }
+    
+    _tagLabels[index].config = [config copy];
+    [self reload];
+}
+
+- (void)setTagsInRange:(NSRange)range withConfig:(TTGTextTagConfig *)config {
+    if (NSMaxRange(range) > _tagLabels.count || ![config isKindOfClass:[TTGTextTagConfig class]]) {
+        return;
+    }
+    
+    NSArray *tagLabels = [_tagLabels subarrayWithRange:range];
+    config = [config copy];
+    for (TTGTextTagLabel *label in tagLabels) {
+        label.config = config;
+    }
+    [self reload];
+}
+
+- (NSString *)getTagAtIndex:(NSUInteger)index {
+    if (index < _tagLabels.count) {
+        return [_tagLabels[index].label.text copy];
+    } else {
+        return nil;
+    }
+}
+
+- (NSArray<NSString *> *)getTagsInRange:(NSRange)range {
+    if (NSMaxRange(range) <= _tagLabels.count) {
+        NSMutableArray *tags = [NSMutableArray new];
+        for (TTGTextTagLabel *label in [_tagLabels subarrayWithRange:range]) {
+            [tags addObject:[label.label.text copy]];
+        }
+        return [tags copy];
+    } else {
+        return nil;
+    }
+}
+
+- (TTGTextTagConfig *)getConfigAtIndex:(NSUInteger)index {
+    if (index < _tagLabels.count) {
+        return [_tagLabels[index].config copy];
+    } else {
+        return nil;
+    }
+}
+
+- (NSArray<TTGTextTagConfig *> *)getConfigsInRange:(NSRange)range {
+    if (NSMaxRange(range) <= _tagLabels.count) {
+        NSMutableArray *configs = [NSMutableArray new];
+        for (TTGTextTagLabel *label in [_tagLabels subarrayWithRange:range]) {
+            [configs addObject:[label.config copy]];
+        }
+        return [configs copy];
+    } else {
+        return nil;
+    }
 }
 
 - (NSArray <NSString *> *)allTags {
     NSMutableArray *allTags = [NSMutableArray new];
 
     for (TTGTextTagLabel *label in _tagLabels) {
-        [allTags addObject:label.label.text];
+        [allTags addObject:[label.label.text copy]];
     }
 
-    return allTags.copy;
+    return [allTags copy];
 }
 
 - (NSArray <NSString *> *)allSelectedTags {
@@ -215,11 +359,11 @@
 
     for (TTGTextTagLabel *label in _tagLabels) {
         if (label.selected) {
-            [allTags addObject:label.label.text];
+            [allTags addObject:[label.label.text copy]];
         }
     }
 
-    return allTags.copy;
+    return [allTags copy];
 }
 
 - (NSArray <NSString *> *)allNotSelectedTags {
@@ -227,11 +371,11 @@
 
     for (TTGTextTagLabel *label in _tagLabels) {
         if (!label.selected) {
-            [allTags addObject:label.label.text];
+            [allTags addObject:[label.label.text copy]];
         }
     }
 
-    return allTags.copy;
+    return [allTags copy];
 }
 
 #pragma mark - TTGTagCollectionViewDataSource
@@ -242,7 +386,6 @@
 
 - (UIView *)tagCollectionView:(TTGTagCollectionView *)tagCollectionView tagViewForIndex:(NSUInteger)index {
     TTGTextTagLabel *label = _tagLabels[index];
-    label.index = index;
     return _tagLabels[index];
 }
 
@@ -374,45 +517,45 @@
     for (TTGTextTagLabel *label in _tagLabels) {
         [self updateStyleAndFrameForLabel:label];
     }
-    [_tagCollectionView reload];
 }
 
 - (void)updateStyleAndFrameForLabel:(TTGTextTagLabel *)label {
     // Update style
-    label.label.font = _tagTextFont;
-    label.label.textColor = label.selected ? _tagSelectedTextColor : _tagTextColor;
-    label.label.backgroundColor = label.selected ? _tagSelectedBackgroundColor : _tagBackgroundColor;
-    label.label.layer.cornerRadius = label.selected ? _tagSelectedCornerRadius : _tagCornerRadius;
-    label.label.layer.borderWidth = label.selected ? _tagSelectedBorderWidth : _tagBorderWidth;
-    label.label.layer.borderColor = (label.selected && _tagSelectedBorderColor) ? _tagSelectedBorderColor.CGColor : _tagBorderColor.CGColor;
+    TTGTextTagConfig *config = label.config;
+    label.label.font = config.tagTextFont;
+    label.label.textColor = label.selected ? config.tagSelectedTextColor : config.tagTextColor;
+    label.label.backgroundColor = label.selected ? config.tagSelectedBackgroundColor : config.tagBackgroundColor;
+    label.label.layer.cornerRadius = label.selected ? config.tagSelectedCornerRadius : config.tagCornerRadius;
+    label.label.layer.borderWidth = label.selected ? config.tagSelectedBorderWidth : config.tagBorderWidth;
+    label.label.layer.borderColor = (label.selected && config.tagSelectedBorderColor) ? config.tagSelectedBorderColor.CGColor : config.tagBorderColor.CGColor;
     label.label.layer.masksToBounds = YES;
     
-    label.layer.shadowColor = (_tagShadowColor ?: [UIColor clearColor]).CGColor;
-    label.layer.shadowOffset = _tagShadowOffset;
-    label.layer.shadowRadius = _tagShadowRadius;
-    label.layer.shadowOpacity = _tagShadowOpacity;
+    label.layer.shadowColor = (config.tagShadowColor ?: [UIColor clearColor]).CGColor;
+    label.layer.shadowOffset = config.tagShadowOffset;
+    label.layer.shadowRadius = config.tagShadowRadius;
+    label.layer.shadowOpacity = config.tagShadowOpacity;
     label.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:label.bounds cornerRadius:label.label.layer.cornerRadius].CGPath;
     label.layer.shouldRasterize = YES;
     [label.layer setRasterizationScale:[[UIScreen mainScreen] scale]];
     
     // Update frame
-    [label sizeToFit];
-    CGRect frame = label.frame;
-    frame.size.width += _tagExtraSpace.width;
-    frame.size.height += _tagExtraSpace.height;
+    CGSize size = [label sizeThatFits:CGSizeZero];
+    size.width += config.tagExtraSpace.width;
+    size.height += config.tagExtraSpace.height;
     
     // Width limit for vertical scroll direction
     if (self.scrollDirection == TTGTagCollectionScrollDirectionVertical &&
-        CGRectGetWidth(frame) > (CGRectGetWidth(self.bounds) - self.contentInset.left - self.contentInset.right)) {
-        frame.size.width = (CGRectGetWidth(self.bounds) - self.contentInset.left - self.contentInset.right);
+        size.width > (CGRectGetWidth(self.bounds) - self.contentInset.left - self.contentInset.right)) {
+        size.width = (CGRectGetWidth(self.bounds) - self.contentInset.left - self.contentInset.right);
     }
     
-    label.frame = frame;
+    label.frame = (CGRect){label.frame.origin, size};
 }
 
-- (TTGTextTagLabel *)newLabelForTagText:(NSString *)tagText {
+- (TTGTextTagLabel *)newLabelForTagText:(NSString *)tagText withConfig:(TTGTextTagConfig *)config {
     TTGTextTagLabel *label = [TTGTextTagLabel new];
     label.label.text = tagText;
+    label.config = config;
     [self updateStyleAndFrameForLabel:label];
     return label;
 }

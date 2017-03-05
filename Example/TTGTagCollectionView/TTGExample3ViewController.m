@@ -48,8 +48,4 @@
     [_tagView reload];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-
 @end

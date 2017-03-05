@@ -28,6 +28,10 @@
     _oneLineTagView.scrollDirection = TTGTagCollectionScrollDirectionHorizontal;
     _twoLineTagView.scrollDirection = TTGTagCollectionScrollDirectionHorizontal;
     _threeLineTagView.scrollDirection = TTGTagCollectionScrollDirectionHorizontal;
+    
+    _oneLineTagView.alignment = TTGTagCollectionAlignmentFillByExpandingWidth;
+    _twoLineTagView.alignment = TTGTagCollectionAlignmentFillByExpandingWidth;
+    _threeLineTagView.alignment = TTGTagCollectionAlignmentFillByExpandingWidth;
 
     _oneLineTagView.numberOfLines = 1;
     _twoLineTagView.numberOfLines = 2;

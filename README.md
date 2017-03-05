@@ -17,12 +17,17 @@ TTGTagCollectionView is useful for showing different size tag views in a vertica
 
 ## Features
 * Both text tag and custom view tag supported.
-* Highly customizable
-* Vertical and horizontal scrollable
-* Support left, center and right aligment
-* Support specifying number of lines
-* Support Autolayout `intrinsicContentSize` to auto determine height based on content size
-* Support pull to refresh, like `SVPullToRefresh`
+* Highly customizable, each text tag can be configured.
+* Vertical and horizontal scrollable.
+* Support different kinds of aligment types.
+* Support specifying number of lines.
+* Support Autolayout `intrinsicContentSize` to auto determine height based on content size.
+* Support pull to refresh, like `SVPullToRefresh`.
+
+## Demo
+You can find demos in the `Example->TTGTagCollectionView.xcworkspace` project.
+
+![Example project](https://github.com/zekunyan/TTGTagCollectionView/raw/master/Resources/demo_example.png)
 
 ## Requirements
 iOS 7 and later.
@@ -70,11 +75,11 @@ Conform the `TTGTextTagCollectionViewDelegate` protocol to get callback when you
 ```
 
 #### Customization
-```
-// Define if the tag can be selected.
-@property (assign, nonatomic) BOOL enableTagSelection;
+Each tag can be configured.
 
-// Text
+```
+@interface TTGTextTagConfig : NSObject
+// Text font
 @property (strong, nonatomic) UIFont *tagTextFont;
 
 // Text color
@@ -101,6 +106,17 @@ Conform the `TTGTextTagCollectionViewDelegate` protocol to get callback when you
 @property (nonatomic, assign) CGFloat tagShadowRadius;  // Default is 2f
 @property (nonatomic, assign) CGFloat tagShadowOpacity; // Default is 0.3f
 
+// Tag extra space in width and height, will expand each tag's size
+@property (assign, nonatomic) CGSize tagExtraSpace;
+@end
+```
+
+You can also configure scroll direction, alignment, lines limit, spacing and inset.
+
+```
+// Define if the tag can be selected.
+@property (assign, nonatomic) BOOL enableTagSelection;
+
 // Tags scroll direction, default is vertical.
 @property (nonatomic, assign) TTGTagCollectionScrollDirection scrollDirection;
 
@@ -113,33 +129,58 @@ Conform the `TTGTextTagCollectionViewDelegate` protocol to get callback when you
 // Tag selection limit, default is 0, means no limit
 @property (nonatomic, assign) NSUInteger selectionLimit;
 
-// Each tag extra space in width and height
-@property (assign, nonatomic) CGSize tagExtraSpace;
-
 // Horizontal and vertical space between tags, default is 4.
 @property (assign, nonatomic) CGFloat horizontalSpacing;
 @property (assign, nonatomic) CGFloat verticalSpacing;
 
 // Content inset, default is UIEdgeInsetsMake(2, 2, 2, 2).
 @property (nonatomic, assign) UIEdgeInsets contentInset;
+```
 
-// The true tags content size, readonly
-@property (nonatomic, assign, readonly) CGSize contentSize;
+Alignment types:
+
+```
+typedef NS_ENUM(NSInteger, TTGTagCollectionAlignment) {
+    TTGTagCollectionAlignmentLeft = 0,             // Default
+    TTGTagCollectionAlignmentCenter,               // Center
+    TTGTagCollectionAlignmentRight,                // Right
+    TTGTagCollectionAlignmentFillByExpandingSpace, // Expand horizontal spacing and fill
+    TTGTagCollectionAlignmentFillByExpandingWidth  // Expand width and fill
+};
 ```
 
 #### Config tags
 
-```
-// Add tags
-- (void)addTag:(NSString *)tag;
+Add tag.
 
+```
+// Add tag with detalt config
+- (void)addTag:(NSString *)tag;
 - (void)addTags:(NSArray <NSString *> *)tags;
 
-/// Remove tags
+// Add tag with custom config
+- (void)addTag:(NSString *)tag withConfig:(TTGTextTagConfig *)config;
+- (void)addTags:(NSArray <NSString *> *)tags withConfig:(TTGTextTagConfig *)config;
+```
+
+Insert tag.
+
+```
+// Insert tag with default config
+- (void)insertTag:(NSString *)tag atIndex:(NSUInteger)index;
+- (void)insertTags:(NSArray <NSString *> *)tags atIndex:(NSUInteger)index;
+
+// Insert tag with custom config
+- (void)insertTag:(NSString *)tag atIndex:(NSUInteger)index withConfig:(TTGTextTagConfig *)config;
+- (void)insertTags:(NSArray <NSString *> *)tags atIndex:(NSUInteger)index withConfig:(TTGTextTagConfig *)config;
+```
+
+Remove tag.
+
+```
+// Remove tag
 - (void)removeTag:(NSString *)tag;
-
 - (void)removeTagAtIndex:(NSUInteger)index;
-
 - (void)removeAllTags;
 ```
 
@@ -149,13 +190,27 @@ Conform the `TTGTextTagCollectionViewDelegate` protocol to get callback when you
 - (void)setTagAtIndex:(NSUInteger)index selected:(BOOL)selected;
 ```
 
+#### Update tag style config
+```
+// Update tag config
+- (void)setTagAtIndex:(NSUInteger)index withConfig:(TTGTextTagConfig *)config;
+- (void)setTagsInRange:(NSRange)range withConfig:(TTGTextTagConfig *)config;
+```
+
 #### Get tag information
 
 ```
+// Get tag
+- (NSString *)getTagAtIndex:(NSUInteger)index;
+- (NSArray <NSString *> *)getTagsInRange:(NSRange)range;
+
+// Get tag config
+- (TTGTextTagConfig *)getConfigAtIndex:(NSUInteger)index;
+- (NSArray <TTGTextTagConfig *> *)getConfigsInRange:(NSRange)range;
+
+// Get all
 - (NSArray <NSString *> *)allTags;
-
 - (NSArray <NSString *> *)allSelectedTags;
-
 - (NSArray <NSString *> *)allNotSelectedTags;
 ```
 
@@ -231,9 +286,6 @@ You can reload tags programmatically.
 ```
 - (void)reload;
 ```
-
-## Example
-For more information, you can download the zip and run the example.
 
 ## Author
 
