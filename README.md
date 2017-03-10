@@ -287,6 +287,10 @@ You can reload tags programmatically.
 - (void)reload;
 ```
 
+## Fix
+
+`UITableViewAutomaticDimension` may not work when using tagView in tableViewCell. You should reload your tableView in the `viewDidAppear`.
+
 ## Author
 
 zekunyan, zekunyan@163.com
