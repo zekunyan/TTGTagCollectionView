@@ -31,7 +31,11 @@
     for (NSInteger i = 0; i < 50; i++) {
         [_cellInfos addObject:[_allTags subarrayWithRange:NSMakeRange(0, i % (_allTags.count + 1))]];
     }
-    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    // UITableViewAutomaticDimension may not work on iOS 10.2，so call reloadData
     [self.tableView reloadData];
 }
 
@@ -48,10 +52,6 @@
     cell.label.text = [NSString stringWithFormat:@"Cell: %ld", (long)indexPath.row];
     
     return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return UITableViewAutomaticDimension;
 }
 
 @end
