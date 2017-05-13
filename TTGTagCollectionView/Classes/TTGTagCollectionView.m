@@ -355,18 +355,6 @@
 
 #pragma mark - Setter Getter
 
-- (void)setManualCalculateHeight:(BOOL)manualCalculateHeight {
-    _manualCalculateHeight = manualCalculateHeight;
-    [self setNeedsLayoutTagViews];
-    [self setNeedsLayout];
-}
-
-- (void)setPreferredMaxLayoutWidth:(CGFloat)preferredMaxLayoutWidth {
-    _preferredMaxLayoutWidth = preferredMaxLayoutWidth;
-    [self setNeedsLayoutTagViews];
-    [self setNeedsLayout];
-}
-
 - (UIScrollView *)scrollView {
     return _scrollView;
 }
@@ -398,6 +386,21 @@
 
 - (void)setContentInset:(UIEdgeInsets)contentInset {
     _contentInset = contentInset;
+    [self setNeedsLayoutTagViews];
+}
+
+- (CGSize)contentSize {
+    [self layoutTagViews];
+    return _scrollView.contentSize;
+}
+
+- (void)setManualCalculateHeight:(BOOL)manualCalculateHeight {
+    _manualCalculateHeight = manualCalculateHeight;
+    [self setNeedsLayoutTagViews];
+}
+
+- (void)setPreferredMaxLayoutWidth:(CGFloat)preferredMaxLayoutWidth {
+    _preferredMaxLayoutWidth = preferredMaxLayoutWidth;
     [self setNeedsLayoutTagViews];
 }
 

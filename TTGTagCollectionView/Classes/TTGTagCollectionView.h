@@ -81,8 +81,10 @@ typedef NS_ENUM(NSInteger, TTGTagCollectionAlignment) {
 @property (nonatomic, assign, readonly) CGSize contentSize;
 
 // Manual content height
-@property (nonatomic, assign) BOOL manualCalculateHeight; // Default = NO, set will update content
-@property (nonatomic, assign) CGFloat preferredMaxLayoutWidth; // Default = 0, set will update content
+// Default = NO, set will update content
+@property (nonatomic, assign) BOOL manualCalculateHeight;
+// Default = 0, set will update content
+@property (nonatomic, assign) CGFloat preferredMaxLayoutWidth;
 
 // Scroll indicator
 @property (nonatomic, assign) BOOL showsHorizontalScrollIndicator;

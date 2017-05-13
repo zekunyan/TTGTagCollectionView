@@ -88,6 +88,12 @@
 // The true tags content size, readonly
 @property (nonatomic, assign, readonly) CGSize contentSize;
 
+// Manual content height
+// Default = NO, set will update content
+@property (nonatomic, assign) BOOL manualCalculateHeight;
+// Default = 0, set will update content
+@property (nonatomic, assign) CGFloat preferredMaxLayoutWidth;
+
 // Scroll indicator
 @property (nonatomic, assign) BOOL showsHorizontalScrollIndicator;
 @property (nonatomic, assign) BOOL showsVerticalScrollIndicator;

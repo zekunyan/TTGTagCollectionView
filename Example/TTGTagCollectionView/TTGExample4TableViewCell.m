@@ -16,12 +16,20 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+    // Alignment
     _tagView.alignment = TTGTagCollectionAlignmentFillByExpandingWidth;
+    
+    // Use manual calculate height
+    _tagView.manualCalculateHeight = YES;
 }
 
 - (void)setTags:(NSArray<NSString *> *)tags {
     [_tagView removeAllTags];
     [_tagView addTags:tags];
+
+    // Use manual height, update preferredMaxLayoutWidth
+    _tagView.preferredMaxLayoutWidth = [UIScreen mainScreen].bounds.size.width - 16;
     
     // Random selected
     for (NSInteger i = 0; i < 3; i++) {

@@ -495,6 +495,22 @@
     _tagCollectionView.contentInset = contentInset;
 }
 
+- (BOOL)manualCalculateHeight {
+    return _tagCollectionView.manualCalculateHeight;
+}
+
+- (void)setManualCalculateHeight:(BOOL)manualCalculateHeight {
+    _tagCollectionView.manualCalculateHeight = manualCalculateHeight;
+}
+
+- (CGFloat)preferredMaxLayoutWidth {
+    return _tagCollectionView.preferredMaxLayoutWidth;
+}
+
+- (void)setPreferredMaxLayoutWidth:(CGFloat)preferredMaxLayoutWidth {
+    _tagCollectionView.preferredMaxLayoutWidth = preferredMaxLayoutWidth;
+}
+
 - (void)setShowsHorizontalScrollIndicator:(BOOL)showsHorizontalScrollIndicator {
     _tagCollectionView.showsHorizontalScrollIndicator = showsHorizontalScrollIndicator;
 }

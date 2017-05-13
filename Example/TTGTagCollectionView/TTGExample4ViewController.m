@@ -33,12 +33,6 @@
     }
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    // UITableViewAutomaticDimension may not work on iOS 10.2，so call reloadData
-    [self.tableView reloadData];
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

@@ -19,10 +19,11 @@ TTGTagCollectionView is useful for showing different size tag views in a vertica
 * Both text tag and custom view tag supported.
 * Highly customizable, each text tag can be configured.
 * Vertical and horizontal scrollable.
-* Support different kinds of aligment types.
+* Support different kinds of alignment types.
 * Support specifying number of lines.
 * Support Autolayout `intrinsicContentSize` to auto determine height based on content size.
 * Support pull to refresh, like `SVPullToRefresh`.
+* Use `preferredMaxLayoutWidth` to set available width like UIlabel.
 
 ## Demo
 You can find demos in the `Example->TTGTagCollectionView.xcworkspace` project.
@@ -135,6 +136,19 @@ You can also configure scroll direction, alignment, lines limit, spacing and ins
 
 // Content inset, default is UIEdgeInsetsMake(2, 2, 2, 2).
 @property (nonatomic, assign) UIEdgeInsets contentInset;
+
+// The true tags content size, readonly
+@property (nonatomic, assign, readonly) CGSize contentSize;
+
+// Manual content height
+// Default = NO, set will update content
+@property (nonatomic, assign) BOOL manualCalculateHeight;
+// Default = 0, set will update content
+@property (nonatomic, assign) CGFloat preferredMaxLayoutWidth;
+
+// Scroll indicator
+@property (nonatomic, assign) BOOL showsHorizontalScrollIndicator;
+@property (nonatomic, assign) BOOL showsVerticalScrollIndicator;
 ```
 
 Alignment types:
@@ -275,6 +289,12 @@ Just like the UITableView, you must conform and implement the required methods o
 
 // The true tags content size, readonly
 @property (nonatomic, assign, readonly) CGSize contentSize;
+
+// Manual content height
+// Default = NO, set will update content
+@property (nonatomic, assign) BOOL manualCalculateHeight;
+// Default = 0, set will update content
+@property (nonatomic, assign) CGFloat preferredMaxLayoutWidth;
 
 // Scroll indicator
 @property (nonatomic, assign) BOOL showsHorizontalScrollIndicator;

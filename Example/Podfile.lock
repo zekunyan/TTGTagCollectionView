@@ -1,6 +1,6 @@
 PODS:
   - SVPullToRefresh (0.4.1)
-  - TTGTagCollectionView (1.4.0)
+  - TTGTagCollectionView (1.5.0)
 
 DEPENDENCIES:
   - SVPullToRefresh
@@ -12,7 +12,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
-  TTGTagCollectionView: f553758f584635c162ccad6a3600cc0494b2d173
+  TTGTagCollectionView: 36769ac08e29e8ce37f7dab98014b373d2d005db
 
 PODFILE CHECKSUM: 0e33b51aeed0ef5e83dbdb28e3464492012c5054
 
