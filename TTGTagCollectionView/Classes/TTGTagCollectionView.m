@@ -148,7 +148,8 @@
 - (void)layoutTagViewsForVerticalDirection {
     NSUInteger count = [_dataSource numberOfTagsInTagCollectionView:self];
     NSUInteger currentLineTagsCount = 0;
-    CGFloat maxLineWidth = CGRectGetWidth(self.bounds) - _contentInset.left - _contentInset.right;
+    CGFloat totalWidth = (_manualCalculateHeight && _preferredMaxLayoutWidth > 0) ? _preferredMaxLayoutWidth : CGRectGetWidth(self.bounds);
+    CGFloat maxLineWidth = totalWidth - _contentInset.left - _contentInset.right;
     CGFloat currentLineX = 0;
     CGFloat currentLineMaxHeight = 0;
     
@@ -353,6 +354,18 @@
 }
 
 #pragma mark - Setter Getter
+
+- (void)setManualCalculateHeight:(BOOL)manualCalculateHeight {
+    _manualCalculateHeight = manualCalculateHeight;
+    [self setNeedsLayoutTagViews];
+    [self setNeedsLayout];
+}
+
+- (void)setPreferredMaxLayoutWidth:(CGFloat)preferredMaxLayoutWidth {
+    _preferredMaxLayoutWidth = preferredMaxLayoutWidth;
+    [self setNeedsLayoutTagViews];
+    [self setNeedsLayout];
+}
 
 - (UIScrollView *)scrollView {
     return _scrollView;
