@@ -97,7 +97,7 @@
     
     for (NSUInteger i = 0; i < [self.dataSource numberOfTagsInTagCollectionView:self]; i++) {
         UIView *tagView = [self.dataSource tagCollectionView:self tagViewForIndex:i];
-        if (CGRectContainsPoint(tagView.frame, tapPoint)) {
+        if (CGRectContainsPoint(tagView.frame, tapPoint) && !tagView.isHidden) {
             if ([self.delegate respondsToSelector:@selector(tagCollectionView:shouldSelectTag:atIndex:)]) {
                 if ([self.delegate tagCollectionView:self shouldSelectTag:tagView atIndex:i]) {
                     [self.delegate tagCollectionView:self didSelectTag:tagView atIndex:i];
