@@ -237,6 +237,12 @@ You can reload tags programmatically.
 - (void)reload;
 ```
 
+#### Index at point
+Returns the index of the tag located at the specified point.
+```
+- (NSInteger)indexOfTagAt:(CGPoint)point;
+```
+
 ### TTGTagCollectionView
 Use `TTGTagCollectionView` to show custom tag views.
 
@@ -307,6 +313,12 @@ Just like the UITableView, you must conform and implement the required methods o
 You can reload tags programmatically.
 ```
 - (void)reload;
+```
+
+#### Index at point
+Returns the index of the tag located at the specified point.
+```
+- (NSInteger)indexOfTagAt:(CGPoint)point;
 ```
 
 ## Fix

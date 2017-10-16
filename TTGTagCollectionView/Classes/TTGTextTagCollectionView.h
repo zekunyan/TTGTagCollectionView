@@ -155,4 +155,10 @@
 
 - (NSArray <NSString *> *)allNotSelectedTags;
 
+/**
+ * Returns the index of the tag located at the specified point.
+ * If item at point is not found, returns NSNotFound.
+ */
+- (NSInteger)indexOfTagAt:(CGPoint)point;
+
 @end
