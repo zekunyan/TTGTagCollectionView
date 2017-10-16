@@ -84,6 +84,19 @@
     [self invalidateIntrinsicContentSize];
 }
 
+- (NSInteger)indexOfTagAt:(CGPoint)point {
+    // We expect the point to be a point wrt to the TTGTagCollectionView.
+    // so convert this point first to a point wrt to the container view.
+    CGPoint convertedPoint = [self convertPoint:point toView:_containerView];
+    for (NSUInteger i = 0; i < [self.dataSource numberOfTagsInTagCollectionView:self]; i++) {
+        UIView *tagView = [self.dataSource tagCollectionView:self tagViewForIndex:i];
+        if (CGRectContainsPoint(tagView.frame, convertedPoint) && !tagView.isHidden) {
+            return i;
+        }
+    }
+    return NSNotFound;
+}
+
 #pragma mark - Gesture
 
 - (void)onTapGesture:(UITapGestureRecognizer *)tapGesture {

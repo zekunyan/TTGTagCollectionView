@@ -391,6 +391,13 @@
     return [allTags copy];
 }
 
+- (NSInteger)indexOfTagAt:(CGPoint)point {
+    // We expect the point to be a point wrt to the TTGTextTagCollectionView.
+    // so convert this point first to a point wrt to the TTGTagCollectionView.
+    CGPoint convertedPoint = [self convertPoint:point toView:_tagCollectionView];
+    return [_tagCollectionView indexOfTagAt:convertedPoint];
+}
+
 #pragma mark - TTGTagCollectionViewDataSource
 
 - (NSUInteger)numberOfTagsInTagCollectionView:(TTGTagCollectionView *)tagCollectionView {
