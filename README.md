@@ -109,6 +109,8 @@ Each tag can be configured.
 
 // Tag extra space in width and height, will expand each tag's size
 @property (assign, nonatomic) CGSize tagExtraSpace;
+// Tag max width for a text tag. 0 and below means no max width.
+@property (assign, nonatomic) CGFloat tagMaxWidth;
 @end
 ```
 
