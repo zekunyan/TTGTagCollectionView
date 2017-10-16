@@ -34,6 +34,7 @@
         _tagShadowOpacity = 0.3f;
         
         _tagExtraSpace = CGSizeMake(14, 14);
+        _tagMaxWidth = 0.0f;
     }
     return self;
 }
@@ -63,6 +64,7 @@
     newConfig.tagShadowOpacity = _tagShadowOpacity;
     
     newConfig.tagExtraSpace = _tagExtraSpace;
+    newConfig.tagMaxWidth = _tagMaxWidth;
     
     return newConfig;
 }
@@ -109,11 +111,22 @@
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {
+    return [self configLimitedSize:[_label sizeThatFits:size]];
     return [_label sizeThatFits:size];
 }
 
 - (CGSize)intrinsicContentSize {
     return _label.intrinsicContentSize;
+}
+
+- (CGSize)configLimitedSize:(CGSize)size {
+    if (self.config.tagMaxWidth <= 0.0) { return size; }
+    
+    CGSize finalSize = size;
+    if (size.width > self.config.tagMaxWidth) {
+        finalSize.width = self.config.tagMaxWidth;
+    }
+    return finalSize;
 }
 
 @end
