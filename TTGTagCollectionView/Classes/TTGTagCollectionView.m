@@ -72,16 +72,14 @@
     // Remove all tag views
     [_containerView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
-    // Update tag view frame
-    [self setNeedsLayoutTagViews];
-    [self layoutTagViews];
-    
     // Add tag view
     for (NSUInteger i = 0; i < [_dataSource numberOfTagsInTagCollectionView:self]; i++) {
         [_containerView addSubview:[_dataSource tagCollectionView:self tagViewForIndex:i]];
     }
     
-    [self invalidateIntrinsicContentSize];
+    // Update tag view frame
+    [self setNeedsLayoutTagViews];
+    [self layoutTagViews];
 }
 
 - (NSInteger)indexOfTagAt:(CGPoint)point {
@@ -132,7 +130,6 @@
         [self setNeedsLayoutTagViews];
         [self layoutTagViews];
         _containerView.frame = (CGRect){CGPointZero, _scrollView.contentSize};
-        [self invalidateIntrinsicContentSize];
     }
     [self layoutTagViews];
 }
@@ -260,7 +257,7 @@
     }
     
     // Update max width
-    maxLineWidth = MAX(CGRectGetWidth(self.frame), maxLineWidth);
+    maxLineWidth = MAX(CGRectGetWidth(self.bounds), maxLineWidth);
     
     // Set each tag frame
     [self layoutEachLineTagsWithMaxLineWidth:maxLineWidth
