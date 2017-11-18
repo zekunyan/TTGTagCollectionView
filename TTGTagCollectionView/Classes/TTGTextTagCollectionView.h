@@ -21,7 +21,7 @@
 @property (strong, nonatomic) UIColor *tagSelectedBackgroundColor;
 
 // Gradient background color
-@property (assign, nonatomic) BOOL shouldUseGradientBackgrounds;
+@property (assign, nonatomic) BOOL tagShouldUseGradientBackgrounds;
 @property (strong, nonatomic) UIColor *tagGradientBackgroundStartColor;
 @property (strong, nonatomic) UIColor *tagGradientBackgroundEndColor;
 @property (strong, nonatomic) UIColor *tagSelectedGradientBackgroundStartColor;

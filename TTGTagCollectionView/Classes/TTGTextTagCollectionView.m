@@ -19,7 +19,7 @@
         _tagBackgroundColor = [UIColor colorWithRed:0.30 green:0.72 blue:0.53 alpha:1.00];
         _tagSelectedBackgroundColor = [UIColor colorWithRed:0.22 green:0.29 blue:0.36 alpha:1.00];
 
-        _shouldUseGradientBackgrounds = NO;
+        _tagShouldUseGradientBackgrounds = NO;
         _tagGradientBackgroundStartColor = [UIColor clearColor];
         _tagGradientBackgroundEndColor = [UIColor clearColor];
         _tagSelectedGradientBackgroundStartColor = [UIColor clearColor];
@@ -57,7 +57,7 @@
     newConfig.tagBackgroundColor = [_tagBackgroundColor copyWithZone:zone];
     newConfig.tagSelectedBackgroundColor = [_tagSelectedBackgroundColor copyWithZone:zone];
 
-    newConfig.shouldUseGradientBackgrounds = _shouldUseGradientBackgrounds;
+    newConfig.tagShouldUseGradientBackgrounds = _tagShouldUseGradientBackgrounds;
     newConfig.tagGradientBackgroundStartColor = [_tagGradientBackgroundStartColor copyWithZone:zone];
     newConfig.tagGradientBackgroundEndColor = [_tagGradientBackgroundEndColor copyWithZone:zone];
     newConfig.tagSelectedGradientBackgroundStartColor = [_tagSelectedGradientBackgroundStartColor copyWithZone:zone];
@@ -588,15 +588,14 @@
     label.label.textColor = label.selected ? config.tagSelectedTextColor : config.tagTextColor;
     label.label.backgroundColor = label.selected ? config.tagSelectedBackgroundColor : config.tagBackgroundColor;
 
-    if (config.shouldUseGradientBackgrounds) {
-      label.label.backgroundColor = [UIColor clearColor];
+    if (config.tagShouldUseGradientBackgrounds) {
+        label.label.backgroundColor = [UIColor clearColor];
         if (label.selected) {
-          ((CAGradientLayer *)label.label.layer).colors = @[(id)config.tagSelectedGradientBackgroundStartColor.CGColor,
-                                                            (id)config.tagSelectedGradientBackgroundEndColor.CGColor];
-
+            ((CAGradientLayer *)label.label.layer).colors = @[(id)config.tagSelectedGradientBackgroundStartColor.CGColor,
+                                                              (id)config.tagSelectedGradientBackgroundEndColor.CGColor];
         } else {
-          ((CAGradientLayer *)label.label.layer).colors = @[(id)config.tagGradientBackgroundStartColor.CGColor,
-                                                            (id)config.tagGradientBackgroundEndColor.CGColor];
+            ((CAGradientLayer *)label.label.layer).colors = @[(id)config.tagGradientBackgroundStartColor.CGColor,
+                                                              (id)config.tagGradientBackgroundEndColor.CGColor];
         }
         ((CAGradientLayer *)label.label.layer).startPoint = config.tagGradientStartPoint;
         ((CAGradientLayer *)label.label.layer).endPoint = config.tagGradientEndPoint;
