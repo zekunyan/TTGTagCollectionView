@@ -589,11 +589,12 @@
     label.label.backgroundColor = label.selected ? config.tagSelectedBackgroundColor : config.tagBackgroundColor;
 
     if (config.shouldUseGradientBackgrounds) {
-        label.label.backgroundColor = [UIColor clearColor];
         if (label.selected) {
+            label.label.backgroundColor = config.tagSelectedBackgroundColor;
             ((CAGradientLayer *)label.label.layer).colors = @[(id)config.tagGradientBackgroundStartColor.CGColor,
                                                               (id)config.tagGradientBackgroundEndColor.CGColor];
         } else {
+            label.label.backgroundColor = config.tagBackgroundColor;
             ((CAGradientLayer *)label.label.layer).colors = @[(id)config.tagSelectedGradientBackgroundStartColor.CGColor,
                                                               (id)config.tagSelectedGradientBackgroundEndColor.CGColor];
         }
