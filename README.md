@@ -91,6 +91,15 @@ Each tag can be configured.
 @property (strong, nonatomic) UIColor *tagBackgroundColor;
 @property (strong, nonatomic) UIColor *tagSelectedBackgroundColor;
 
+// Gradient background color
+@property (assign, nonatomic) BOOL tagShouldUseGradientBackgrounds; // Default is `NO`. If set, solid background colors are ignored.
+@property (strong, nonatomic) UIColor *tagGradientBackgroundStartColor;
+@property (strong, nonatomic) UIColor *tagGradientBackgroundEndColor;
+@property (strong, nonatomic) UIColor *tagSelectedGradientBackgroundStartColor;
+@property (strong, nonatomic) UIColor *tagSelectedGradientBackgroundEndColor;
+@property (assign, nonatomic) CGPoint tagGradientStartPoint; // Default is `(0.5, 0)`.
+@property (assign, nonatomic) CGPoint tagGradientEndPoint; // Default is `(0.5, 1)`.
+
 // Corner radius
 @property (assign, nonatomic) CGFloat tagCornerRadius;
 @property (assign, nonatomic) CGFloat tagSelectedCornerRadius;

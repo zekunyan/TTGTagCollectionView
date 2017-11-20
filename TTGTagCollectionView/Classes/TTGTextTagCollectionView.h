@@ -20,6 +20,15 @@
 @property (strong, nonatomic) UIColor *tagBackgroundColor;
 @property (strong, nonatomic) UIColor *tagSelectedBackgroundColor;
 
+// Gradient background color
+@property (assign, nonatomic) BOOL tagShouldUseGradientBackgrounds;
+@property (strong, nonatomic) UIColor *tagGradientBackgroundStartColor;
+@property (strong, nonatomic) UIColor *tagGradientBackgroundEndColor;
+@property (strong, nonatomic) UIColor *tagSelectedGradientBackgroundStartColor;
+@property (strong, nonatomic) UIColor *tagSelectedGradientBackgroundEndColor;
+@property (assign, nonatomic) CGPoint tagGradientStartPoint;
+@property (assign, nonatomic) CGPoint tagGradientEndPoint;
+
 // Corner radius
 @property (assign, nonatomic) CGFloat tagCornerRadius;
 @property (assign, nonatomic) CGFloat tagSelectedCornerRadius;
