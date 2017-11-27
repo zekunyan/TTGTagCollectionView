@@ -533,6 +533,10 @@
     _tagCollectionView.numberOfLines = numberOfLines;
 }
 
+- (NSUInteger)actualNumberOfLines {
+    return _tagCollectionView.actualNumberOfLines;
+}
+
 - (UIEdgeInsets)contentInset {
     return _tagCollectionView.contentInset;
 }

@@ -85,6 +85,8 @@
 
 // Number of lines. 0 means no limit, default is 0 for vertical and 1 for horizontal.
 @property (nonatomic, assign) NSUInteger numberOfLines;
+// The real number of lines ignoring the numberOfLines value
+@property (nonatomic, assign, readonly) NSUInteger actualNumberOfLines;
 
 // Tag selection limit, default is 0, means no limit
 @property (nonatomic, assign) NSUInteger selectionLimit;
