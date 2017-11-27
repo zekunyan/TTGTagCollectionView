@@ -118,7 +118,7 @@
     [_textTagCollectionView2 setTagAtIndex:17 selected:YES];
     
     // Change alignment
-    _textTagCollectionView1.alignment = TTGTagCollectionAlignmentFillByExpandingWidth;
+    _textTagCollectionView1.alignment = TTGTagCollectionAlignmentFillByExpandingWidthExceptLastLine;
     
     // Load data
     [_textTagCollectionView1 reload];

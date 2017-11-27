@@ -317,9 +317,17 @@
                 currentLineWidth = maxLineWidth;
                 break;
             case TTGTagCollectionAlignmentFillByExpandingWidth:
+            case TTGTagCollectionAlignmentFillByExpandingWidthExceptLastLine:
                 currentLineXOffset = _contentInset.left;
                 currentLineAdditionWidth = (maxLineWidth - currentLineWidth) / (CGFloat)currentLineTagsCount;
                 currentLineWidth = maxLineWidth;
+                
+                if (_alignment == TTGTagCollectionAlignmentFillByExpandingWidthExceptLastLine &&
+                    currentLine == numberOfLines - 1) {
+                    // Reset last line width for TTGTagCollectionAlignmentFillByExpandingWidthExceptLastLine
+                    currentLineAdditionWidth = 0;
+                }
+                
                 break;
         }
         
