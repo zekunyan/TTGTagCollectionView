@@ -166,11 +166,12 @@ Alignment types:
 
 ```
 typedef NS_ENUM(NSInteger, TTGTagCollectionAlignment) {
-    TTGTagCollectionAlignmentLeft = 0,             // Default
-    TTGTagCollectionAlignmentCenter,               // Center
-    TTGTagCollectionAlignmentRight,                // Right
-    TTGTagCollectionAlignmentFillByExpandingSpace, // Expand horizontal spacing and fill
-    TTGTagCollectionAlignmentFillByExpandingWidth  // Expand width and fill
+    TTGTagCollectionAlignmentLeft = 0,                           // Default
+    TTGTagCollectionAlignmentCenter,                             // Center
+    TTGTagCollectionAlignmentRight,                              // Right
+    TTGTagCollectionAlignmentFillByExpandingSpace,               // Expand horizontal spacing and fill
+    TTGTagCollectionAlignmentFillByExpandingWidth,               // Expand width and fill
+    TTGTagCollectionAlignmentFillByExpandingWidthExceptLastLine, // Expand width and fill, except last line
 };
 ```
 
