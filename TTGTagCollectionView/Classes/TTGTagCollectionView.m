@@ -328,7 +328,8 @@
                 currentLineWidth = maxLineWidth;
                 
                 if (_alignment == TTGTagCollectionAlignmentFillByExpandingWidthExceptLastLine &&
-                    currentLine == numberOfLines - 1) {
+                    currentLine == numberOfLines - 1 &&
+                    numberOfLines != 1) {
                     // Reset last line width for TTGTagCollectionAlignmentFillByExpandingWidthExceptLastLine
                     currentLineAdditionWidth = 0;
                 }
