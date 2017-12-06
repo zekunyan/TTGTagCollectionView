@@ -175,7 +175,7 @@
     for (NSUInteger i = 0; i < count; i++) {
         CGSize tagSize = [_delegate tagCollectionView:self sizeForTagAtIndex:i];
 
-        if (currentLineX + tagSize.width > maxLineWidth) {
+        if (currentLineX + tagSize.width > maxLineWidth && tmpTagIndexNumbers.count > 0) {
             // New Line
             [eachLineMaxHeightNumbers addObject:@(currentLineMaxHeight)];
             [eachLineWidthNumbers addObject:@(currentLineX - _horizontalSpacing)];
