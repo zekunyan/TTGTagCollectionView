@@ -120,6 +120,8 @@ Each tag can be configured.
 @property (assign, nonatomic) CGSize tagExtraSpace;
 // Tag max width for a text tag. 0 and below means no max width.
 @property (assign, nonatomic) CGFloat tagMaxWidth;
+// Tag min width for a text tag. 0 and below means no min width.
+@property (assign, nonatomic) CGFloat tagMinWidth;
 @end
 ```
 

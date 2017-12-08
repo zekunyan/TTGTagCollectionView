@@ -43,6 +43,7 @@
         
         _tagExtraSpace = CGSizeMake(14, 14);
         _tagMaxWidth = 0.0f;
+        _tagMinWidth = 0.0f;
     }
     return self;
 }
@@ -81,6 +82,7 @@
     
     newConfig.tagExtraSpace = _tagExtraSpace;
     newConfig.tagMaxWidth = _tagMaxWidth;
+    newConfig.tagMinWidth = _tagMinWidth;
     
     return newConfig;
 }
@@ -147,12 +149,16 @@
 }
 
 - (CGSize)configLimitedSize:(CGSize)size {
-    if (self.config.tagMaxWidth <= 0.0) { return size; }
+    if (self.config.tagMaxWidth <= 0.0 && self.config.tagMinWidth <= 0.0) { return size; }
     
     CGSize finalSize = size;
-    if (size.width > self.config.tagMaxWidth) {
+    if (self.config.tagMaxWidth > 0 && size.width > self.config.tagMaxWidth) {
         finalSize.width = self.config.tagMaxWidth;
     }
+    if (self.config.tagMinWidth > 0 && size.width < self.config.tagMinWidth) {
+        finalSize.width = self.config.tagMinWidth;
+    }
+    
     return finalSize;
 }
 
