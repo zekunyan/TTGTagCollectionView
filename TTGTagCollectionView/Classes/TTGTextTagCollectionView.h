@@ -51,6 +51,9 @@
 @property (assign, nonatomic) CGFloat tagMaxWidth;
 // Tag min width for a text tag. 0 and below means no min width.
 @property (assign, nonatomic) CGFloat tagMinWidth;
+
+// Extra data. You can use this to bind any object you want to each tag.
+@property (nonatomic, strong) NSObject *extraData;
 @end
 
 /// TTGTextTagCollectionView
@@ -59,11 +62,31 @@
 
 @protocol TTGTextTagCollectionViewDelegate <NSObject>
 @optional
-- (BOOL)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView canTapTag:(NSString *)tagText atIndex:(NSUInteger)index currentSelected:(BOOL)currentSelected;
 
-- (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView didTapTag:(NSString *)tagText atIndex:(NSUInteger)index selected:(BOOL)selected;
+- (BOOL)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView
+                    canTapTag:(NSString *)tagText
+                      atIndex:(NSUInteger)index
+              currentSelected:(BOOL)currentSelected
+                    tagConfig:(TTGTextTagConfig *)config;
 
-- (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView updateContentSize:(CGSize)contentSize;
+- (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView
+                    didTapTag:(NSString *)tagText
+                      atIndex:(NSUInteger)index
+                     selected:(BOOL)selected
+                    tagConfig:(TTGTextTagConfig *)config;
+
+- (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView
+            updateContentSize:(CGSize)contentSize;
+
+// Deprecated
+- (BOOL)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView
+                    canTapTag:(NSString *)tagText
+                      atIndex:(NSUInteger)index
+              currentSelected:(BOOL)currentSelected __attribute__((deprecated("Use the new method")));
+- (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView
+                    didTapTag:(NSString *)tagText
+                      atIndex:(NSUInteger)index
+                     selected:(BOOL)selected __attribute__((deprecated("Use the new method")));
 @end
 
 @interface TTGTextTagCollectionView : UIView

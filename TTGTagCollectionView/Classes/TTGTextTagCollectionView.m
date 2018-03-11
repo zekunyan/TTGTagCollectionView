@@ -44,6 +44,8 @@
         _tagExtraSpace = CGSizeMake(14, 14);
         _tagMaxWidth = 0.0f;
         _tagMinWidth = 0.0f;
+        
+        _extraData = nil;
     }
     return self;
 }
@@ -83,6 +85,13 @@
     newConfig.tagExtraSpace = _tagExtraSpace;
     newConfig.tagMaxWidth = _tagMaxWidth;
     newConfig.tagMinWidth = _tagMinWidth;
+    
+    if ([_extraData conformsToProtocol:@protocol(NSCopying)] &&
+        [_extraData respondsToSelector:@selector(copyWithZone:)]) {
+        newConfig.extraData = [((id <NSCopying>)_extraData) copyWithZone:zone];
+    } else {
+        newConfig.extraData = _extraData;
+    }
     
     return newConfig;
 }
@@ -448,7 +457,12 @@
         TTGTextTagLabel *label = _tagLabels[index];
         
         if ([self.delegate respondsToSelector:@selector(textTagCollectionView:canTapTag:atIndex:currentSelected:)]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
             return [self.delegate textTagCollectionView:self canTapTag:label.label.text atIndex:index currentSelected:label.selected];
+#pragma clang diagnostic pop
+        } else if ([self.delegate respondsToSelector:@selector(textTagCollectionView:canTapTag:atIndex:currentSelected:tagConfig:)]) {
+            return [self.delegate textTagCollectionView:self canTapTag:label.label.text atIndex:index currentSelected:label.selected tagConfig:label.config];
         } else {
             return YES;
         }
@@ -474,7 +488,14 @@
         }
         
         if ([_delegate respondsToSelector:@selector(textTagCollectionView:didTapTag:atIndex:selected:)]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
             [_delegate textTagCollectionView:self didTapTag:label.label.text atIndex:index selected:label.selected];
+#pragma clang diagnostic pop
+        }
+        
+        if ([_delegate respondsToSelector:@selector(textTagCollectionView:didTapTag:atIndex:selected:tagConfig:)]) {
+            [_delegate textTagCollectionView:self didTapTag:label.label.text atIndex:index selected:label.selected tagConfig:label.config];
         }
     }
 }

@@ -9,7 +9,7 @@
 #import "TTGExample7ViewController.h"
 #import <TTGTagCollectionView/TTGTextTagCollectionView.h>
 
-@interface TTGExample7ViewController ()
+@interface TTGExample7ViewController () <TTGTextTagCollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet TTGTextTagCollectionView *tagView;
 @end
 
@@ -61,42 +61,58 @@
     NSUInteger length = 8;
     config.tagBackgroundColor = [UIColor colorWithRed:0.24 green:0.72 blue:0.94 alpha:1.00];
     config.tagTextFont = [UIFont systemFontOfSize:22];
+    config.extraData = @{@"key": @"1"};
     [_tagView addTags:[tags subarrayWithRange:NSMakeRange(location, length)] withConfig:[config copy]];
     
     location += length;
     config.tagBackgroundColor = [UIColor colorWithRed:0.30 green:0.72 blue:0.53 alpha:1.00];
     config.tagTextFont = [UIFont systemFontOfSize:22];
+    config.extraData = @{@"key": @"2"};
     [_tagView addTags:[tags subarrayWithRange:NSMakeRange(location, length)] withConfig:[config copy]];
     
     location += length;
     config.tagBackgroundColor = [UIColor colorWithRed:0.97 green:0.64 blue:0.27 alpha:1.00];
     config.tagTextFont = [UIFont systemFontOfSize:22];
+    config.extraData = @{@"key": @"3"};
     [_tagView addTags:[tags subarrayWithRange:NSMakeRange(location, length)] withConfig:[config copy]];
     
     location += length;
     config.tagBackgroundColor = [UIColor colorWithRed:0.73 green:0.91 blue:0.41 alpha:1.00];
     config.tagTextFont = [UIFont systemFontOfSize:22];
+    config.extraData = @{@"key": @"4"};
     [_tagView addTags:[tags subarrayWithRange:NSMakeRange(location, length)] withConfig:[config copy]];
     
     location += length;
     config.tagBackgroundColor = [UIColor colorWithRed:0.35 green:0.35 blue:0.36 alpha:1.00];
     config.tagTextFont = [UIFont systemFontOfSize:22];
+    config.extraData = @{@"key": @"5"};
     [_tagView addTags:[tags subarrayWithRange:NSMakeRange(location, length)] withConfig:[config copy]];
     
     location += length;
     config.tagBackgroundColor = [UIColor colorWithRed:1.00 green:0.41 blue:0.42 alpha:1.00];
     config.tagTextFont = [UIFont systemFontOfSize:22];
+    config.extraData = @{@"key": @"6"};
     [_tagView addTags:[tags subarrayWithRange:NSMakeRange(location, length)] withConfig:[config copy]];
     
     location += length;
     config.tagBackgroundColor = [UIColor colorWithRed:0.50 green:0.86 blue:0.90 alpha:1.00];
     config.tagTextFont = [UIFont systemFontOfSize:22];
+    config.extraData = @{@"key": @"7"};
     [_tagView addTags:[tags subarrayWithRange:NSMakeRange(location, length)] withConfig:[config copy]];
     
     location += length;
     config.tagBackgroundColor = [UIColor colorWithRed:0.33 green:0.23 blue:0.34 alpha:1.00];
     config.tagTextFont = [UIFont systemFontOfSize:22];
+    config.extraData = @{@"key": @"8"};
     [_tagView addTags:[tags subarrayWithRange:NSMakeRange(location, length)] withConfig:[config copy]];
+    
+    _tagView.delegate = self;
+}
+
+#pragma mark - TTGTextTagCollectionViewDelegate
+
+- (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView didTapTag:(NSString *)tagText atIndex:(NSUInteger)index selected:(BOOL)selected tagConfig:(TTGTextTagConfig *)config {
+    NSLog(@"Did tap: %@, config extra: %@", tagText, config.extraData);
 }
 
 @end
