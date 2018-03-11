@@ -67,11 +67,20 @@ Conform the `TTGTextTagCollectionViewDelegate` protocol to get callback when you
 ```
 @protocol TTGTextTagCollectionViewDelegate <NSObject>
 @optional
-- (BOOL)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView canTapTag:(NSString *)tagText atIndex:(NSUInteger)index currentSelected:(BOOL)currentSelected;
+- (BOOL)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView
+                    canTapTag:(NSString *)tagText
+                      atIndex:(NSUInteger)index
+              currentSelected:(BOOL)currentSelected
+                    tagConfig:(TTGTextTagConfig *)config;
 
-- (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView didTapTag:(NSString *)tagText atIndex:(NSUInteger)index selected:(BOOL)selected;
+- (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView
+                    didTapTag:(NSString *)tagText
+                      atIndex:(NSUInteger)index
+                     selected:(BOOL)selected
+                    tagConfig:(TTGTextTagConfig *)config;
 
-- (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView updateContentSize:(CGSize)contentSize;
+- (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView
+            updateContentSize:(CGSize)contentSize;
 @end
 ```
 
@@ -122,6 +131,9 @@ Each tag can be configured.
 @property (assign, nonatomic) CGFloat tagMaxWidth;
 // Tag min width for a text tag. 0 and below means no min width.
 @property (assign, nonatomic) CGFloat tagMinWidth;
+
+// Extra data. You can use this to bind any object you want to each tag.
+@property (nonatomic, strong) NSObject *extraData;
 @end
 ```
 
