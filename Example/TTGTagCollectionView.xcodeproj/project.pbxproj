@@ -14,7 +14,6 @@
 		6003F598195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F596195388D20070C39A /* InfoPlist.strings */; };
 		6003F59A195388D20070C39A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
 		6003F59E195388D20070C39A /* TTGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* TTGAppDelegate.m */; };
-		6003F5A7195388D20070C39A /* TTGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* TTGViewController.m */; };
 		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
 		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
@@ -29,6 +28,7 @@
 		BF018B121DB3D8F700EF8F4E /* TTGExample4ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF018B071DB3D8F700EF8F4E /* TTGExample4ViewController.m */; };
 		BF018B131DB3D8F700EF8F4E /* TTGExample4TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BF018B081DB3D8F700EF8F4E /* TTGExample4TableViewCell.m */; };
 		BF018B151DB3D9F600EF8F4E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF018B141DB3D9F600EF8F4E /* Launch Screen.storyboard */; };
+		BF03B0422066A591008D91FA /* TTGExample8ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF03B0412066A591008D91FA /* TTGExample8ViewController.m */; };
 		BF29CA901E673C430048B927 /* TTGExample6ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF29CA8F1E673C430048B927 /* TTGExample6ViewController.m */; };
 		BF73E6AF1E6AEE1300ED50C6 /* TTGExample7ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF73E6AE1E6AEE1300ED50C6 /* TTGExample7ViewController.m */; };
 		FF2E8B6D955A0F4C8695F2E6 /* Pods_TTGTagCollectionView_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C64667CDC91C1D25C00F6F /* Pods_TTGTagCollectionView_Example.framework */; };
@@ -57,8 +57,6 @@
 		6003F59B195388D20070C39A /* TTGTagCollectionView-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TTGTagCollectionView-Prefix.pch"; sourceTree = "<group>"; };
 		6003F59C195388D20070C39A /* TTGAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTGAppDelegate.h; sourceTree = "<group>"; };
 		6003F59D195388D20070C39A /* TTGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTGAppDelegate.m; sourceTree = "<group>"; };
-		6003F5A5195388D20070C39A /* TTGViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTGViewController.h; sourceTree = "<group>"; };
-		6003F5A6195388D20070C39A /* TTGViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTGViewController.m; sourceTree = "<group>"; };
 		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6003F5AE195388D20070C39A /* TTGTagCollectionView_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TTGTagCollectionView_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -86,6 +84,8 @@
 		BF018B0C1DB3D8F700EF8F4E /* TTGExample2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGExample2ViewController.h; sourceTree = "<group>"; };
 		BF018B0D1DB3D8F700EF8F4E /* TTGExample1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGExample1ViewController.h; sourceTree = "<group>"; };
 		BF018B141DB3D9F600EF8F4E /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		BF03B0402066A591008D91FA /* TTGExample8ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTGExample8ViewController.h; sourceTree = "<group>"; };
+		BF03B0412066A591008D91FA /* TTGExample8ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTGExample8ViewController.m; sourceTree = "<group>"; };
 		BF29CA8E1E673C430048B927 /* TTGExample6ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGExample6ViewController.h; sourceTree = "<group>"; };
 		BF29CA8F1E673C430048B927 /* TTGExample6ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGExample6ViewController.m; sourceTree = "<group>"; };
 		BF73E6AD1E6AEE1300ED50C6 /* TTGExample7ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGExample7ViewController.h; sourceTree = "<group>"; };
@@ -178,8 +178,8 @@
 				BF29CA8F1E673C430048B927 /* TTGExample6ViewController.m */,
 				BF73E6AD1E6AEE1300ED50C6 /* TTGExample7ViewController.h */,
 				BF73E6AE1E6AEE1300ED50C6 /* TTGExample7ViewController.m */,
-				6003F5A5195388D20070C39A /* TTGViewController.h */,
-				6003F5A6195388D20070C39A /* TTGViewController.m */,
+				BF03B0402066A591008D91FA /* TTGExample8ViewController.h */,
+				BF03B0412066A591008D91FA /* TTGExample8ViewController.m */,
 			);
 			name = "Example for TTGTagCollectionView";
 			path = TTGTagCollectionView;
@@ -441,11 +441,11 @@
 				6003F59E195388D20070C39A /* TTGAppDelegate.m in Sources */,
 				BF018B0E1DB3D8F700EF8F4E /* TTGExample5ViewController.m in Sources */,
 				BF018B0F1DB3D8F700EF8F4E /* TTGExample1ViewController.m in Sources */,
-				6003F5A7195388D20070C39A /* TTGViewController.m in Sources */,
 				BF018B121DB3D8F700EF8F4E /* TTGExample4ViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				BF29CA901E673C430048B927 /* TTGExample6ViewController.m in Sources */,
 				BF018B101DB3D8F700EF8F4E /* TTGExample3ViewController.m in Sources */,
+				BF03B0422066A591008D91FA /* TTGExample8ViewController.m in Sources */,
 				BF018B131DB3D8F700EF8F4E /* TTGExample4TableViewCell.m in Sources */,
 				BF73E6AF1E6AEE1300ED50C6 /* TTGExample7ViewController.m in Sources */,
 				BF018B111DB3D8F700EF8F4E /* TTGExample2ViewController.m in Sources */,
