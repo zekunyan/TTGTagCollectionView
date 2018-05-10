@@ -54,7 +54,7 @@ github "zekunyan/TTGTagCollectionView"
 Use TTGTextTagCollectionView to show text tags.
 
 #### Basic usage
-```
+```Objective-C
 TTGTextTagCollectionView *tagCollectionView = [[TTGTextTagCollectionView alloc] initWithFrame:CGRectMake(20, 20, 200, 200)];
 [self.view addSubview:tagCollectionView];
 [tagCollectionView addTags:@[@"TTG", @"Tag", @"collection", @"view"]];
@@ -64,7 +64,7 @@ TTGTextTagCollectionView *tagCollectionView = [[TTGTextTagCollectionView alloc] 
 #### Delegate
 Conform the `TTGTextTagCollectionViewDelegate` protocol to get callback when you select the tag or content height changes.
 
-```
+```Objective-C
 @protocol TTGTextTagCollectionViewDelegate <NSObject>
 @optional
 - (BOOL)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView
@@ -87,7 +87,7 @@ Conform the `TTGTextTagCollectionViewDelegate` protocol to get callback when you
 #### Customization
 Each tag can be configured.
 
-```
+```Objective-C
 @interface TTGTextTagConfig : NSObject
 // Text font
 @property (strong, nonatomic) UIFont *tagTextFont;
@@ -139,7 +139,7 @@ Each tag can be configured.
 
 You can also configure scroll direction, alignment, lines limit, spacing and inset.
 
-```
+```Objective-C
 // Define if the tag can be selected.
 @property (assign, nonatomic) BOOL enableTagSelection;
 
@@ -178,7 +178,7 @@ You can also configure scroll direction, alignment, lines limit, spacing and ins
 
 Alignment types:
 
-```
+```Objective-C
 typedef NS_ENUM(NSInteger, TTGTagCollectionAlignment) {
     TTGTagCollectionAlignmentLeft = 0,                           // Default
     TTGTagCollectionAlignmentCenter,                             // Center
@@ -193,7 +193,7 @@ typedef NS_ENUM(NSInteger, TTGTagCollectionAlignment) {
 
 Add tag.
 
-```
+```Objective-C
 // Add tag with detalt config
 - (void)addTag:(NSString *)tag;
 - (void)addTags:(NSArray <NSString *> *)tags;
@@ -205,7 +205,7 @@ Add tag.
 
 Insert tag.
 
-```
+```Objective-C
 // Insert tag with default config
 - (void)insertTag:(NSString *)tag atIndex:(NSUInteger)index;
 - (void)insertTags:(NSArray <NSString *> *)tags atIndex:(NSUInteger)index;
@@ -217,7 +217,7 @@ Insert tag.
 
 Remove tag.
 
-```
+```Objective-C
 // Remove tag
 - (void)removeTag:(NSString *)tag;
 - (void)removeTagAtIndex:(NSUInteger)index;
@@ -226,12 +226,13 @@ Remove tag.
 
 #### Config tag selection
 
-```
+```Objective-C
 - (void)setTagAtIndex:(NSUInteger)index selected:(BOOL)selected;
 ```
 
 #### Update tag style config
-```
+
+```Objective-C
 // Update tag config
 - (void)setTagAtIndex:(NSUInteger)index withConfig:(TTGTextTagConfig *)config;
 - (void)setTagsInRange:(NSRange)range withConfig:(TTGTextTagConfig *)config;
@@ -239,7 +240,7 @@ Remove tag.
 
 #### Get tag information
 
-```
+```Objective-C
 // Get tag
 - (NSString *)getTagAtIndex:(NSUInteger)index;
 - (NSArray <NSString *> *)getTagsInRange:(NSRange)range;
@@ -257,13 +258,14 @@ Remove tag.
 #### Reload
 You can reload tags programmatically.
 
-```
+```Objective-C
 - (void)reload;
 ```
 
 #### Index at point
 Returns the index of the tag located at the specified point.
-```
+
+```Objective-C
 - (NSInteger)indexOfTagAt:(CGPoint)point;
 ```
 
@@ -275,7 +277,7 @@ Just like the UITableView, you must conform and implement the required methods o
 
 **DataSource**
 
-```
+```Objective-C
 @protocol TTGTagCollectionViewDataSource <NSObject>
 @required
 - (NSUInteger)numberOfTagsInTagCollectionView:(TTGTagCollectionView *)tagCollectionView;
@@ -286,7 +288,7 @@ Just like the UITableView, you must conform and implement the required methods o
 
 **Delegate**
 
-```
+```Objective-C
 @protocol TTGTagCollectionViewDelegate <NSObject>
 @required
 - (CGSize)tagCollectionView:(TTGTagCollectionView *)tagCollectionView sizeForTagAtIndex:(NSUInteger)index;
@@ -302,7 +304,7 @@ Just like the UITableView, you must conform and implement the required methods o
 
 #### Customization
 
-```
+```Objective-C
 // Tags scroll direction, default is vertical.
 @property (nonatomic, assign) TTGTagCollectionScrollDirection scrollDirection;
 
@@ -335,13 +337,15 @@ Just like the UITableView, you must conform and implement the required methods o
 
 #### Reload
 You can reload tags programmatically.
-```
+
+```Objective-C
 - (void)reload;
 ```
 
 #### Index at point
 Returns the index of the tag located at the specified point.
-```
+
+```Objective-C
 - (NSInteger)indexOfTagAt:(CGPoint)point;
 ```
 
