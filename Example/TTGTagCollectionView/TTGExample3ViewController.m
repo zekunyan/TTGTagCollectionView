@@ -37,7 +37,7 @@
                                                                      relatedBy:NSLayoutRelationEqual
                                                                         toItem:self.view
                                                                      attribute:NSLayoutAttributeTop
-                                                                    multiplier:1 constant:130];
+                                                                    multiplier:1 constant:180];
     [self.view addConstraint:topConstraint];
     [self.view addConstraints:hConstraints];
     
