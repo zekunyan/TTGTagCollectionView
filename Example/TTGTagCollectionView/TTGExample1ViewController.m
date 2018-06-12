@@ -71,7 +71,8 @@
     config.tagShadowOpacity = 0.3f;
     config.tagShadowRadius = 0.5f;
     
-    config.tagCornerRadius = 2;
+    config.tagCornerRadius = 7;
+    config.roundedCorners = (UIRectCornerBottomLeft | UIRectCornerBottomRight);
 
     // Style2
     config = _textTagCollectionView2.defaultConfig;

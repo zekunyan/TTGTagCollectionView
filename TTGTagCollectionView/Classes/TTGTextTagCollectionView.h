@@ -32,6 +32,7 @@
 // Corner radius
 @property (assign, nonatomic) CGFloat tagCornerRadius;
 @property (assign, nonatomic) CGFloat tagSelectedCornerRadius;
+@property (assign, nonatomic) UIRectCorner roundedCorners;
 
 // Border
 @property (assign, nonatomic) CGFloat tagBorderWidth;

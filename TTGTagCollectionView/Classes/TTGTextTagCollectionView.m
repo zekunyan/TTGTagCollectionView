@@ -29,6 +29,7 @@
         
         _tagCornerRadius = 4.0f;
         _tagSelectedCornerRadius = 4.0f;
+        _roundedCorners = UIRectCornerAllCorners;
         
         _tagBorderWidth = 1.0f;
         _tagSelectedBorderWidth = 1.0f;
@@ -613,8 +614,23 @@
 }
 
 - (void)updateStyleAndFrameForLabel:(TTGTextTagLabel *)label {
-    // Update style
+    [super layoutSubviews];
+
     TTGTextTagConfig *config = label.config;
+
+    UIBezierPath *maskPath = [UIBezierPath
+                              bezierPathWithRoundedRect:label.bounds
+                              byRoundingCorners:config.roundedCorners
+                              cornerRadii:CGSizeMake(config.tagCornerRadius, config.tagCornerRadius)
+                              ];
+
+    CAShapeLayer *maskLayer = [CAShapeLayer layer];
+
+    maskLayer.frame = label.bounds;
+    maskLayer.path = maskPath.CGPath;
+
+    label.layer.mask = maskLayer;
+
     label.label.font = config.tagTextFont;
     label.label.textColor = label.selected ? config.tagSelectedTextColor : config.tagTextColor;
     label.label.backgroundColor = label.selected ? config.tagSelectedBackgroundColor : config.tagBackgroundColor;
@@ -632,7 +648,7 @@
         ((CAGradientLayer *)label.label.layer).endPoint = config.tagGradientEndPoint;
     }
 
-    label.label.layer.cornerRadius = label.selected ? config.tagSelectedCornerRadius : config.tagCornerRadius;
+//    label.label.layer.cornerRadius = label.selected ? config.tagSelectedCornerRadius : config.tagCornerRadius;
     label.label.layer.borderWidth = label.selected ? config.tagSelectedBorderWidth : config.tagBorderWidth;
     label.label.layer.borderColor = (label.selected && config.tagSelectedBorderColor) ? config.tagSelectedBorderColor.CGColor : config.tagBorderColor.CGColor;
     label.label.layer.masksToBounds = YES;
