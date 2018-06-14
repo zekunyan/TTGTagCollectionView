@@ -717,7 +717,6 @@
     label.frame = (CGRect){label.frame.origin, size};
 }
 
-
 - (TTGTextTagLabel *)newLabelForTagText:(NSString *)tagText withConfig:(TTGTextTagConfig *)config {
     TTGTextTagLabel *label = [TTGTextTagLabel new];
     label.label.text = tagText;
