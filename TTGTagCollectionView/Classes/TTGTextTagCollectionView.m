@@ -659,10 +659,12 @@
         }
     }
 
+    CGFloat currentCornerRadius = label.selected ? config.tagSelectedCornerRadius : config.tagCornerRadius;
+
     UIBezierPath *maskPath = [UIBezierPath
                               bezierPathWithRoundedRect:label.bounds
                               byRoundingCorners: corners
-                              cornerRadii:CGSizeMake(config.tagCornerRadius, config.tagCornerRadius)
+                              cornerRadii:CGSizeMake(currentCornerRadius, currentCornerRadius)
                               ];
 
     CAShapeLayer *maskLayer = [CAShapeLayer layer];
@@ -689,7 +691,6 @@
         ((CAGradientLayer *)label.label.layer).endPoint = config.tagGradientEndPoint;
     }
 
-    //    label.label.layer.cornerRadius = label.selected ? config.tagSelectedCornerRadius : config.tagCornerRadius;
     label.label.layer.borderWidth = label.selected ? config.tagSelectedBorderWidth : config.tagBorderWidth;
     label.label.layer.borderColor = (label.selected && config.tagSelectedBorderColor) ? config.tagSelectedBorderColor.CGColor : config.tagBorderColor.CGColor;
     label.label.layer.masksToBounds = YES;
