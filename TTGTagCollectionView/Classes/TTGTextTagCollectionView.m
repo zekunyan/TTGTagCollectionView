@@ -74,6 +74,10 @@
     
     newConfig.tagCornerRadius = _tagCornerRadius;
     newConfig.tagSelectedCornerRadius = _tagSelectedCornerRadius;
+    newConfig.roundTopLeft = _roundTopLeft;
+    newConfig.roundTopRight = _roundTopRight;
+    newConfig.roundBottomLeft = _roundBottomLeft;
+    newConfig.roundBottomRight = _roundBottomRight;
     
     newConfig.tagBorderWidth = _tagBorderWidth;
     newConfig.tagSelectedBorderWidth = _tagSelectedBorderWidth;
