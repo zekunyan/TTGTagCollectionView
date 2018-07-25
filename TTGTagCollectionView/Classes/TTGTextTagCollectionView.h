@@ -8,7 +8,7 @@
 
 /// TTGTextTagConfig
 
-@interface TTGTextTagConfig : NSObject
+@interface TTGTextTagConfig : NSObject;
 // Text font
 @property (strong, nonatomic) UIFont *tagTextFont;
 
@@ -32,6 +32,10 @@
 // Corner radius
 @property (assign, nonatomic) CGFloat tagCornerRadius;
 @property (assign, nonatomic) CGFloat tagSelectedCornerRadius;
+@property (assign, nonatomic) Boolean roundTopRight;
+@property (assign, nonatomic) Boolean roundTopLeft;
+@property (assign, nonatomic) Boolean roundBottomRight;
+@property (assign, nonatomic) Boolean roundBottomLeft;
 
 // Border
 @property (assign, nonatomic) CGFloat tagBorderWidth;

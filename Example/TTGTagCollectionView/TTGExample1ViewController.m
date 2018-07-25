@@ -71,7 +71,7 @@
     config.tagShadowOpacity = 0.3f;
     config.tagShadowRadius = 0.5f;
     
-    config.tagCornerRadius = 2;
+    config.tagCornerRadius = 7;
 
     // Style2
     config = _textTagCollectionView2.defaultConfig;
@@ -88,6 +88,10 @@
     
     config.tagCornerRadius = 8.0f;
     config.tagSelectedCornerRadius = 4.0f;
+    config.roundBottomRight = true;
+    config.roundBottomLeft = true;
+    config.roundTopRight = false;
+    config.roundTopLeft = false;
     
     config.tagBorderWidth = 0;
     
