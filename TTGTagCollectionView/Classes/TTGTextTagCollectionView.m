@@ -720,6 +720,7 @@
 - (TTGTextTagLabel *)newLabelForTagText:(NSString *)tagText withConfig:(TTGTextTagConfig *)config {
     TTGTextTagLabel *label = [TTGTextTagLabel new];
     label.label.text = tagText;
+    label.label.userInteractionEnabled = YES;
     label.config = config;
     [self updateStyleAndFrameForLabel:label];
     return label;
