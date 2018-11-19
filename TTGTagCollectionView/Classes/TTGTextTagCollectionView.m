@@ -693,6 +693,7 @@
 
     label.label.layer.borderWidth = label.selected ? config.tagSelectedBorderWidth : config.tagBorderWidth;
     label.label.layer.borderColor = (label.selected && config.tagSelectedBorderColor) ? config.tagSelectedBorderColor.CGColor : config.tagBorderColor.CGColor;
+    label.label.layer.cornerRadius = label.selected ? config.tagSelectedCornerRadius : config.tagCornerRadius;
     label.label.layer.masksToBounds = YES;
 
     label.layer.shadowColor = (config.tagShadowColor ?: [UIColor clearColor]).CGColor;
