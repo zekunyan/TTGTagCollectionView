@@ -2,12 +2,10 @@
 # * http://www.objc.io/issue-6/travis-ci.html
 # * https://github.com/supermarin/xcpretty#usage
 
-osx_image: xcode8
+osx_image: xcode10.1
 language: objective-c
-cache: cocoapods
-podfile: Example/Podfile
-before_install:
-- gem install cocoapods # Since Travis is not always on latest version
-- pod install --project-directory=Example
 script:
-- set -o pipefail && xcodebuild clean build test -workspace Example/TTGTagCollectionView.xcworkspace -scheme TTGTagCollectionView-Example -sdk iphonesimulator10.0 -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.0' ONLY_ACTIVE_ARCH=NO CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO | xcpretty
+- set -o pipefail
+- xcodebuild -version
+- xcodebuild -showsdks
+xcodebuild clean build -workspace Example/TTGTagCollectionView.xcworkspace -scheme TTGTagCollectionView-Example -sdk iphonesimulator12.1 -destination 'platform=iOS Simulator,name=iPhone XS,OS=12.1' ONLY_ACTIVE_ARCH=NO CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO PROVISIONING_PROFILE_SPECIFIER="" PROVISIONING_PROFILE="" | xcpretty
