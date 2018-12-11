@@ -6,4 +6,4 @@ osx_image: xcode10.1
 language: objective-c
 script:
 - set -o pipefail
-xcodebuild clean build -workspace Example/TTGTagCollectionView.xcworkspace -scheme TTGTagCollectionView-Example -sdk iphonesimulator12.1 -destination 'platform=iOS Simulator,name=iPhone XS,OS=12.1' ONLY_ACTIVE_ARCH=NO CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO PROVISIONING_PROFILE_SPECIFIER="" PROVISIONING_PROFILE="" | xcpretty
+- xcodebuild clean build -workspace Example/TTGTagCollectionView.xcworkspace -scheme TTGTagCollectionView-Example -sdk iphonesimulator12.1 -destination 'platform=iOS Simulator,name=iPhone XS,OS=12.1' ONLY_ACTIVE_ARCH=NO CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO PROVISIONING_PROFILE_SPECIFIER="" PROVISIONING_PROFILE="" | xcpretty
