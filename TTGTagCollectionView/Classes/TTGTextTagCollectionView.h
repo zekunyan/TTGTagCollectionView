@@ -51,10 +51,16 @@
 
 // Tag extra space in width and height, will expand each tag's size
 @property (assign, nonatomic) CGSize tagExtraSpace;
+
 // Tag max width for a text tag. 0 and below means no max width.
 @property (assign, nonatomic) CGFloat tagMaxWidth;
 // Tag min width for a text tag. 0 and below means no min width.
 @property (assign, nonatomic) CGFloat tagMinWidth;
+
+// Tag exact width. 0 and below means no work
+@property (nonatomic, assign) CGFloat tagExactWidth;
+// Tag exact height. 0 and below means no work
+@property (nonatomic, assign) CGFloat tagExactHeight;
 
 // Extra data. You can use this to bind any object you want to each tag.
 @property (nonatomic, strong) NSObject *extraData;

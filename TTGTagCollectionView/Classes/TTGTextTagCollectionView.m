@@ -49,6 +49,9 @@
         _tagMaxWidth = 0.0f;
         _tagMinWidth = 0.0f;
         
+        _tagExactWidth = 0.0f;
+        _tagExactHeight = 0.0f;
+        
         _extraData = nil;
     }
     return self;
@@ -94,6 +97,9 @@
     newConfig.tagMaxWidth = _tagMaxWidth;
     newConfig.tagMinWidth = _tagMinWidth;
     
+    newConfig.tagExactWidth = _tagExactWidth;
+    newConfig.tagExactHeight = _tagExactHeight;
+    
     if ([_extraData conformsToProtocol:@protocol(NSCopying)] &&
         [_extraData respondsToSelector:@selector(copyWithZone:)]) {
         newConfig.extraData = [((id <NSCopying>)_extraData) copyWithZone:zone];
@@ -123,6 +129,7 @@
 @interface TTGTextTagLabel : UIView
 @property (nonatomic, strong) TTGTextTagConfig *config;
 @property (nonatomic, strong) GradientLabel *label;
+@property (nonatomic, strong) CAShapeLayer *borderLayer;
 @property (assign, nonatomic) BOOL selected;
 @end
 
@@ -145,8 +152,6 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     _label.frame = self.bounds;
-    self.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:_label.bounds
-                                                       cornerRadius:_label.layer.cornerRadius].CGPath;
 }
 
 - (void)sizeToFit {
@@ -158,7 +163,6 @@
 
 - (CGSize)sizeThatFits:(CGSize)size {
     return [self configLimitedSize:[_label sizeThatFits:size]];
-    return [_label sizeThatFits:size];
 }
 
 - (CGSize)intrinsicContentSize {
@@ -166,14 +170,20 @@
 }
 
 - (CGSize)configLimitedSize:(CGSize)size {
-    if (self.config.tagMaxWidth <= 0.0 && self.config.tagMinWidth <= 0.0) { return size; }
     
     CGSize finalSize = size;
+    
     if (self.config.tagMaxWidth > 0 && size.width > self.config.tagMaxWidth) {
         finalSize.width = self.config.tagMaxWidth;
     }
     if (self.config.tagMinWidth > 0 && size.width < self.config.tagMinWidth) {
         finalSize.width = self.config.tagMinWidth;
+    }
+    if (self.config.tagExactWidth > 0) {
+        finalSize.width = self.config.tagExactWidth;
+    }
+    if (self.config.tagExactHeight > 0) {
+        finalSize.height = self.config.tagExactHeight;
     }
     
     return finalSize;
@@ -637,11 +647,29 @@
 }
 
 - (void)updateStyleAndFrameForLabel:(TTGTextTagLabel *)label {
-    [super layoutSubviews];
-
+    // Config
     TTGTextTagConfig *config = label.config;
+    
+    // Update content style
+    label.label.font = config.tagTextFont;
+    label.label.textColor = label.selected ? config.tagSelectedTextColor : config.tagTextColor;
+    label.label.backgroundColor = label.selected ? config.tagSelectedBackgroundColor : config.tagBackgroundColor;
 
-
+    // Calculate size
+    CGSize size = [label sizeThatFits:CGSizeZero];
+    size.width += config.tagExtraSpace.width;
+    size.height += config.tagExtraSpace.height;
+    
+    // Width limit for vertical scroll direction
+    if (self.scrollDirection == TTGTagCollectionScrollDirectionVertical &&
+        size.width > (CGRectGetWidth(self.bounds) - self.contentInset.left - self.contentInset.right)) {
+        size.width = (CGRectGetWidth(self.bounds) - self.contentInset.left - self.contentInset.right);
+    }
+    
+    // Update frame
+    label.frame = (CGRect){label.frame.origin, size};
+    
+    // Round corner
     UIRectCorner corners = -1;
     if (config.roundTopLeft) {
         if (corners == -1) {
@@ -650,7 +678,6 @@
             corners = corners | UIRectCornerTopLeft;
         }
     }
-
     if (config.roundTopRight) {
         if (corners == -1) {
             corners = UIRectCornerTopRight;
@@ -658,7 +685,6 @@
             corners = corners | UIRectCornerTopRight;
         }
     }
-
     if (config.roundBottomLeft) {
         if (corners == -1) {
             corners = UIRectCornerBottomLeft;
@@ -666,7 +692,6 @@
             corners = corners | UIRectCornerBottomLeft;
         }
     }
-
     if (config.roundBottomRight) {
         if (corners == -1) {
             corners = UIRectCornerBottomRight;
@@ -675,25 +700,19 @@
         }
     }
 
+    // Path
     CGFloat currentCornerRadius = label.selected ? config.tagSelectedCornerRadius : config.tagCornerRadius;
-
-    UIBezierPath *maskPath = [UIBezierPath
-                              bezierPathWithRoundedRect:label.bounds
-                              byRoundingCorners: corners
-                              cornerRadii:CGSizeMake(currentCornerRadius, currentCornerRadius)
-                              ];
-
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:label.bounds
+                                               byRoundingCorners:corners
+                                                     cornerRadii:CGSizeMake(currentCornerRadius, currentCornerRadius)];
+    
+    // Mask
     CAShapeLayer *maskLayer = [CAShapeLayer layer];
+    maskLayer.frame = label.label.bounds;
+    maskLayer.path = path.CGPath;
+    label.label.layer.mask = maskLayer;
 
-    maskLayer.frame = label.bounds;
-    maskLayer.path = maskPath.CGPath;
-
-    label.layer.mask = maskLayer;
-
-    label.label.font = config.tagTextFont;
-    label.label.textColor = label.selected ? config.tagSelectedTextColor : config.tagTextColor;
-    label.label.backgroundColor = label.selected ? config.tagSelectedBackgroundColor : config.tagBackgroundColor;
-
+    // Gradient background
     if (config.tagShouldUseGradientBackgrounds) {
         label.label.backgroundColor = [UIColor clearColor];
         if (label.selected) {
@@ -707,31 +726,27 @@
         ((CAGradientLayer *)label.label.layer).endPoint = config.tagGradientEndPoint;
     }
 
-    label.label.layer.borderWidth = label.selected ? config.tagSelectedBorderWidth : config.tagBorderWidth;
-    label.label.layer.borderColor = (label.selected && config.tagSelectedBorderColor) ? config.tagSelectedBorderColor.CGColor : config.tagBorderColor.CGColor;
-    label.label.layer.cornerRadius = label.selected ? config.tagSelectedCornerRadius : config.tagCornerRadius;
-    label.label.layer.masksToBounds = YES;
+    // Border
+    if (!label.borderLayer) {
+        label.borderLayer = [CAShapeLayer new];
+    }
+    [label.borderLayer removeFromSuperlayer];
+    label.borderLayer.frame = label.bounds;
+    label.borderLayer.path = path.CGPath;
+    label.borderLayer.fillColor = nil;
+    label.borderLayer.opacity = 1;
+    label.borderLayer.lineWidth = label.selected ? config.tagSelectedBorderWidth : config.tagBorderWidth;
+    label.borderLayer.strokeColor = (label.selected && config.tagSelectedBorderColor) ? config.tagSelectedBorderColor.CGColor : config.tagBorderColor.CGColor;
+    [label.layer addSublayer:label.borderLayer];
 
+    // Shadow
     label.layer.shadowColor = (config.tagShadowColor ?: [UIColor clearColor]).CGColor;
     label.layer.shadowOffset = config.tagShadowOffset;
     label.layer.shadowRadius = config.tagShadowRadius;
     label.layer.shadowOpacity = config.tagShadowOpacity;
-    label.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:label.bounds cornerRadius:label.label.layer.cornerRadius].CGPath;
+    label.layer.shadowPath = path.CGPath;
     label.layer.shouldRasterize = YES;
     [label.layer setRasterizationScale:[[UIScreen mainScreen] scale]];
-
-    // Update frame
-    CGSize size = [label sizeThatFits:CGSizeZero];
-    size.width += config.tagExtraSpace.width;
-    size.height += config.tagExtraSpace.height;
-
-    // Width limit for vertical scroll direction
-    if (self.scrollDirection == TTGTagCollectionScrollDirectionVertical &&
-        size.width > (CGRectGetWidth(self.bounds) - self.contentInset.left - self.contentInset.right)) {
-        size.width = (CGRectGetWidth(self.bounds) - self.contentInset.left - self.contentInset.right);
-    }
-
-    label.frame = (CGRect){label.frame.origin, size};
 }
 
 - (TTGTextTagLabel *)newLabelForTagText:(NSString *)tagText withConfig:(TTGTextTagConfig *)config {
