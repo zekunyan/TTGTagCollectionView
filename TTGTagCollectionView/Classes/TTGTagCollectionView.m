@@ -99,17 +99,27 @@
 #pragma mark - Gesture
 
 - (void)onTapGesture:(UITapGestureRecognizer *)tapGesture {
+    CGPoint tapPointInCollectionView = [tapGesture locationInView:self];
+    
     if (![self.dataSource respondsToSelector:@selector(numberOfTagsInTagCollectionView:)] ||
         ![self.dataSource respondsToSelector:@selector(tagCollectionView:tagViewForIndex:)] ||
         ![self.delegate respondsToSelector:@selector(tagCollectionView:didSelectTag:atIndex:)]) {
+        if (_onTapBlankArea) {
+            _onTapBlankArea(tapPointInCollectionView);
+        }
+        if (_onTapAllArea) {
+            _onTapAllArea(tapPointInCollectionView);
+        }
         return;
     }
     
-    CGPoint tapPoint = [tapGesture locationInView:_containerView];
+    CGPoint tapPointInScrollView = [tapGesture locationInView:_containerView];
+    BOOL hasLocatedToTag = NO;
     
     for (NSUInteger i = 0; i < [self.dataSource numberOfTagsInTagCollectionView:self]; i++) {
         UIView *tagView = [self.dataSource tagCollectionView:self tagViewForIndex:i];
-        if (CGRectContainsPoint(tagView.frame, tapPoint) && !tagView.isHidden) {
+        if (CGRectContainsPoint(tagView.frame, tapPointInScrollView) && !tagView.isHidden) {
+            hasLocatedToTag = YES;
             if ([self.delegate respondsToSelector:@selector(tagCollectionView:shouldSelectTag:atIndex:)]) {
                 if ([self.delegate tagCollectionView:self shouldSelectTag:tagView atIndex:i]) {
                     [self.delegate tagCollectionView:self didSelectTag:tagView atIndex:i];
@@ -118,6 +128,15 @@
                 [self.delegate tagCollectionView:self didSelectTag:tagView atIndex:i];
             }
         }
+    }
+    
+    if (!hasLocatedToTag) {
+        if (_onTapBlankArea) {
+            _onTapBlankArea(tapPointInCollectionView);
+        }
+    }
+    if (_onTapAllArea) {
+        _onTapAllArea(tapPointInCollectionView);
     }
 }
 

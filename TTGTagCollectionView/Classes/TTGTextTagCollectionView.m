@@ -612,6 +612,22 @@
     return _tagCollectionView.showsVerticalScrollIndicator;
 }
 
+- (void)setOnTapBlankArea:(void (^)(CGPoint location))onTapBlankArea {
+    _tagCollectionView.onTapBlankArea = onTapBlankArea;
+}
+
+- (void (^)(CGPoint location))onTapBlankArea {
+    return _tagCollectionView.onTapBlankArea;
+}
+
+- (void)setOnTapAllArea:(void (^)(CGPoint location))onTapAllArea {
+    _tagCollectionView.onTapAllArea = onTapAllArea;
+}
+
+- (void (^)(CGPoint location))onTapAllArea {
+    return _tagCollectionView.onTapAllArea;
+}
+
 #pragma mark - Private methods
 
 - (void)updateAllLabelStyleAndFrame {

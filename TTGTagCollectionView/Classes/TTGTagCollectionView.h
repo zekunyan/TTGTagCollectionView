@@ -93,6 +93,11 @@ typedef NS_ENUM(NSInteger, TTGTagCollectionAlignment) {
 @property (nonatomic, assign) BOOL showsHorizontalScrollIndicator;
 @property (nonatomic, assign) BOOL showsVerticalScrollIndicator;
 
+// Tap blank area callback
+@property (nonatomic, copy) void (^onTapBlankArea)(CGPoint location);
+// Tap all area callback
+@property (nonatomic, copy) void (^onTapAllArea)(CGPoint location);
+
 /**
  * Reload all tag cells
  */
