@@ -89,6 +89,7 @@ Each tag can be configured.
 
 ```Objective-C
 @interface TTGTextTagConfig : NSObject
+
 // Text font
 @property (strong, nonatomic) UIFont *textFont;
 
@@ -101,17 +102,21 @@ Each tag can be configured.
 @property (strong, nonatomic) UIColor *selectedBackgroundColor;
 
 // Gradient background color
-@property (assign, nonatomic) BOOL tagShouldUseGradientBackgrounds; // Default is `NO`. If set, solid background colors are ignored.
+@property (assign, nonatomic) BOOL enableGradientBackground;
 @property (strong, nonatomic) UIColor *gradientBackgroundStartColor;
 @property (strong, nonatomic) UIColor *gradientBackgroundEndColor;
 @property (strong, nonatomic) UIColor *selectedGradientBackgroundStartColor;
 @property (strong, nonatomic) UIColor *selectedGradientBackgroundEndColor;
-@property (assign, nonatomic) CGPoint tagGradientStartPoint; // Default is `(0.5, 0)`.
-@property (assign, nonatomic) CGPoint tagGradientEndPoint; // Default is `(0.5, 1)`.
+@property (assign, nonatomic) CGPoint gradientBackgroundStartPoint;
+@property (assign, nonatomic) CGPoint gradientBackgroundEndPoint;
 
 // Corner radius
 @property (assign, nonatomic) CGFloat cornerRadius;
 @property (assign, nonatomic) CGFloat selectedCornerRadius;
+@property (assign, nonatomic) Boolean cornerTopRight;
+@property (assign, nonatomic) Boolean cornerTopLeft;
+@property (assign, nonatomic) Boolean cornerBottomRight;
+@property (assign, nonatomic) Boolean cornerBottomLeft;
 
 // Border
 @property (assign, nonatomic) CGFloat borderWidth;
@@ -119,21 +124,28 @@ Each tag can be configured.
 @property (strong, nonatomic) UIColor *borderColor;
 @property (strong, nonatomic) UIColor *selectedBorderColor;
 
-// Tag shadow.
+// Shadow.
 @property (nonatomic, copy) UIColor *shadowColor;    // Default is [UIColor black]
 @property (nonatomic, assign) CGSize shadowOffset;   // Default is (2, 2)
 @property (nonatomic, assign) CGFloat shadowRadius;  // Default is 2f
 @property (nonatomic, assign) CGFloat shadowOpacity; // Default is 0.3f
 
-// Tag extra space in width and height, will expand each tag's size
+// Extra space in width and height, will expand each tag's size
 @property (assign, nonatomic) CGSize extraSpace;
-// Tag max width for a text tag. 0 and below means no max width.
+
+// Max width for a text tag. 0 and below means no max width.
 @property (assign, nonatomic) CGFloat maxWidth;
-// Tag min width for a text tag. 0 and below means no min width.
+// Min width for a text tag. 0 and below means no min width.
 @property (assign, nonatomic) CGFloat minWidth;
+
+// Exact width. 0 and below means no work
+@property (nonatomic, assign) CGFloat exactWidth;
+// Exact height. 0 and below means no work
+@property (nonatomic, assign) CGFloat exactHeight;
 
 // Extra data. You can use this to bind any object you want to each tag.
 @property (nonatomic, strong) NSObject *extraData;
+
 @end
 ```
 
