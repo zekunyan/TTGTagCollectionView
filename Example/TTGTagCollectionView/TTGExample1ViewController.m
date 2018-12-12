@@ -80,23 +80,23 @@
     config.extraSpace = CGSizeMake(12, 12);
     
     config.textColor = [UIColor whiteColor];
-    config.selectedTextColor = [UIColor whiteColor];
+    config.selectedTextColor = [UIColor greenColor];
     
     config.backgroundColor = [UIColor colorWithRed:0.10 green:0.53 blue:0.85 alpha:1.00];
     config.selectedBackgroundColor = [UIColor colorWithRed:0.21 green:0.29 blue:0.36 alpha:1.00];
     
     config.cornerRadius = 12.0f;
-    config.selectedCornerRadius = 4.0f;
+    config.selectedCornerRadius = 8.0f;
     config.cornerBottomRight = true;
     config.cornerBottomLeft = false;
     config.cornerTopRight = false;
     config.cornerTopLeft = true;
     
     config.borderWidth = 1;
-    config.selectedBorderWidth = 2;
+    config.selectedBorderWidth = 4;
     
     config.borderColor = [UIColor redColor];
-    config.selectedBorderColor = [UIColor yellowColor];
+    config.selectedBorderColor = [UIColor orangeColor];
     
     config.shadowColor = [UIColor blackColor];
     config.shadowOffset = CGSizeMake(0, 1);
