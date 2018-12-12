@@ -146,6 +146,7 @@
 - (void)commonInit {
     _label = [[GradientLabel alloc] initWithFrame:self.bounds];
     _label.textAlignment = NSTextAlignmentCenter;
+    _label.userInteractionEnabled = YES;
     [self addSubview:_label];
 }
 
@@ -780,7 +781,6 @@
 - (TTGTextTagLabel *)newLabelForTagText:(NSString *)tagText withConfig:(TTGTextTagConfig *)config {
     TTGTextTagLabel *label = [TTGTextTagLabel new];
     label.label.text = tagText;
-    label.label.userInteractionEnabled = YES;
     label.config = config;
     return label;
 }

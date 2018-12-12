@@ -51,6 +51,13 @@
     for (NSInteger i = 0; i < 5; i++) {
         [_tagView setTagAtIndex:arc4random_uniform((uint32_t)tags.count) selected:YES];
     }
+    
+    _tagView.onTapAllArea = ^(CGPoint location) {
+        NSLog(@"onTapAllArea: %@", NSStringFromCGPoint(location));
+    };
+    _tagView.onTapBlankArea = ^(CGPoint location) {
+        NSLog(@"onTapBlankArea: %@", NSStringFromCGPoint(location));
+    };
 }
 
 @end
