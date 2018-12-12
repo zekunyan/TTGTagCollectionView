@@ -8,7 +8,6 @@
 
 #import <TTGTagCollectionView/TTGTextTagCollectionView.h>
 #import "TTGExample1ViewController.h"
-#import "SVPullToRefresh.h"
 
 @interface TTGExample1ViewController () <TTGTextTagCollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet TTGTextTagCollectionView *textTagCollectionView1;
@@ -50,58 +49,59 @@
     // Style1
     TTGTextTagConfig *config = _textTagCollectionView1.defaultConfig;
     
-    config.tagTextFont = [UIFont boldSystemFontOfSize:18.0f];
+    config.textFont = [UIFont boldSystemFontOfSize:18.0f];
     
-    config.tagTextColor = [UIColor colorWithRed:0.18 green:0.19 blue:0.22 alpha:1.00];
-    config.tagSelectedTextColor = [UIColor colorWithRed:0.18 green:0.19 blue:0.22 alpha:1.00];
+    config.textColor = [UIColor colorWithRed:0.18 green:0.19 blue:0.22 alpha:1.00];
+    config.selectedTextColor = [UIColor colorWithRed:0.18 green:0.19 blue:0.22 alpha:1.00];
     
-    config.tagBackgroundColor = [UIColor colorWithRed:0.98 green:0.91 blue:0.43 alpha:1.00];
-    config.tagSelectedBackgroundColor = [UIColor colorWithRed:0.97 green:0.64 blue:0.27 alpha:1.00];
+    config.backgroundColor = [UIColor colorWithRed:0.98 green:0.91 blue:0.43 alpha:1.00];
+    config.selectedBackgroundColor = [UIColor colorWithRed:0.97 green:0.64 blue:0.27 alpha:1.00];
     
     _textTagCollectionView1.horizontalSpacing = 6.0;
     _textTagCollectionView1.verticalSpacing = 8.0;
     
-    config.tagBorderColor = [UIColor colorWithRed:0.18 green:0.19 blue:0.22 alpha:1.00];
-    config.tagSelectedBorderColor = [UIColor colorWithRed:0.18 green:0.19 blue:0.22 alpha:1.00];
-    config.tagBorderWidth = 1;
-    config.tagSelectedBorderWidth = 1;
+    config.borderColor = [UIColor colorWithRed:0.18 green:0.19 blue:0.22 alpha:1.00];
+    config.selectedBorderColor = [UIColor colorWithRed:0.18 green:0.19 blue:0.22 alpha:1.00];
+    config.borderWidth = 1;
+    config.selectedBorderWidth = 1;
     
-    config.tagShadowColor = [UIColor blackColor];
-    config.tagShadowOffset = CGSizeMake(0, 0.3);
-    config.tagShadowOpacity = 0.3f;
-    config.tagShadowRadius = 0.5f;
+    config.shadowColor = [UIColor blackColor];
+    config.shadowOffset = CGSizeMake(0, 0.3);
+    config.shadowOpacity = 0.3f;
+    config.shadowRadius = 0.5f;
     
-    config.tagCornerRadius = 7;
+    config.cornerRadius = 7;
 
     // Style2
     config = _textTagCollectionView2.defaultConfig;
     
-    config.tagTextFont = [UIFont systemFontOfSize:20.0f];
+    config.textFont = [UIFont systemFontOfSize:20.0f];
     
-    config.tagExtraSpace = CGSizeMake(12, 12);
+    config.extraSpace = CGSizeMake(12, 12);
     
-    config.tagTextColor = [UIColor whiteColor];
-    config.tagSelectedTextColor = [UIColor whiteColor];
+    config.textColor = [UIColor whiteColor];
+    config.selectedTextColor = [UIColor whiteColor];
     
-    config.tagBackgroundColor = [UIColor colorWithRed:0.10 green:0.53 blue:0.85 alpha:1.00];
-    config.tagSelectedBackgroundColor = [UIColor colorWithRed:0.21 green:0.29 blue:0.36 alpha:1.00];
+    config.backgroundColor = [UIColor colorWithRed:0.10 green:0.53 blue:0.85 alpha:1.00];
+    config.selectedBackgroundColor = [UIColor colorWithRed:0.21 green:0.29 blue:0.36 alpha:1.00];
     
-    config.tagCornerRadius = 8.0f;
-    config.tagSelectedCornerRadius = 4.0f;
-    config.roundBottomRight = true;
-    config.roundBottomLeft = true;
-    config.roundTopRight = false;
-    config.roundTopLeft = false;
+    config.cornerRadius = 12.0f;
+    config.selectedCornerRadius = 4.0f;
+    config.cornerBottomRight = true;
+    config.cornerBottomLeft = false;
+    config.cornerTopRight = false;
+    config.cornerTopLeft = true;
     
-    config.tagBorderWidth = 0;
+    config.borderWidth = 1;
+    config.selectedBorderWidth = 2;
     
-    config.tagBorderColor = [UIColor whiteColor];
-    config.tagSelectedBorderColor = [UIColor whiteColor];
+    config.borderColor = [UIColor redColor];
+    config.selectedBorderColor = [UIColor yellowColor];
     
-    config.tagShadowColor = [UIColor blackColor];
-    config.tagShadowOffset = CGSizeMake(0, 1);
-    config.tagShadowOpacity = 0.3f;
-    config.tagShadowRadius = 2;
+    config.shadowColor = [UIColor blackColor];
+    config.shadowOffset = CGSizeMake(0, 1);
+    config.shadowOpacity = 0.3f;
+    config.shadowRadius = 2;
     
     _textTagCollectionView2.horizontalSpacing = 8;
     _textTagCollectionView2.verticalSpacing = 8;

@@ -1,13 +1,11 @@
-use_frameworks!
+platform :ios, '9.0'
 
 target 'TTGTagCollectionView_Example' do
   pod 'TTGTagCollectionView', :path => '../'
-  pod 'SVPullToRefresh'
   pod 'Masonry'
+  pod 'SVPullToRefresh'
 
   target 'TTGTagCollectionView_Tests' do
     inherit! :search_paths
-
-    
   end
 end

@@ -27,6 +27,12 @@
     _tagView.layer.borderColor = [UIColor grayColor].CGColor;
     _tagView.layer.borderWidth = 1;
     _tagView.translatesAutoresizingMaskIntoConstraints = NO;
+    _tagView.onTapBlankArea = ^(CGPoint location) {
+        NSLog(@"Blank: %@", NSStringFromCGPoint(location));
+    };
+    _tagView.onTapAllArea = ^(CGPoint location) {
+        NSLog(@"All: %@", NSStringFromCGPoint(location));
+    };
     [self.view addSubview:_tagView];
     
     NSArray *hConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[tagView]-20-|"
@@ -45,7 +51,6 @@
     for (NSInteger i = 0; i < 5; i++) {
         [_tagView setTagAtIndex:arc4random_uniform((uint32_t)tags.count) selected:YES];
     }
-    [_tagView reload];
 }
 
 @end

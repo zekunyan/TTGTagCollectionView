@@ -360,15 +360,15 @@
         [eachLineTagIndexs[currentLine] enumerateObjectsUsingBlock:^(NSNumber * _Nonnull tagIndexNumber, NSUInteger idx, BOOL * _Nonnull stop) {
             NSUInteger tagIndex = tagIndexNumber.unsignedIntegerValue;
             
-            UIView *tagView = [_dataSource tagCollectionView:self tagViewForIndex:tagIndex];
-            CGSize tagSize = [_delegate tagCollectionView:self sizeForTagAtIndex:tagIndex];
+            UIView *tagView = [self.dataSource tagCollectionView:self tagViewForIndex:tagIndex];
+            CGSize tagSize = [self.delegate tagCollectionView:self sizeForTagAtIndex:tagIndex];
             
             CGPoint origin;
             origin.x = currentLineXOffset + currentLineX;
             origin.y = currentYBase + (currentLineMaxHeight - tagSize.height) / 2;
             
             tagSize.width += currentLineAdditionWidth;
-            if (_scrollDirection == TTGTagCollectionScrollDirectionVertical && tagSize.width > maxLineWidth) {
+            if (self.scrollDirection == TTGTagCollectionScrollDirectionVertical && tagSize.width > maxLineWidth) {
                 tagSize.width = maxLineWidth;
             }
             

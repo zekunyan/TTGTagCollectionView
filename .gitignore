@@ -40,3 +40,6 @@ Carthage/Build
 
 # AppCode
 .idea/
+
+# CocoaPods
+Pods/

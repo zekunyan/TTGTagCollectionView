@@ -32,7 +32,7 @@
             [weakSelf.tagView addTags:tags];
         });
     }];
-    
+
     [_tagView.scrollView addInfiniteScrollingWithActionHandler:^{
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [weakSelf.tagView.scrollView.infiniteScrollingView stopAnimating];

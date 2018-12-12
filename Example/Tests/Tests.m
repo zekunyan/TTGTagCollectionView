@@ -46,11 +46,11 @@
     
     // addTag:withConfig
     TTGTextTagConfig *config = [TTGTextTagConfig new];
-    config.tagTextFont = [UIFont systemFontOfSize:14];
+    config.textFont = [UIFont systemFontOfSize:14];
     [textTagView addTag:@"7" withConfig:config];
     
     // addTags:withConfig:
-    config.tagTextFont = [UIFont systemFontOfSize:16];
+    config.textFont = [UIFont systemFontOfSize:16];
     [textTagView addTags:@[@"8", @"9"] withConfig:config];
     
     // Check
@@ -72,15 +72,15 @@
     XCTAssert(tags == nil);
     
     config = [textTagView getConfigAtIndex:6];
-    XCTAssert(config.tagTextFont.pointSize == 14);
+    XCTAssert(config.textFont.pointSize == 14);
     
     config = [textTagView getConfigAtIndex:100];
     XCTAssert(config == nil);
     
     NSArray <TTGTextTagConfig *> *configs = [textTagView getConfigsInRange:NSMakeRange(7, 2)];
     XCTAssert(configs.count == 2);
-    XCTAssert(configs[0].tagTextFont.pointSize == 16);
-    XCTAssert(configs[1].tagTextFont.pointSize == 16);
+    XCTAssert(configs[0].textFont.pointSize == 16);
+    XCTAssert(configs[1].textFont.pointSize == 16);
     
     configs = [textTagView getConfigsInRange:NSMakeRange(100, 100)];
     XCTAssert(configs == nil);
@@ -108,16 +108,16 @@
     XCTAssert([[textTagView getTagAtIndex:4] isEqualToString:@"3"]);
     
     TTGTextTagConfig *config = [TTGTextTagConfig new];
-    config.tagTextFont = [UIFont systemFontOfSize:32];
+    config.textFont = [UIFont systemFontOfSize:32];
     textTagView = [self getTextCaseTextTagView];
     [textTagView insertTag:@"15" atIndex:6 withConfig:config];
     XCTAssert([textTagView allTags].count == 10);
-    XCTAssert([textTagView getConfigAtIndex:6].tagTextFont.pointSize == 32);
+    XCTAssert([textTagView getConfigAtIndex:6].textFont.pointSize == 32);
     
     textTagView = [self getTextCaseTextTagView];
-    config.tagTextFont = [UIFont systemFontOfSize:24];
+    config.textFont = [UIFont systemFontOfSize:24];
     [textTagView insertTags:@[@"16", @"17"] atIndex:5 withConfig:config];
-    XCTAssert([textTagView getConfigAtIndex:5].tagTextFont.pointSize == [textTagView getConfigAtIndex:6].tagTextFont.pointSize);
+    XCTAssert([textTagView getConfigAtIndex:5].textFont.pointSize == [textTagView getConfigAtIndex:6].textFont.pointSize);
 }
 
 - (void)testUpdateTag {
@@ -129,14 +129,14 @@
     XCTAssert([[textTagView allSelectedTags].lastObject isEqualToString:@"3"]);
     
     TTGTextTagConfig *config = [TTGTextTagConfig new];
-    config.tagTextFont = [UIFont systemFontOfSize:40];
+    config.textFont = [UIFont systemFontOfSize:40];
     [textTagView setTagAtIndex:2 withConfig:config];
-    XCTAssert([textTagView getConfigAtIndex:2].tagTextFont.pointSize == 40);
+    XCTAssert([textTagView getConfigAtIndex:2].textFont.pointSize == 40);
     
-    config.tagTextFont = [UIFont systemFontOfSize:10];
+    config.textFont = [UIFont systemFontOfSize:10];
     [textTagView setTagsInRange:NSMakeRange(4, 2) withConfig:config];
-    XCTAssert([textTagView getConfigAtIndex:4].tagTextFont.pointSize == 10);
-    XCTAssert([textTagView getConfigAtIndex:5].tagTextFont.pointSize == 10);
+    XCTAssert([textTagView getConfigAtIndex:4].textFont.pointSize == 10);
+    XCTAssert([textTagView getConfigAtIndex:5].textFont.pointSize == 10);
 }
 
 - (void)testRemoveTag {
