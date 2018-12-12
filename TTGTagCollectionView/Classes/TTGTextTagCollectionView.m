@@ -368,6 +368,10 @@
     }
 }
 
+- (CGSize)sizeThatFits:(CGSize)size {
+    return self.contentSize;
+}
+
 #pragma mark - Public methods
 
 - (void)reload {

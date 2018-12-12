@@ -158,6 +158,10 @@
     return _scrollView.contentSize;
 }
 
+- (CGSize)sizeThatFits:(CGSize)size {
+    return self.contentSize;
+}
+
 #pragma mark - Layout
 
 - (void)layoutTagViews {

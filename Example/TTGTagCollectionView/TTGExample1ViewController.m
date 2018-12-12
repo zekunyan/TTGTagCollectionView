@@ -71,6 +71,14 @@
     config.shadowRadius = 0.5f;
     
     config.cornerRadius = 7;
+    
+    config.enableGradientBackground = YES;
+    config.gradientBackgroundStartColor = [UIColor orangeColor];
+    config.selectedGradientBackgroundStartColor = [UIColor yellowColor];
+    config.gradientBackgroundEndColor = [UIColor yellowColor];
+    config.selectedGradientBackgroundEndColor = [UIColor grayColor];
+    config.gradientBackgroundStartPoint =CGPointMake(0, 0);
+    config.gradientBackgroundEndPoint = CGPointMake(1, 1);
 
     // Style2
     config = _textTagCollectionView2.defaultConfig;
