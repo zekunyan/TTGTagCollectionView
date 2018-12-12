@@ -28,7 +28,7 @@ TTGTagCollectionView is useful for showing different size tag views in a vertica
 ## Demo
 You can find demos in the `Example->TTGTagCollectionView.xcworkspace` project.
 
-![Example project](https://github.com/zekunyan/TTGTagCollectionView/raw/master/Resources/demo_example.png)
+![Example project](https://github.com/zekunyan/TTGTagCollectionView/raw/master/Resources/demo_example.jpeg)
 
 ## Requirements
 iOS 7 and later.
