@@ -202,16 +202,15 @@
 - (void)updateFrameWithMaxSize:(CGSize)maxSize {
     [_label sizeToFit];
     
-    CGSize size = _label.frame.size;
-    CGSize finalSize = size;
+    CGSize finalSize = _label.frame.size;
     
     finalSize.width += _config.extraSpace.width;
     finalSize.height += _config.extraSpace.height;
     
-    if (self.config.maxWidth > 0 && size.width > self.config.maxWidth) {
+    if (self.config.maxWidth > 0 && finalSize.width > self.config.maxWidth) {
         finalSize.width = self.config.maxWidth;
     }
-    if (self.config.minWidth > 0 && size.width < self.config.minWidth) {
+    if (self.config.minWidth > 0 && finalSize.width < self.config.minWidth) {
         finalSize.width = self.config.minWidth;
     }
     if (self.config.exactWidth > 0) {
