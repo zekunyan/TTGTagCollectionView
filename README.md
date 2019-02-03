@@ -43,12 +43,6 @@ it, simply add the following line to your Podfile:
 pod "TTGTagCollectionView"
 ```
 
-### Carthage
-You can use [Carthage](https://github.com/Carthage/Carthage) to install `TTGTagCollectionView` by adding it to your `Cartfile`:
-```
-github "zekunyan/TTGTagCollectionView"
-```
-
 ## Usage
 ### TTGTextTagCollectionView
 Use TTGTextTagCollectionView to show text tags.
