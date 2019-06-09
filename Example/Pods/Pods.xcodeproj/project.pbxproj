@@ -7,186 +7,193 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		049B460E1DDF110E868627655CE0ADEA /* MASViewAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = 22DB70234D36642F88B85B20E6EEA26E /* MASViewAttribute.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		0BED362262BF36B8F775BC5810DD7EDE /* NSArray+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B99428F844913491F0B1F77F09E2DE0D /* NSArray+MASAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		12B1110786810911F8F4D419021CF630 /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D246EA74D1E8F37C2FF83FD747DEA04 /* MASConstraintMaker.m */; };
-		1C2C2D3CCE8310778F6511C8BBA6A6D9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83F55B96F9FD27342C0F09BBB7DEE1AE /* QuartzCore.framework */; };
-		1EC8595D0E176DB06815789B6F7E35C1 /* MASConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = C638D9A29EFFB55566053B4F48B023DB /* MASConstraint.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		265ED3616AD8DC0516A45DE5473133DD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D8B915FF40EB401BFF7A6C07CC4BAC /* Foundation.framework */; };
-		2A6EEFDF3EE2BBBF63F6063C3F6747A1 /* View+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 099F5D1223DE1DB516C264C344A2AAB1 /* View+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		2AF8E8005BF2A4EBAC866F0A1AF5975C /* NSLayoutConstraint+MASDebugAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = DE25BA0F6928DAE50030F5E7A726BD55 /* NSLayoutConstraint+MASDebugAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		2BBA747A4E46FFA08C5AFE5D3F6E9D7C /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5A02ECB2431E153CFD952E015AB6A0 /* NSArray+MASAdditions.m */; };
-		349A7678AD638D5FE26743AAF165A54A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53654F6C69F2B1C06A517CAB5691730 /* UIKit.framework */; };
-		3CA06088FC3D1070C079BEB088F8639A /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = CD98B1F4920381D0299F928D3EE92046 /* UIScrollView+SVPullToRefresh.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		4B84BD650C90F21D68757C56BBB1846F /* TTGTagCollectionView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9630C7D09E53524796A781063ABA7B54 /* TTGTagCollectionView-dummy.m */; };
-		57DA59C3A3D4CEB01A72920AA04FCF45 /* SVPullToRefresh.h in Headers */ = {isa = PBXBuildFile; fileRef = F9A829414D64C666338B46AF37C3EF76 /* SVPullToRefresh.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		59E460AA853038A50B89ED33CC615FB4 /* MASLayoutConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 61B4D9C4228010342452D869A32B80FE /* MASLayoutConstraint.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		61421136A138509500D83D79CF4CB8B6 /* TTGTagCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7014D4AB8EF9900BA05C65FA1623A982 /* TTGTagCollectionView.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		7157D66DCE09397047A7ECF10F15DCBF /* MASCompositeConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = C1EC10CE99BB1766B1C28320B6DAB989 /* MASCompositeConstraint.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		776E2AFF48DAF44E771AD96D4180F343 /* Pods-TTGTagCollectionView_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 680F279C808803955B73C4AB43398BB8 /* Pods-TTGTagCollectionView_Example-dummy.m */; };
-		78B78A6B5BF7F4E089CA51AEA702C205 /* SVPullToRefresh-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8094982404FE0CF422A60CAE61415E7D /* SVPullToRefresh-dummy.m */; };
-		7CE5EB359BAF54EF3123E9B5BE1E249A /* Pods-TTGTagCollectionView_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B318545E01DE71AA4258DE6FE99822D9 /* Pods-TTGTagCollectionView_Tests-dummy.m */; };
-		7D48232AE62FD0A1E4C4EEC4AE858209 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 35375D7426DCA4FF5B643B03B692098D /* MASCompositeConstraint.m */; };
-		7FE1C36A12C885ECCD858E05C3685AF5 /* MASViewConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = E852E54047EE9BA922278BC6833D3A0F /* MASViewConstraint.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		91BEFCA99AED2127184DEE584255FBFE /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD6B032AE39EBB0DF99A22560A703E3 /* MASViewAttribute.m */; };
-		948736368792C2373C67572130C861A4 /* TTGTextTagCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 68A9C4848627D01D39ACE9298758B3B9 /* TTGTextTagCollectionView.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		9B5D721633B82BF8FE44D1A435434DF9 /* ViewController+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3CB6A3407FE3ECD1550922F097E099A8 /* ViewController+MASAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		9FD2FB144A530D0AB5A82A99CB4ED088 /* Masonry-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E5F93EA7EA23BC292A776AD82C032BC /* Masonry-dummy.m */; };
-		A2839EE1C3CFDBC573DF28B3EAAFF1B5 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 37EDF7D2E497C4FE22BAE022224CBAED /* MASConstraint.m */; };
-		AAB2AD61FB911B0F622AEA6340CDAB6E /* UIScrollView+SVPullToRefresh.h in Headers */ = {isa = PBXBuildFile; fileRef = CB3956EA7867547A7B7F2F60646EF081 /* UIScrollView+SVPullToRefresh.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		AD40792AFFBC6A0559607E2EAE3512F6 /* TTGTagCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 44325B3A0ABDBBF6E03B1C329820EE29 /* TTGTagCollectionView.m */; };
-		ADB022A853D74C0A9F48BC16D4EA59CF /* View+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B4FDF15ED1C44D61FAD012C2AE2F1BAC /* View+MASAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		B4BEBC36B586556BFDEDDB9F6D669239 /* Masonry.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AFB6CC408B1F9821D9DA7A11D9C57E6 /* Masonry.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		B5BE571A0725C4506001C206FB69C2F7 /* MASConstraint+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AF1FAC096CB9E248A250DE51A545674 /* MASConstraint+Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		BC4BB4FAA82D4C4C439CE83F0C004392 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B52D8617E93BAA0016E664F57F4ABB91 /* NSLayoutConstraint+MASDebugAdditions.m */; };
-		C0953168C5916BF83D7C7BDE01A2A300 /* NSArray+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = AEBEB7DBD1234831E9C5B9C94A1CF8D2 /* NSArray+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		D318B527C65FF596A0F542D1ED8ED072 /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B729FC839FAEAF35F12785BE1CDA4C8 /* UIScrollView+SVInfiniteScrolling.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		E3312A275C1003F02C7386349FBE4195 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F20FCDDE7B1E4430F11E44592AEED74 /* View+MASAdditions.m */; };
-		E8D2B06760AD270146CF0C5CB07E2043 /* MASUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = D1C8F16F849D2B9601E84A3401AA51FF /* MASUtilities.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		F57F3C8BF466FA98523222E68B41B77D /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FADB2827135B5245667D9527140AB0 /* MASViewConstraint.m */; };
-		F6FCDB8385D380A13B3303853DDEEDAB /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FD362AC5BFCB6A5A6A502ECF3A65776D /* ViewController+MASAdditions.m */; };
-		FC2959986CFDEBB4308E36CF89A325B6 /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = E88DF712E0EF0EF561F83DD1953E384C /* MASLayoutConstraint.m */; };
-		FCD64586536B2C1974F92ACAF8447ACD /* MASConstraintMaker.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFA0D84DC09609A617435EA5790E613 /* MASConstraintMaker.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		FCE146D0993963BD46394809A1D66467 /* TTGTextTagCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7852A200D1D38022B4627BF4377C03B0 /* TTGTextTagCollectionView.m */; };
-		FFF5E6EB94D0990B03ACCBC7A7264908 /* UIScrollView+SVInfiniteScrolling.h in Headers */ = {isa = PBXBuildFile; fileRef = C12A6CD8E419D463E98A423F8594FD69 /* UIScrollView+SVInfiniteScrolling.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		01536673BD94F5CBA59962356EB5AC6D /* TTGTagCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12345CAA7C8EA3CD1261747805356556 /* TTGTagCollectionView.m */; };
+		02810623950A0D5EB3EF783D2F59D13B /* TTGTextTag.h in Headers */ = {isa = PBXBuildFile; fileRef = B68D854FC3B098D2B2CBE4E9BABE7AB8 /* TTGTextTag.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		06A4624C0490881FD7962E6F2768469F /* MASConstraintMaker.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CE43786A0CB2932782056B192063860 /* MASConstraintMaker.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		0B1CE85AF30254D5DDFDA6409001A5B2 /* TTGTextTagAttributedStringContent.m in Sources */ = {isa = PBXBuildFile; fileRef = B1232C2E00F6562961C7191DDCBF946A /* TTGTextTagAttributedStringContent.m */; };
+		0D8B9B0825928CD4C9E71A45A24745DC /* Pods-TTGTagCollectionView_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 748328D9239376E5125E6C5E4B3587C4 /* Pods-TTGTagCollectionView_Tests-dummy.m */; };
+		0F1CEF2B08D18B900A16F3249C96DBEF /* MASCompositeConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = D48B81CCC1C8AC74BD642C8CD0436A6E /* MASCompositeConstraint.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		147370B40CE853ADCC91F9C81FF5E5FA /* NSLayoutConstraint+MASDebugAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = C762EBBF4F510EC1576FDAF85512A5F5 /* NSLayoutConstraint+MASDebugAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		16590753223A08C22AB6781DD48EAC4A /* TTGTagCollectionView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 084D0E7ABFD24D6F202F92E46997B6FA /* TTGTagCollectionView-dummy.m */; };
+		1D12FE6ABBFFDECF65CA15759AD0E411 /* MASViewConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 938122A3E4F0268652D9CD4E99CE5EA5 /* MASViewConstraint.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		1E3B9E29E64A41419BADE54AEFDAF08E /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9A9F780A2298A1904BA62F2C69F539 /* MASCompositeConstraint.m */; };
+		24F67F67B66D71384E9B66CF81AF84B3 /* ViewController+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 42D6E5A630855CE1CF40516248C6722B /* ViewController+MASAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		27A15F0296A85E21525B3498B7FFEFAD /* TTGTextTagCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 41C856644E9F1E0C124A887F88EAE378 /* TTGTextTagCollectionView.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		29214D8D2E69809E66F0C8A98A36BCCE /* NSArray+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 88FA9B5D6699FFA3F0BAFD62DC76895B /* NSArray+MASAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		29C098964D2991A2B0C0BC84D2EF4D98 /* TTGTagCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6212F81372B83FC4BA51AE2DA5D1A28C /* TTGTagCollectionView.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		33F88FCCAB6FA101710E61520F687CE5 /* Pods-TTGTagCollectionView_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FD5FB2180603AFDBA9BC63FFB1592B24 /* Pods-TTGTagCollectionView_Example-dummy.m */; };
+		34D6D9E7FEAF947841106F0662A2E52D /* Masonry-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EBC3A971BF9BECBDC606FA61340C48 /* Masonry-dummy.m */; };
+		420DD16E22953A700FC1DB223F363DCB /* TTGTextTagAttributedStringContent.h in Headers */ = {isa = PBXBuildFile; fileRef = 0610F627458895DEABB1C81B3C220578 /* TTGTextTagAttributedStringContent.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		50370FA885AAF9A6F70FD767ACF3A4B6 /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8716DFB63CBAF80286183C7DFFBDE9 /* UIScrollView+SVInfiniteScrolling.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		591F1FA04AB069DD22008A8BABAAB829 /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = FABE384CA943E741C64FEAD6DC29F1E6 /* MASViewConstraint.m */; };
+		5E44F7CFDA34CB0B1F1A65A19641AC7D /* View+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 501C30792A2E89B017A67C1A50002AA7 /* View+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		60DC27F14226DDD592FA1464C2DA0C2E /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AEDADD236C029037F93AE5556229D3 /* MASConstraintMaker.m */; };
+		62ED0D1B1D2D5EF2225776A9C2BAF4DA /* MASViewAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = 392A57CA06E9EE00EA3555F31F4A4C59 /* MASViewAttribute.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		6EB65C48C5D4DFEFBE31314D6FC55F09 /* UIScrollView+SVPullToRefresh.h in Headers */ = {isa = PBXBuildFile; fileRef = 115F27E26EF3E546007A8CEE7F71322E /* UIScrollView+SVPullToRefresh.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		76A3640B51697B46BFE5008A41EE81BB /* TTGTextTagStringContent.m in Sources */ = {isa = PBXBuildFile; fileRef = A399FBD76264C0F4740A55FEFA11DA5C /* TTGTextTagStringContent.m */; };
+		7C31AFA9C95568E16B6911B670754372 /* View+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BC1E68D9CA41E5F5AD2781ECA705DD6 /* View+MASAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		834D1BB9656D3E64B2AF8C0E0119A37F /* MASConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 5280B26AFE67F82A8D7B2FDB8DA5ECA9 /* MASConstraint.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		8699CEF608D4C00EAE20FD2720262A6E /* SVPullToRefresh-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BB218901012CB279AAF366E3FF00E653 /* SVPullToRefresh-dummy.m */; };
+		96DB2AB39DFEB82319EF630730FDE4FD /* NSArray+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D3F5D0A57E7D46CA1D3F14765565A35 /* NSArray+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		9F3EA10974A5AA581BAE1D261C270F52 /* TTGTextTagCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B66A365BE723203F601DC2348209C96F /* TTGTextTagCollectionView.m */; };
+		9F7245F368B8CD09FE3F2C36BAA2842D /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 1121A11ACDFCD60A1856467061F743E7 /* MASViewAttribute.m */; };
+		A032F1F6AF8197812D321FEC56EBE65F /* TTGTextTag.m in Sources */ = {isa = PBXBuildFile; fileRef = A096F0A9BD1A1A1C02AE4400163D2A65 /* TTGTextTag.m */; };
+		A553EB45FE830C85E853E6E471E88CDF /* UIScrollView+SVInfiniteScrolling.h in Headers */ = {isa = PBXBuildFile; fileRef = 44749C40850E0760380F490789761C70 /* UIScrollView+SVInfiniteScrolling.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		A6F529B4645D1CEAA42A721C9797B3DE /* TTGTextTagStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = BAD9974C8A5B01C09E06946F8B6C8491 /* TTGTextTagStyle.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		A8F0C5B743C39DDF32D438A15BDBC154 /* TTGTextTagStringContent.h in Headers */ = {isa = PBXBuildFile; fileRef = 64282CB07F20A401046D6AEB94B3DA30 /* TTGTextTagStringContent.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		AB74AF1EEF7E9D9855E150F344F8CBD5 /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2CF701209DDF9569B525D59C09ACEB /* MASLayoutConstraint.m */; };
+		B47147E660A9F348801921FA48A7ABA9 /* TTGTextTagContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCA3D77B96BE2963FD69A9211A2B0A8 /* TTGTextTagContent.m */; };
+		B5F8B45888F4DFECC89DBA2B0307C178 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D5B933F8CA0257BE83F524CC595F58 /* MASConstraint.m */; };
+		B8F2EC7331230C0B3E3632A38288154F /* TTGTextTagContent.h in Headers */ = {isa = PBXBuildFile; fileRef = 81566EA6A3007A4FD3E3E0D5CC690B6E /* TTGTextTagContent.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		BE5FBC611AA26948D37E795C5946043A /* TTGTextTagStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5C6DDE21B75D43F87093B0A54C8972 /* TTGTextTagStyle.m */; };
+		C1C295BCD795C2B6044DB474583804B1 /* MASConstraint+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = D122A7338C95B86CF35A8D273A3A65BE /* MASConstraint+Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		C48DF5D21345BD3D127256C6AD3AEFD4 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 31AEFDB3D98E75F69DDD96672D8506FC /* NSLayoutConstraint+MASDebugAdditions.m */; };
+		C7AC29F56D5F471248BBA0A724CDF3C7 /* Masonry.h in Headers */ = {isa = PBXBuildFile; fileRef = CED7E3C105EF525C3B42DEDA44820E75 /* Masonry.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		D1D4442E6949DAF0EB2688A85F889E8D /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F096B8E51643BEBF12C43408C069B34 /* ViewController+MASAdditions.m */; };
+		D2A41B4308C888327D3D965E2956372C /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = F618E197F6197D8AA396FE7064EADCF8 /* UIScrollView+SVPullToRefresh.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		D59F2BB9843C83057A2BAAD5054B68AE /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 86442187B3F002E2FA65813AC7D90A55 /* NSArray+MASAdditions.m */; };
+		D8DAAF0C8612652CA9778BCD17D7FF92 /* SVPullToRefresh.h in Headers */ = {isa = PBXBuildFile; fileRef = A9AE737008E839E7AD4786223871502E /* SVPullToRefresh.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		E94F68ABEAC53DD4556594E0EE4EAD57 /* MASUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 618AB89B5162A67A6796F3CA3E6CF73C /* MASUtilities.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		EAED263ADDF8EBE21F1EE02F9FB8FD7E /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 600FA7542ED5A21E8E27ACD65E57BFC9 /* View+MASAdditions.m */; };
+		F0223A4EEF0A05E2DBC75767471884A2 /* MASLayoutConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 82BB6398A7F4B35FBFB2A58EDA76B03F /* MASLayoutConstraint.h */; settings = {ATTRIBUTES = (Project, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		362D5207EB92DC8AE17643AC409819E5 /* PBXContainerItemProxy */ = {
+		2A2348781783329A89198696A52599B0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 071B11A01194E45E7F6B2BFDF4658675;
-			remoteInfo = "Pods-TTGTagCollectionView_Example";
-		};
-		5B278E6E04DA4AA999DC1BD07B82DA78 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 04E1EBA4CEA4F6CFE43622EE18122A70;
+			remoteGlobalIDString = 59476F09173802390CDF2CB1680B87BB;
 			remoteInfo = TTGTagCollectionView;
 		};
-		9AE3DBD2E53AA84352F864628B812AE7 /* PBXContainerItemProxy */ = {
+		7E646440D2F18459ED3030952312D13D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 373305C59B8F6CB6B7937DEB2F178DDD;
+			remoteGlobalIDString = B854683690DC218F2B6E2FFDB0D27CDC;
+			remoteInfo = Masonry;
+		};
+		9AC566BEF843A5A3900174D939298533 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9471DAD77E3AA1AD63A31CDE3F4963C5;
 			remoteInfo = SVPullToRefresh;
 		};
-		F9AD7E47801EBC2CA142BA825D162A6F /* PBXContainerItemProxy */ = {
+		CBEA6404F982873FABC747A733246C0F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 40A42EA465E764DD959C829C51404C08;
-			remoteInfo = Masonry;
+			remoteGlobalIDString = AEA331C80F3392A035153BAE386566DD;
+			remoteInfo = "Pods-TTGTagCollectionView_Example";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		099F5D1223DE1DB516C264C344A2AAB1 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "View+MASShorthandAdditions.h"; path = "Masonry/View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
-		0AFB6CC408B1F9821D9DA7A11D9C57E6 /* Masonry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Masonry.h; path = Masonry/Masonry.h; sourceTree = "<group>"; };
-		0D246EA74D1E8F37C2FF83FD747DEA04 /* MASConstraintMaker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraintMaker.m; path = Masonry/MASConstraintMaker.m; sourceTree = "<group>"; };
-		213F66F12D6F5B9CB862E51D5B69584D /* Pods-TTGTagCollectionView_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TTGTagCollectionView_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		22DB70234D36642F88B85B20E6EEA26E /* MASViewAttribute.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASViewAttribute.h; path = Masonry/MASViewAttribute.h; sourceTree = "<group>"; };
-		2350EFB8B573C25AB3EBEE1BF4F40F17 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		287BF4264A7DAAA2A21601DFCD337B60 /* Pods-TTGTagCollectionView_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TTGTagCollectionView_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		288533EFACAA58EC9F658CC2F760E433 /* Pods-TTGTagCollectionView_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TTGTagCollectionView_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		2CBEEE7363004994061AE80D570E45E9 /* TTGTagCollectionView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TTGTagCollectionView.xcconfig; sourceTree = "<group>"; };
-		2F39BA9B58B39EF01995ED039825884D /* libPods-TTGTagCollectionView_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-TTGTagCollectionView_Tests.a"; path = "libPods-TTGTagCollectionView_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		315C6F6B4E93A5A85500A907446E41A9 /* libTTGTagCollectionView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libTTGTagCollectionView.a; path = libTTGTagCollectionView.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		35375D7426DCA4FF5B643B03B692098D /* MASCompositeConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASCompositeConstraint.m; path = Masonry/MASCompositeConstraint.m; sourceTree = "<group>"; };
-		37EDF7D2E497C4FE22BAE022224CBAED /* MASConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraint.m; path = Masonry/MASConstraint.m; sourceTree = "<group>"; };
-		39CFFE72A4FA02FEF5DCEE7C015B0D84 /* TTGTagCollectionView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TTGTagCollectionView-prefix.pch"; sourceTree = "<group>"; };
-		3CB6A3407FE3ECD1550922F097E099A8 /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ViewController+MASAdditions.h"; path = "Masonry/ViewController+MASAdditions.h"; sourceTree = "<group>"; };
-		416C40DC7C7674329475FE3B07D51377 /* TTGTagCollectionView.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = TTGTagCollectionView.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		43556AD28E7EF46D4AC43BD8EB0E64EF /* SVPullToRefresh-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SVPullToRefresh-prefix.pch"; sourceTree = "<group>"; };
-		44325B3A0ABDBBF6E03B1C329820EE29 /* TTGTagCollectionView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTGTagCollectionView.m; path = TTGTagCollectionView/Classes/TTGTagCollectionView.m; sourceTree = "<group>"; };
-		48FADB2827135B5245667D9527140AB0 /* MASViewConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASViewConstraint.m; path = Masonry/MASViewConstraint.m; sourceTree = "<group>"; };
-		4B729FC839FAEAF35F12785BE1CDA4C8 /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+SVInfiniteScrolling.m"; path = "SVPullToRefresh/UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
-		4F08DD56B21473A43A5A1D6F5856A52A /* Pods-TTGTagCollectionView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TTGTagCollectionView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		5AF1FAC096CB9E248A250DE51A545674 /* MASConstraint+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MASConstraint+Private.h"; path = "Masonry/MASConstraint+Private.h"; sourceTree = "<group>"; };
-		5D467C735C797688D6EDC4965D699C8D /* Pods-TTGTagCollectionView_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TTGTagCollectionView_Example-frameworks.sh"; sourceTree = "<group>"; };
-		5F20FCDDE7B1E4430F11E44592AEED74 /* View+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "View+MASAdditions.m"; path = "Masonry/View+MASAdditions.m"; sourceTree = "<group>"; };
-		61B4D9C4228010342452D869A32B80FE /* MASLayoutConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASLayoutConstraint.h; path = Masonry/MASLayoutConstraint.h; sourceTree = "<group>"; };
-		660218B1D4061B674A674D2603DB2C62 /* Pods-TTGTagCollectionView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TTGTagCollectionView_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		680F279C808803955B73C4AB43398BB8 /* Pods-TTGTagCollectionView_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TTGTagCollectionView_Example-dummy.m"; sourceTree = "<group>"; };
-		68A9C4848627D01D39ACE9298758B3B9 /* TTGTextTagCollectionView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTGTextTagCollectionView.h; path = TTGTagCollectionView/Classes/TTGTextTagCollectionView.h; sourceTree = "<group>"; };
-		7014D4AB8EF9900BA05C65FA1623A982 /* TTGTagCollectionView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TTGTagCollectionView.h; path = TTGTagCollectionView/Classes/TTGTagCollectionView.h; sourceTree = "<group>"; };
-		72212FB5BFDC6CED1035F1BE925A76FC /* libSVPullToRefresh.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSVPullToRefresh.a; path = libSVPullToRefresh.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		7228DA19B586C541BBE39ED9250E7FEF /* Masonry-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Masonry-prefix.pch"; sourceTree = "<group>"; };
-		7852A200D1D38022B4627BF4377C03B0 /* TTGTextTagCollectionView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTGTextTagCollectionView.m; path = TTGTagCollectionView/Classes/TTGTextTagCollectionView.m; sourceTree = "<group>"; };
-		7A61258DF2947A06F7373031FA221BF0 /* libMasonry.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMasonry.a; path = libMasonry.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		7A98D402F9052DA36ECA4D24A415CE71 /* SVPullToRefresh.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SVPullToRefresh.xcconfig; sourceTree = "<group>"; };
-		7E5F93EA7EA23BC292A776AD82C032BC /* Masonry-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Masonry-dummy.m"; sourceTree = "<group>"; };
-		7EAE3AF243AECB51BFC745A06257C70E /* Pods-TTGTagCollectionView_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TTGTagCollectionView_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		7F375FD294D307200587A5B549B06378 /* Pods-TTGTagCollectionView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TTGTagCollectionView_Example.release.xcconfig"; sourceTree = "<group>"; };
-		8094982404FE0CF422A60CAE61415E7D /* SVPullToRefresh-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SVPullToRefresh-dummy.m"; sourceTree = "<group>"; };
-		819596215000AB692EB7D35F2A61F5E0 /* Pods-TTGTagCollectionView_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TTGTagCollectionView_Example-resources.sh"; sourceTree = "<group>"; };
-		83F55B96F9FD27342C0F09BBB7DEE1AE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
-		88B7F492CA2128E711C3C5E558E9F98F /* Masonry.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Masonry.xcconfig; sourceTree = "<group>"; };
-		8CB0041B32E3EDA1A79798783FC5BF2E /* Pods-TTGTagCollectionView_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TTGTagCollectionView_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9630C7D09E53524796A781063ABA7B54 /* TTGTagCollectionView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TTGTagCollectionView-dummy.m"; sourceTree = "<group>"; };
-		A2437D585D2011C9A373A6FFE2A61805 /* Pods-TTGTagCollectionView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TTGTagCollectionView_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		A53654F6C69F2B1C06A517CAB5691730 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		AEBEB7DBD1234831E9C5B9C94A1CF8D2 /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+MASShorthandAdditions.h"; path = "Masonry/NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
-		B318545E01DE71AA4258DE6FE99822D9 /* Pods-TTGTagCollectionView_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TTGTagCollectionView_Tests-dummy.m"; sourceTree = "<group>"; };
-		B4074542FDE5239511FCFAFEC8E04CFE /* libPods-TTGTagCollectionView_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-TTGTagCollectionView_Example.a"; path = "libPods-TTGTagCollectionView_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B4FDF15ED1C44D61FAD012C2AE2F1BAC /* View+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "View+MASAdditions.h"; path = "Masonry/View+MASAdditions.h"; sourceTree = "<group>"; };
-		B52D8617E93BAA0016E664F57F4ABB91 /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSLayoutConstraint+MASDebugAdditions.m"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
-		B8D8B915FF40EB401BFF7A6C07CC4BAC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		B99428F844913491F0B1F77F09E2DE0D /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+MASAdditions.h"; path = "Masonry/NSArray+MASAdditions.h"; sourceTree = "<group>"; };
-		C12A6CD8E419D463E98A423F8594FD69 /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+SVInfiniteScrolling.h"; path = "SVPullToRefresh/UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
-		C1EC10CE99BB1766B1C28320B6DAB989 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASCompositeConstraint.h; path = Masonry/MASCompositeConstraint.h; sourceTree = "<group>"; };
-		C638D9A29EFFB55566053B4F48B023DB /* MASConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraint.h; path = Masonry/MASConstraint.h; sourceTree = "<group>"; };
-		C75CE745EFC110CFC38E1207E501BDF0 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
-		CAD6B032AE39EBB0DF99A22560A703E3 /* MASViewAttribute.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASViewAttribute.m; path = Masonry/MASViewAttribute.m; sourceTree = "<group>"; };
-		CB3956EA7867547A7B7F2F60646EF081 /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+SVPullToRefresh.h"; path = "SVPullToRefresh/UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
-		CD98B1F4920381D0299F928D3EE92046 /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+SVPullToRefresh.m"; path = "SVPullToRefresh/UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
-		CF5A02ECB2431E153CFD952E015AB6A0 /* NSArray+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+MASAdditions.m"; path = "Masonry/NSArray+MASAdditions.m"; sourceTree = "<group>"; };
-		D1C8F16F849D2B9601E84A3401AA51FF /* MASUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASUtilities.h; path = Masonry/MASUtilities.h; sourceTree = "<group>"; };
-		DE25BA0F6928DAE50030F5E7A726BD55 /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSLayoutConstraint+MASDebugAdditions.h"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
-		E852E54047EE9BA922278BC6833D3A0F /* MASViewConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASViewConstraint.h; path = Masonry/MASViewConstraint.h; sourceTree = "<group>"; };
-		E88DF712E0EF0EF561F83DD1953E384C /* MASLayoutConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASLayoutConstraint.m; path = Masonry/MASLayoutConstraint.m; sourceTree = "<group>"; };
-		EDFA0D84DC09609A617435EA5790E613 /* MASConstraintMaker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraintMaker.h; path = Masonry/MASConstraintMaker.h; sourceTree = "<group>"; };
-		F43004231BE8B98AAC2CA8A84041DB7D /* Pods-TTGTagCollectionView_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TTGTagCollectionView_Tests-resources.sh"; sourceTree = "<group>"; };
-		F9A829414D64C666338B46AF37C3EF76 /* SVPullToRefresh.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVPullToRefresh.h; path = SVPullToRefresh/SVPullToRefresh.h; sourceTree = "<group>"; };
-		FD362AC5BFCB6A5A6A502ECF3A65776D /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ViewController+MASAdditions.m"; path = "Masonry/ViewController+MASAdditions.m"; sourceTree = "<group>"; };
+		026A2C279B8BEAE405FAAE7D449AE6F3 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		0610F627458895DEABB1C81B3C220578 /* TTGTextTagAttributedStringContent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTGTextTagAttributedStringContent.h; sourceTree = "<group>"; };
+		084D0E7ABFD24D6F202F92E46997B6FA /* TTGTagCollectionView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TTGTagCollectionView-dummy.m"; sourceTree = "<group>"; };
+		0A4452C850E0AACC5B682E40391C6034 /* Pods-TTGTagCollectionView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TTGTagCollectionView_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		1121A11ACDFCD60A1856467061F743E7 /* MASViewAttribute.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASViewAttribute.m; path = Masonry/MASViewAttribute.m; sourceTree = "<group>"; };
+		115F27E26EF3E546007A8CEE7F71322E /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+SVPullToRefresh.h"; path = "SVPullToRefresh/UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
+		12345CAA7C8EA3CD1261747805356556 /* TTGTagCollectionView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTGTagCollectionView.m; sourceTree = "<group>"; };
+		1348D59131206E2B5B4AA4B4963655D9 /* SVPullToRefresh-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SVPullToRefresh-prefix.pch"; sourceTree = "<group>"; };
+		176978781708CA4BC0402BFD09B2179E /* Pods-TTGTagCollectionView_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TTGTagCollectionView_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		1BC1E68D9CA41E5F5AD2781ECA705DD6 /* View+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "View+MASAdditions.h"; path = "Masonry/View+MASAdditions.h"; sourceTree = "<group>"; };
+		1CE43786A0CB2932782056B192063860 /* MASConstraintMaker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraintMaker.h; path = Masonry/MASConstraintMaker.h; sourceTree = "<group>"; };
+		2D3F5D0A57E7D46CA1D3F14765565A35 /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+MASShorthandAdditions.h"; path = "Masonry/NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		3178334A81076F9BE802B43C4FE5DE78 /* Pods-TTGTagCollectionView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TTGTagCollectionView_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		31AEFDB3D98E75F69DDD96672D8506FC /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSLayoutConstraint+MASDebugAdditions.m"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
+		392A57CA06E9EE00EA3555F31F4A4C59 /* MASViewAttribute.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASViewAttribute.h; path = Masonry/MASViewAttribute.h; sourceTree = "<group>"; };
+		3EB0D030DAFD65333A56645CC518BC1A /* TTGTagCollectionView.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = TTGTagCollectionView.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		3F2CF701209DDF9569B525D59C09ACEB /* MASLayoutConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASLayoutConstraint.m; path = Masonry/MASLayoutConstraint.m; sourceTree = "<group>"; };
+		400E41C73C3583FF31533180F5353DAF /* Pods-TTGTagCollectionView_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TTGTagCollectionView_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		4098AD88174AE0EE70AB2287C7604DE8 /* Masonry-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Masonry-prefix.pch"; sourceTree = "<group>"; };
+		4165D408F39AA490CDA2DD399F4168A2 /* TTGTagCollectionView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TTGTagCollectionView-prefix.pch"; sourceTree = "<group>"; };
+		41C856644E9F1E0C124A887F88EAE378 /* TTGTextTagCollectionView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTGTextTagCollectionView.h; sourceTree = "<group>"; };
+		42D6E5A630855CE1CF40516248C6722B /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ViewController+MASAdditions.h"; path = "Masonry/ViewController+MASAdditions.h"; sourceTree = "<group>"; };
+		44749C40850E0760380F490789761C70 /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+SVInfiniteScrolling.h"; path = "SVPullToRefresh/UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
+		47D5B933F8CA0257BE83F524CC595F58 /* MASConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraint.m; path = Masonry/MASConstraint.m; sourceTree = "<group>"; };
+		4F096B8E51643BEBF12C43408C069B34 /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ViewController+MASAdditions.m"; path = "Masonry/ViewController+MASAdditions.m"; sourceTree = "<group>"; };
+		501C30792A2E89B017A67C1A50002AA7 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "View+MASShorthandAdditions.h"; path = "Masonry/View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		5119047C637ED0888B30C6D3503B3670 /* Pods-TTGTagCollectionView_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TTGTagCollectionView_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		5280B26AFE67F82A8D7B2FDB8DA5ECA9 /* MASConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraint.h; path = Masonry/MASConstraint.h; sourceTree = "<group>"; };
+		5AE9E7C2970152850C6D9754A7587093 /* libSVPullToRefresh.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSVPullToRefresh.a; path = libSVPullToRefresh.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		600FA7542ED5A21E8E27ACD65E57BFC9 /* View+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "View+MASAdditions.m"; path = "Masonry/View+MASAdditions.m"; sourceTree = "<group>"; };
+		618AB89B5162A67A6796F3CA3E6CF73C /* MASUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASUtilities.h; path = Masonry/MASUtilities.h; sourceTree = "<group>"; };
+		6212F81372B83FC4BA51AE2DA5D1A28C /* TTGTagCollectionView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTGTagCollectionView.h; sourceTree = "<group>"; };
+		64282CB07F20A401046D6AEB94B3DA30 /* TTGTextTagStringContent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTGTextTagStringContent.h; sourceTree = "<group>"; };
+		69AEDADD236C029037F93AE5556229D3 /* MASConstraintMaker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraintMaker.m; path = Masonry/MASConstraintMaker.m; sourceTree = "<group>"; };
+		6F9A9F780A2298A1904BA62F2C69F539 /* MASCompositeConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASCompositeConstraint.m; path = Masonry/MASCompositeConstraint.m; sourceTree = "<group>"; };
+		748328D9239376E5125E6C5E4B3587C4 /* Pods-TTGTagCollectionView_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TTGTagCollectionView_Tests-dummy.m"; sourceTree = "<group>"; };
+		750C39FBD4552D92CAC4941B03009D24 /* Pods-TTGTagCollectionView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TTGTagCollectionView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		81566EA6A3007A4FD3E3E0D5CC690B6E /* TTGTextTagContent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTGTextTagContent.h; sourceTree = "<group>"; };
+		82BB6398A7F4B35FBFB2A58EDA76B03F /* MASLayoutConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASLayoutConstraint.h; path = Masonry/MASLayoutConstraint.h; sourceTree = "<group>"; };
+		86442187B3F002E2FA65813AC7D90A55 /* NSArray+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+MASAdditions.m"; path = "Masonry/NSArray+MASAdditions.m"; sourceTree = "<group>"; };
+		88FA9B5D6699FFA3F0BAFD62DC76895B /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+MASAdditions.h"; path = "Masonry/NSArray+MASAdditions.h"; sourceTree = "<group>"; };
+		8B5C6DDE21B75D43F87093B0A54C8972 /* TTGTextTagStyle.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagStyle.m; sourceTree = "<group>"; };
+		8C98D8C73AA8942AB6301790B24427C3 /* libMasonry.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMasonry.a; path = libMasonry.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		90CAE1105A921376907C9812873A017C /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		938122A3E4F0268652D9CD4E99CE5EA5 /* MASViewConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASViewConstraint.h; path = Masonry/MASViewConstraint.h; sourceTree = "<group>"; };
+		95C945E43398C3121EE81ACBAFA87E81 /* libTTGTagCollectionView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libTTGTagCollectionView.a; path = libTTGTagCollectionView.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		97B1EF43FDA998DF851422963230A3E5 /* libPods-TTGTagCollectionView_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-TTGTagCollectionView_Tests.a"; path = "libPods-TTGTagCollectionView_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C2397A7ABE9F712A0FB93B3D2A3B562 /* Masonry.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Masonry.xcconfig; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9DCA3D77B96BE2963FD69A9211A2B0A8 /* TTGTextTagContent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagContent.m; sourceTree = "<group>"; };
+		9E96E1E2B02AAF9E96FE79745FF2F299 /* Pods-TTGTagCollectionView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TTGTagCollectionView_Example.release.xcconfig"; sourceTree = "<group>"; };
+		A096F0A9BD1A1A1C02AE4400163D2A65 /* TTGTextTag.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTGTextTag.m; sourceTree = "<group>"; };
+		A0AC14A01E831C444D4DFB8308D518A7 /* TTGTagCollectionView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TTGTagCollectionView.xcconfig; sourceTree = "<group>"; };
+		A399FBD76264C0F4740A55FEFA11DA5C /* TTGTextTagStringContent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagStringContent.m; sourceTree = "<group>"; };
+		A9AE737008E839E7AD4786223871502E /* SVPullToRefresh.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVPullToRefresh.h; path = SVPullToRefresh/SVPullToRefresh.h; sourceTree = "<group>"; };
+		AB8716DFB63CBAF80286183C7DFFBDE9 /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+SVInfiniteScrolling.m"; path = "SVPullToRefresh/UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
+		AE7FBA0FC29369FF742EAE0681BBFF99 /* libPods-TTGTagCollectionView_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-TTGTagCollectionView_Example.a"; path = "libPods-TTGTagCollectionView_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1232C2E00F6562961C7191DDCBF946A /* TTGTextTagAttributedStringContent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagAttributedStringContent.m; sourceTree = "<group>"; };
+		B66A365BE723203F601DC2348209C96F /* TTGTextTagCollectionView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagCollectionView.m; sourceTree = "<group>"; };
+		B68D854FC3B098D2B2CBE4E9BABE7AB8 /* TTGTextTag.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTGTextTag.h; sourceTree = "<group>"; };
+		BAD9974C8A5B01C09E06946F8B6C8491 /* TTGTextTagStyle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTGTextTagStyle.h; sourceTree = "<group>"; };
+		BB218901012CB279AAF366E3FF00E653 /* SVPullToRefresh-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SVPullToRefresh-dummy.m"; sourceTree = "<group>"; };
+		C762EBBF4F510EC1576FDAF85512A5F5 /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSLayoutConstraint+MASDebugAdditions.h"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
+		CED7E3C105EF525C3B42DEDA44820E75 /* Masonry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Masonry.h; path = Masonry/Masonry.h; sourceTree = "<group>"; };
+		D122A7338C95B86CF35A8D273A3A65BE /* MASConstraint+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MASConstraint+Private.h"; path = "Masonry/MASConstraint+Private.h"; sourceTree = "<group>"; };
+		D48B81CCC1C8AC74BD642C8CD0436A6E /* MASCompositeConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASCompositeConstraint.h; path = Masonry/MASCompositeConstraint.h; sourceTree = "<group>"; };
+		D7EBC3A971BF9BECBDC606FA61340C48 /* Masonry-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Masonry-dummy.m"; sourceTree = "<group>"; };
+		E74084BB5D35C9CEF77ED99FA1302BBB /* SVPullToRefresh.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SVPullToRefresh.xcconfig; sourceTree = "<group>"; };
+		F618E197F6197D8AA396FE7064EADCF8 /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+SVPullToRefresh.m"; path = "SVPullToRefresh/UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
+		F71A3B282FFF2D37C844D6AD5948CBD7 /* Pods-TTGTagCollectionView_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TTGTagCollectionView_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		FABE384CA943E741C64FEAD6DC29F1E6 /* MASViewConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASViewConstraint.m; path = Masonry/MASViewConstraint.m; sourceTree = "<group>"; };
+		FD5FB2180603AFDBA9BC63FFB1592B24 /* Pods-TTGTagCollectionView_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TTGTagCollectionView_Example-dummy.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2C7F7F5CCCC611CC9ED182BDAB28EF03 /* Frameworks */ = {
+		26FEE027DBBC54DFCD7C909CBB7050F5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ACFCB9922511CC45CD04596FCAA3B7EE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1C2C2D3CCE8310778F6511C8BBA6A6D9 /* QuartzCore.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AE42682EFE00F04EF06002C51CEC0CCA /* Frameworks */ = {
+		2E11962FE221D1142B8E49F1933BE3E6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C95ADA1C4EF2FA5FF4EEC54DD65EAA3C /* Frameworks */ = {
+		2F0A8E3741C526A5E692BC509794E501 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				265ED3616AD8DC0516A45DE5473133DD /* Foundation.framework in Frameworks */,
-				349A7678AD638D5FE26743AAF165A54A /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D09C2BFA4EB7153073DCBCE8B902E89E /* Frameworks */ = {
+		80700757A67F362D8AA08C9246FE544F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81658FD4C85B99B9E4EACC126D563E00 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -196,277 +203,304 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0D7A87A398F0D91F1E1B327DC5AD954E /* iOS */ = {
+		1350FF41C03B0A17BE2D4BA4423A3BB2 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				B8D8B915FF40EB401BFF7A6C07CC4BAC /* Foundation.framework */,
-				83F55B96F9FD27342C0F09BBB7DEE1AE /* QuartzCore.framework */,
-				A53654F6C69F2B1C06A517CAB5691730 /* UIKit.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		0DEE7C11773316B1F2912FDF1EF11661 /* Pods-TTGTagCollectionView_Tests */ = {
-			isa = PBXGroup;
-			children = (
-				287BF4264A7DAAA2A21601DFCD337B60 /* Pods-TTGTagCollectionView_Tests-acknowledgements.markdown */,
-				7EAE3AF243AECB51BFC745A06257C70E /* Pods-TTGTagCollectionView_Tests-acknowledgements.plist */,
-				B318545E01DE71AA4258DE6FE99822D9 /* Pods-TTGTagCollectionView_Tests-dummy.m */,
-				213F66F12D6F5B9CB862E51D5B69584D /* Pods-TTGTagCollectionView_Tests-frameworks.sh */,
-				F43004231BE8B98AAC2CA8A84041DB7D /* Pods-TTGTagCollectionView_Tests-resources.sh */,
-				4F08DD56B21473A43A5A1D6F5856A52A /* Pods-TTGTagCollectionView_Tests.debug.xcconfig */,
-				A2437D585D2011C9A373A6FFE2A61805 /* Pods-TTGTagCollectionView_Tests.release.xcconfig */,
-			);
-			name = "Pods-TTGTagCollectionView_Tests";
-			path = "Target Support Files/Pods-TTGTagCollectionView_Tests";
-			sourceTree = "<group>";
-		};
-		10E0A3D6BA969214D1A344B34C8A917C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				7A61258DF2947A06F7373031FA221BF0 /* libMasonry.a */,
-				B4074542FDE5239511FCFAFEC8E04CFE /* libPods-TTGTagCollectionView_Example.a */,
-				2F39BA9B58B39EF01995ED039825884D /* libPods-TTGTagCollectionView_Tests.a */,
-				72212FB5BFDC6CED1035F1BE925A76FC /* libSVPullToRefresh.a */,
-				315C6F6B4E93A5A85500A907446E41A9 /* libTTGTagCollectionView.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		122DA2E5084A4393C29BE363C764795C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				0D7A87A398F0D91F1E1B327DC5AD954E /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		1371657827F04B51307A9CB2361A19A4 /* Pods-TTGTagCollectionView_Example */ = {
-			isa = PBXGroup;
-			children = (
-				288533EFACAA58EC9F658CC2F760E433 /* Pods-TTGTagCollectionView_Example-acknowledgements.markdown */,
-				8CB0041B32E3EDA1A79798783FC5BF2E /* Pods-TTGTagCollectionView_Example-acknowledgements.plist */,
-				680F279C808803955B73C4AB43398BB8 /* Pods-TTGTagCollectionView_Example-dummy.m */,
-				5D467C735C797688D6EDC4965D699C8D /* Pods-TTGTagCollectionView_Example-frameworks.sh */,
-				819596215000AB692EB7D35F2A61F5E0 /* Pods-TTGTagCollectionView_Example-resources.sh */,
-				660218B1D4061B674A674D2603DB2C62 /* Pods-TTGTagCollectionView_Example.debug.xcconfig */,
-				7F375FD294D307200587A5B549B06378 /* Pods-TTGTagCollectionView_Example.release.xcconfig */,
-			);
-			name = "Pods-TTGTagCollectionView_Example";
-			path = "Target Support Files/Pods-TTGTagCollectionView_Example";
-			sourceTree = "<group>";
-		};
-		217A088CAA501098DF80DAD1E68FBCF9 /* Masonry */ = {
-			isa = PBXGroup;
-			children = (
-				C1EC10CE99BB1766B1C28320B6DAB989 /* MASCompositeConstraint.h */,
-				35375D7426DCA4FF5B643B03B692098D /* MASCompositeConstraint.m */,
-				C638D9A29EFFB55566053B4F48B023DB /* MASConstraint.h */,
-				37EDF7D2E497C4FE22BAE022224CBAED /* MASConstraint.m */,
-				5AF1FAC096CB9E248A250DE51A545674 /* MASConstraint+Private.h */,
-				EDFA0D84DC09609A617435EA5790E613 /* MASConstraintMaker.h */,
-				0D246EA74D1E8F37C2FF83FD747DEA04 /* MASConstraintMaker.m */,
-				61B4D9C4228010342452D869A32B80FE /* MASLayoutConstraint.h */,
-				E88DF712E0EF0EF561F83DD1953E384C /* MASLayoutConstraint.m */,
-				0AFB6CC408B1F9821D9DA7A11D9C57E6 /* Masonry.h */,
-				D1C8F16F849D2B9601E84A3401AA51FF /* MASUtilities.h */,
-				22DB70234D36642F88B85B20E6EEA26E /* MASViewAttribute.h */,
-				CAD6B032AE39EBB0DF99A22560A703E3 /* MASViewAttribute.m */,
-				E852E54047EE9BA922278BC6833D3A0F /* MASViewConstraint.h */,
-				48FADB2827135B5245667D9527140AB0 /* MASViewConstraint.m */,
-				B99428F844913491F0B1F77F09E2DE0D /* NSArray+MASAdditions.h */,
-				CF5A02ECB2431E153CFD952E015AB6A0 /* NSArray+MASAdditions.m */,
-				AEBEB7DBD1234831E9C5B9C94A1CF8D2 /* NSArray+MASShorthandAdditions.h */,
-				DE25BA0F6928DAE50030F5E7A726BD55 /* NSLayoutConstraint+MASDebugAdditions.h */,
-				B52D8617E93BAA0016E664F57F4ABB91 /* NSLayoutConstraint+MASDebugAdditions.m */,
-				B4FDF15ED1C44D61FAD012C2AE2F1BAC /* View+MASAdditions.h */,
-				5F20FCDDE7B1E4430F11E44592AEED74 /* View+MASAdditions.m */,
-				099F5D1223DE1DB516C264C344A2AAB1 /* View+MASShorthandAdditions.h */,
-				3CB6A3407FE3ECD1550922F097E099A8 /* ViewController+MASAdditions.h */,
-				FD362AC5BFCB6A5A6A502ECF3A65776D /* ViewController+MASAdditions.m */,
-				BAA5EFD9A4EA273C96CDCD2E7D07E026 /* Support Files */,
-			);
-			name = Masonry;
-			path = Masonry;
-			sourceTree = "<group>";
-		};
-		517FF25AFD6836CFEE983F5D1F374F30 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				2CBEEE7363004994061AE80D570E45E9 /* TTGTagCollectionView.xcconfig */,
-				9630C7D09E53524796A781063ABA7B54 /* TTGTagCollectionView-dummy.m */,
-				39CFFE72A4FA02FEF5DCEE7C015B0D84 /* TTGTagCollectionView-prefix.pch */,
+				A0AC14A01E831C444D4DFB8308D518A7 /* TTGTagCollectionView.xcconfig */,
+				084D0E7ABFD24D6F202F92E46997B6FA /* TTGTagCollectionView-dummy.m */,
+				4165D408F39AA490CDA2DD399F4168A2 /* TTGTagCollectionView-prefix.pch */,
 			);
 			name = "Support Files";
 			path = "Example/Pods/Target Support Files/TTGTagCollectionView";
 			sourceTree = "<group>";
 		};
-		5EB1E06A24C4AC41D12E0A67DC505749 /* Development Pods */ = {
+		1612821BC2D65B1EDF6205C1928F5166 /* BaseTag */ = {
 			isa = PBXGroup;
 			children = (
-				B4D761AA87DA2A6D3E3133D92FC2B413 /* TTGTagCollectionView */,
+				6212F81372B83FC4BA51AE2DA5D1A28C /* TTGTagCollectionView.h */,
+				12345CAA7C8EA3CD1261747805356556 /* TTGTagCollectionView.m */,
 			);
-			name = "Development Pods";
+			name = BaseTag;
+			path = TTGTagCollectionView/Classes/BaseTag;
 			sourceTree = "<group>";
 		};
-		7260ED6A708F49E56CB489BF2A2C0A93 /* SVPullToRefresh */ = {
+		260E328B9C02C797E83EDDF0C7DB0B5D /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				F9A829414D64C666338B46AF37C3EF76 /* SVPullToRefresh.h */,
-				C12A6CD8E419D463E98A423F8594FD69 /* UIScrollView+SVInfiniteScrolling.h */,
-				4B729FC839FAEAF35F12785BE1CDA4C8 /* UIScrollView+SVInfiniteScrolling.m */,
-				CB3956EA7867547A7B7F2F60646EF081 /* UIScrollView+SVPullToRefresh.h */,
-				CD98B1F4920381D0299F928D3EE92046 /* UIScrollView+SVPullToRefresh.m */,
-				9B57E649B64E77898A703E1652E01314 /* Support Files */,
+				9FC38DDB1DBF5E855CF04B4AF13183B9 /* Pods-TTGTagCollectionView_Example */,
+				FB2021232A413E2167284EC80255E56D /* Pods-TTGTagCollectionView_Tests */,
 			);
-			name = SVPullToRefresh;
-			path = SVPullToRefresh;
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		7DB346D0F39D3F0E887471402A8071AB = {
+		44857523059A4731A95DD38C341C9274 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				5EB1E06A24C4AC41D12E0A67DC505749 /* Development Pods */,
-				122DA2E5084A4393C29BE363C764795C /* Frameworks */,
-				ED74B816E46CCBAA7C6A31F69E3108FB /* Pods */,
-				10E0A3D6BA969214D1A344B34C8A917C /* Products */,
-				E301E0AD1ECA9AC5974E44376442051C /* Targets Support Files */,
-			);
-			sourceTree = "<group>";
-		};
-		9B57E649B64E77898A703E1652E01314 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				7A98D402F9052DA36ECA4D24A415CE71 /* SVPullToRefresh.xcconfig */,
-				8094982404FE0CF422A60CAE61415E7D /* SVPullToRefresh-dummy.m */,
-				43556AD28E7EF46D4AC43BD8EB0E64EF /* SVPullToRefresh-prefix.pch */,
+				E74084BB5D35C9CEF77ED99FA1302BBB /* SVPullToRefresh.xcconfig */,
+				BB218901012CB279AAF366E3FF00E653 /* SVPullToRefresh-dummy.m */,
+				1348D59131206E2B5B4AA4B4963655D9 /* SVPullToRefresh-prefix.pch */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/SVPullToRefresh";
 			sourceTree = "<group>";
 		};
-		A3ABB254AA3AF6CE2B9958F4616BED37 /* Pod */ = {
+		54A9E61C94EF0B5C86E4BC7EB0519C20 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2350EFB8B573C25AB3EBEE1BF4F40F17 /* LICENSE */,
-				C75CE745EFC110CFC38E1207E501BDF0 /* README.md */,
-				416C40DC7C7674329475FE3B07D51377 /* TTGTagCollectionView.podspec */,
+				8C98D8C73AA8942AB6301790B24427C3 /* libMasonry.a */,
+				AE7FBA0FC29369FF742EAE0681BBFF99 /* libPods-TTGTagCollectionView_Example.a */,
+				97B1EF43FDA998DF851422963230A3E5 /* libPods-TTGTagCollectionView_Tests.a */,
+				5AE9E7C2970152850C6D9754A7587093 /* libSVPullToRefresh.a */,
+				95C945E43398C3121EE81ACBAFA87E81 /* libTTGTagCollectionView.a */,
 			);
-			name = Pod;
+			name = Products;
 			sourceTree = "<group>";
 		};
-		B4D761AA87DA2A6D3E3133D92FC2B413 /* TTGTagCollectionView */ = {
+		57B60A02FB1BC38BE197CD94B848EAE6 /* Masonry */ = {
 			isa = PBXGroup;
 			children = (
-				7014D4AB8EF9900BA05C65FA1623A982 /* TTGTagCollectionView.h */,
-				44325B3A0ABDBBF6E03B1C329820EE29 /* TTGTagCollectionView.m */,
-				68A9C4848627D01D39ACE9298758B3B9 /* TTGTextTagCollectionView.h */,
-				7852A200D1D38022B4627BF4377C03B0 /* TTGTextTagCollectionView.m */,
-				A3ABB254AA3AF6CE2B9958F4616BED37 /* Pod */,
-				517FF25AFD6836CFEE983F5D1F374F30 /* Support Files */,
+				D48B81CCC1C8AC74BD642C8CD0436A6E /* MASCompositeConstraint.h */,
+				6F9A9F780A2298A1904BA62F2C69F539 /* MASCompositeConstraint.m */,
+				5280B26AFE67F82A8D7B2FDB8DA5ECA9 /* MASConstraint.h */,
+				47D5B933F8CA0257BE83F524CC595F58 /* MASConstraint.m */,
+				D122A7338C95B86CF35A8D273A3A65BE /* MASConstraint+Private.h */,
+				1CE43786A0CB2932782056B192063860 /* MASConstraintMaker.h */,
+				69AEDADD236C029037F93AE5556229D3 /* MASConstraintMaker.m */,
+				82BB6398A7F4B35FBFB2A58EDA76B03F /* MASLayoutConstraint.h */,
+				3F2CF701209DDF9569B525D59C09ACEB /* MASLayoutConstraint.m */,
+				CED7E3C105EF525C3B42DEDA44820E75 /* Masonry.h */,
+				618AB89B5162A67A6796F3CA3E6CF73C /* MASUtilities.h */,
+				392A57CA06E9EE00EA3555F31F4A4C59 /* MASViewAttribute.h */,
+				1121A11ACDFCD60A1856467061F743E7 /* MASViewAttribute.m */,
+				938122A3E4F0268652D9CD4E99CE5EA5 /* MASViewConstraint.h */,
+				FABE384CA943E741C64FEAD6DC29F1E6 /* MASViewConstraint.m */,
+				88FA9B5D6699FFA3F0BAFD62DC76895B /* NSArray+MASAdditions.h */,
+				86442187B3F002E2FA65813AC7D90A55 /* NSArray+MASAdditions.m */,
+				2D3F5D0A57E7D46CA1D3F14765565A35 /* NSArray+MASShorthandAdditions.h */,
+				C762EBBF4F510EC1576FDAF85512A5F5 /* NSLayoutConstraint+MASDebugAdditions.h */,
+				31AEFDB3D98E75F69DDD96672D8506FC /* NSLayoutConstraint+MASDebugAdditions.m */,
+				1BC1E68D9CA41E5F5AD2781ECA705DD6 /* View+MASAdditions.h */,
+				600FA7542ED5A21E8E27ACD65E57BFC9 /* View+MASAdditions.m */,
+				501C30792A2E89B017A67C1A50002AA7 /* View+MASShorthandAdditions.h */,
+				42D6E5A630855CE1CF40516248C6722B /* ViewController+MASAdditions.h */,
+				4F096B8E51643BEBF12C43408C069B34 /* ViewController+MASAdditions.m */,
+				7C2506BD67454925451C37AE2EC0C21B /* Support Files */,
 			);
-			name = TTGTagCollectionView;
-			path = ../..;
+			name = Masonry;
+			path = Masonry;
 			sourceTree = "<group>";
 		};
-		BAA5EFD9A4EA273C96CDCD2E7D07E026 /* Support Files */ = {
+		7032B98C72E74A64206C6EE12398CAE1 /* SVPullToRefresh */ = {
 			isa = PBXGroup;
 			children = (
-				88B7F492CA2128E711C3C5E558E9F98F /* Masonry.xcconfig */,
-				7E5F93EA7EA23BC292A776AD82C032BC /* Masonry-dummy.m */,
-				7228DA19B586C541BBE39ED9250E7FEF /* Masonry-prefix.pch */,
+				A9AE737008E839E7AD4786223871502E /* SVPullToRefresh.h */,
+				44749C40850E0760380F490789761C70 /* UIScrollView+SVInfiniteScrolling.h */,
+				AB8716DFB63CBAF80286183C7DFFBDE9 /* UIScrollView+SVInfiniteScrolling.m */,
+				115F27E26EF3E546007A8CEE7F71322E /* UIScrollView+SVPullToRefresh.h */,
+				F618E197F6197D8AA396FE7064EADCF8 /* UIScrollView+SVPullToRefresh.m */,
+				44857523059A4731A95DD38C341C9274 /* Support Files */,
+			);
+			name = SVPullToRefresh;
+			path = SVPullToRefresh;
+			sourceTree = "<group>";
+		};
+		7C2506BD67454925451C37AE2EC0C21B /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				9C2397A7ABE9F712A0FB93B3D2A3B562 /* Masonry.xcconfig */,
+				D7EBC3A971BF9BECBDC606FA61340C48 /* Masonry-dummy.m */,
+				4098AD88174AE0EE70AB2287C7604DE8 /* Masonry-prefix.pch */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/Masonry";
 			sourceTree = "<group>";
 		};
-		E301E0AD1ECA9AC5974E44376442051C /* Targets Support Files */ = {
+		93E5FF58D5881930F9E44BE034BF9BB5 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1371657827F04B51307A9CB2361A19A4 /* Pods-TTGTagCollectionView_Example */,
-				0DEE7C11773316B1F2912FDF1EF11661 /* Pods-TTGTagCollectionView_Tests */,
+				C64D2A78055CF1B22CFD65100CCE4AD7 /* TTGTagCollectionView */,
 			);
-			name = "Targets Support Files";
+			name = "Development Pods";
 			sourceTree = "<group>";
 		};
-		ED74B816E46CCBAA7C6A31F69E3108FB /* Pods */ = {
+		9698946761B5509C598D03FC7820EB0A /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				217A088CAA501098DF80DAD1E68FBCF9 /* Masonry */,
-				7260ED6A708F49E56CB489BF2A2C0A93 /* SVPullToRefresh */,
+				026A2C279B8BEAE405FAAE7D449AE6F3 /* LICENSE */,
+				90CAE1105A921376907C9812873A017C /* README.md */,
+				3EB0D030DAFD65333A56645CC518BC1A /* TTGTagCollectionView.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		9FC38DDB1DBF5E855CF04B4AF13183B9 /* Pods-TTGTagCollectionView_Example */ = {
+			isa = PBXGroup;
+			children = (
+				176978781708CA4BC0402BFD09B2179E /* Pods-TTGTagCollectionView_Example-acknowledgements.markdown */,
+				400E41C73C3583FF31533180F5353DAF /* Pods-TTGTagCollectionView_Example-acknowledgements.plist */,
+				FD5FB2180603AFDBA9BC63FFB1592B24 /* Pods-TTGTagCollectionView_Example-dummy.m */,
+				3178334A81076F9BE802B43C4FE5DE78 /* Pods-TTGTagCollectionView_Example.debug.xcconfig */,
+				9E96E1E2B02AAF9E96FE79745FF2F299 /* Pods-TTGTagCollectionView_Example.release.xcconfig */,
+			);
+			name = "Pods-TTGTagCollectionView_Example";
+			path = "Target Support Files/Pods-TTGTagCollectionView_Example";
+			sourceTree = "<group>";
+		};
+		B14630D5C59D3FCEE90DEB8A4F853F89 /* Tag */ = {
+			isa = PBXGroup;
+			children = (
+				B68D854FC3B098D2B2CBE4E9BABE7AB8 /* TTGTextTag.h */,
+				A096F0A9BD1A1A1C02AE4400163D2A65 /* TTGTextTag.m */,
+				0610F627458895DEABB1C81B3C220578 /* TTGTextTagAttributedStringContent.h */,
+				B1232C2E00F6562961C7191DDCBF946A /* TTGTextTagAttributedStringContent.m */,
+				81566EA6A3007A4FD3E3E0D5CC690B6E /* TTGTextTagContent.h */,
+				9DCA3D77B96BE2963FD69A9211A2B0A8 /* TTGTextTagContent.m */,
+				64282CB07F20A401046D6AEB94B3DA30 /* TTGTextTagStringContent.h */,
+				A399FBD76264C0F4740A55FEFA11DA5C /* TTGTextTagStringContent.m */,
+				BAD9974C8A5B01C09E06946F8B6C8491 /* TTGTextTagStyle.h */,
+				8B5C6DDE21B75D43F87093B0A54C8972 /* TTGTextTagStyle.m */,
+			);
+			name = Tag;
+			path = Tag;
+			sourceTree = "<group>";
+		};
+		C25AB4E236BC33C7804C2D83FABEADB1 /* TextTag */ = {
+			isa = PBXGroup;
+			children = (
+				41C856644E9F1E0C124A887F88EAE378 /* TTGTextTagCollectionView.h */,
+				B66A365BE723203F601DC2348209C96F /* TTGTextTagCollectionView.m */,
+				B14630D5C59D3FCEE90DEB8A4F853F89 /* Tag */,
+			);
+			name = TextTag;
+			path = TTGTagCollectionView/Classes/TextTag;
+			sourceTree = "<group>";
+		};
+		C64D2A78055CF1B22CFD65100CCE4AD7 /* TTGTagCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				1612821BC2D65B1EDF6205C1928F5166 /* BaseTag */,
+				9698946761B5509C598D03FC7820EB0A /* Pod */,
+				1350FF41C03B0A17BE2D4BA4423A3BB2 /* Support Files */,
+				C25AB4E236BC33C7804C2D83FABEADB1 /* TextTag */,
+			);
+			name = TTGTagCollectionView;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				93E5FF58D5881930F9E44BE034BF9BB5 /* Development Pods */,
+				D89477F20FB1DE18A04690586D7808C4 /* Frameworks */,
+				DE6940F7A4FDCDA239C8A1F4A318837A /* Pods */,
+				54A9E61C94EF0B5C86E4BC7EB0519C20 /* Products */,
+				260E328B9C02C797E83EDDF0C7DB0B5D /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D89477F20FB1DE18A04690586D7808C4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DE6940F7A4FDCDA239C8A1F4A318837A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				57B60A02FB1BC38BE197CD94B848EAE6 /* Masonry */,
+				7032B98C72E74A64206C6EE12398CAE1 /* SVPullToRefresh */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		FB2021232A413E2167284EC80255E56D /* Pods-TTGTagCollectionView_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				F71A3B282FFF2D37C844D6AD5948CBD7 /* Pods-TTGTagCollectionView_Tests-acknowledgements.markdown */,
+				5119047C637ED0888B30C6D3503B3670 /* Pods-TTGTagCollectionView_Tests-acknowledgements.plist */,
+				748328D9239376E5125E6C5E4B3587C4 /* Pods-TTGTagCollectionView_Tests-dummy.m */,
+				750C39FBD4552D92CAC4941B03009D24 /* Pods-TTGTagCollectionView_Tests.debug.xcconfig */,
+				0A4452C850E0AACC5B682E40391C6034 /* Pods-TTGTagCollectionView_Tests.release.xcconfig */,
+			);
+			name = "Pods-TTGTagCollectionView_Tests";
+			path = "Target Support Files/Pods-TTGTagCollectionView_Tests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		205CD1FFD3E3CFBA558F335ABAF52D8D /* Headers */ = {
+		0C3850E5A9C16612A42F0EA354C024A5 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61421136A138509500D83D79CF4CB8B6 /* TTGTagCollectionView.h in Headers */,
-				948736368792C2373C67572130C861A4 /* TTGTextTagCollectionView.h in Headers */,
+				29C098964D2991A2B0C0BC84D2EF4D98 /* TTGTagCollectionView.h in Headers */,
+				02810623950A0D5EB3EF783D2F59D13B /* TTGTextTag.h in Headers */,
+				420DD16E22953A700FC1DB223F363DCB /* TTGTextTagAttributedStringContent.h in Headers */,
+				27A15F0296A85E21525B3498B7FFEFAD /* TTGTextTagCollectionView.h in Headers */,
+				B8F2EC7331230C0B3E3632A38288154F /* TTGTextTagContent.h in Headers */,
+				A8F0C5B743C39DDF32D438A15BDBC154 /* TTGTextTagStringContent.h in Headers */,
+				A6F529B4645D1CEAA42A721C9797B3DE /* TTGTextTagStyle.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4759BC0AF940811E24EAA701B9AE1090 /* Headers */ = {
+		3718FFF3EEA16DFD18092159818E7C20 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8DAAF0C8612652CA9778BCD17D7FF92 /* SVPullToRefresh.h in Headers */,
+				A553EB45FE830C85E853E6E471E88CDF /* UIScrollView+SVInfiniteScrolling.h in Headers */,
+				6EB65C48C5D4DFEFBE31314D6FC55F09 /* UIScrollView+SVPullToRefresh.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58F2546AA2F29AA58E16DBF758591F58 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		60E0ED23D857183BEA59E104D166D732 /* Headers */ = {
+		864C165B6F096A64CC321493EA8D6188 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F1CEF2B08D18B900A16F3249C96DBEF /* MASCompositeConstraint.h in Headers */,
+				C1C295BCD795C2B6044DB474583804B1 /* MASConstraint+Private.h in Headers */,
+				834D1BB9656D3E64B2AF8C0E0119A37F /* MASConstraint.h in Headers */,
+				06A4624C0490881FD7962E6F2768469F /* MASConstraintMaker.h in Headers */,
+				F0223A4EEF0A05E2DBC75767471884A2 /* MASLayoutConstraint.h in Headers */,
+				C7AC29F56D5F471248BBA0A724CDF3C7 /* Masonry.h in Headers */,
+				E94F68ABEAC53DD4556594E0EE4EAD57 /* MASUtilities.h in Headers */,
+				62ED0D1B1D2D5EF2225776A9C2BAF4DA /* MASViewAttribute.h in Headers */,
+				1D12FE6ABBFFDECF65CA15759AD0E411 /* MASViewConstraint.h in Headers */,
+				29214D8D2E69809E66F0C8A98A36BCCE /* NSArray+MASAdditions.h in Headers */,
+				96DB2AB39DFEB82319EF630730FDE4FD /* NSArray+MASShorthandAdditions.h in Headers */,
+				147370B40CE853ADCC91F9C81FF5E5FA /* NSLayoutConstraint+MASDebugAdditions.h in Headers */,
+				7C31AFA9C95568E16B6911B670754372 /* View+MASAdditions.h in Headers */,
+				5E44F7CFDA34CB0B1F1A65A19641AC7D /* View+MASShorthandAdditions.h in Headers */,
+				24F67F67B66D71384E9B66CF81AF84B3 /* ViewController+MASAdditions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8990EEE1BB31A1D570F04DF35DD765DD /* Headers */ = {
+		A6FE3C0D69F9163E3D07D15E01203723 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7157D66DCE09397047A7ECF10F15DCBF /* MASCompositeConstraint.h in Headers */,
-				B5BE571A0725C4506001C206FB69C2F7 /* MASConstraint+Private.h in Headers */,
-				1EC8595D0E176DB06815789B6F7E35C1 /* MASConstraint.h in Headers */,
-				FCD64586536B2C1974F92ACAF8447ACD /* MASConstraintMaker.h in Headers */,
-				59E460AA853038A50B89ED33CC615FB4 /* MASLayoutConstraint.h in Headers */,
-				B4BEBC36B586556BFDEDDB9F6D669239 /* Masonry.h in Headers */,
-				E8D2B06760AD270146CF0C5CB07E2043 /* MASUtilities.h in Headers */,
-				049B460E1DDF110E868627655CE0ADEA /* MASViewAttribute.h in Headers */,
-				7FE1C36A12C885ECCD858E05C3685AF5 /* MASViewConstraint.h in Headers */,
-				0BED362262BF36B8F775BC5810DD7EDE /* NSArray+MASAdditions.h in Headers */,
-				C0953168C5916BF83D7C7BDE01A2A300 /* NSArray+MASShorthandAdditions.h in Headers */,
-				2AF8E8005BF2A4EBAC866F0A1AF5975C /* NSLayoutConstraint+MASDebugAdditions.h in Headers */,
-				ADB022A853D74C0A9F48BC16D4EA59CF /* View+MASAdditions.h in Headers */,
-				2A6EEFDF3EE2BBBF63F6063C3F6747A1 /* View+MASShorthandAdditions.h in Headers */,
-				9B5D721633B82BF8FE44D1A435434DF9 /* ViewController+MASAdditions.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F1602117910CBA190970181B6BD469DE /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				57DA59C3A3D4CEB01A72920AA04FCF45 /* SVPullToRefresh.h in Headers */,
-				FFF5E6EB94D0990B03ACCBC7A7264908 /* UIScrollView+SVInfiniteScrolling.h in Headers */,
-				AAB2AD61FB911B0F622AEA6340CDAB6E /* UIScrollView+SVPullToRefresh.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		04E1EBA4CEA4F6CFE43622EE18122A70 /* TTGTagCollectionView */ = {
+		59476F09173802390CDF2CB1680B87BB /* TTGTagCollectionView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D648AF71145F79BB6F60174399BFA18D /* Build configuration list for PBXNativeTarget "TTGTagCollectionView" */;
+			buildConfigurationList = 0AF3714E6A265617D168FE26BA2E7664 /* Build configuration list for PBXNativeTarget "TTGTagCollectionView" */;
 			buildPhases = (
-				205CD1FFD3E3CFBA558F335ABAF52D8D /* Headers */,
-				7914F6387CA71C55D031D2283D593F38 /* Sources */,
-				2C7F7F5CCCC611CC9ED182BDAB28EF03 /* Frameworks */,
+				0C3850E5A9C16612A42F0EA354C024A5 /* Headers */,
+				9E7325A856F9534BE74677B3CB000B05 /* Sources */,
+				81658FD4C85B99B9E4EACC126D563E00 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -474,54 +508,16 @@
 			);
 			name = TTGTagCollectionView;
 			productName = TTGTagCollectionView;
-			productReference = 315C6F6B4E93A5A85500A907446E41A9 /* libTTGTagCollectionView.a */;
+			productReference = 95C945E43398C3121EE81ACBAFA87E81 /* libTTGTagCollectionView.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		071B11A01194E45E7F6B2BFDF4658675 /* Pods-TTGTagCollectionView_Example */ = {
+		9471DAD77E3AA1AD63A31CDE3F4963C5 /* SVPullToRefresh */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9888F754C1DECA0E7416C8914B8E075F /* Build configuration list for PBXNativeTarget "Pods-TTGTagCollectionView_Example" */;
+			buildConfigurationList = 2410CE9F0F397E2FD414480557D6F342 /* Build configuration list for PBXNativeTarget "SVPullToRefresh" */;
 			buildPhases = (
-				60E0ED23D857183BEA59E104D166D732 /* Headers */,
-				7515BFA8AF914CDAC23F2784C69F6497 /* Sources */,
-				AE42682EFE00F04EF06002C51CEC0CCA /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				74F812D4DA79E06ACC34B2879673D5E7 /* PBXTargetDependency */,
-				0022D691A9DF5B149F448625641281A0 /* PBXTargetDependency */,
-				4114D0FF1F84C7B47917012857BDCE59 /* PBXTargetDependency */,
-			);
-			name = "Pods-TTGTagCollectionView_Example";
-			productName = "Pods-TTGTagCollectionView_Example";
-			productReference = B4074542FDE5239511FCFAFEC8E04CFE /* libPods-TTGTagCollectionView_Example.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		11A14030DBD05FD78EAA210300E6C9D4 /* Pods-TTGTagCollectionView_Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 93436ECA82475776CC8C97A2A881A260 /* Build configuration list for PBXNativeTarget "Pods-TTGTagCollectionView_Tests" */;
-			buildPhases = (
-				4759BC0AF940811E24EAA701B9AE1090 /* Headers */,
-				CA22D396A68D7734F9F43827D609F9CE /* Sources */,
-				D09C2BFA4EB7153073DCBCE8B902E89E /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B586BC1428B7DC59028DBC99DF882C27 /* PBXTargetDependency */,
-			);
-			name = "Pods-TTGTagCollectionView_Tests";
-			productName = "Pods-TTGTagCollectionView_Tests";
-			productReference = 2F39BA9B58B39EF01995ED039825884D /* libPods-TTGTagCollectionView_Tests.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		373305C59B8F6CB6B7937DEB2F178DDD /* SVPullToRefresh */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C353262DDAEE37DBD0461EB28F3693FB /* Build configuration list for PBXNativeTarget "SVPullToRefresh" */;
-			buildPhases = (
-				F1602117910CBA190970181B6BD469DE /* Headers */,
-				A2DCFB6406C7C6616D2E790CC8E3E2B3 /* Sources */,
-				ACFCB9922511CC45CD04596FCAA3B7EE /* Frameworks */,
+				3718FFF3EEA16DFD18092159818E7C20 /* Headers */,
+				4823262660CEDD190DD64AFFB240559F /* Sources */,
+				80700757A67F362D8AA08C9246FE544F /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -529,16 +525,36 @@
 			);
 			name = SVPullToRefresh;
 			productName = SVPullToRefresh;
-			productReference = 72212FB5BFDC6CED1035F1BE925A76FC /* libSVPullToRefresh.a */;
+			productReference = 5AE9E7C2970152850C6D9754A7587093 /* libSVPullToRefresh.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		40A42EA465E764DD959C829C51404C08 /* Masonry */ = {
+		AEA331C80F3392A035153BAE386566DD /* Pods-TTGTagCollectionView_Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CFB00DFDEF804FAD5E3E20BC782ADAB8 /* Build configuration list for PBXNativeTarget "Masonry" */;
+			buildConfigurationList = F6EF3FEC14D838811DDE6B5F54473165 /* Build configuration list for PBXNativeTarget "Pods-TTGTagCollectionView_Example" */;
 			buildPhases = (
-				8990EEE1BB31A1D570F04DF35DD765DD /* Headers */,
-				CD3F0F0348E695642F4232776EFC8AD5 /* Sources */,
-				C95ADA1C4EF2FA5FF4EEC54DD65EAA3C /* Frameworks */,
+				58F2546AA2F29AA58E16DBF758591F58 /* Headers */,
+				221BC6D5E14A2674E6D49675B5BC087E /* Sources */,
+				26FEE027DBBC54DFCD7C909CBB7050F5 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AAFF06F929E0038AE458255650384927 /* PBXTargetDependency */,
+				F99F359E78B5B4FD75E8EFE404601D84 /* PBXTargetDependency */,
+				F95B0BF332BDC5296B6B75E46046EBDE /* PBXTargetDependency */,
+			);
+			name = "Pods-TTGTagCollectionView_Example";
+			productName = "Pods-TTGTagCollectionView_Example";
+			productReference = AE7FBA0FC29369FF742EAE0681BBFF99 /* libPods-TTGTagCollectionView_Example.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		B854683690DC218F2B6E2FFDB0D27CDC /* Masonry */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF625691042B208B0F87D7C89735A2BB /* Build configuration list for PBXNativeTarget "Masonry" */;
+			buildPhases = (
+				864C165B6F096A64CC321493EA8D6188 /* Headers */,
+				20B59DF52315F7BEE4C186DFC2709780 /* Sources */,
+				2F0A8E3741C526A5E692BC509794E501 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -546,127 +562,195 @@
 			);
 			name = Masonry;
 			productName = Masonry;
-			productReference = 7A61258DF2947A06F7373031FA221BF0 /* libMasonry.a */;
+			productReference = 8C98D8C73AA8942AB6301790B24427C3 /* libMasonry.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		BE66F94857BCB74A7C7940188EC3C9AD /* Pods-TTGTagCollectionView_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2CC9BB265CED2AE023A140C3D53CEB02 /* Build configuration list for PBXNativeTarget "Pods-TTGTagCollectionView_Tests" */;
+			buildPhases = (
+				A6FE3C0D69F9163E3D07D15E01203723 /* Headers */,
+				959897DC034CF25320229063A4C36DC4 /* Sources */,
+				2E11962FE221D1142B8E49F1933BE3E6 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B7293B8CD47BA7C4656226FE92DA1D2F /* PBXTargetDependency */,
+			);
+			name = "Pods-TTGTagCollectionView_Tests";
+			productName = "Pods-TTGTagCollectionView_Tests";
+			productReference = 97B1EF43FDA998DF851422963230A3E5 /* libPods-TTGTagCollectionView_Tests.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
 			};
-			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 10E0A3D6BA969214D1A344B34C8A917C /* Products */;
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 54A9E61C94EF0B5C86E4BC7EB0519C20 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				40A42EA465E764DD959C829C51404C08 /* Masonry */,
-				071B11A01194E45E7F6B2BFDF4658675 /* Pods-TTGTagCollectionView_Example */,
-				11A14030DBD05FD78EAA210300E6C9D4 /* Pods-TTGTagCollectionView_Tests */,
-				373305C59B8F6CB6B7937DEB2F178DDD /* SVPullToRefresh */,
-				04E1EBA4CEA4F6CFE43622EE18122A70 /* TTGTagCollectionView */,
+				B854683690DC218F2B6E2FFDB0D27CDC /* Masonry */,
+				AEA331C80F3392A035153BAE386566DD /* Pods-TTGTagCollectionView_Example */,
+				BE66F94857BCB74A7C7940188EC3C9AD /* Pods-TTGTagCollectionView_Tests */,
+				9471DAD77E3AA1AD63A31CDE3F4963C5 /* SVPullToRefresh */,
+				59476F09173802390CDF2CB1680B87BB /* TTGTagCollectionView */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		7515BFA8AF914CDAC23F2784C69F6497 /* Sources */ = {
+		20B59DF52315F7BEE4C186DFC2709780 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				776E2AFF48DAF44E771AD96D4180F343 /* Pods-TTGTagCollectionView_Example-dummy.m in Sources */,
+				1E3B9E29E64A41419BADE54AEFDAF08E /* MASCompositeConstraint.m in Sources */,
+				B5F8B45888F4DFECC89DBA2B0307C178 /* MASConstraint.m in Sources */,
+				60DC27F14226DDD592FA1464C2DA0C2E /* MASConstraintMaker.m in Sources */,
+				AB74AF1EEF7E9D9855E150F344F8CBD5 /* MASLayoutConstraint.m in Sources */,
+				34D6D9E7FEAF947841106F0662A2E52D /* Masonry-dummy.m in Sources */,
+				9F7245F368B8CD09FE3F2C36BAA2842D /* MASViewAttribute.m in Sources */,
+				591F1FA04AB069DD22008A8BABAAB829 /* MASViewConstraint.m in Sources */,
+				D59F2BB9843C83057A2BAAD5054B68AE /* NSArray+MASAdditions.m in Sources */,
+				C48DF5D21345BD3D127256C6AD3AEFD4 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				EAED263ADDF8EBE21F1EE02F9FB8FD7E /* View+MASAdditions.m in Sources */,
+				D1D4442E6949DAF0EB2688A85F889E8D /* ViewController+MASAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7914F6387CA71C55D031D2283D593F38 /* Sources */ = {
+		221BC6D5E14A2674E6D49675B5BC087E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B84BD650C90F21D68757C56BBB1846F /* TTGTagCollectionView-dummy.m in Sources */,
-				AD40792AFFBC6A0559607E2EAE3512F6 /* TTGTagCollectionView.m in Sources */,
-				FCE146D0993963BD46394809A1D66467 /* TTGTextTagCollectionView.m in Sources */,
+				33F88FCCAB6FA101710E61520F687CE5 /* Pods-TTGTagCollectionView_Example-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A2DCFB6406C7C6616D2E790CC8E3E2B3 /* Sources */ = {
+		4823262660CEDD190DD64AFFB240559F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78B78A6B5BF7F4E089CA51AEA702C205 /* SVPullToRefresh-dummy.m in Sources */,
-				D318B527C65FF596A0F542D1ED8ED072 /* UIScrollView+SVInfiniteScrolling.m in Sources */,
-				3CA06088FC3D1070C079BEB088F8639A /* UIScrollView+SVPullToRefresh.m in Sources */,
+				8699CEF608D4C00EAE20FD2720262A6E /* SVPullToRefresh-dummy.m in Sources */,
+				50370FA885AAF9A6F70FD767ACF3A4B6 /* UIScrollView+SVInfiniteScrolling.m in Sources */,
+				D2A41B4308C888327D3D965E2956372C /* UIScrollView+SVPullToRefresh.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CA22D396A68D7734F9F43827D609F9CE /* Sources */ = {
+		959897DC034CF25320229063A4C36DC4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CE5EB359BAF54EF3123E9B5BE1E249A /* Pods-TTGTagCollectionView_Tests-dummy.m in Sources */,
+				0D8B9B0825928CD4C9E71A45A24745DC /* Pods-TTGTagCollectionView_Tests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CD3F0F0348E695642F4232776EFC8AD5 /* Sources */ = {
+		9E7325A856F9534BE74677B3CB000B05 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D48232AE62FD0A1E4C4EEC4AE858209 /* MASCompositeConstraint.m in Sources */,
-				A2839EE1C3CFDBC573DF28B3EAAFF1B5 /* MASConstraint.m in Sources */,
-				12B1110786810911F8F4D419021CF630 /* MASConstraintMaker.m in Sources */,
-				FC2959986CFDEBB4308E36CF89A325B6 /* MASLayoutConstraint.m in Sources */,
-				9FD2FB144A530D0AB5A82A99CB4ED088 /* Masonry-dummy.m in Sources */,
-				91BEFCA99AED2127184DEE584255FBFE /* MASViewAttribute.m in Sources */,
-				F57F3C8BF466FA98523222E68B41B77D /* MASViewConstraint.m in Sources */,
-				2BBA747A4E46FFA08C5AFE5D3F6E9D7C /* NSArray+MASAdditions.m in Sources */,
-				BC4BB4FAA82D4C4C439CE83F0C004392 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
-				E3312A275C1003F02C7386349FBE4195 /* View+MASAdditions.m in Sources */,
-				F6FCDB8385D380A13B3303853DDEEDAB /* ViewController+MASAdditions.m in Sources */,
+				16590753223A08C22AB6781DD48EAC4A /* TTGTagCollectionView-dummy.m in Sources */,
+				01536673BD94F5CBA59962356EB5AC6D /* TTGTagCollectionView.m in Sources */,
+				A032F1F6AF8197812D321FEC56EBE65F /* TTGTextTag.m in Sources */,
+				0B1CE85AF30254D5DDFDA6409001A5B2 /* TTGTextTagAttributedStringContent.m in Sources */,
+				9F3EA10974A5AA581BAE1D261C270F52 /* TTGTextTagCollectionView.m in Sources */,
+				B47147E660A9F348801921FA48A7ABA9 /* TTGTextTagContent.m in Sources */,
+				76A3640B51697B46BFE5008A41EE81BB /* TTGTextTagStringContent.m in Sources */,
+				BE5FBC611AA26948D37E795C5946043A /* TTGTextTagStyle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0022D691A9DF5B149F448625641281A0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SVPullToRefresh;
-			target = 373305C59B8F6CB6B7937DEB2F178DDD /* SVPullToRefresh */;
-			targetProxy = 9AE3DBD2E53AA84352F864628B812AE7 /* PBXContainerItemProxy */;
-		};
-		4114D0FF1F84C7B47917012857BDCE59 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = TTGTagCollectionView;
-			target = 04E1EBA4CEA4F6CFE43622EE18122A70 /* TTGTagCollectionView */;
-			targetProxy = 5B278E6E04DA4AA999DC1BD07B82DA78 /* PBXContainerItemProxy */;
-		};
-		74F812D4DA79E06ACC34B2879673D5E7 /* PBXTargetDependency */ = {
+		AAFF06F929E0038AE458255650384927 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Masonry;
-			target = 40A42EA465E764DD959C829C51404C08 /* Masonry */;
-			targetProxy = F9AD7E47801EBC2CA142BA825D162A6F /* PBXContainerItemProxy */;
+			target = B854683690DC218F2B6E2FFDB0D27CDC /* Masonry */;
+			targetProxy = 7E646440D2F18459ED3030952312D13D /* PBXContainerItemProxy */;
 		};
-		B586BC1428B7DC59028DBC99DF882C27 /* PBXTargetDependency */ = {
+		B7293B8CD47BA7C4656226FE92DA1D2F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-TTGTagCollectionView_Example";
-			target = 071B11A01194E45E7F6B2BFDF4658675 /* Pods-TTGTagCollectionView_Example */;
-			targetProxy = 362D5207EB92DC8AE17643AC409819E5 /* PBXContainerItemProxy */;
+			target = AEA331C80F3392A035153BAE386566DD /* Pods-TTGTagCollectionView_Example */;
+			targetProxy = CBEA6404F982873FABC747A733246C0F /* PBXContainerItemProxy */;
+		};
+		F95B0BF332BDC5296B6B75E46046EBDE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TTGTagCollectionView;
+			target = 59476F09173802390CDF2CB1680B87BB /* TTGTagCollectionView */;
+			targetProxy = 2A2348781783329A89198696A52599B0 /* PBXContainerItemProxy */;
+		};
+		F99F359E78B5B4FD75E8EFE404601D84 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SVPullToRefresh;
+			target = 9471DAD77E3AA1AD63A31CDE3F4963C5 /* SVPullToRefresh */;
+			targetProxy = 9AC566BEF843A5A3900174D939298533 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0B88CD642C2D1D1A155A5CE7646864E9 /* Debug */ = {
+		3CA10A25EA719957A6BA4BE6549A37EC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2CBEEE7363004994061AE80D570E45E9 /* TTGTagCollectionView.xcconfig */;
+			baseConfigurationReference = 750C39FBD4552D92CAC4941B03009D24 /* Pods-TTGTagCollectionView_Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3F8019BA6DBD39AAA9257D64CCAE3242 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A0AC14A01E831C444D4DFB8308D518A7 /* TTGTagCollectionView.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/TTGTagCollectionView/TTGTagCollectionView-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = TTGTagCollectionView;
+				PRODUCT_NAME = TTGTagCollectionView;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4D7D944DD88324DDEF4E672FBA37C160 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A0AC14A01E831C444D4DFB8308D518A7 /* TTGTagCollectionView.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -687,32 +771,54 @@
 			};
 			name = Debug;
 		};
-		1D3F48869EA6A0024D621535B6BC77C9 /* Debug */ = {
+		56F0ADE4FF097BB24D2A0968DD35CBF7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 88B7F492CA2128E711C3C5E558E9F98F /* Masonry.xcconfig */;
+			baseConfigurationReference = 3178334A81076F9BE802B43C4FE5DE78 /* Pods-TTGTagCollectionView_Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		72965DF45E95856E5EB06ED70AD16D28 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E74084BB5D35C9CEF77ED99FA1302BBB /* SVPullToRefresh.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/Masonry/Masonry-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				GCC_PREFIX_HEADER = "Target Support Files/SVPullToRefresh/SVPullToRefresh-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = Masonry;
-				PRODUCT_NAME = Masonry;
+				PRODUCT_MODULE_NAME = SVPullToRefresh;
+				PRODUCT_NAME = SVPullToRefresh;
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
-			name = Debug;
+			name = Release;
 		};
-		3AE37374F03CE5EA48B9F8AAD29C09E3 /* Release */ = {
+		80D3F3143B4C76D0C6C2823C4135646C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A2437D585D2011C9A373A6FFE2A61805 /* Pods-TTGTagCollectionView_Tests.release.xcconfig */;
+			baseConfigurationReference = 0A4452C850E0AACC5B682E40391C6034 /* Pods-TTGTagCollectionView_Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -732,31 +838,7 @@
 			};
 			name = Release;
 		};
-		40EB2C0310F46CAF07A3C565C2D6EBC9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2CBEEE7363004994061AE80D570E45E9 /* TTGTagCollectionView.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/TTGTagCollectionView/TTGTagCollectionView-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = TTGTagCollectionView;
-				PRODUCT_NAME = TTGTagCollectionView;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		5DE19CECB206ACCCACF04D62F93FFDA6 /* Release */ = {
+		8F17DC3A99F99FBAD606CE6963886315 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -788,8 +870,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -813,55 +893,12 @@
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
 		};
-		5F4E3BCDDF0991F8912A2632DC18DD7B /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7F375FD294D307200587A5B549B06378 /* Pods-TTGTagCollectionView_Example.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MACH_O_TYPE = staticlib;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		6B7890DFA43CCE37F5B3BF8168DF75A1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4F08DD56B21473A43A5A1D6F5856A52A /* Pods-TTGTagCollectionView_Tests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MACH_O_TYPE = staticlib;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		858D01EEFE984249A9581D18DBEA53F1 /* Debug */ = {
+		916E0404255105F480DC4950B7625F7A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -893,8 +930,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -922,14 +957,14 @@
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
 		};
-		A254A1D5CAE40ABC54B15E5215496D62 /* Release */ = {
+		9C3DCCF6B5839F21EB4AC097B12672C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 88B7F492CA2128E711C3C5E558E9F98F /* Masonry.xcconfig */;
+			baseConfigurationReference = 9C2397A7ABE9F712A0FB93B3D2A3B562 /* Masonry.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -951,9 +986,32 @@
 			};
 			name = Release;
 		};
-		AAAD667A1DCA15EDFDE10ED489F2A0DB /* Debug */ = {
+		D7A2ADF8E19405B820AE14A234B07C6F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7A98D402F9052DA36ECA4D24A415CE71 /* SVPullToRefresh.xcconfig */;
+			baseConfigurationReference = 9C2397A7ABE9F712A0FB93B3D2A3B562 /* Masonry.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/Masonry/Masonry-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = Masonry;
+				PRODUCT_NAME = Masonry;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DA195475EA6FD6B8F6A2301E275CA22F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E74084BB5D35C9CEF77ED99FA1302BBB /* SVPullToRefresh.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -974,33 +1032,9 @@
 			};
 			name = Debug;
 		};
-		D3D54C5B9B834DF40F2FFCF95C61DB8A /* Release */ = {
+		F277E2C260DF3A4D77F96978072C9222 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7A98D402F9052DA36ECA4D24A415CE71 /* SVPullToRefresh.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/SVPullToRefresh/SVPullToRefresh-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = SVPullToRefresh;
-				PRODUCT_NAME = SVPullToRefresh;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		E205BB51CEBF7FF3EBB3EAB899ADB0DB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 660218B1D4061B674A674D2603DB2C62 /* Pods-TTGTagCollectionView_Example.debug.xcconfig */;
+			baseConfigurationReference = 9E96E1E2B02AAF9E96FE79745FF2F299 /* Pods-TTGTagCollectionView_Example.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1016,67 +1050,68 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
-			name = Debug;
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+		0AF3714E6A265617D168FE26BA2E7664 /* Build configuration list for PBXNativeTarget "TTGTagCollectionView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				858D01EEFE984249A9581D18DBEA53F1 /* Debug */,
-				5DE19CECB206ACCCACF04D62F93FFDA6 /* Release */,
+				4D7D944DD88324DDEF4E672FBA37C160 /* Debug */,
+				3F8019BA6DBD39AAA9257D64CCAE3242 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		93436ECA82475776CC8C97A2A881A260 /* Build configuration list for PBXNativeTarget "Pods-TTGTagCollectionView_Tests" */ = {
+		2410CE9F0F397E2FD414480557D6F342 /* Build configuration list for PBXNativeTarget "SVPullToRefresh" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6B7890DFA43CCE37F5B3BF8168DF75A1 /* Debug */,
-				3AE37374F03CE5EA48B9F8AAD29C09E3 /* Release */,
+				DA195475EA6FD6B8F6A2301E275CA22F /* Debug */,
+				72965DF45E95856E5EB06ED70AD16D28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9888F754C1DECA0E7416C8914B8E075F /* Build configuration list for PBXNativeTarget "Pods-TTGTagCollectionView_Example" */ = {
+		2CC9BB265CED2AE023A140C3D53CEB02 /* Build configuration list for PBXNativeTarget "Pods-TTGTagCollectionView_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E205BB51CEBF7FF3EBB3EAB899ADB0DB /* Debug */,
-				5F4E3BCDDF0991F8912A2632DC18DD7B /* Release */,
+				3CA10A25EA719957A6BA4BE6549A37EC /* Debug */,
+				80D3F3143B4C76D0C6C2823C4135646C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C353262DDAEE37DBD0461EB28F3693FB /* Build configuration list for PBXNativeTarget "SVPullToRefresh" */ = {
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AAAD667A1DCA15EDFDE10ED489F2A0DB /* Debug */,
-				D3D54C5B9B834DF40F2FFCF95C61DB8A /* Release */,
+				916E0404255105F480DC4950B7625F7A /* Debug */,
+				8F17DC3A99F99FBAD606CE6963886315 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CFB00DFDEF804FAD5E3E20BC782ADAB8 /* Build configuration list for PBXNativeTarget "Masonry" */ = {
+		EF625691042B208B0F87D7C89735A2BB /* Build configuration list for PBXNativeTarget "Masonry" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1D3F48869EA6A0024D621535B6BC77C9 /* Debug */,
-				A254A1D5CAE40ABC54B15E5215496D62 /* Release */,
+				D7A2ADF8E19405B820AE14A234B07C6F /* Debug */,
+				9C3DCCF6B5839F21EB4AC097B12672C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D648AF71145F79BB6F60174399BFA18D /* Build configuration list for PBXNativeTarget "TTGTagCollectionView" */ = {
+		F6EF3FEC14D838811DDE6B5F54473165 /* Build configuration list for PBXNativeTarget "Pods-TTGTagCollectionView_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0B88CD642C2D1D1A155A5CE7646864E9 /* Debug */,
-				40EB2C0310F46CAF07A3C565C2D6EBC9 /* Release */,
+				56F0ADE4FF097BB24D2A0968DD35CBF7 /* Debug */,
+				F277E2C260DF3A4D77F96978072C9222 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 }

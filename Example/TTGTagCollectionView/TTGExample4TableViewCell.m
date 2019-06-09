@@ -26,14 +26,20 @@
 
 - (void)setTags:(NSArray<NSString *> *)tags {
     [_tagView removeAllTags];
-    [_tagView addTags:tags];
+
+    NSMutableArray *textTags = [NSMutableArray new];
+    for (NSString *string in tags) {
+        TTGTextTag *textTag = [TTGTextTag tagWithContent:[TTGTextTagStringContent contentWithText:string] style:[TTGTextTagStyle new]];
+        [textTags addObject:textTag];
+    }
+    [_tagView addTags:textTags];
 
     // Use manual height, update preferredMaxLayoutWidth
     _tagView.preferredMaxLayoutWidth = [UIScreen mainScreen].bounds.size.width - 16;
     
     // Random selected
     for (NSInteger i = 0; i < 3; i++) {
-        [_tagView setTagAtIndex:arc4random_uniform((uint32_t)tags.count) selected:YES];
+        [_tagView updateTagAtIndex:arc4random_uniform((uint32_t)tags.count) selected:YES];
     }    
 }
 

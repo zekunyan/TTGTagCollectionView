@@ -97,29 +97,29 @@
     CustomTagData *customTagData = [CustomTagData new];
     customTagData.info = @"I am TTGTag custom data.";
     
-    TTGTextTagConfig *config = [TTGTextTagConfig new];
-    config.extraData = customTagData;
-    
-    [_tagView addTag:tags[tagTextIndex++] withConfig:config];
-    
-    // Bind NSDictionary
-    NSDictionary *dict = @{@"info": @"I am TTGTag NSDictionary data"};
-    config = [TTGTextTagConfig new];
-    config.extraData = dict;
-    
-    [_tagView addTag:tags[tagTextIndex++] withConfig:config];
-    
-    // Bind the rest with string data
-    for (NSString *tagText in [tags subarrayWithRange:NSMakeRange(tagTextIndex, tags.count - tagTextIndex)]) {
-        config = [TTGTextTagConfig new];
-        config.extraData = [NSString stringWithFormat:@"I am TTGTag NSString data with tag: %@", tagText];
-        [_tagView addTag:tagText withConfig:config];
-    }
-    
-    // Random selected
-    for (NSInteger i = 0; i < 5; i++) {
-        [_tagView setTagAtIndex:arc4random_uniform((uint32_t)tags.count) selected:YES];
-    }
+//    TTGTextTag *config = [TTGTextTag new];
+//    config.attachment = customTagData;
+//
+//    [_tagView addTag:tags[tagTextIndex++] withConfig:config];
+//
+//    // Bind NSDictionary
+//    NSDictionary *dict = @{@"info": @"I am TTGTag NSDictionary data"};
+//    config = [TTGTextTag new];
+//    config.extraData = dict;
+//
+//    [_tagView addTag:tags[tagTextIndex++] withConfig:config];
+//
+//    // Bind the rest with string data
+//    for (NSString *tagText in [tags subarrayWithRange:NSMakeRange(tagTextIndex, tags.count - tagTextIndex)]) {
+//        config = [TTGTextTag new];
+//        config.extraData = [NSString stringWithFormat:@"I am TTGTag NSString data with tag: %@", tagText];
+//        [_tagView addTag:tagText withConfig:config];
+//    }
+//
+//    // Random selected
+//    for (NSInteger i = 0; i < 5; i++) {
+//        [_tagView setTagAtIndex:arc4random_uniform((uint32_t)tags.count) selected:YES];
+//    }
     
     // Reload
     [_tagView reload];
@@ -131,11 +131,9 @@
 #pragma mark - TTGTextTagCollectionViewDelegate
 
 - (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView
-                    didTapTag:(NSString *)tagText
-                      atIndex:(NSUInteger)index
-                     selected:(BOOL)selected
-                    tagConfig:(TTGTextTagConfig *)config {
-    _infoTextView.text = [NSString stringWithFormat:@"%@\nInfo: %@", _infoTextView.text, config.extraData];
+                    didTapTag:(TTGTextTag *)tag
+                      atIndex:(NSUInteger)index {
+    _infoTextView.text = [NSString stringWithFormat:@"%@\nInfo: %@", _infoTextView.text, tag.attachment];
 }
 
 @end

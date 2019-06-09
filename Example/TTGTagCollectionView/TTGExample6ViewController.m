@@ -29,14 +29,27 @@
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [weakSelf.tagView.scrollView.pullToRefreshView stopAnimating];
             [weakSelf.tagView removeAllTags];
-            [weakSelf.tagView addTags:tags];
+            
+            NSMutableArray *textTags = [NSMutableArray new];
+            for (NSString *string in tags) {
+                TTGTextTag *textTag = [TTGTextTag tagWithContent:[TTGTextTagStringContent contentWithText:string] style:[TTGTextTagStyle new]];
+                [textTags addObject:textTag];
+            }
+            [weakSelf.tagView addTags:textTags];
         });
     }];
 
     [_tagView.scrollView addInfiniteScrollingWithActionHandler:^{
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [weakSelf.tagView.scrollView.infiniteScrollingView stopAnimating];
-            [weakSelf.tagView addTags:tags];
+
+            NSMutableArray *textTags = [NSMutableArray new];
+            for (NSString *string in tags) {
+                TTGTextTag *textTag = [TTGTextTag tagWithContent:[TTGTextTagStringContent contentWithText:string] style:[TTGTextTagStyle new]];
+                [textTags addObject:textTag];
+            }
+            [weakSelf.tagView addTags:textTags];
+
         });
     }];
     

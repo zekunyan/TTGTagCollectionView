@@ -65,13 +65,13 @@ Conform the `TTGTextTagCollectionViewDelegate` protocol to get callback when you
                     canTapTag:(NSString *)tagText
                       atIndex:(NSUInteger)index
               currentSelected:(BOOL)currentSelected
-                    tagConfig:(TTGTextTagConfig *)config;
+                    tagConfig:(TTGTextTag *)config;
 
 - (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView
                     didTapTag:(NSString *)tagText
                       atIndex:(NSUInteger)index
                      selected:(BOOL)selected
-                    tagConfig:(TTGTextTagConfig *)config;
+                    tagConfig:(TTGTextTag *)config;
 
 - (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView
             updateContentSize:(CGSize)contentSize;
@@ -82,7 +82,7 @@ Conform the `TTGTextTagCollectionViewDelegate` protocol to get callback when you
 Each tag can be configured.
 
 ```Objective-C
-@interface TTGTextTagConfig : NSObject
+@interface TTGTextTag : NSObject
 
 // Text font
 @property (strong, nonatomic) UIFont *textFont;
@@ -205,8 +205,8 @@ Add tag.
 - (void)addTags:(NSArray <NSString *> *)tags;
 
 // Add tag with custom config
-- (void)addTag:(NSString *)tag withConfig:(TTGTextTagConfig *)config;
-- (void)addTags:(NSArray <NSString *> *)tags withConfig:(TTGTextTagConfig *)config;
+- (void)addTag:(NSString *)tag withConfig:(TTGTextTag *)config;
+- (void)addTags:(NSArray <NSString *> *)tags withConfig:(TTGTextTag *)config;
 ```
 
 Insert tag.
@@ -217,8 +217,8 @@ Insert tag.
 - (void)insertTags:(NSArray <NSString *> *)tags atIndex:(NSUInteger)index;
 
 // Insert tag with custom config
-- (void)insertTag:(NSString *)tag atIndex:(NSUInteger)index withConfig:(TTGTextTagConfig *)config;
-- (void)insertTags:(NSArray <NSString *> *)tags atIndex:(NSUInteger)index withConfig:(TTGTextTagConfig *)config;
+- (void)insertTag:(NSString *)tag atIndex:(NSUInteger)index withConfig:(TTGTextTag *)config;
+- (void)insertTags:(NSArray <NSString *> *)tags atIndex:(NSUInteger)index withConfig:(TTGTextTag *)config;
 ```
 
 Remove tag.
@@ -240,8 +240,8 @@ Remove tag.
 
 ```Objective-C
 // Update tag config
-- (void)setTagAtIndex:(NSUInteger)index withConfig:(TTGTextTagConfig *)config;
-- (void)setTagsInRange:(NSRange)range withConfig:(TTGTextTagConfig *)config;
+- (void)setTagAtIndex:(NSUInteger)index withConfig:(TTGTextTag *)config;
+- (void)setTagsInRange:(NSRange)range withConfig:(TTGTextTag *)config;
 ```
 
 #### Get tag information
@@ -252,8 +252,8 @@ Remove tag.
 - (NSArray <NSString *> *)getTagsInRange:(NSRange)range;
 
 // Get tag config
-- (TTGTextTagConfig *)getConfigAtIndex:(NSUInteger)index;
-- (NSArray <TTGTextTagConfig *> *)getConfigsInRange:(NSRange)range;
+- (TTGTextTag *)getConfigAtIndex:(NSUInteger)index;
+- (NSArray <TTGTextTag *> *)getConfigsInRange:(NSRange)range;
 
 // Get all
 - (NSArray <NSString *> *)allTags;

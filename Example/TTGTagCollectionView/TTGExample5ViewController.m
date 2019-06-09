@@ -37,9 +37,14 @@
     _twoLineTagView.numberOfLines = 2;
     _threeLineTagView.numberOfLines = 3;
 
-    [_oneLineTagView addTags:tags];
-    [_twoLineTagView addTags:tags];
-    [_threeLineTagView addTags:tags];
+    NSMutableArray *textTags = [NSMutableArray new];
+    for (NSString *string in tags) {
+        TTGTextTag *textTag = [TTGTextTag tagWithContent:[TTGTextTagStringContent contentWithText:string] style:[TTGTextTagStyle new]];
+        [textTags addObject:textTag];
+    }
+    [_oneLineTagView addTags:textTags];
+    [_twoLineTagView addTags:textTags];
+    [_threeLineTagView addTags:textTags];
 }
 
 @end
