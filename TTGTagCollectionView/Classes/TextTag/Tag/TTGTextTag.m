@@ -2,7 +2,8 @@
 //  TTGTextTag.m
 //  TTGTagCollectionView
 //
-//  Created by tutuge on 2019/5/24.
+//  Created by zekunyan on 2019/5/24.
+//  Copyright (c) 2019 zekunyan. All rights reserved.
 //
 
 #import "TTGTextTag.h"
@@ -23,11 +24,6 @@ static NSUInteger TTGTextTagAutoIncreasedId = 0;
     return self;
 }
 
-+ (instancetype)tagWithContent:(TTGTextTagContent *)content
-                         style:(TTGTextTagStyle *)style {
-    return [[self alloc] initWithContent:content style:style];
-}
-
 - (instancetype)initWithContent:(TTGTextTagContent *)content
                           style:(TTGTextTagStyle *)style
                 selectedContent:(TTGTextTagContent *)selectedContent
@@ -41,6 +37,11 @@ static NSUInteger TTGTextTagAutoIncreasedId = 0;
         [self setupDefaultStyle];
     }
     return self;
+}
+
++ (instancetype)tagWithContent:(TTGTextTagContent *)content
+                         style:(TTGTextTagStyle *)style {
+    return [[self alloc] initWithContent:content style:style];
 }
 
 + (instancetype)tagWithContent:(TTGTextTagContent *)content
@@ -58,7 +59,6 @@ static NSUInteger TTGTextTagAutoIncreasedId = 0;
     if (self) {
         _tagId = TTGTextTagAutoIncreasedId++;
         _attachment = nil;
-        [self setupDefaultStyle];
     }
     return self;
 }

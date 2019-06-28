@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		01536673BD94F5CBA59962356EB5AC6D /* TTGTagCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12345CAA7C8EA3CD1261747805356556 /* TTGTagCollectionView.m */; };
-		02810623950A0D5EB3EF783D2F59D13B /* TTGTextTag.h in Headers */ = {isa = PBXBuildFile; fileRef = B68D854FC3B098D2B2CBE4E9BABE7AB8 /* TTGTextTag.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		02810623950A0D5EB3EF783D2F59D13B /* TTGTextTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 57CFB635371CB3F46507B8DF744A220A /* TTGTextTag.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		06A4624C0490881FD7962E6F2768469F /* MASConstraintMaker.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CE43786A0CB2932782056B192063860 /* MASConstraintMaker.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		0B1CE85AF30254D5DDFDA6409001A5B2 /* TTGTextTagAttributedStringContent.m in Sources */ = {isa = PBXBuildFile; fileRef = B1232C2E00F6562961C7191DDCBF946A /* TTGTextTagAttributedStringContent.m */; };
+		0B1CE85AF30254D5DDFDA6409001A5B2 /* TTGTextTagAttributedStringContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 506C630756B0B6C0993667038A3F3DF6 /* TTGTextTagAttributedStringContent.m */; };
 		0D8B9B0825928CD4C9E71A45A24745DC /* Pods-TTGTagCollectionView_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 748328D9239376E5125E6C5E4B3587C4 /* Pods-TTGTagCollectionView_Tests-dummy.m */; };
 		0F1CEF2B08D18B900A16F3249C96DBEF /* MASCompositeConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = D48B81CCC1C8AC74BD642C8CD0436A6E /* MASCompositeConstraint.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		147370B40CE853ADCC91F9C81FF5E5FA /* NSLayoutConstraint+MASDebugAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = C762EBBF4F510EC1576FDAF85512A5F5 /* NSLayoutConstraint+MASDebugAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -18,34 +18,34 @@
 		1D12FE6ABBFFDECF65CA15759AD0E411 /* MASViewConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 938122A3E4F0268652D9CD4E99CE5EA5 /* MASViewConstraint.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		1E3B9E29E64A41419BADE54AEFDAF08E /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9A9F780A2298A1904BA62F2C69F539 /* MASCompositeConstraint.m */; };
 		24F67F67B66D71384E9B66CF81AF84B3 /* ViewController+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 42D6E5A630855CE1CF40516248C6722B /* ViewController+MASAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		27A15F0296A85E21525B3498B7FFEFAD /* TTGTextTagCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 41C856644E9F1E0C124A887F88EAE378 /* TTGTextTagCollectionView.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		27A15F0296A85E21525B3498B7FFEFAD /* TTGTextTagCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = EBEDD56E58AB4B21C4EFA8D57F9D49D6 /* TTGTextTagCollectionView.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		29214D8D2E69809E66F0C8A98A36BCCE /* NSArray+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 88FA9B5D6699FFA3F0BAFD62DC76895B /* NSArray+MASAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		29C098964D2991A2B0C0BC84D2EF4D98 /* TTGTagCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6212F81372B83FC4BA51AE2DA5D1A28C /* TTGTagCollectionView.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		33F88FCCAB6FA101710E61520F687CE5 /* Pods-TTGTagCollectionView_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FD5FB2180603AFDBA9BC63FFB1592B24 /* Pods-TTGTagCollectionView_Example-dummy.m */; };
 		34D6D9E7FEAF947841106F0662A2E52D /* Masonry-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EBC3A971BF9BECBDC606FA61340C48 /* Masonry-dummy.m */; };
-		420DD16E22953A700FC1DB223F363DCB /* TTGTextTagAttributedStringContent.h in Headers */ = {isa = PBXBuildFile; fileRef = 0610F627458895DEABB1C81B3C220578 /* TTGTextTagAttributedStringContent.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		420DD16E22953A700FC1DB223F363DCB /* TTGTextTagAttributedStringContent.h in Headers */ = {isa = PBXBuildFile; fileRef = 0819D089ECFFFB75F5CD5126C90C8F21 /* TTGTextTagAttributedStringContent.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		50370FA885AAF9A6F70FD767ACF3A4B6 /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8716DFB63CBAF80286183C7DFFBDE9 /* UIScrollView+SVInfiniteScrolling.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		591F1FA04AB069DD22008A8BABAAB829 /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = FABE384CA943E741C64FEAD6DC29F1E6 /* MASViewConstraint.m */; };
 		5E44F7CFDA34CB0B1F1A65A19641AC7D /* View+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 501C30792A2E89B017A67C1A50002AA7 /* View+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		60DC27F14226DDD592FA1464C2DA0C2E /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AEDADD236C029037F93AE5556229D3 /* MASConstraintMaker.m */; };
 		62ED0D1B1D2D5EF2225776A9C2BAF4DA /* MASViewAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = 392A57CA06E9EE00EA3555F31F4A4C59 /* MASViewAttribute.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		6EB65C48C5D4DFEFBE31314D6FC55F09 /* UIScrollView+SVPullToRefresh.h in Headers */ = {isa = PBXBuildFile; fileRef = 115F27E26EF3E546007A8CEE7F71322E /* UIScrollView+SVPullToRefresh.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		76A3640B51697B46BFE5008A41EE81BB /* TTGTextTagStringContent.m in Sources */ = {isa = PBXBuildFile; fileRef = A399FBD76264C0F4740A55FEFA11DA5C /* TTGTextTagStringContent.m */; };
+		76A3640B51697B46BFE5008A41EE81BB /* TTGTextTagStringContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E44F7BF437085CE8CB76316294F3CD /* TTGTextTagStringContent.m */; };
 		7C31AFA9C95568E16B6911B670754372 /* View+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BC1E68D9CA41E5F5AD2781ECA705DD6 /* View+MASAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		834D1BB9656D3E64B2AF8C0E0119A37F /* MASConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 5280B26AFE67F82A8D7B2FDB8DA5ECA9 /* MASConstraint.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		8699CEF608D4C00EAE20FD2720262A6E /* SVPullToRefresh-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BB218901012CB279AAF366E3FF00E653 /* SVPullToRefresh-dummy.m */; };
 		96DB2AB39DFEB82319EF630730FDE4FD /* NSArray+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D3F5D0A57E7D46CA1D3F14765565A35 /* NSArray+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		9F3EA10974A5AA581BAE1D261C270F52 /* TTGTextTagCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B66A365BE723203F601DC2348209C96F /* TTGTextTagCollectionView.m */; };
+		9F3EA10974A5AA581BAE1D261C270F52 /* TTGTextTagCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8480F0E5CACEDDAC66B08C5B10DAAD3F /* TTGTextTagCollectionView.m */; };
 		9F7245F368B8CD09FE3F2C36BAA2842D /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 1121A11ACDFCD60A1856467061F743E7 /* MASViewAttribute.m */; };
-		A032F1F6AF8197812D321FEC56EBE65F /* TTGTextTag.m in Sources */ = {isa = PBXBuildFile; fileRef = A096F0A9BD1A1A1C02AE4400163D2A65 /* TTGTextTag.m */; };
+		A032F1F6AF8197812D321FEC56EBE65F /* TTGTextTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D270ACCFD472B73100C946787560C7 /* TTGTextTag.m */; };
 		A553EB45FE830C85E853E6E471E88CDF /* UIScrollView+SVInfiniteScrolling.h in Headers */ = {isa = PBXBuildFile; fileRef = 44749C40850E0760380F490789761C70 /* UIScrollView+SVInfiniteScrolling.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		A6F529B4645D1CEAA42A721C9797B3DE /* TTGTextTagStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = BAD9974C8A5B01C09E06946F8B6C8491 /* TTGTextTagStyle.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		A8F0C5B743C39DDF32D438A15BDBC154 /* TTGTextTagStringContent.h in Headers */ = {isa = PBXBuildFile; fileRef = 64282CB07F20A401046D6AEB94B3DA30 /* TTGTextTagStringContent.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		A6F529B4645D1CEAA42A721C9797B3DE /* TTGTextTagStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = BDC010C78FA38F642F7B48C100D7AE99 /* TTGTextTagStyle.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		A8F0C5B743C39DDF32D438A15BDBC154 /* TTGTextTagStringContent.h in Headers */ = {isa = PBXBuildFile; fileRef = BEA22EA89695C9C7BCB14BC9AE44E6B6 /* TTGTextTagStringContent.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		AB74AF1EEF7E9D9855E150F344F8CBD5 /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2CF701209DDF9569B525D59C09ACEB /* MASLayoutConstraint.m */; };
-		B47147E660A9F348801921FA48A7ABA9 /* TTGTextTagContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCA3D77B96BE2963FD69A9211A2B0A8 /* TTGTextTagContent.m */; };
+		B47147E660A9F348801921FA48A7ABA9 /* TTGTextTagContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5914C21586DC1405B30501C04AE40192 /* TTGTextTagContent.m */; };
 		B5F8B45888F4DFECC89DBA2B0307C178 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D5B933F8CA0257BE83F524CC595F58 /* MASConstraint.m */; };
-		B8F2EC7331230C0B3E3632A38288154F /* TTGTextTagContent.h in Headers */ = {isa = PBXBuildFile; fileRef = 81566EA6A3007A4FD3E3E0D5CC690B6E /* TTGTextTagContent.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		BE5FBC611AA26948D37E795C5946043A /* TTGTextTagStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5C6DDE21B75D43F87093B0A54C8972 /* TTGTextTagStyle.m */; };
+		B8F2EC7331230C0B3E3632A38288154F /* TTGTextTagContent.h in Headers */ = {isa = PBXBuildFile; fileRef = A8127740678D64715FE10811A57A4CE9 /* TTGTextTagContent.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		BE5FBC611AA26948D37E795C5946043A /* TTGTextTagStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DABB4FCEBB5F11E5AADF94C6515179 /* TTGTextTagStyle.m */; };
 		C1C295BCD795C2B6044DB474583804B1 /* MASConstraint+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = D122A7338C95B86CF35A8D273A3A65BE /* MASConstraint+Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C48DF5D21345BD3D127256C6AD3AEFD4 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 31AEFDB3D98E75F69DDD96672D8506FC /* NSLayoutConstraint+MASDebugAdditions.m */; };
 		C7AC29F56D5F471248BBA0A724CDF3C7 /* Masonry.h in Headers */ = {isa = PBXBuildFile; fileRef = CED7E3C105EF525C3B42DEDA44820E75 /* Masonry.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -91,7 +91,7 @@
 
 /* Begin PBXFileReference section */
 		026A2C279B8BEAE405FAAE7D449AE6F3 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		0610F627458895DEABB1C81B3C220578 /* TTGTextTagAttributedStringContent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTGTextTagAttributedStringContent.h; sourceTree = "<group>"; };
+		0819D089ECFFFB75F5CD5126C90C8F21 /* TTGTextTagAttributedStringContent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTGTextTagAttributedStringContent.h; sourceTree = "<group>"; };
 		084D0E7ABFD24D6F202F92E46997B6FA /* TTGTagCollectionView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TTGTagCollectionView-dummy.m"; sourceTree = "<group>"; };
 		0A4452C850E0AACC5B682E40391C6034 /* Pods-TTGTagCollectionView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TTGTagCollectionView_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		1121A11ACDFCD60A1856467061F743E7 /* MASViewAttribute.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASViewAttribute.m; path = Masonry/MASViewAttribute.m; sourceTree = "<group>"; };
@@ -110,28 +110,31 @@
 		400E41C73C3583FF31533180F5353DAF /* Pods-TTGTagCollectionView_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TTGTagCollectionView_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		4098AD88174AE0EE70AB2287C7604DE8 /* Masonry-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Masonry-prefix.pch"; sourceTree = "<group>"; };
 		4165D408F39AA490CDA2DD399F4168A2 /* TTGTagCollectionView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TTGTagCollectionView-prefix.pch"; sourceTree = "<group>"; };
-		41C856644E9F1E0C124A887F88EAE378 /* TTGTextTagCollectionView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTGTextTagCollectionView.h; sourceTree = "<group>"; };
 		42D6E5A630855CE1CF40516248C6722B /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ViewController+MASAdditions.h"; path = "Masonry/ViewController+MASAdditions.h"; sourceTree = "<group>"; };
 		44749C40850E0760380F490789761C70 /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+SVInfiniteScrolling.h"; path = "SVPullToRefresh/UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
 		47D5B933F8CA0257BE83F524CC595F58 /* MASConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraint.m; path = Masonry/MASConstraint.m; sourceTree = "<group>"; };
 		4F096B8E51643BEBF12C43408C069B34 /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ViewController+MASAdditions.m"; path = "Masonry/ViewController+MASAdditions.m"; sourceTree = "<group>"; };
 		501C30792A2E89B017A67C1A50002AA7 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "View+MASShorthandAdditions.h"; path = "Masonry/View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		506C630756B0B6C0993667038A3F3DF6 /* TTGTextTagAttributedStringContent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagAttributedStringContent.m; sourceTree = "<group>"; };
 		5119047C637ED0888B30C6D3503B3670 /* Pods-TTGTagCollectionView_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TTGTagCollectionView_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		5280B26AFE67F82A8D7B2FDB8DA5ECA9 /* MASConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraint.h; path = Masonry/MASConstraint.h; sourceTree = "<group>"; };
+		57CFB635371CB3F46507B8DF744A220A /* TTGTextTag.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTGTextTag.h; sourceTree = "<group>"; };
+		5914C21586DC1405B30501C04AE40192 /* TTGTextTagContent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagContent.m; sourceTree = "<group>"; };
 		5AE9E7C2970152850C6D9754A7587093 /* libSVPullToRefresh.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSVPullToRefresh.a; path = libSVPullToRefresh.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		600FA7542ED5A21E8E27ACD65E57BFC9 /* View+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "View+MASAdditions.m"; path = "Masonry/View+MASAdditions.m"; sourceTree = "<group>"; };
 		618AB89B5162A67A6796F3CA3E6CF73C /* MASUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASUtilities.h; path = Masonry/MASUtilities.h; sourceTree = "<group>"; };
 		6212F81372B83FC4BA51AE2DA5D1A28C /* TTGTagCollectionView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTGTagCollectionView.h; sourceTree = "<group>"; };
-		64282CB07F20A401046D6AEB94B3DA30 /* TTGTextTagStringContent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTGTextTagStringContent.h; sourceTree = "<group>"; };
+		63D270ACCFD472B73100C946787560C7 /* TTGTextTag.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTGTextTag.m; sourceTree = "<group>"; };
 		69AEDADD236C029037F93AE5556229D3 /* MASConstraintMaker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraintMaker.m; path = Masonry/MASConstraintMaker.m; sourceTree = "<group>"; };
 		6F9A9F780A2298A1904BA62F2C69F539 /* MASCompositeConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASCompositeConstraint.m; path = Masonry/MASCompositeConstraint.m; sourceTree = "<group>"; };
 		748328D9239376E5125E6C5E4B3587C4 /* Pods-TTGTagCollectionView_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TTGTagCollectionView_Tests-dummy.m"; sourceTree = "<group>"; };
 		750C39FBD4552D92CAC4941B03009D24 /* Pods-TTGTagCollectionView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TTGTagCollectionView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		81566EA6A3007A4FD3E3E0D5CC690B6E /* TTGTextTagContent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTGTextTagContent.h; sourceTree = "<group>"; };
+		79DABB4FCEBB5F11E5AADF94C6515179 /* TTGTextTagStyle.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagStyle.m; sourceTree = "<group>"; };
 		82BB6398A7F4B35FBFB2A58EDA76B03F /* MASLayoutConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASLayoutConstraint.h; path = Masonry/MASLayoutConstraint.h; sourceTree = "<group>"; };
+		8480F0E5CACEDDAC66B08C5B10DAAD3F /* TTGTextTagCollectionView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagCollectionView.m; sourceTree = "<group>"; };
 		86442187B3F002E2FA65813AC7D90A55 /* NSArray+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+MASAdditions.m"; path = "Masonry/NSArray+MASAdditions.m"; sourceTree = "<group>"; };
+		88E44F7BF437085CE8CB76316294F3CD /* TTGTextTagStringContent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagStringContent.m; sourceTree = "<group>"; };
 		88FA9B5D6699FFA3F0BAFD62DC76895B /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+MASAdditions.h"; path = "Masonry/NSArray+MASAdditions.h"; sourceTree = "<group>"; };
-		8B5C6DDE21B75D43F87093B0A54C8972 /* TTGTextTagStyle.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagStyle.m; sourceTree = "<group>"; };
 		8C98D8C73AA8942AB6301790B24427C3 /* libMasonry.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMasonry.a; path = libMasonry.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		90CAE1105A921376907C9812873A017C /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		938122A3E4F0268652D9CD4E99CE5EA5 /* MASViewConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASViewConstraint.h; path = Masonry/MASViewConstraint.h; sourceTree = "<group>"; };
@@ -139,25 +142,22 @@
 		97B1EF43FDA998DF851422963230A3E5 /* libPods-TTGTagCollectionView_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-TTGTagCollectionView_Tests.a"; path = "libPods-TTGTagCollectionView_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C2397A7ABE9F712A0FB93B3D2A3B562 /* Masonry.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Masonry.xcconfig; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9DCA3D77B96BE2963FD69A9211A2B0A8 /* TTGTextTagContent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagContent.m; sourceTree = "<group>"; };
 		9E96E1E2B02AAF9E96FE79745FF2F299 /* Pods-TTGTagCollectionView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TTGTagCollectionView_Example.release.xcconfig"; sourceTree = "<group>"; };
-		A096F0A9BD1A1A1C02AE4400163D2A65 /* TTGTextTag.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTGTextTag.m; sourceTree = "<group>"; };
 		A0AC14A01E831C444D4DFB8308D518A7 /* TTGTagCollectionView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TTGTagCollectionView.xcconfig; sourceTree = "<group>"; };
-		A399FBD76264C0F4740A55FEFA11DA5C /* TTGTextTagStringContent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagStringContent.m; sourceTree = "<group>"; };
+		A8127740678D64715FE10811A57A4CE9 /* TTGTextTagContent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTGTextTagContent.h; sourceTree = "<group>"; };
 		A9AE737008E839E7AD4786223871502E /* SVPullToRefresh.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVPullToRefresh.h; path = SVPullToRefresh/SVPullToRefresh.h; sourceTree = "<group>"; };
 		AB8716DFB63CBAF80286183C7DFFBDE9 /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+SVInfiniteScrolling.m"; path = "SVPullToRefresh/UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
 		AE7FBA0FC29369FF742EAE0681BBFF99 /* libPods-TTGTagCollectionView_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-TTGTagCollectionView_Example.a"; path = "libPods-TTGTagCollectionView_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B1232C2E00F6562961C7191DDCBF946A /* TTGTextTagAttributedStringContent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagAttributedStringContent.m; sourceTree = "<group>"; };
-		B66A365BE723203F601DC2348209C96F /* TTGTextTagCollectionView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagCollectionView.m; sourceTree = "<group>"; };
-		B68D854FC3B098D2B2CBE4E9BABE7AB8 /* TTGTextTag.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTGTextTag.h; sourceTree = "<group>"; };
-		BAD9974C8A5B01C09E06946F8B6C8491 /* TTGTextTagStyle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTGTextTagStyle.h; sourceTree = "<group>"; };
 		BB218901012CB279AAF366E3FF00E653 /* SVPullToRefresh-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SVPullToRefresh-dummy.m"; sourceTree = "<group>"; };
+		BDC010C78FA38F642F7B48C100D7AE99 /* TTGTextTagStyle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTGTextTagStyle.h; sourceTree = "<group>"; };
+		BEA22EA89695C9C7BCB14BC9AE44E6B6 /* TTGTextTagStringContent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTGTextTagStringContent.h; sourceTree = "<group>"; };
 		C762EBBF4F510EC1576FDAF85512A5F5 /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSLayoutConstraint+MASDebugAdditions.h"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
 		CED7E3C105EF525C3B42DEDA44820E75 /* Masonry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Masonry.h; path = Masonry/Masonry.h; sourceTree = "<group>"; };
 		D122A7338C95B86CF35A8D273A3A65BE /* MASConstraint+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MASConstraint+Private.h"; path = "Masonry/MASConstraint+Private.h"; sourceTree = "<group>"; };
 		D48B81CCC1C8AC74BD642C8CD0436A6E /* MASCompositeConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASCompositeConstraint.h; path = Masonry/MASCompositeConstraint.h; sourceTree = "<group>"; };
 		D7EBC3A971BF9BECBDC606FA61340C48 /* Masonry-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Masonry-dummy.m"; sourceTree = "<group>"; };
 		E74084BB5D35C9CEF77ED99FA1302BBB /* SVPullToRefresh.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SVPullToRefresh.xcconfig; sourceTree = "<group>"; };
+		EBEDD56E58AB4B21C4EFA8D57F9D49D6 /* TTGTextTagCollectionView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TTGTextTagCollectionView.h; sourceTree = "<group>"; };
 		F618E197F6197D8AA396FE7064EADCF8 /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+SVPullToRefresh.m"; path = "SVPullToRefresh/UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
 		F71A3B282FFF2D37C844D6AD5948CBD7 /* Pods-TTGTagCollectionView_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TTGTagCollectionView_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		FABE384CA943E741C64FEAD6DC29F1E6 /* MASViewConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASViewConstraint.m; path = Masonry/MASViewConstraint.m; sourceTree = "<group>"; };
@@ -233,6 +233,17 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		327194FE8BB02A5FF19260F782C01C7E /* TextTag */ = {
+			isa = PBXGroup;
+			children = (
+				EBEDD56E58AB4B21C4EFA8D57F9D49D6 /* TTGTextTagCollectionView.h */,
+				8480F0E5CACEDDAC66B08C5B10DAAD3F /* TTGTextTagCollectionView.m */,
+				8264F59B4F0E95E79123B394C957F88C /* Tag */,
+			);
+			name = TextTag;
+			path = TTGTagCollectionView/Classes/TextTag;
+			sourceTree = "<group>";
+		};
 		44857523059A4731A95DD38C341C9274 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,6 +301,16 @@
 			path = Masonry;
 			sourceTree = "<group>";
 		};
+		601BE2246A5A8708DDE680A093705F38 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				BDC010C78FA38F642F7B48C100D7AE99 /* TTGTextTagStyle.h */,
+				79DABB4FCEBB5F11E5AADF94C6515179 /* TTGTextTagStyle.m */,
+			);
+			name = Style;
+			path = Style;
+			sourceTree = "<group>";
+		};
 		7032B98C72E74A64206C6EE12398CAE1 /* SVPullToRefresh */ = {
 			isa = PBXGroup;
 			children = (
@@ -313,6 +334,32 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/Masonry";
+			sourceTree = "<group>";
+		};
+		81C11EED83AFAD7DD911C8B03E8A1141 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				0819D089ECFFFB75F5CD5126C90C8F21 /* TTGTextTagAttributedStringContent.h */,
+				506C630756B0B6C0993667038A3F3DF6 /* TTGTextTagAttributedStringContent.m */,
+				A8127740678D64715FE10811A57A4CE9 /* TTGTextTagContent.h */,
+				5914C21586DC1405B30501C04AE40192 /* TTGTextTagContent.m */,
+				BEA22EA89695C9C7BCB14BC9AE44E6B6 /* TTGTextTagStringContent.h */,
+				88E44F7BF437085CE8CB76316294F3CD /* TTGTextTagStringContent.m */,
+			);
+			name = Content;
+			path = Content;
+			sourceTree = "<group>";
+		};
+		8264F59B4F0E95E79123B394C957F88C /* Tag */ = {
+			isa = PBXGroup;
+			children = (
+				57CFB635371CB3F46507B8DF744A220A /* TTGTextTag.h */,
+				63D270ACCFD472B73100C946787560C7 /* TTGTextTag.m */,
+				81C11EED83AFAD7DD911C8B03E8A1141 /* Content */,
+				601BE2246A5A8708DDE680A093705F38 /* Style */,
+			);
+			name = Tag;
+			path = Tag;
 			sourceTree = "<group>";
 		};
 		93E5FF58D5881930F9E44BE034BF9BB5 /* Development Pods */ = {
@@ -346,42 +393,13 @@
 			path = "Target Support Files/Pods-TTGTagCollectionView_Example";
 			sourceTree = "<group>";
 		};
-		B14630D5C59D3FCEE90DEB8A4F853F89 /* Tag */ = {
-			isa = PBXGroup;
-			children = (
-				B68D854FC3B098D2B2CBE4E9BABE7AB8 /* TTGTextTag.h */,
-				A096F0A9BD1A1A1C02AE4400163D2A65 /* TTGTextTag.m */,
-				0610F627458895DEABB1C81B3C220578 /* TTGTextTagAttributedStringContent.h */,
-				B1232C2E00F6562961C7191DDCBF946A /* TTGTextTagAttributedStringContent.m */,
-				81566EA6A3007A4FD3E3E0D5CC690B6E /* TTGTextTagContent.h */,
-				9DCA3D77B96BE2963FD69A9211A2B0A8 /* TTGTextTagContent.m */,
-				64282CB07F20A401046D6AEB94B3DA30 /* TTGTextTagStringContent.h */,
-				A399FBD76264C0F4740A55FEFA11DA5C /* TTGTextTagStringContent.m */,
-				BAD9974C8A5B01C09E06946F8B6C8491 /* TTGTextTagStyle.h */,
-				8B5C6DDE21B75D43F87093B0A54C8972 /* TTGTextTagStyle.m */,
-			);
-			name = Tag;
-			path = Tag;
-			sourceTree = "<group>";
-		};
-		C25AB4E236BC33C7804C2D83FABEADB1 /* TextTag */ = {
-			isa = PBXGroup;
-			children = (
-				41C856644E9F1E0C124A887F88EAE378 /* TTGTextTagCollectionView.h */,
-				B66A365BE723203F601DC2348209C96F /* TTGTextTagCollectionView.m */,
-				B14630D5C59D3FCEE90DEB8A4F853F89 /* Tag */,
-			);
-			name = TextTag;
-			path = TTGTagCollectionView/Classes/TextTag;
-			sourceTree = "<group>";
-		};
 		C64D2A78055CF1B22CFD65100CCE4AD7 /* TTGTagCollectionView */ = {
 			isa = PBXGroup;
 			children = (
 				1612821BC2D65B1EDF6205C1928F5166 /* BaseTag */,
 				9698946761B5509C598D03FC7820EB0A /* Pod */,
 				1350FF41C03B0A17BE2D4BA4423A3BB2 /* Support Files */,
-				C25AB4E236BC33C7804C2D83FABEADB1 /* TextTag */,
+				327194FE8BB02A5FF19260F782C01C7E /* TextTag */,
 			);
 			name = TTGTagCollectionView;
 			path = ../..;

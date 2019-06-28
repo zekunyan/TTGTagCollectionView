@@ -3,7 +3,7 @@
 //  TTGTagCollectionView
 //
 //  Created by zekunyan on 12/11/2015.
-//  Copyright (c) 2015 zekunyan. All rights reserved.
+//  Copyright (c) 2019 zekunyan. All rights reserved.
 //
 
 #import "TTGAppDelegate.h"

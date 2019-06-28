@@ -2,8 +2,8 @@
 //  TTGExample6ViewController.m
 //  TTGTagCollectionView
 //
-//  Created by tutuge on 2017/3/2.
-//  Copyright © 2017年 zekunyan. All rights reserved.
+//  Created by zekunyan on 2017/3/2.
+//  Copyright (c) 2019 zekunyan. All rights reserved.
 //
 
 #import "TTGExample6ViewController.h"

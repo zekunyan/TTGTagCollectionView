@@ -2,8 +2,8 @@
 //  TTGTagCollectionView.h
 //  Pods
 //
-//  Created by zorro on 15/12/26.
-//
+//  Created by zekunyan on 15/12/26.
+//  Copyright (c) 2019 zekunyan. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

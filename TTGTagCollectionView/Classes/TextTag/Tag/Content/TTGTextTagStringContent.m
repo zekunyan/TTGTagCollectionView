@@ -2,7 +2,8 @@
 //  TTGTextTagStringContent.m
 //  TTGTagCollectionView
 //
-//  Created by tutuge on 2019/5/24.
+//  Created by zekunyan on 2019/5/24.
+//  Copyright (c) 2019 zekunyan. All rights reserved.
 //
 
 #import "TTGTextTagStringContent.h"
@@ -59,7 +60,7 @@
     return _textColor ?: [UIColor blackColor];
 }
 
-- (id)copyWithZone:(nullable NSZone *)zone {
+- (id)copyWithZone:(NSZone *)zone {
     TTGTextTagStringContent *copy = (TTGTextTagStringContent *)[super copyWithZone:zone];
     if (copy != nil) {
         copy.text = self.text;

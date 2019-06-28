@@ -1,5 +1,9 @@
 //
-// Created by zorro on 15/12/28.
+//  TTGTextTagCollectionView.m
+//  Pods
+//
+//  Created by zekunyan on 15/12/26.
+//  Copyright (c) 2019 zekunyan. All rights reserved.
 //
 
 #import "TTGTextTagCollectionView.h"
@@ -17,19 +21,19 @@
 
 #pragma mark - TTGTextTagLabel
 
-@interface TTGTextTagLabel : UIView
+@interface TTGTextTagComponentView : UIView
 @property (nonatomic, strong) TTGTextTag *config;
 @property (nonatomic, strong) TTGTextTagGradientLabel *label;
 @property (nonatomic, strong) CAShapeLayer *borderLayer;
 
 - (BOOL)isEqual:(id)other;
 
-- (BOOL)isEqualToLabel:(TTGTextTagLabel *)label;
+- (BOOL)isEqualToComponentView:(TTGTextTagComponentView *)label;
 
 - (NSUInteger)hash;
 @end
 
-@implementation TTGTextTagLabel
+@implementation TTGTextTagComponentView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -85,7 +89,7 @@
     if (_config.getRightfulStyle.enableGradientBackground) {
         _label.backgroundColor = [UIColor clearColor];
         ((CAGradientLayer *)_label.layer).colors = @[(id)_config.getRightfulStyle.gradientBackgroundStartColor.CGColor,
-                (id)_config.getRightfulStyle.gradientBackgroundEndColor.CGColor];
+                                                     (id)_config.getRightfulStyle.gradientBackgroundEndColor.CGColor];
         ((CAGradientLayer *)_label.layer).startPoint = _config.getRightfulStyle.gradientBackgroundStartPoint;
         ((CAGradientLayer *)_label.layer).endPoint = _config.getRightfulStyle.gradientBackgroundEndPoint;
     }
@@ -203,10 +207,10 @@
         return YES;
     if (!other || ![[other class] isEqual:[self class]])
         return NO;
-    return [self isEqualToLabel:other];
+    return [self isEqualToComponentView:other];
 }
 
-- (BOOL)isEqualToLabel:(TTGTextTagLabel *)label {
+- (BOOL)isEqualToComponentView:(TTGTextTagComponentView *)label {
     if (self == label)
         return YES;
     if (label == nil)
@@ -225,7 +229,7 @@
 #pragma mark - TTGTextTagCollectionView
 
 @interface TTGTextTagCollectionView () <TTGTagCollectionViewDataSource, TTGTagCollectionViewDelegate>
-@property (strong, nonatomic) NSMutableArray <TTGTextTagLabel *> *tagLabels;
+@property (strong, nonatomic) NSMutableArray <TTGTextTagComponentView *> *tagLabels;
 @property (strong, nonatomic) TTGTagCollectionView *tagCollectionView;
 @end
 
@@ -318,7 +322,7 @@
     NSMutableArray *newTagLabels = [NSMutableArray new];
     for (TTGTextTag *tag in tags) {
         if ([tag isKindOfClass:[TTGTextTag class]]) {
-            TTGTextTagLabel *label = [self newLabelWithConfig:tag];
+            TTGTextTagComponentView *label = [self newLabelWithConfig:tag];
             [newTagLabels addObject:label];
         }
     }
@@ -333,8 +337,8 @@
 }
 
 - (void)removeTagById:(NSUInteger)tagId {
-    TTGTextTagLabel *labelToRemove = nil;
-    for (TTGTextTagLabel *label in _tagLabels) {
+    TTGTextTagComponentView *labelToRemove = nil;
+    for (TTGTextTagComponentView *label in _tagLabels) {
         if (label.config.tagId == tagId) {
             labelToRemove = label;
         }
@@ -367,7 +371,7 @@
 
 - (void)updateTagAtIndex:(NSUInteger)index withNewTag:(TTGTextTag *)tag {
     if (index < _tagLabels.count && [tag isKindOfClass:[TTGTextTag class]]) {
-        TTGTextTagLabel *label = _tagLabels[index];
+        TTGTextTagComponentView *label = _tagLabels[index];
         label.config = tag;
         [label updateContent];
         [self reload];
@@ -385,7 +389,7 @@
 - (NSArray<TTGTextTag *> *)getTagsInRange:(NSRange)range {
     if (NSMaxRange(range) <= _tagLabels.count) {
         NSMutableArray *tags = [NSMutableArray new];
-        for (TTGTextTagLabel *label in [_tagLabels subarrayWithRange:range]) {
+        for (TTGTextTagComponentView *label in [_tagLabels subarrayWithRange:range]) {
             if (label.config) {
                 [tags addObject:label.config];
             }
@@ -399,7 +403,7 @@
 - (NSArray <TTGTextTag *> *)allTags {
     NSMutableArray *allTags = [NSMutableArray new];
 
-    for (TTGTextTagLabel *label in _tagLabels) {
+    for (TTGTextTagComponentView *label in _tagLabels) {
         if (label.config) {
             [allTags addObject:label.config];
         }
@@ -411,7 +415,7 @@
 - (NSArray <TTGTextTag *> *)allSelectedTags {
     NSMutableArray *allTags = [NSMutableArray new];
 
-    for (TTGTextTagLabel *label in _tagLabels) {
+    for (TTGTextTagComponentView *label in _tagLabels) {
         if (label.config.selected) {
             [allTags addObject:label.config];
         }
@@ -423,7 +427,7 @@
 - (NSArray <TTGTextTag *> *)allNotSelectedTags {
     NSMutableArray *allTags = [NSMutableArray new];
 
-    for (TTGTextTagLabel *label in _tagLabels) {
+    for (TTGTextTagComponentView *label in _tagLabels) {
         if (label.config && !label.config.selected) {
             [allTags addObject:label.config];
         }
@@ -451,7 +455,7 @@
 
 - (BOOL)tagCollectionView:(TTGTagCollectionView *)tagCollectionView shouldSelectTag:(UIView *)tagView atIndex:(NSUInteger)index {
     if (_enableTagSelection) {
-        TTGTextTagLabel *label = _tagLabels[index];
+        TTGTextTagComponentView *label = _tagLabels[index];
 
         if ([self.delegate respondsToSelector:@selector(textTagCollectionView:canTapTag:atIndex:)]) {
             return [self.delegate textTagCollectionView:self canTapTag:label.config atIndex:index];
@@ -465,7 +469,7 @@
 
 - (void)tagCollectionView:(TTGTagCollectionView *)tagCollectionView didSelectTag:(UIView *)tagView atIndex:(NSUInteger)index {
     if (_enableTagSelection) {
-        TTGTextTagLabel *label = _tagLabels[index];
+        TTGTextTagComponentView *label = _tagLabels[index];
 
         if (!label.config.selected && _selectionLimit > 0 && [self allSelectedTags].count + 1 > _selectionLimit) {
             return;
@@ -609,12 +613,12 @@
 #pragma mark - Private methods
 
 - (void)updateAllLabelStyleAndFrame {
-    for (TTGTextTagLabel *label in _tagLabels) {
+    for (TTGTextTagComponentView *label in _tagLabels) {
         [self updateStyleAndFrameForLabel:label];
     }
 }
 
-- (void)updateStyleAndFrameForLabel:(TTGTextTagLabel *)label {
+- (void)updateStyleAndFrameForLabel:(TTGTextTagComponentView *)label {
     // Update content
     [label updateContent];
     // Update content style
@@ -629,8 +633,8 @@
     [label updateFrameWithMaxSize:maxSize];
 }
 
-- (TTGTextTagLabel *)newLabelWithConfig:(TTGTextTag *)config {
-    TTGTextTagLabel *label = [TTGTextTagLabel new];
+- (TTGTextTagComponentView *)newLabelWithConfig:(TTGTextTag *)config {
+    TTGTextTagComponentView *label = [TTGTextTagComponentView new];
     label.config = config;
     return label;
 }
