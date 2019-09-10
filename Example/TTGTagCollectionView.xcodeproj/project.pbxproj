@@ -32,6 +32,7 @@
 		BF29CA901E673C430048B927 /* TTGExample6ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF29CA8F1E673C430048B927 /* TTGExample6ViewController.m */; };
 		BF73E6AF1E6AEE1300ED50C6 /* TTGExample7ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF73E6AE1E6AEE1300ED50C6 /* TTGExample7ViewController.m */; };
 		F148D613DFDDDE150BD8A5C4 /* libPods-TTGTagCollectionView_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ECBE2F0B572BC0F65ABC1F2D /* libPods-TTGTagCollectionView_Example.a */; };
+		FE29A9132327AAA60060E39E /* TTGLanguageChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE29A9122327AAA60060E39E /* TTGLanguageChangeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,10 @@
 		BF73E6AD1E6AEE1300ED50C6 /* TTGExample7ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGExample7ViewController.h; sourceTree = "<group>"; };
 		BF73E6AE1E6AEE1300ED50C6 /* TTGExample7ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGExample7ViewController.m; sourceTree = "<group>"; };
 		ECBE2F0B572BC0F65ABC1F2D /* libPods-TTGTagCollectionView_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TTGTagCollectionView_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE29A90F23279E2F0060E39E /* ar-EG */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-EG"; path = "ar-EG.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		FE29A91023279E2F0060E39E /* ar-EG */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-EG"; path = "ar-EG.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		FE29A9112327AAA60060E39E /* TTGLanguageChangeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTGLanguageChangeViewController.h; sourceTree = "<group>"; };
+		FE29A9122327AAA60060E39E /* TTGLanguageChangeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTGLanguageChangeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +185,8 @@
 				BF73E6AE1E6AEE1300ED50C6 /* TTGExample7ViewController.m */,
 				BF03B0402066A591008D91FA /* TTGExample8ViewController.h */,
 				BF03B0412066A591008D91FA /* TTGExample8ViewController.m */,
+				FE29A9112327AAA60060E39E /* TTGLanguageChangeViewController.h */,
+				FE29A9122327AAA60060E39E /* TTGLanguageChangeViewController.m */,
 			);
 			name = "Example for TTGTagCollectionView";
 			path = TTGTagCollectionView;
@@ -287,7 +294,7 @@
 				ORGANIZATIONNAME = zekunyan;
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
@@ -299,8 +306,10 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
+				"ar-EG",
 			);
 			mainGroup = 6003F581195388D10070C39A;
 			productRefGroup = 6003F58B195388D20070C39A /* Products */;
@@ -387,6 +396,7 @@
 				BF29CA901E673C430048B927 /* TTGExample6ViewController.m in Sources */,
 				BF018B101DB3D8F700EF8F4E /* TTGExample3ViewController.m in Sources */,
 				BF03B0422066A591008D91FA /* TTGExample8ViewController.m in Sources */,
+				FE29A9132327AAA60060E39E /* TTGLanguageChangeViewController.m in Sources */,
 				BF018B131DB3D8F700EF8F4E /* TTGExample4TableViewCell.m in Sources */,
 				BF73E6AF1E6AEE1300ED50C6 /* TTGExample7ViewController.m in Sources */,
 				BF018B111DB3D8F700EF8F4E /* TTGExample2ViewController.m in Sources */,
@@ -416,6 +426,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				6003F597195388D20070C39A /* en */,
+				FE29A90F23279E2F0060E39E /* ar-EG */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -424,6 +435,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				6003F5B9195388D20070C39A /* en */,
+				FE29A91023279E2F0060E39E /* ar-EG */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -535,9 +547,9 @@
 			baseConfigurationReference = A3BEAD4EC97CF3D658739779 /* Pods-TTGTagCollectionView_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TTGTagCollectionView/TTGTagCollectionView-Prefix.pch";
 				INFOPLIST_FILE = "TTGTagCollectionView/TTGTagCollectionView-Info.plist";
@@ -555,9 +567,9 @@
 			baseConfigurationReference = B08B7EC3C54CCD3B82025A5E /* Pods-TTGTagCollectionView_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TTGTagCollectionView/TTGTagCollectionView-Prefix.pch";
 				INFOPLIST_FILE = "TTGTagCollectionView/TTGTagCollectionView-Info.plist";

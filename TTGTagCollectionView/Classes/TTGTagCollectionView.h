@@ -27,7 +27,9 @@ typedef NS_ENUM(NSInteger, TTGTagCollectionAlignment) {
     TTGTagCollectionAlignmentRight,                              // Right
     TTGTagCollectionAlignmentFillByExpandingSpace,               // Expand horizontal spacing and fill
     TTGTagCollectionAlignmentFillByExpandingWidth,               // Expand width and fill
-    TTGTagCollectionAlignmentFillByExpandingWidthExceptLastLine  // Expand width and fill, except last line
+    TTGTagCollectionAlignmentFillByExpandingWidthExceptLastLine, // Expand width and fill, except last line
+    TTGTagCollectionAlignmentLeading ,                           // Leading
+    TTGTagCollectionAlignmentTrailing                            // Trailing
 };
 
 /**

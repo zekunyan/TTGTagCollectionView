@@ -42,6 +42,14 @@
     _logLabel.adjustsFontSizeToFitWidth = YES;
     _textTagCollectionView1.delegate = self;
     _textTagCollectionView2.delegate = self;
+    _textTagCollectionView1.alignment = TTGTagCollectionAlignmentLeading;
+    _textTagCollectionView2.alignment = TTGTagCollectionAlignmentTrailing;
+    
+    _textTagCollectionView1.layer.borderColor = [UIColor grayColor].CGColor;
+    _textTagCollectionView1.layer.borderWidth = 1;
+    
+    _textTagCollectionView2.layer.borderColor = [UIColor grayColor].CGColor;
+    _textTagCollectionView2.layer.borderWidth = 1;
     
     _textTagCollectionView1.showsVerticalScrollIndicator = NO;
     _textTagCollectionView2.showsVerticalScrollIndicator = NO;

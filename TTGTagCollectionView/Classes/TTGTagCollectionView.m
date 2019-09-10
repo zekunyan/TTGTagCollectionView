@@ -13,7 +13,15 @@
 @property (nonatomic, strong) UIView *containerView;
 @property (nonatomic, assign) BOOL needsLayoutTagViews;
 @property (nonatomic, assign) NSUInteger actualNumberOfLines;
+@property (nonatomic, assign) NSInteger directionScale;
+
 @end
+
+UIKIT_STATIC_INLINE BOOL ISRTLINTERFACE()
+
+{
+    return [UIApplication sharedApplication].userInterfaceLayoutDirection == UIUserInterfaceLayoutDirectionRightToLeft;
+}
 
 @implementation TTGTagCollectionView
 
@@ -41,7 +49,12 @@
     if (_scrollView) {
         return;
     }
-    
+    if(ISRTLINTERFACE()){
+        // 镜像效果
+        self.directionScale = -1;
+    }else{
+        self.directionScale = 1;
+    }
     _horizontalSpacing = 4;
     _verticalSpacing = 4;
     _contentInset = UIEdgeInsetsMake(2, 2, 2, 2);
@@ -317,6 +330,21 @@
  
     CGFloat currentYBase = _contentInset.top;
     
+    TTGTagCollectionAlignment alignment = _alignment;
+    if (alignment == TTGTagCollectionAlignmentLeading || alignment == TTGTagCollectionAlignmentTrailing ) {
+        // 通过计算,将 leading 和 tailing 转换为 left right , 假设: right > left , tailing > leading
+        CGFloat halfRelative = (TTGTagCollectionAlignmentTrailing+TTGTagCollectionAlignmentLeading)*0.5;         // 相对对齐的中间值
+        CGFloat halfAbsolute  = (TTGTagCollectionAlignmentRight+TTGTagCollectionAlignmentLeft)*0.5;              // 绝对对齐的中间值
+        CGFloat deltaScale = (TTGTagCollectionAlignmentRight - halfAbsolute)/(TTGTagCollectionAlignmentTrailing - halfRelative); // 数据倍数.
+        CGFloat delta = (alignment - halfRelative); // 和相对对齐中间值差异, 带符号.
+        delta = delta * deltaScale;                 // 转换为绝对对齐差异的, 带符号
+        delta = delta * self.directionScale;        // 通过布局方式进行符号转换
+        delta = delta + halfAbsolute;               // 补齐到原始位置
+        alignment = (int)delta;
+    }
+    
+    CGFloat scale = -0.5 * (self.directionScale-1);
+    CGFloat viewWidth = self.frame.size.width;
     for (NSUInteger currentLine = 0; currentLine < numberOfLines; currentLine++) {
         CGFloat currentLineMaxHeight = eachLineMaxHeight[currentLine].floatValue;
         CGFloat currentLineWidth = eachLineWidth[currentLine].floatValue;
@@ -328,13 +356,16 @@
         CGFloat acturalHorizontalSpacing = _horizontalSpacing;
         __block CGFloat currentLineX = 0;
         
-        switch (_alignment) {
+        
+        switch (alignment) {
+            case TTGTagCollectionAlignmentLeading:
             case TTGTagCollectionAlignmentLeft:
                 currentLineXOffset = _contentInset.left;
                 break;
             case TTGTagCollectionAlignmentCenter:
                 currentLineXOffset = (maxLineWidth - currentLineWidth) / 2 + _contentInset.left;
                 break;
+            case TTGTagCollectionAlignmentTrailing:
             case TTGTagCollectionAlignmentRight:
                 currentLineXOffset = maxLineWidth - currentLineWidth + _contentInset.left;
                 break;
@@ -367,15 +398,18 @@
             UIView *tagView = [self.dataSource tagCollectionView:self tagViewForIndex:tagIndex];
             CGSize tagSize = [self.delegate tagCollectionView:self sizeForTagAtIndex:tagIndex];
             
-            CGPoint origin;
-            origin.x = currentLineXOffset + currentLineX;
-            origin.y = currentYBase + (currentLineMaxHeight - tagSize.height) / 2;
-            
             tagSize.width += currentLineAdditionWidth;
             if (self.scrollDirection == TTGTagCollectionScrollDirectionVertical && tagSize.width > maxLineWidth) {
                 tagSize.width = maxLineWidth;
             }
             
+            CGPoint origin;
+            CGFloat x = currentLineXOffset + currentLineX;
+            origin.x = viewWidth*scale - scale*tagSize.width + self.directionScale * x;
+            origin.y = currentYBase + (currentLineMaxHeight - tagSize.height) / 2;
+            if(origin.x < 0){
+                origin.x = 0;
+            }
             tagView.hidden = NO;
             tagView.frame = (CGRect){origin, tagSize};
             
