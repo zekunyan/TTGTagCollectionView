@@ -12,10 +12,11 @@ Pod::Spec.new do |s|
   s.author           = { "zekunyan" => "zekunyan@163.com" }
   s.source           = { :git => "https://github.com/zekunyan/TTGTagCollectionView.git", :tag => s.version.to_s }
   s.social_media_url = 'http://tutuge.me'
-  
-  s.platform         = :ios, '7.0'
+
+  s.swift_version    = "5.3"
+  s.platform         = :ios, '9.0'
   s.requires_arc     = true
 
-  s.source_files = 'TTGTagCollectionView/Classes/**/*'
-  s.public_header_files = 'TTGTagCollectionView/Classes/**/*.h'
+  s.source_files = 'Sources/**/*'
+  s.public_header_files = 'Sources/**/*.h'
 end
