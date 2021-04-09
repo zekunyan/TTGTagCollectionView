@@ -43,3 +43,5 @@ Carthage/Build
 
 # CocoaPods
 Pods/
+Podfile.lock
+TaobaoEnv
