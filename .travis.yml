@@ -4,4 +4,4 @@ script:
 - set -o pipefail
 - xcodebuild -version
 - xcodebuild -showsdks
-- xcodebuild clean build -project TTGTagCollectionView/TTGTagCollectionView.xcodeproj -alltargets ONLY_ACTIVE_ARCH=NO CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO PROVISIONING_PROFILE_SPECIFIER="" PROVISIONING_PROFILE="" CODE_SIGNING_ALLOWED=NO | xcprett
+- xcodebuild clean build -project TTGTagCollectionView/TTGTagCollectionView.xcodeproj -alltargets ONLY_ACTIVE_ARCH=NO CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO PROVISIONING_PROFILE_SPECIFIER="" PROVISIONING_PROFILE="" CODE_SIGNING_ALLOWED=NO | xcpretty
