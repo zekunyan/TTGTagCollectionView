@@ -1,9 +1,13 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+use_frameworks!
+
 platform :ios, '9.0'
 
 target 'TTGTagCollectionView_Example' do
   pod 'TTGTagCollectionView', :path => '../'
-  pod 'Masonry'
-  pod 'SVPullToRefresh'
+  pod 'Masonry', :git => 'git@github.com:SnapKit/Masonry.git', :tag => 'v1.1.0'
+  pod 'SVPullToRefresh', :git => 'git@github.com:samvermette/SVPullToRefresh.git', :tag => '0.4.1'
 
   target 'TTGTagCollectionView_Tests' do
     inherit! :search_paths
