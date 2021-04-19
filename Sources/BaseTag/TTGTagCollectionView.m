@@ -2,8 +2,8 @@
 //  TTGTagCollectionView.m
 //  Pods
 //
-//  Created by zorro on 15/12/26.
-//
+//  Created by zekunyan on 15/12/26.
+//  Copyright (c) 2021 zekunyan. All rights reserved.
 //
 
 #import "TTGTagCollectionView.h"

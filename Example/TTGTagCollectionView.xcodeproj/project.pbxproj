@@ -32,6 +32,7 @@
 		BF03B0422066A591008D91FA /* TTGExample8ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF03B0412066A591008D91FA /* TTGExample8ViewController.m */; };
 		BF29CA901E673C430048B927 /* TTGExample6ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF29CA8F1E673C430048B927 /* TTGExample6ViewController.m */; };
 		BF73E6AF1E6AEE1300ED50C6 /* TTGExample7ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF73E6AE1E6AEE1300ED50C6 /* TTGExample7ViewController.m */; };
+		BFC1FD6026297C82007F53DB /* TTGExample9ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC1FD5F26297C82007F53DB /* TTGExample9ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,8 @@
 		BF29CA8F1E673C430048B927 /* TTGExample6ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGExample6ViewController.m; sourceTree = "<group>"; };
 		BF73E6AD1E6AEE1300ED50C6 /* TTGExample7ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGExample7ViewController.h; sourceTree = "<group>"; };
 		BF73E6AE1E6AEE1300ED50C6 /* TTGExample7ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGExample7ViewController.m; sourceTree = "<group>"; };
+		BFC1FD5E26297C82007F53DB /* TTGExample9ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTGExample9ViewController.h; sourceTree = "<group>"; };
+		BFC1FD5F26297C82007F53DB /* TTGExample9ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTGExample9ViewController.m; sourceTree = "<group>"; };
 		F720C119A84D5B2091CA32A2 /* Pods_TTGTagCollectionView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TTGTagCollectionView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -180,6 +183,8 @@
 				BF73E6AE1E6AEE1300ED50C6 /* TTGExample7ViewController.m */,
 				BF03B0402066A591008D91FA /* TTGExample8ViewController.h */,
 				BF03B0412066A591008D91FA /* TTGExample8ViewController.m */,
+				BFC1FD5E26297C82007F53DB /* TTGExample9ViewController.h */,
+				BFC1FD5F26297C82007F53DB /* TTGExample9ViewController.m */,
 			);
 			name = "Example for TTGTagCollectionView";
 			path = TTGTagCollectionView;
@@ -300,6 +305,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -403,6 +409,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F59E195388D20070C39A /* TTGAppDelegate.m in Sources */,
+				BFC1FD6026297C82007F53DB /* TTGExample9ViewController.m in Sources */,
 				BF018B0E1DB3D8F700EF8F4E /* TTGExample5ViewController.m in Sources */,
 				BF018B0F1DB3D8F700EF8F4E /* TTGExample1ViewController.m in Sources */,
 				BF018B121DB3D8F700EF8F4E /* TTGExample4ViewController.m in Sources */,

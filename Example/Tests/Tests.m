@@ -3,7 +3,7 @@
 //  TTGTagCollectionViewTests
 //
 //  Created by zekunyan on 12/11/2015.
-//  Copyright (c) 2015 zekunyan. All rights reserved.
+//  Copyright (c) 2019 zekunyan. All rights reserved.
 //
 
 @import XCTest;
@@ -45,7 +45,7 @@
     [textTagView addTags:@[@"5", @"6"]];
     
     // addTag:withConfig
-    TTGTextTagConfig *config = [TTGTextTagConfig new];
+    TTGTextTag *config = [TTGTextTag new];
     config.textFont = [UIFont systemFontOfSize:14];
     [textTagView addTag:@"7" withConfig:config];
     
@@ -77,7 +77,7 @@
     config = [textTagView getConfigAtIndex:100];
     XCTAssert(config == nil);
     
-    NSArray <TTGTextTagConfig *> *configs = [textTagView getConfigsInRange:NSMakeRange(7, 2)];
+    NSArray <TTGTextTag *> *configs = [textTagView getConfigsInRange:NSMakeRange(7, 2)];
     XCTAssert(configs.count == 2);
     XCTAssert(configs[0].textFont.pointSize == 16);
     XCTAssert(configs[1].textFont.pointSize == 16);
@@ -107,7 +107,7 @@
     XCTAssert([[textTagView getTagAtIndex:3] isEqualToString:@"14"]);
     XCTAssert([[textTagView getTagAtIndex:4] isEqualToString:@"3"]);
     
-    TTGTextTagConfig *config = [TTGTextTagConfig new];
+    TTGTextTag *config = [TTGTextTag new];
     config.textFont = [UIFont systemFontOfSize:32];
     textTagView = [self getTextCaseTextTagView];
     [textTagView insertTag:@"15" atIndex:6 withConfig:config];
@@ -128,7 +128,7 @@
     XCTAssert([textTagView allSelectedTags].count == 1);
     XCTAssert([[textTagView allSelectedTags].lastObject isEqualToString:@"3"]);
     
-    TTGTextTagConfig *config = [TTGTextTagConfig new];
+    TTGTextTag *config = [TTGTextTag new];
     config.textFont = [UIFont systemFontOfSize:40];
     [textTagView setTagAtIndex:2 withConfig:config];
     XCTAssert([textTagView getConfigAtIndex:2].textFont.pointSize == 40);

@@ -2,8 +2,8 @@
 //  TTGExample5ViewController.m
 //  TTGTagCollectionView
 //
-//  Created by tutuge on 2016/10/16.
-//  Copyright © 2016年 zekunyan. All rights reserved.
+//  Created by zekunyan on 2016/10/16.
+//  Copyright (c) 2019 zekunyan. All rights reserved.
 //
 
 #import "TTGExample5ViewController.h"
@@ -21,10 +21,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSArray *tags = @[@"AutoLayout", @"dynamically", @"calculates", @"the", @"size", @"and", @"position",
-                      @"of", @"all", @"the", @"views", @"in", @"your", @"view", @"hierarchy", @"based",
-                      @"on", @"constraints", @"placed", @"on", @"those", @"views"];
-    
     _oneLineTagView.scrollDirection = TTGTagCollectionScrollDirectionHorizontal;
     _twoLineTagView.scrollDirection = TTGTagCollectionScrollDirectionHorizontal;
     _threeLineTagView.scrollDirection = TTGTagCollectionScrollDirectionHorizontal;
@@ -37,9 +33,24 @@
     _twoLineTagView.numberOfLines = 2;
     _threeLineTagView.numberOfLines = 3;
 
-    [_oneLineTagView addTags:tags];
-    [_twoLineTagView addTags:tags];
-    [_threeLineTagView addTags:tags];
+    [_oneLineTagView addTags:[self generateTags]];
+    [_twoLineTagView addTags:[self generateTags]];
+    [_threeLineTagView addTags:[self generateTags]];
+}
+
+- (NSArray<TTGTextTag *> *)generateTags {
+    NSArray *tags = @[@"AutoLayout", @"dynamically", @"calculates", @"the", @"size", @"and", @"position",
+                      @"of", @"all", @"the", @"views", @"in", @"your", @"view", @"hierarchy", @"based",
+                      @"on", @"constraints", @"placed", @"on", @"those", @"views"];
+    
+    NSMutableArray *textTags = [NSMutableArray new];
+    for (NSString *string in tags) {
+        TTGTextTag *textTag = [TTGTextTag tagWithContent:[TTGTextTagStringContent contentWithText:string] style:[TTGTextTagStyle new]];
+        textTag.selectedStyle.backgroundColor = [UIColor greenColor];
+        [textTags addObject:textTag];
+    }
+    
+    return textTags;
 }
 
 @end

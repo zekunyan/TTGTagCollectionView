@@ -2,8 +2,8 @@
 //  TTGExample3ViewController.m
 //  TTGTagCollectionView
 //
-//  Created by tutuge on 2016/9/29.
-//  Copyright © 2016年 zekunyan. All rights reserved.
+//  Created by zekunyan on 2016/9/29.
+//  Copyright (c) 2019 zekunyan. All rights reserved.
 //
 
 #import "TTGExample3ViewController.h"
@@ -46,10 +46,17 @@
                                                                     multiplier:1 constant:180];
     [self.view addConstraint:topConstraint];
     [self.view addConstraints:hConstraints];
-    
-    [_tagView addTags:tags];
+
+    NSMutableArray *textTags = [NSMutableArray new];
+    for (NSString *string in tags) {
+        TTGTextTag *textTag = [TTGTextTag tagWithContent:[TTGTextTagStringContent contentWithText:string] style:[TTGTextTagStyle new]];
+        textTag.selectedStyle.backgroundColor = [UIColor greenColor];
+        [textTags addObject:textTag];
+    }
+    [_tagView addTags:textTags];
+
     for (NSInteger i = 0; i < 5; i++) {
-        [_tagView setTagAtIndex:arc4random_uniform((uint32_t)tags.count) selected:YES];
+        [_tagView updateTagAtIndex:arc4random_uniform((uint32_t)tags.count) selected:YES];
     }
     
     _tagView.onTapAllArea = ^(CGPoint location) {

@@ -2,8 +2,8 @@
 //  TTGExample1ViewController.m
 //  TTGTagCollectionView
 //
-//  Created by zorro on 15/12/29.
-//  Copyright © 2015年 zekunyan. All rights reserved.
+//  Created by zekunyan on 15/12/29.
+//  Copyright (c) 2019 zekunyan. All rights reserved.
 //
 
 #import <TTGTagCollectionView/TTGTextTagCollectionView.h>
@@ -46,91 +46,134 @@
     _textTagCollectionView1.showsVerticalScrollIndicator = NO;
     _textTagCollectionView2.showsVerticalScrollIndicator = NO;
 
-    // Style1
-    TTGTextTagConfig *config = _textTagCollectionView1.defaultConfig;
-    
-    config.textFont = [UIFont boldSystemFontOfSize:18.0f];
-    
-    config.textColor = [UIColor colorWithRed:0.18 green:0.19 blue:0.22 alpha:1.00];
-    config.selectedTextColor = [UIColor colorWithRed:0.18 green:0.19 blue:0.22 alpha:1.00];
-    
-    config.backgroundColor = [UIColor colorWithRed:0.98 green:0.91 blue:0.43 alpha:1.00];
-    config.selectedBackgroundColor = [UIColor colorWithRed:0.97 green:0.64 blue:0.27 alpha:1.00];
-    
     _textTagCollectionView1.horizontalSpacing = 6.0;
     _textTagCollectionView1.verticalSpacing = 8.0;
-    
-    config.borderColor = [UIColor colorWithRed:0.18 green:0.19 blue:0.22 alpha:1.00];
-    config.selectedBorderColor = [UIColor colorWithRed:0.18 green:0.19 blue:0.22 alpha:1.00];
-    config.borderWidth = 1;
-    config.selectedBorderWidth = 1;
-    
-    config.shadowColor = [UIColor blackColor];
-    config.shadowOffset = CGSizeMake(0, 0.3);
-    config.shadowOpacity = 0.3f;
-    config.shadowRadius = 0.5f;
-    
-    config.cornerRadius = 7;
-    
-    config.enableGradientBackground = YES;
-    config.gradientBackgroundStartColor = [UIColor orangeColor];
-    config.selectedGradientBackgroundStartColor = [UIColor yellowColor];
-    config.gradientBackgroundEndColor = [UIColor yellowColor];
-    config.selectedGradientBackgroundEndColor = [UIColor grayColor];
-    config.gradientBackgroundStartPoint =CGPointMake(0, 0);
-    config.gradientBackgroundEndPoint = CGPointMake(1, 1);
 
-    // Style2
-    config = _textTagCollectionView2.defaultConfig;
-    
-    config.textFont = [UIFont systemFontOfSize:20.0f];
-    
-    config.extraSpace = CGSizeMake(12, 12);
-    
-    config.textColor = [UIColor whiteColor];
-    config.selectedTextColor = [UIColor greenColor];
-    
-    config.backgroundColor = [UIColor colorWithRed:0.10 green:0.53 blue:0.85 alpha:1.00];
-    config.selectedBackgroundColor = [UIColor colorWithRed:0.21 green:0.29 blue:0.36 alpha:1.00];
-    
-    config.cornerRadius = 12.0f;
-    config.selectedCornerRadius = 8.0f;
-    config.cornerBottomRight = true;
-    config.cornerBottomLeft = false;
-    config.cornerTopRight = false;
-    config.cornerTopLeft = true;
-    
-    config.borderWidth = 1;
-    config.selectedBorderWidth = 4;
-    
-    config.borderColor = [UIColor redColor];
-    config.selectedBorderColor = [UIColor orangeColor];
-    
-    config.shadowColor = [UIColor blackColor];
-    config.shadowOffset = CGSizeMake(0, 1);
-    config.shadowOpacity = 0.3f;
-    config.shadowRadius = 2;
-    
     _textTagCollectionView2.horizontalSpacing = 8;
     _textTagCollectionView2.verticalSpacing = 8;
 
-    // Set tags
-    [_textTagCollectionView1 addTags:_tags];
-    [_textTagCollectionView2 addTags:_tags];
+    // Change alignment
+    _textTagCollectionView1.alignment = TTGTagCollectionAlignmentFillByExpandingWidth;
+    _textTagCollectionView2.alignment = TTGTagCollectionAlignmentFillByExpandingWidthExceptLastLine;
+
+    // Style1
+    TTGTextTagStringContent *content = [TTGTextTagStringContent new];
+    TTGTextTagStringContent *selectedContent = [TTGTextTagStringContent new];
+    TTGTextTagStyle *style = [TTGTextTagStyle new];
+    TTGTextTagStyle *selectedStyle = [TTGTextTagStyle new];
+    
+    content.textFont = [UIFont boldSystemFontOfSize:18.0f];
+    selectedContent.textFont = content.textFont;
+    
+    content.textColor = [UIColor colorWithRed:0.23 green:0.23 blue:0.23 alpha:1.00];
+    selectedContent.textColor = [UIColor whiteColor];
+    
+    style.backgroundColor = [UIColor colorWithRed:0.31 green:0.70 blue:0.80 alpha:1.00];
+    selectedStyle.backgroundColor = [UIColor colorWithRed:0.38 green:0.36 blue:0.63 alpha:1.00];
+    
+    style.borderColor = [UIColor colorWithRed:0.18 green:0.19 blue:0.22 alpha:1.00];
+    style.borderWidth = 1;
+
+    selectedStyle.borderColor = [UIColor colorWithRed:0.18 green:0.19 blue:0.22 alpha:1.00];
+    selectedStyle.borderWidth = 1;
+    
+    style.shadowColor = [UIColor grayColor];
+    style.shadowOffset = CGSizeMake(0, 1);
+    style.shadowOpacity = 0.5f;
+    style.shadowRadius = 2;
+
+    selectedStyle.shadowColor = [UIColor greenColor];
+    selectedStyle.shadowOffset = CGSizeMake(0, 2);
+    selectedStyle.shadowOpacity = 0.5f;
+    selectedStyle.shadowRadius = 1;
+
+    style.cornerRadius = 2;
+    selectedStyle.cornerRadius = 4;
+    
+    style.extraSpace = CGSizeMake(4, 4);
+    selectedStyle.extraSpace = style.extraSpace;
+
+    NSMutableArray *tags = [NSMutableArray new];
+    for (NSString *string in _tags) {
+        TTGTextTagStringContent *stringContent = [content copy];
+        stringContent.text = string;
+        TTGTextTagStringContent *selectedStringContent = [selectedContent copy];
+        selectedStringContent.text = string;
+        TTGTextTag *tag = [TTGTextTag new];
+        tag.content = stringContent;
+        tag.selectedContent = selectedStringContent;
+        tag.style = style;
+        tag.selectedStyle = selectedStyle;
+        [tags addObject:tag.copy];
+    }
+    [_textTagCollectionView1 addTags:tags];
+
+    // Style2
+    content.textFont = [UIFont systemFontOfSize:18.0f];
+    selectedContent.textFont = [UIFont systemFontOfSize:20.0f];
+
+    content.textColor = [UIColor whiteColor];
+    selectedContent.textColor = [UIColor greenColor];
+
+    style.extraSpace = CGSizeMake(12, 12);
+    selectedStyle.extraSpace = CGSizeMake(12, 12);
+    
+    style.backgroundColor = [UIColor colorWithRed:0.10 green:0.53 blue:0.85 alpha:1.00];
+    selectedStyle.backgroundColor = [UIColor colorWithRed:0.21 green:0.29 blue:0.36 alpha:1.00];
+    
+    style.cornerRadius = 12.0f;
+    style.cornerBottomRight = true;
+    style.cornerBottomLeft = false;
+    style.cornerTopRight = false;
+    style.cornerTopLeft = true;
+
+    selectedStyle.cornerRadius = 8.0f;
+    selectedStyle.cornerBottomRight = true;
+    selectedStyle.cornerBottomLeft = false;
+    selectedStyle.cornerTopRight = true;
+    selectedStyle.cornerTopLeft = false;
+    
+    style.borderWidth = 1;
+    selectedStyle.borderWidth = 4;
+    
+    style.borderColor = [UIColor redColor];
+    selectedStyle.borderColor = [UIColor orangeColor];
+
+    style.shadowColor = [UIColor blackColor];
+    style.shadowOffset = CGSizeMake(0, 4);
+    style.shadowOpacity = 0.3f;
+    style.shadowRadius = 4;
+
+    selectedStyle.shadowColor = [UIColor redColor];
+    selectedStyle.shadowOffset = CGSizeMake(0, 1);
+    selectedStyle.shadowOpacity = 0.3f;
+    selectedStyle.shadowRadius = 2;
+
+    tags = [NSMutableArray new];
+    for (NSString *string in _tags) {
+        TTGTextTagStringContent *stringContent = [content copy];
+        stringContent.text = string;
+        TTGTextTagStringContent *selectedStringContent = [selectedContent copy];
+        selectedStringContent.text = [string stringByAppendingString:@"!"];
+        TTGTextTag *tag = [TTGTextTag new];
+        tag.content = stringContent;
+        tag.selectedContent = selectedStringContent;
+        tag.style = style;
+        tag.selectedStyle = selectedStyle;
+        [tags addObject:tag.copy];
+    }
+    [_textTagCollectionView2 addTags:tags];
 
     // Init selection
-    [_textTagCollectionView1 setTagAtIndex:0 selected:YES];
-    [_textTagCollectionView1 setTagAtIndex:4 selected:YES];
-    [_textTagCollectionView1 setTagAtIndex:6 selected:YES];
-    [_textTagCollectionView1 setTagAtIndex:17 selected:YES];
+    [_textTagCollectionView1 updateTagAtIndex:0 selected:YES];
+    [_textTagCollectionView1 updateTagAtIndex:4 selected:YES];
+    [_textTagCollectionView1 updateTagAtIndex:6 selected:YES];
+    [_textTagCollectionView1 updateTagAtIndex:17 selected:YES];
 
-    [_textTagCollectionView2 setTagAtIndex:0 selected:YES];
-    [_textTagCollectionView2 setTagAtIndex:4 selected:YES];
-    [_textTagCollectionView2 setTagAtIndex:6 selected:YES];
-    [_textTagCollectionView2 setTagAtIndex:17 selected:YES];
-    
-    // Change alignment
-    _textTagCollectionView1.alignment = TTGTagCollectionAlignmentFillByExpandingWidthExceptLastLine;
+    [_textTagCollectionView2 updateTagAtIndex:0 selected:YES];
+    [_textTagCollectionView2 updateTagAtIndex:4 selected:YES];
+    [_textTagCollectionView2 updateTagAtIndex:6 selected:YES];
+    [_textTagCollectionView2 updateTagAtIndex:17 selected:YES];
     
     // Load data
     [_textTagCollectionView1 reload];
@@ -139,8 +182,8 @@
 
 #pragma mark - TTGTextTagCollectionViewDelegate
 
-- (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView didTapTag:(NSString *)tagText atIndex:(NSUInteger)index selected:(BOOL)selected tagConfig:(TTGTextTagConfig *)config {
-    _logLabel.text = [NSString stringWithFormat:@"Tap tag: %@, at: %ld, selected: %d", tagText, (long) index, selected];
+- (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView didTapTag:(TTGTextTag *)tag atIndex:(NSUInteger)index {
+    _logLabel.text = [NSString stringWithFormat:@"Tap tag: %@, at: %ld, selected: %d", tag.content.getContentAttributedString.string, (long) index, tag.selected];
 }
 
 - (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView updateContentSize:(CGSize)contentSize {

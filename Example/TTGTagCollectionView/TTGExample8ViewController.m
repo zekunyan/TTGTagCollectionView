@@ -2,8 +2,8 @@
 //  TTGExample8ViewController.m
 //  TTGTagCollectionView_Example
 //
-//  Created by tutuge on 24/03/2018.
-//  Copyright © 2018 zekunyan. All rights reserved.
+//  Created by zekunyan on 24/03/2018.
+//  Copyright (c) 2019 zekunyan. All rights reserved.
 //
 
 #import "TTGExample8ViewController.h"
@@ -32,11 +32,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Data
-    NSArray *tags = @[@"AutoLayout", @"dynamically", @"calculates", @"the", @"size", @"and", @"position",
-                      @"of", @"all", @"the", @"views", @"in", @"your", @"view", @"hierarchy", @"based",
-                      @"on", @"constraints", @"placed", @"on", @"those", @"views"];
     
     // Create view
     _tagView = [TTGTextTagCollectionView new];
@@ -90,36 +85,55 @@
     [self.view addConstraints:hConstraints];
     [self.view addConstraint:bottomConstraint];
     
-    // Add tag and bind data
-    NSInteger tagTextIndex = 0;
+    TTGTextTagStringContent *defaultContent = [TTGTextTagStringContent new];
+    
+    TTGTextTagStyle *defaultStyle = [TTGTextTagStyle new];
+    defaultStyle.backgroundColor = [UIColor colorWithRed:0.24 green:0.72 blue:0.94 alpha:1.00];
+    defaultStyle.borderColor = [UIColor whiteColor];
+    defaultStyle.borderWidth = 1;
+    defaultStyle.cornerRadius = 4;
+    defaultStyle.extraSpace = CGSizeMake(8, 8);
+    defaultStyle.shadowColor = [UIColor blackColor];
+    defaultStyle.shadowOpacity = 0.3;
+    defaultStyle.shadowRadius = 2;
+    defaultStyle.shadowOffset = CGSizeMake(1, 1);
     
     // Bind CustomTagData
     CustomTagData *customTagData = [CustomTagData new];
     customTagData.info = @"I am TTGTag custom data.";
     
-    TTGTextTagConfig *config = [TTGTextTagConfig new];
-    config.extraData = customTagData;
-    
-    [_tagView addTag:tags[tagTextIndex++] withConfig:config];
+    TTGTextTag *tag1 = [TTGTextTag new];
+    tag1.attachment = customTagData;
+    tag1.style = defaultStyle;
+    tag1.content = defaultContent;
+    ((TTGTextTagStringContent *)tag1.content).text = @"Bind CustomTagData";
+    [_tagView addTag:tag1];
     
     // Bind NSDictionary
     NSDictionary *dict = @{@"info": @"I am TTGTag NSDictionary data"};
-    config = [TTGTextTagConfig new];
-    config.extraData = dict;
     
-    [_tagView addTag:tags[tagTextIndex++] withConfig:config];
+    TTGTextTag *tag2 = [TTGTextTag new];
+    tag2.attachment = dict;
+    tag2.style = defaultStyle;
+    tag2.content = defaultContent;
+    ((TTGTextTagStringContent *)tag2.content).text = @"Bind NSDictionary";
+    [_tagView addTag:tag2];
     
-    // Bind the rest with string data
-    for (NSString *tagText in [tags subarrayWithRange:NSMakeRange(tagTextIndex, tags.count - tagTextIndex)]) {
-        config = [TTGTextTagConfig new];
-        config.extraData = [NSString stringWithFormat:@"I am TTGTag NSString data with tag: %@", tagText];
-        [_tagView addTag:tagText withConfig:config];
-    }
+    // Bind String1
+    TTGTextTag *tag3 = [TTGTextTag new];
+    tag3.attachment = @"String1";
+    tag3.style = defaultStyle;
+    tag3.content = defaultContent;
+    ((TTGTextTagStringContent *)tag3.content).text = @"Bind String1";
+    [_tagView addTag:tag3];
     
-    // Random selected
-    for (NSInteger i = 0; i < 5; i++) {
-        [_tagView setTagAtIndex:arc4random_uniform((uint32_t)tags.count) selected:YES];
-    }
+    // Bind String2
+    TTGTextTag *tag4 = [TTGTextTag new];
+    tag4.attachment = @"String2";
+    tag4.style = defaultStyle;
+    tag4.content = defaultContent;
+    ((TTGTextTagStringContent *)tag4.content).text = @"Bind String2";
+    [_tagView addTag:tag4];
     
     // Reload
     [_tagView reload];
@@ -131,11 +145,9 @@
 #pragma mark - TTGTextTagCollectionViewDelegate
 
 - (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView
-                    didTapTag:(NSString *)tagText
-                      atIndex:(NSUInteger)index
-                     selected:(BOOL)selected
-                    tagConfig:(TTGTextTagConfig *)config {
-    _infoTextView.text = [NSString stringWithFormat:@"%@\nInfo: %@", _infoTextView.text, config.extraData];
+                    didTapTag:(TTGTextTag *)tag
+                      atIndex:(NSUInteger)index {
+    _infoTextView.text = [NSString stringWithFormat:@"%@Did Tap:\n%@\n\n", _infoTextView.text, tag.attachment];
 }
 
 @end
