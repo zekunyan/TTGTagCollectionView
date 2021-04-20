@@ -6,7 +6,7 @@
 //  Copyright (c) 2021 zekunyan. All rights reserved.
 //
 
-#import "TTGTextTagContent.h"
+#import <TTGTagCollectionView/TTGTextTagContent.h>
 
 /**
  Normal text content with custom font and color.

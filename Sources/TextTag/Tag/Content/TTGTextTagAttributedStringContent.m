@@ -6,7 +6,7 @@
 //  Copyright (c) 2021 zekunyan. All rights reserved.
 //
 
-#import "TTGTextTagAttributedStringContent.h"
+#import <TTGTagCollectionView/TTGTextTagAttributedStringContent.h>
 
 @implementation TTGTextTagAttributedStringContent
 

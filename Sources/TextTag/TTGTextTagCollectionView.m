@@ -6,7 +6,7 @@
 //  Copyright (c) 2021 zekunyan. All rights reserved.
 //
 
-#import "TTGTextTagCollectionView.h"
+#import <TTGTagCollectionView/TTGTextTagCollectionView.h>
 
 #pragma mark - TTGTextTagGradientLabel
 

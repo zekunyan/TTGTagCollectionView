@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import "TTGTextTagStyle.h"
-#import "TTGTextTagContent.h"
+#import <TTGTagCollectionView/TTGTextTagStyle.h>
+#import <TTGTagCollectionView/TTGTextTagContent.h>
 
 @interface TTGTextTag : NSObject <NSCopying>
 

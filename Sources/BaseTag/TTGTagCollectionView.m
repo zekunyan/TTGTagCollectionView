@@ -6,7 +6,7 @@
 //  Copyright (c) 2021 zekunyan. All rights reserved.
 //
 
-#import "TTGTagCollectionView.h"
+#import <TTGTagCollectionView/TTGTagCollectionView.h>
 
 @interface TTGTagCollectionView ()
 @property (nonatomic, strong) UIScrollView *scrollView;
