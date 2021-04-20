@@ -34,6 +34,10 @@ Run `pod update` before try it.
 
 ![Example project](https://github.com/zekunyan/TTGTagCollectionView/raw/master/Resources/demo_example.jpeg)
 
+## Code Structure
+
+![Example project](https://github.com/zekunyan/TTGTagCollectionView/raw/master/Resources/code_structure.png)
+
 ## Requirements
 
 iOS 9 and later.
