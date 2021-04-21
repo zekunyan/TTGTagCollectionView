@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-#import <TTGTagCollectionView/TTGTagCollectionView.h>
-#import <TTGTagCollectionView/TTGTextTag.h>
-#import <TTGTagCollectionView/TTGTextTagStringContent.h>
-#import <TTGTagCollectionView/TTGTextTagAttributedStringContent.h>
+#import "TTGTagCollectionView.h"
+#import "TTGTextTag.h"
+#import "TTGTextTagStringContent.h"
+#import "TTGTextTagAttributedStringContent.h"
 
 /**
  Highly useful for text tag display.

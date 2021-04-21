@@ -6,7 +6,7 @@
 //  Copyright (c) 2021 zekunyan. All rights reserved.
 //
 
-#import <TTGTagCollectionView/TTGTextTagContent.h>
+#import "TTGTextTagContent.h"
 
 /**
  Rich text content for tag

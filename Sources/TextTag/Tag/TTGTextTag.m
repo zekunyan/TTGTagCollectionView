@@ -6,8 +6,8 @@
 //  Copyright (c) 2021 zekunyan. All rights reserved.
 //
 
-#import <TTGTagCollectionView/TTGTextTag.h>
-#import <TTGTagCollectionView/TTGTextTagStringContent.h>
+#import "TTGTextTag.h"
+#import "TTGTextTagStringContent.h"
 
 static NSUInteger TTGTextTagAutoIncreasedId = 0;
 
