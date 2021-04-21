@@ -8,10 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+#if SWIFT_PACKAGE
 #import "TTGTagCollectionView.h"
 #import "TTGTextTag.h"
 #import "TTGTextTagStringContent.h"
 #import "TTGTextTagAttributedStringContent.h"
+#else
+#import <TTGTagCollectionView/TTGTagCollectionView.h>
+#import <TTGTagCollectionView/TTGTextTag.h>
+#import <TTGTagCollectionView/TTGTextTagStringContent.h>
+#import <TTGTagCollectionView/TTGTextTagAttributedStringContent.h>
+#endif
 
 /**
  Highly useful for text tag display.

@@ -6,7 +6,11 @@
 //  Copyright (c) 2021 zekunyan. All rights reserved.
 //
 
+#if SWIFT_PACKAGE
 #import "TTGTextTagContent.h"
+#else
+#import <TTGTagCollectionView/TTGTextTagContent.h>
+#endif
 
 /**
  Normal text content with custom font and color.

@@ -6,7 +6,11 @@
 //  Copyright (c) 2021 zekunyan. All rights reserved.
 //
 
+#if SWIFT_PACKAGE
 #import "TTGTextTagStringContent.h"
+#else
+#import <TTGTagCollectionView/TTGTextTagStringContent.h>
+#endif
 
 @implementation TTGTextTagStringContent
 

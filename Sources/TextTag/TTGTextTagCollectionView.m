@@ -6,7 +6,11 @@
 //  Copyright (c) 2021 zekunyan. All rights reserved.
 //
 
+#if SWIFT_PACKAGE
 #import "TTGTextTagCollectionView.h"
+#else
+#import <TTGTagCollectionView/TTGTextTagCollectionView.h>
+#endif
 
 #pragma mark - TTGTextTagGradientLabel
 

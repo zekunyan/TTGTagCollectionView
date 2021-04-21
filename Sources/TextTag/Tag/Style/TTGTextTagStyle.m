@@ -6,7 +6,11 @@
 //  Copyright (c) 2021 zekunyan. All rights reserved.
 //
 
+#if SWIFT_PACKAGE
 #import "TTGTextTagStyle.h"
+#else
+#import <TTGTagCollectionView/TTGTextTagStyle.h>
+#endif
 
 @implementation TTGTextTagStyle
 
