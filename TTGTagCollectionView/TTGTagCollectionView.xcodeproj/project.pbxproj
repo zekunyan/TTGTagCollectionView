@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BFADB806262FFF7B0008728F /* TTGTagCollectionView-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = BFADB805262FFF7B0008728F /* TTGTagCollectionView-Bridging-Header.h */; };
 		BFE7205F262EDA44008C29D0 /* TTGTextTagCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE7204D262EDA44008C29D0 /* TTGTextTagCollectionView.h */; };
 		BFE72060262EDA44008C29D0 /* TTGTextTag.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE7204F262EDA44008C29D0 /* TTGTextTag.m */; };
 		BFE72061262EDA44008C29D0 /* TTGTextTagStringContent.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE72051262EDA44008C29D0 /* TTGTextTagStringContent.m */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		BF695C4C262044EB00B5B6AC /* TTGTagCollectionView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TTGTagCollectionView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF695C50262044EB00B5B6AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFADB805262FFF7B0008728F /* TTGTagCollectionView-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TTGTagCollectionView-Bridging-Header.h"; sourceTree = "<group>"; };
 		BFE7204D262EDA44008C29D0 /* TTGTextTagCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGTextTagCollectionView.h; sourceTree = "<group>"; };
 		BFE7204F262EDA44008C29D0 /* TTGTextTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGTextTag.m; sourceTree = "<group>"; };
 		BFE72051262EDA44008C29D0 /* TTGTextTagStringContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagStringContent.m; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			children = (
 				BFE7204C262EDA44008C29D0 /* TextTag */,
 				BFE7205C262EDA44008C29D0 /* BaseTag */,
+				BFADB805262FFF7B0008728F /* TTGTagCollectionView-Bridging-Header.h */,
 			);
 			name = Sources;
 			path = ../../Sources;
@@ -164,6 +167,7 @@
 				BFE7206B262EDA44008C29D0 /* TTGTagCollectionView.h in Headers */,
 				BFE72067262EDA44008C29D0 /* TTGTextTagStyle.h in Headers */,
 				BFE72062262EDA44008C29D0 /* TTGTextTagAttributedStringContent.h in Headers */,
+				BFADB806262FFF7B0008728F /* TTGTagCollectionView-Bridging-Header.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
