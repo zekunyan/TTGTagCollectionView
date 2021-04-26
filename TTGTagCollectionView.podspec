@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "TTGTagCollectionView"
-  s.version          = "2.0.0"
+  s.version          = "2.0.1"
   s.summary          = "Show rich style text tags or custom tag views in a vertical or horizontal scrollable view."
   
   s.description      = <<-DESC
@@ -17,6 +17,6 @@ Pod::Spec.new do |s|
   s.platform         = :ios, '9.0'
   s.requires_arc     = true
 
-  s.source_files = 'Sources/**/*'
-  s.public_header_files = 'Sources/**/*.h'
+  s.source_files = 'Sources/{BaseTag,TextTag}/**/*.{h,m}', 'Sources/TTGTagCollectionView-Bridging-Header.h'
+  s.public_header_files = 'Sources/{BaseTag,TextTag}/**/*.h', 'Sources/TTGTagCollectionView-Bridging-Header.h'
 end
