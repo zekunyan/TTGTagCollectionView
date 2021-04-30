@@ -44,12 +44,19 @@ iOS 9 and later.
 
 ## Installation
 
-### CocoaPods
+### CocoaPods for Objective-C
 
 TTGTagCollectionView is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
+pod "TTGTagCollectionView"
+```
+
+### CocoaPods for Swift
+
+```ruby
+use_frameworks!
 pod "TTGTagCollectionView"
 ```
 
