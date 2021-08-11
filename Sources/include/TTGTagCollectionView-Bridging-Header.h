@@ -1,1 +1,0 @@
-../TTGTagCollectionView-Bridging-Header.h

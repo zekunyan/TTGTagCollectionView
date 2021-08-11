@@ -14,7 +14,8 @@ let package = Package(
     targets: [
         .target(
             name: "TTGTags",
-            path: "Sources"
+            path: "Sources",
+            publicHeadersPath: ""
         ),
     ]
 )

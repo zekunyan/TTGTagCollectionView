@@ -6,11 +6,7 @@
 //  Copyright (c) 2021 zekunyan. All rights reserved.
 //
 
-#if SWIFT_PACKAGE
 #import "TTGTagCollectionView.h"
-#else
-#import <TTGTagCollectionView/TTGTagCollectionView.h>
-#endif
 
 @interface TTGTagCollectionView ()
 @property (nonatomic, strong) UIScrollView *scrollView;

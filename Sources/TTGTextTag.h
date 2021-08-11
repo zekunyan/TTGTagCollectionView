@@ -9,13 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#if SWIFT_PACKAGE
 #import "TTGTextTagStyle.h"
 #import "TTGTextTagContent.h"
-#else
-#import <TTGTagCollectionView/TTGTextTagStyle.h>
-#import <TTGTagCollectionView/TTGTextTagContent.h>
-#endif
 
 @interface TTGTextTag : NSObject <NSCopying>
 

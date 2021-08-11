@@ -6,13 +6,8 @@
 //  Copyright (c) 2021 zekunyan. All rights reserved.
 //
 
-#if SWIFT_PACKAGE
 #import "TTGTextTag.h"
 #import "TTGTextTagStringContent.h"
-#else
-#import <TTGTagCollectionView/TTGTextTag.h>
-#import <TTGTagCollectionView/TTGTextTagStringContent.h>
-#endif
 
 static NSUInteger TTGTextTagAutoIncreasedId = 0;
 
