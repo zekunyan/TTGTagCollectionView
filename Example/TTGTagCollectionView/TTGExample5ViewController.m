@@ -7,7 +7,7 @@
 //
 
 #import "TTGExample5ViewController.h"
-#import <TTGTagCollectionView/TTGTextTagCollectionView.h>
+#import <TTGTags/TTGTextTagCollectionView.h>
 
 @interface TTGExample5ViewController ()
 @property (weak, nonatomic) IBOutlet TTGTextTagCollectionView *oneLineTagView;

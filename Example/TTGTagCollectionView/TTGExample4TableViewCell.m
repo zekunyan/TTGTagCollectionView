@@ -7,7 +7,7 @@
 //
 
 #import "TTGExample4TableViewCell.h"
-#import <TTGTagCollectionView/TTGTextTagCollectionView.h>
+#import <TTGTags/TTGTextTagCollectionView.h>
 
 @interface TTGExample4TableViewCell ()
 @end

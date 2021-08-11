@@ -6,7 +6,7 @@
 //  Copyright (c) 2019 zekunyan. All rights reserved.
 //
 
-#import <TTGTagCollectionView/TTGTextTagCollectionView.h>
+#import <TTGTags/TTGTextTagCollectionView.h>
 #import "TTGExample1ViewController.h"
 
 @interface TTGExample1ViewController () <TTGTextTagCollectionViewDelegate>

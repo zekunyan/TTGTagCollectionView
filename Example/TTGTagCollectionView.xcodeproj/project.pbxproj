@@ -69,7 +69,7 @@
 		844AD402AAC901D5440EC315 /* Pods_TTGTagCollectionView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TTGTagCollectionView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		87DABFE9778E7F9FA5FE7579 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		91C651B0951ED02D10FEF2EC /* TTGTagCollectionView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = TTGTagCollectionView.podspec; path = ../TTGTagCollectionView.podspec; sourceTree = "<group>"; };
+		91C651B0951ED02D10FEF2EC /* TTGTagCollectionView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = TTGTagCollectionView.podspec; path = ../TTGTagCollectionView.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A3BEAD4EC97CF3D658739779 /* Pods-TTGTagCollectionView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTGTagCollectionView_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TTGTagCollectionView_Example/Pods-TTGTagCollectionView_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		B08B7EC3C54CCD3B82025A5E /* Pods-TTGTagCollectionView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTGTagCollectionView_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-TTGTagCollectionView_Example/Pods-TTGTagCollectionView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		BF018B021DB3D8F700EF8F4E /* TTGExample5ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGExample5ViewController.m; sourceTree = "<group>"; };
@@ -388,13 +388,13 @@
 				"${PODS_ROOT}/Target Support Files/Pods-TTGTagCollectionView_Example/Pods-TTGTagCollectionView_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/SVPullToRefresh/SVPullToRefresh.framework",
-				"${BUILT_PRODUCTS_DIR}/TTGTagCollectionView/TTGTagCollectionView.framework",
+				"${BUILT_PRODUCTS_DIR}/TTGTagCollectionView/TTGTags.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVPullToRefresh.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TTGTagCollectionView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TTGTags.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

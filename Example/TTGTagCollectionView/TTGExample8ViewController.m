@@ -7,7 +7,7 @@
 //
 
 #import "TTGExample8ViewController.h"
-#import <TTGTagCollectionView/TTGTextTagCollectionView.h>
+#import <TTGTags/TTGTextTagCollectionView.h>
 
 #pragma mark - CustomTagData
 

@@ -7,7 +7,7 @@
 //
 
 #import "TTGExample6ViewController.h"
-#import <TTGTagCollectionView/TTGTextTagCollectionView.h>
+#import <TTGTags/TTGTextTagCollectionView.h>
 #import <SVPullToRefresh/SVPullToRefresh.h>
 
 @interface TTGExample6ViewController ()
