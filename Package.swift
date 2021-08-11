@@ -3,17 +3,17 @@
 import PackageDescription
 
 let package = Package(
-    name: "TTGTags",
+    name: "TTGTagCollectionView",
     platforms: [.iOS(.v9)],
     products: [
         .library(
-            name: "TTGTags",
-            targets: ["TTGTags"]),
+            name: "TTGTagCollectionView",
+            targets: ["TTGTagCollectionView"]),
     ],
     dependencies: [],
     targets: [
         .target(
-            name: "TTGTags",
+            name: "TTGTagCollectionView",
             path: "Sources",
             publicHeadersPath: ""
         ),
