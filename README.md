@@ -26,10 +26,11 @@
 * Support Autolayout `intrinsicContentSize` to auto determine height based on content size.
 * Support pull to refresh, like `SVPullToRefresh`.
 * Use `preferredMaxLayoutWidth` to set available width like UIlabel.
+* Support `CocoaPods` and `Swift Package Manager`
 
 ## Demo
 
-You can find demos in the `Example->TTGTagCollectionView.xcworkspace` project.
+You can find demos in the `Example->TTGTagCollectionView.xcworkspace` or `ExampleSwift->TTGTagSwiftExample.xcworkspace` project.
 Run `pod update` before try it.
 
 ![Example project](https://github.com/zekunyan/TTGTagCollectionView/raw/master/Resources/demo_example.jpeg)
@@ -45,20 +46,18 @@ iOS 9 and later.
 ## Installation
 
 ### CocoaPods for Objective-C
-
-TTGTagCollectionView is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
 ```ruby
 pod "TTGTagCollectionView"
 ```
 
 ### CocoaPods for Swift
-
 ```ruby
 use_frameworks!
 pod "TTGTagCollectionView"
 ```
+
+### Swift Package Manager
+Add by `git@github.com:zekunyan/TTGTagCollectionView.git`
 
 ## Usage
 
