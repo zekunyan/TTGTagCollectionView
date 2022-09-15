@@ -67,7 +67,27 @@ Use `TTGTextTagCollectionView` to show text tags.
 
 #### Basic usage
 
+##### Swift
+
+```swift
+// import
+import TTGTags
+// Create TTGTextTagCollectionView view
+let tagView = TTGTextTagCollectionView.init(frame: CGRect(x: 20, y: 100, width: 200, height: 200))
+self.view .addSubview(tagView)
+// Create TTGTextTag object
+let textTag = TTGTextTag(content: TTGTextTagStringContent(text: "tutuge"), style: TTGTextTagStyle())
+// Add tag
+tagView.addTag(textTag)
+// !!! Never forget this !!!
+tagView.reload()
+```
+
+##### Objective-C
+
 ```Objective-C
+// import
+#import <TTGTags/TTGTextTagCollectionView.h>
 // Create TTGTextTagCollectionView view
 TTGTextTagCollectionView *tagCollectionView = [[TTGTextTagCollectionView alloc] initWithFrame:CGRectMake(20, 20, 200, 200)];
 [self.view addSubview:tagCollectionView];
@@ -75,6 +95,8 @@ TTGTextTagCollectionView *tagCollectionView = [[TTGTextTagCollectionView alloc] 
 TTGTextTag *textTag = [TTGTextTag tagWithContent:[TTGTextTagStringContent contentWithText:@"Some text"] style:[TTGTextTagStyle new]];
 // Add tag
 [tagCollectionView addTag:textTag];
+// !!! Never forget this !!!
+[tagCollectionView reload];
 ```
 
 #### Delegate
