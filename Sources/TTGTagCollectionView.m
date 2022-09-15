@@ -251,7 +251,6 @@
 - (void)layoutTagViewsForHorizontalDirection {
     NSInteger count = [_dataSource numberOfTagsInTagCollectionView:self];
     _numberOfLines = _numberOfLines == 0 ? 1 : _numberOfLines;
-    _numberOfLines = MIN(count, _numberOfLines);
     
     CGFloat maxLineWidth = 0;
     
