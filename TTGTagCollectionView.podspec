@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.social_media_url = 'http://tutuge.me'
 
   s.swift_version    = "5.0"
-  s.platform         = :ios, '9.0'
+  s.platform         = :ios, '11.0'
   s.requires_arc     = true
 
   s.source_files = 'Sources/**/*.{h,m}'

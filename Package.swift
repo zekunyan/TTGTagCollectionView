@@ -4,7 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "TTGTags",
-    platforms: [.iOS(.v9)],
+    platforms: [.iOS(.v11)],
     products: [
         .library(
             name: "TTGTags",
