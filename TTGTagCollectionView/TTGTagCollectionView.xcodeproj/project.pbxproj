@@ -7,41 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BFADB806262FFF7B0008728F /* TTGTagCollectionView-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = BFADB805262FFF7B0008728F /* TTGTagCollectionView-Bridging-Header.h */; };
-		BFE7205F262EDA44008C29D0 /* TTGTextTagCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE7204D262EDA44008C29D0 /* TTGTextTagCollectionView.h */; };
-		BFE72060262EDA44008C29D0 /* TTGTextTag.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE7204F262EDA44008C29D0 /* TTGTextTag.m */; };
-		BFE72061262EDA44008C29D0 /* TTGTextTagStringContent.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE72051262EDA44008C29D0 /* TTGTextTagStringContent.m */; };
-		BFE72062262EDA44008C29D0 /* TTGTextTagAttributedStringContent.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE72052262EDA44008C29D0 /* TTGTextTagAttributedStringContent.h */; };
-		BFE72063262EDA44008C29D0 /* TTGTextTagContent.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE72053262EDA44008C29D0 /* TTGTextTagContent.h */; };
-		BFE72064262EDA44008C29D0 /* TTGTextTagAttributedStringContent.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE72054262EDA44008C29D0 /* TTGTextTagAttributedStringContent.m */; };
-		BFE72065262EDA44008C29D0 /* TTGTextTagStringContent.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE72055262EDA44008C29D0 /* TTGTextTagStringContent.h */; };
-		BFE72066262EDA44008C29D0 /* TTGTextTagContent.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE72056262EDA44008C29D0 /* TTGTextTagContent.m */; };
-		BFE72067262EDA44008C29D0 /* TTGTextTagStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE72058262EDA44008C29D0 /* TTGTextTagStyle.h */; };
-		BFE72068262EDA44008C29D0 /* TTGTextTagStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE72059262EDA44008C29D0 /* TTGTextTagStyle.m */; };
-		BFE72069262EDA44008C29D0 /* TTGTextTag.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE7205A262EDA44008C29D0 /* TTGTextTag.h */; };
-		BFE7206A262EDA44008C29D0 /* TTGTextTagCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE7205B262EDA44008C29D0 /* TTGTextTagCollectionView.m */; };
-		BFE7206B262EDA44008C29D0 /* TTGTagCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE7205D262EDA44008C29D0 /* TTGTagCollectionView.h */; };
-		BFE7206C262EDA44008C29D0 /* TTGTagCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE7205E262EDA44008C29D0 /* TTGTagCollectionView.m */; };
+		BF8CF4C928D344240074EB9D /* TTGTextTagStringContent.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CF4BA28D344240074EB9D /* TTGTextTagStringContent.m */; };
+		BF8CF4CA28D344240074EB9D /* TTGTextTag.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CF4BB28D344240074EB9D /* TTGTextTag.m */; };
+		BF8CF4CB28D344240074EB9D /* TTGTextTagAttributedStringContent.h in Headers */ = {isa = PBXBuildFile; fileRef = BF8CF4BC28D344240074EB9D /* TTGTextTagAttributedStringContent.h */; };
+		BF8CF4CC28D344240074EB9D /* TTGTagCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = BF8CF4BD28D344240074EB9D /* TTGTagCollectionView.h */; };
+		BF8CF4CD28D344240074EB9D /* TTGTextTagStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = BF8CF4BE28D344240074EB9D /* TTGTextTagStyle.h */; };
+		BF8CF4CE28D344240074EB9D /* TTGTagCollectionView-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = BF8CF4BF28D344240074EB9D /* TTGTagCollectionView-Bridging-Header.h */; };
+		BF8CF4CF28D344240074EB9D /* TTGTextTagCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = BF8CF4C028D344240074EB9D /* TTGTextTagCollectionView.h */; };
+		BF8CF4D028D344240074EB9D /* TTGTextTagContent.h in Headers */ = {isa = PBXBuildFile; fileRef = BF8CF4C128D344240074EB9D /* TTGTextTagContent.h */; };
+		BF8CF4D128D344240074EB9D /* TTGTagCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CF4C228D344240074EB9D /* TTGTagCollectionView.m */; };
+		BF8CF4D228D344240074EB9D /* TTGTextTagAttributedStringContent.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CF4C328D344240074EB9D /* TTGTextTagAttributedStringContent.m */; };
+		BF8CF4D328D344240074EB9D /* TTGTextTag.h in Headers */ = {isa = PBXBuildFile; fileRef = BF8CF4C428D344240074EB9D /* TTGTextTag.h */; };
+		BF8CF4D428D344240074EB9D /* TTGTextTagStringContent.h in Headers */ = {isa = PBXBuildFile; fileRef = BF8CF4C528D344240074EB9D /* TTGTextTagStringContent.h */; };
+		BF8CF4D528D344240074EB9D /* TTGTextTagStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CF4C628D344240074EB9D /* TTGTextTagStyle.m */; };
+		BF8CF4D628D344240074EB9D /* TTGTextTagContent.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CF4C728D344240074EB9D /* TTGTextTagContent.m */; };
+		BF8CF4D728D344240074EB9D /* TTGTextTagCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CF4C828D344240074EB9D /* TTGTextTagCollectionView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BF695C4C262044EB00B5B6AC /* TTGTagCollectionView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TTGTagCollectionView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF695C50262044EB00B5B6AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BFADB805262FFF7B0008728F /* TTGTagCollectionView-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TTGTagCollectionView-Bridging-Header.h"; sourceTree = "<group>"; };
-		BFE7204D262EDA44008C29D0 /* TTGTextTagCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGTextTagCollectionView.h; sourceTree = "<group>"; };
-		BFE7204F262EDA44008C29D0 /* TTGTextTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGTextTag.m; sourceTree = "<group>"; };
-		BFE72051262EDA44008C29D0 /* TTGTextTagStringContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagStringContent.m; sourceTree = "<group>"; };
-		BFE72052262EDA44008C29D0 /* TTGTextTagAttributedStringContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGTextTagAttributedStringContent.h; sourceTree = "<group>"; };
-		BFE72053262EDA44008C29D0 /* TTGTextTagContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGTextTagContent.h; sourceTree = "<group>"; };
-		BFE72054262EDA44008C29D0 /* TTGTextTagAttributedStringContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagAttributedStringContent.m; sourceTree = "<group>"; };
-		BFE72055262EDA44008C29D0 /* TTGTextTagStringContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGTextTagStringContent.h; sourceTree = "<group>"; };
-		BFE72056262EDA44008C29D0 /* TTGTextTagContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagContent.m; sourceTree = "<group>"; };
-		BFE72058262EDA44008C29D0 /* TTGTextTagStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGTextTagStyle.h; sourceTree = "<group>"; };
-		BFE72059262EDA44008C29D0 /* TTGTextTagStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagStyle.m; sourceTree = "<group>"; };
-		BFE7205A262EDA44008C29D0 /* TTGTextTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGTextTag.h; sourceTree = "<group>"; };
-		BFE7205B262EDA44008C29D0 /* TTGTextTagCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagCollectionView.m; sourceTree = "<group>"; };
-		BFE7205D262EDA44008C29D0 /* TTGTagCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGTagCollectionView.h; sourceTree = "<group>"; };
-		BFE7205E262EDA44008C29D0 /* TTGTagCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGTagCollectionView.m; sourceTree = "<group>"; };
+		BF8CF4BA28D344240074EB9D /* TTGTextTagStringContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagStringContent.m; sourceTree = "<group>"; };
+		BF8CF4BB28D344240074EB9D /* TTGTextTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGTextTag.m; sourceTree = "<group>"; };
+		BF8CF4BC28D344240074EB9D /* TTGTextTagAttributedStringContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGTextTagAttributedStringContent.h; sourceTree = "<group>"; };
+		BF8CF4BD28D344240074EB9D /* TTGTagCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGTagCollectionView.h; sourceTree = "<group>"; };
+		BF8CF4BE28D344240074EB9D /* TTGTextTagStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGTextTagStyle.h; sourceTree = "<group>"; };
+		BF8CF4BF28D344240074EB9D /* TTGTagCollectionView-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TTGTagCollectionView-Bridging-Header.h"; sourceTree = "<group>"; };
+		BF8CF4C028D344240074EB9D /* TTGTextTagCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGTextTagCollectionView.h; sourceTree = "<group>"; };
+		BF8CF4C128D344240074EB9D /* TTGTextTagContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGTextTagContent.h; sourceTree = "<group>"; };
+		BF8CF4C228D344240074EB9D /* TTGTagCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGTagCollectionView.m; sourceTree = "<group>"; };
+		BF8CF4C328D344240074EB9D /* TTGTextTagAttributedStringContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagAttributedStringContent.m; sourceTree = "<group>"; };
+		BF8CF4C428D344240074EB9D /* TTGTextTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGTextTag.h; sourceTree = "<group>"; };
+		BF8CF4C528D344240074EB9D /* TTGTextTagStringContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGTextTagStringContent.h; sourceTree = "<group>"; };
+		BF8CF4C628D344240074EB9D /* TTGTextTagStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagStyle.m; sourceTree = "<group>"; };
+		BF8CF4C728D344240074EB9D /* TTGTextTagContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagContent.m; sourceTree = "<group>"; };
+		BF8CF4C828D344240074EB9D /* TTGTextTagCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagCollectionView.m; sourceTree = "<group>"; };
 		BFE7206F262EDA69008C29D0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -76,73 +76,33 @@
 		BF695C4E262044EB00B5B6AC /* TTGTagCollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				BFE7204B262EDA44008C29D0 /* Sources */,
+				BF8CF4B928D344240074EB9D /* Sources */,
 				BF695C50262044EB00B5B6AC /* Info.plist */,
 			);
 			path = TTGTagCollectionView;
 			sourceTree = "<group>";
 		};
-		BFE7204B262EDA44008C29D0 /* Sources */ = {
+		BF8CF4B928D344240074EB9D /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				BFE7204C262EDA44008C29D0 /* TextTag */,
-				BFE7205C262EDA44008C29D0 /* BaseTag */,
-				BFADB805262FFF7B0008728F /* TTGTagCollectionView-Bridging-Header.h */,
+				BF8CF4BA28D344240074EB9D /* TTGTextTagStringContent.m */,
+				BF8CF4BB28D344240074EB9D /* TTGTextTag.m */,
+				BF8CF4BC28D344240074EB9D /* TTGTextTagAttributedStringContent.h */,
+				BF8CF4BD28D344240074EB9D /* TTGTagCollectionView.h */,
+				BF8CF4BE28D344240074EB9D /* TTGTextTagStyle.h */,
+				BF8CF4BF28D344240074EB9D /* TTGTagCollectionView-Bridging-Header.h */,
+				BF8CF4C028D344240074EB9D /* TTGTextTagCollectionView.h */,
+				BF8CF4C128D344240074EB9D /* TTGTextTagContent.h */,
+				BF8CF4C228D344240074EB9D /* TTGTagCollectionView.m */,
+				BF8CF4C328D344240074EB9D /* TTGTextTagAttributedStringContent.m */,
+				BF8CF4C428D344240074EB9D /* TTGTextTag.h */,
+				BF8CF4C528D344240074EB9D /* TTGTextTagStringContent.h */,
+				BF8CF4C628D344240074EB9D /* TTGTextTagStyle.m */,
+				BF8CF4C728D344240074EB9D /* TTGTextTagContent.m */,
+				BF8CF4C828D344240074EB9D /* TTGTextTagCollectionView.m */,
 			);
 			name = Sources;
 			path = ../../Sources;
-			sourceTree = "<group>";
-		};
-		BFE7204C262EDA44008C29D0 /* TextTag */ = {
-			isa = PBXGroup;
-			children = (
-				BFE7204D262EDA44008C29D0 /* TTGTextTagCollectionView.h */,
-				BFE7204E262EDA44008C29D0 /* Tag */,
-				BFE7205B262EDA44008C29D0 /* TTGTextTagCollectionView.m */,
-			);
-			path = TextTag;
-			sourceTree = "<group>";
-		};
-		BFE7204E262EDA44008C29D0 /* Tag */ = {
-			isa = PBXGroup;
-			children = (
-				BFE7204F262EDA44008C29D0 /* TTGTextTag.m */,
-				BFE72050262EDA44008C29D0 /* Content */,
-				BFE72057262EDA44008C29D0 /* Style */,
-				BFE7205A262EDA44008C29D0 /* TTGTextTag.h */,
-			);
-			path = Tag;
-			sourceTree = "<group>";
-		};
-		BFE72050262EDA44008C29D0 /* Content */ = {
-			isa = PBXGroup;
-			children = (
-				BFE72051262EDA44008C29D0 /* TTGTextTagStringContent.m */,
-				BFE72052262EDA44008C29D0 /* TTGTextTagAttributedStringContent.h */,
-				BFE72053262EDA44008C29D0 /* TTGTextTagContent.h */,
-				BFE72054262EDA44008C29D0 /* TTGTextTagAttributedStringContent.m */,
-				BFE72055262EDA44008C29D0 /* TTGTextTagStringContent.h */,
-				BFE72056262EDA44008C29D0 /* TTGTextTagContent.m */,
-			);
-			path = Content;
-			sourceTree = "<group>";
-		};
-		BFE72057262EDA44008C29D0 /* Style */ = {
-			isa = PBXGroup;
-			children = (
-				BFE72058262EDA44008C29D0 /* TTGTextTagStyle.h */,
-				BFE72059262EDA44008C29D0 /* TTGTextTagStyle.m */,
-			);
-			path = Style;
-			sourceTree = "<group>";
-		};
-		BFE7205C262EDA44008C29D0 /* BaseTag */ = {
-			isa = PBXGroup;
-			children = (
-				BFE7205D262EDA44008C29D0 /* TTGTagCollectionView.h */,
-				BFE7205E262EDA44008C29D0 /* TTGTagCollectionView.m */,
-			);
-			path = BaseTag;
 			sourceTree = "<group>";
 		};
 		BFE7206E262EDA69008C29D0 /* Frameworks */ = {
@@ -160,14 +120,14 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFE7205F262EDA44008C29D0 /* TTGTextTagCollectionView.h in Headers */,
-				BFE72065262EDA44008C29D0 /* TTGTextTagStringContent.h in Headers */,
-				BFE72069262EDA44008C29D0 /* TTGTextTag.h in Headers */,
-				BFE72063262EDA44008C29D0 /* TTGTextTagContent.h in Headers */,
-				BFE7206B262EDA44008C29D0 /* TTGTagCollectionView.h in Headers */,
-				BFE72067262EDA44008C29D0 /* TTGTextTagStyle.h in Headers */,
-				BFE72062262EDA44008C29D0 /* TTGTextTagAttributedStringContent.h in Headers */,
-				BFADB806262FFF7B0008728F /* TTGTagCollectionView-Bridging-Header.h in Headers */,
+				BF8CF4CF28D344240074EB9D /* TTGTextTagCollectionView.h in Headers */,
+				BF8CF4D428D344240074EB9D /* TTGTextTagStringContent.h in Headers */,
+				BF8CF4CC28D344240074EB9D /* TTGTagCollectionView.h in Headers */,
+				BF8CF4CB28D344240074EB9D /* TTGTextTagAttributedStringContent.h in Headers */,
+				BF8CF4CD28D344240074EB9D /* TTGTextTagStyle.h in Headers */,
+				BF8CF4D028D344240074EB9D /* TTGTextTagContent.h in Headers */,
+				BF8CF4D328D344240074EB9D /* TTGTextTag.h in Headers */,
+				BF8CF4CE28D344240074EB9D /* TTGTagCollectionView-Bridging-Header.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,13 +198,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFE72064262EDA44008C29D0 /* TTGTextTagAttributedStringContent.m in Sources */,
-				BFE72066262EDA44008C29D0 /* TTGTextTagContent.m in Sources */,
-				BFE7206A262EDA44008C29D0 /* TTGTextTagCollectionView.m in Sources */,
-				BFE72061262EDA44008C29D0 /* TTGTextTagStringContent.m in Sources */,
-				BFE72068262EDA44008C29D0 /* TTGTextTagStyle.m in Sources */,
-				BFE7206C262EDA44008C29D0 /* TTGTagCollectionView.m in Sources */,
-				BFE72060262EDA44008C29D0 /* TTGTextTag.m in Sources */,
+				BF8CF4D228D344240074EB9D /* TTGTextTagAttributedStringContent.m in Sources */,
+				BF8CF4D628D344240074EB9D /* TTGTextTagContent.m in Sources */,
+				BF8CF4D728D344240074EB9D /* TTGTextTagCollectionView.m in Sources */,
+				BF8CF4C928D344240074EB9D /* TTGTextTagStringContent.m in Sources */,
+				BF8CF4D128D344240074EB9D /* TTGTagCollectionView.m in Sources */,
+				BF8CF4D528D344240074EB9D /* TTGTextTagStyle.m in Sources */,
+				BF8CF4CA28D344240074EB9D /* TTGTextTag.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
