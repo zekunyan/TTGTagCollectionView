@@ -110,6 +110,7 @@
                              attachment:@{@"key": @"8"}];
     
     _tagView.delegate = self;
+    [_tagView reload];
 }
 
 #pragma mark - TTGTextTagCollectionViewDelegate

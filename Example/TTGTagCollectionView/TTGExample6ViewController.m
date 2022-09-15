@@ -26,6 +26,7 @@
             [weakSelf.tagView.scrollView.pullToRefreshView stopAnimating];
             [weakSelf.tagView removeAllTags];
             [weakSelf.tagView addTags:[weakSelf generateTags]];
+            [weakSelf.tagView reload];
         });
     }];
 
@@ -33,6 +34,7 @@
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [weakSelf.tagView.scrollView.infiniteScrollingView stopAnimating];
             [weakSelf.tagView addTags:[weakSelf generateTags]];
+            [weakSelf.tagView reload];
         });
     }];
     

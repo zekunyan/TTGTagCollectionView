@@ -74,6 +74,8 @@
     tag.content = [TTGTextTagAttributedStringContent contentWithAttributedText:attributedString];
     tag.style = [TTGTextTagStyle new];
     [_textTag addTag:tag];
+    
+    [_textTag reload];
 }
 
 @end

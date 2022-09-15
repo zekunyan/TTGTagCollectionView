@@ -34,8 +34,13 @@
     _threeLineTagView.numberOfLines = 3;
 
     [_oneLineTagView addTags:[self generateTags]];
+    [_oneLineTagView reload];
+    
     [_twoLineTagView addTags:[self generateTags]];
+    [_twoLineTagView reload];
+    
     [_threeLineTagView addTags:[self generateTags]];
+    [_threeLineTagView reload];
 }
 
 - (NSArray<TTGTextTag *> *)generateTags {

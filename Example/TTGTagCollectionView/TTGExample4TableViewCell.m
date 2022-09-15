@@ -41,7 +41,8 @@
     // Random selected
     for (NSInteger i = 0; i < 3; i++) {
         [_tagView updateTagAtIndex:arc4random_uniform((uint32_t)tags.count) selected:YES];
-    }    
+    }
+    [_tagView reload];
 }
 
 @end
