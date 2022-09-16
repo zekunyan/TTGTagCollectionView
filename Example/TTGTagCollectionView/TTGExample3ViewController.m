@@ -65,6 +65,8 @@
     _tagView.onTapBlankArea = ^(CGPoint location) {
         NSLog(@"onTapBlankArea: %@", NSStringFromCGPoint(location));
     };
+    
+    [_tagView reload];
 }
 
 @end
