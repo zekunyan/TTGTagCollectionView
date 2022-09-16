@@ -234,7 +234,6 @@
 @interface TTGTextTagCollectionView () <TTGTagCollectionViewDataSource, TTGTagCollectionViewDelegate>
 @property (strong, atomic) NSMutableArray <TTGTextTagComponentView *> *tagLabels;
 @property (strong, nonatomic) TTGTagCollectionView *tagCollectionView;
-@property (assign, nonatomic) BOOL needReload;
 @end
 
 @implementation TTGTextTagCollectionView
@@ -262,7 +261,6 @@
         return;
     }
 
-    _needReload = YES;
     _enableTagSelection = YES;
     _tagLabels = [NSMutableArray new];
 
@@ -281,10 +279,6 @@
 }
 
 - (void)layoutSubviews {
-    if (_needReload) {
-        [self reload];
-    }
-    
     [super layoutSubviews];
     if (!CGRectEqualToRect(_tagCollectionView.frame, self.bounds)) {
         [self updateAllLabelStyleAndFrame];
@@ -302,7 +296,6 @@
 #pragma mark - Public methods
 
 - (void)reload {
-    _needReload = NO;
     [self updateAllLabelStyleAndFrame];
     [_tagCollectionView reload];
     [self invalidateIntrinsicContentSize];
@@ -335,7 +328,6 @@
         }
     }
     [_tagLabels insertObjects:newTagLabels atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(index, newTagLabels.count)]];
-    _needReload = YES;
 }
 
 - (void)removeTag:(TTGTextTag *)tag {
@@ -353,7 +345,6 @@
     }
     if (labelToRemove) {
         [_tagLabels removeObject:labelToRemove];
-        _needReload = YES;
     }
 }
 
@@ -362,20 +353,15 @@
         return;
     }
     [_tagLabels removeObjectAtIndex:index];
-    _needReload = YES;
 }
 
 - (void)removeAllTags {
     [_tagLabels removeAllObjects];
-    _needReload = YES;
 }
 
 - (void)updateTagAtIndex:(NSUInteger)index selected:(BOOL)selected {
     TTGTextTag *tag = [self getTagAtIndex:index];
     tag.selected = selected;
-    if (tag) {
-        _needReload = YES;
-    }
 }
 
 - (void)updateTagAtIndex:(NSUInteger)index withNewTag:(TTGTextTag *)tag {
@@ -383,7 +369,6 @@
         TTGTextTagComponentView *label = _tagLabels[index];
         label.config = tag;
         [label updateContent];
-        _needReload = YES;
     }
 }
 
