@@ -106,7 +106,9 @@ TTGTextTag *textTag = [TTGTextTag tagWithContent:[TTGTextTagStringContent conten
 tag.enableAutoDetectAccessibility = YES;
 
 // Manual
+tag.isAccessibilityElement = YES;
 tag.accessibilityLabel = text;
+tag.accessibilityIdentifier = [NSString stringWithFormat:@"identifier: %@", text];
 tag.accessibilityHint = [NSString stringWithFormat:@"hint: %@", text];
 tag.accessibilityValue = [NSString stringWithFormat:@"value: %@", text];
 ```
@@ -158,6 +160,7 @@ Each tag can be configured.
 
 /// Accessibility
 @property (nonatomic, assign) BOOL isAccessibilityElement; // Default = NO
+@property (nonatomic, copy) NSString * _Nullable accessibilityIdentifier; // Default = nil
 @property (nonatomic, copy) NSString * _Nullable accessibilityLabel; // Default = nil
 @property (nonatomic, copy) NSString * _Nullable accessibilityHint; // Default = nil
 @property (nonatomic, copy) NSString * _Nullable accessibilityValue; // Default = nil

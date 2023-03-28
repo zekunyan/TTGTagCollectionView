@@ -151,7 +151,11 @@
     for (NSString *text in [strings subarrayWithRange:range]) {
         TTGTextTag *tag = [TTGTextTag new];
         
-        tag.enableAutoDetectAccessibility = YES;
+//        tag.enableAutoDetectAccessibility = YES;
+        
+        tag.isAccessibilityElement = YES;
+        tag.accessibilityLabel = text;
+        tag.accessibilityIdentifier = [NSString stringWithFormat:@"identifier: %@", text];
         tag.accessibilityHint = [NSString stringWithFormat:@"hint: %@", text];
         tag.accessibilityValue = [NSString stringWithFormat:@"value: %@", text];
         

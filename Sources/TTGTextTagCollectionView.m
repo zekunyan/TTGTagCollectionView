@@ -168,6 +168,7 @@
 
 - (void)updateAccessibility {
     self.isAccessibilityElement = _config.isAccessibilityElement;
+    self.accessibilityIdentifier = _config.accessibilityIdentifier;
     self.accessibilityLabel = _config.accessibilityLabel;
     self.accessibilityHint = _config.accessibilityHint;
     self.accessibilityValue = _config.accessibilityValue;

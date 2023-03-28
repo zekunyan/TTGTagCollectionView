@@ -37,6 +37,7 @@ typedef void (^OnSelectStateChanged)(bool selected);
 
 /// Accessibility
 @property (nonatomic, assign) BOOL isAccessibilityElement; // Default = NO
+@property (nonatomic, copy) NSString * _Nullable accessibilityIdentifier; // Default = nil
 @property (nonatomic, copy) NSString * _Nullable accessibilityLabel; // Default = nil
 @property (nonatomic, copy) NSString * _Nullable accessibilityHint; // Default = nil
 @property (nonatomic, copy) NSString * _Nullable accessibilityValue; // Default = nil

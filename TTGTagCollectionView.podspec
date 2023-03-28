@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = "TTGTagCollectionView"
   s.module_name      = "TTGTags"
-  s.version          = "2.4.0"
+  s.version          = "2.4.1"
   s.summary          = "Show rich style text tags or custom tag views in a vertical or horizontal scrollable view."
   
   s.description      = <<-DESC
