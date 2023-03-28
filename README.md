@@ -99,6 +99,18 @@ TTGTextTag *textTag = [TTGTextTag tagWithContent:[TTGTextTagStringContent conten
 [tagCollectionView reload];
 ```
 
+##### Accessibility
+
+```Objective-C
+// Auto set accessibilityLabel value
+tag.enableAutoDetectAccessibility = YES;
+
+// Manual
+tag.accessibilityLabel = text;
+tag.accessibilityHint = [NSString stringWithFormat:@"hint: %@", text];
+tag.accessibilityValue = [NSString stringWithFormat:@"value: %@", text];
+```
+
 #### Delegate
 
 Conform the `TTGTextTagCollectionViewDelegate` protocol to get callback when you select the tag or content height changes.
@@ -142,8 +154,24 @@ Each tag can be configured.
 
 /// Selection state
 @property (nonatomic, assign) BOOL selected;
+@property (nonatomic, copy) OnSelectStateChanged _Nullable onSelectStateChanged; // State changed callback
 
-///...Other things...
+/// Accessibility
+@property (nonatomic, assign) BOOL isAccessibilityElement; // Default = NO
+@property (nonatomic, copy) NSString * _Nullable accessibilityLabel; // Default = nil
+@property (nonatomic, copy) NSString * _Nullable accessibilityHint; // Default = nil
+@property (nonatomic, copy) NSString * _Nullable accessibilityValue; // Default = nil
+@property (nonatomic, assign) UIAccessibilityTraits accessibilityTraits; // Default = UIAccessibilityTraitNone
+
+/// Auto detect accessibility
+/// When enableAutoDetectAccessibility = YES, the property below will be set automatically
+/// ----------------------------
+/// isAccessibilityElement = YES
+/// accessibilityLabel = (selected ? selectedContent : content).getContentAttributedString.string
+/// accessibilityTraits = selected ? UIAccessibilityTraitSelected : UIAccessibilityTraitButton
+/// ----------------------------
+/// But: accessibilityHint and accessibilityValue still keep your custom value;
+@property (nonatomic, assign) BOOL enableAutoDetectAccessibility; // Default = NO
 
 @end
 ```
