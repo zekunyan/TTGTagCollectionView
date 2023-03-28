@@ -47,6 +47,7 @@
     _label = [[TTGTextTagGradientLabel alloc] initWithFrame:self.bounds];
     _label.textAlignment = NSTextAlignmentCenter;
     _label.userInteractionEnabled = YES;
+    _label.isAccessibilityElement = NO;
     [self addSubview:_label];
 }
 
@@ -163,6 +164,14 @@
     _borderLayer.lineCap = kCALineCapRound;
     _borderLayer.lineJoin = kCALineJoinRound;
     [self.layer addSublayer:_borderLayer];
+}
+
+- (void)updateAccessibility {
+    self.isAccessibilityElement = _config.isAccessibilityElement;
+    self.accessibilityLabel = _config.accessibilityLabel;
+    self.accessibilityHint = _config.accessibilityHint;
+    self.accessibilityValue = _config.accessibilityValue;
+    self.accessibilityTraits = _config.accessibilityTraits;
 }
 
 - (UIBezierPath *)getNewPath {
@@ -617,6 +626,8 @@
     [label updateContent];
     // Update content style
     [label updateContentStyle];
+    // Update accessibility
+    [label updateAccessibility];
     // Width limit for vertical scroll direction
     CGSize maxSize = CGSizeZero;
     if (self.scrollDirection == TTGTagCollectionScrollDirectionVertical &&

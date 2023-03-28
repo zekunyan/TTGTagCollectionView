@@ -151,6 +151,10 @@
     for (NSString *text in [strings subarrayWithRange:range]) {
         TTGTextTag *tag = [TTGTextTag new];
         
+        tag.enableAutoDetectAccessibility = YES;
+        tag.accessibilityHint = [NSString stringWithFormat:@"hint: %@", text];
+        tag.accessibilityValue = [NSString stringWithFormat:@"value: %@", text];
+        
         TTGTextTagStyle *style = [defaultStyle copy];
         style.backgroundColor = backgroundColor;
         

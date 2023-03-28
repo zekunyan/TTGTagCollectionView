@@ -61,6 +61,14 @@ static NSUInteger TTGTextTagAutoIncreasedId = 0;
     return self;
 }
 
+- (void)setSelected:(BOOL)selected {
+    _selected = selected;
+    // Callback
+    if (_onSelectStateChanged) {
+        _onSelectStateChanged(selected);
+    }
+}
+
 - (TTGTextTagContent *)selectedContent {
     if (_selectedContent == nil) {
         _selectedContent = [_content copy];
@@ -81,6 +89,24 @@ static NSUInteger TTGTextTagAutoIncreasedId = 0;
 
 - (TTGTextTagStyle *)getRightfulStyle {
     return _selected ? self.selectedStyle : self.style;
+}
+
+- (BOOL)isAccessibilityElement {
+    return _enableAutoDetectAccessibility || _isAccessibilityElement;
+}
+
+- (NSString *)accessibilityLabel {
+    if (_enableAutoDetectAccessibility) {
+        return [self getRightfulContent].getContentAttributedString.string;
+    }
+    return _accessibilityLabel;
+}
+
+- (UIAccessibilityTraits)accessibilityTraits {
+    if (_enableAutoDetectAccessibility) {
+        return _selected ? UIAccessibilityTraitSelected : UIAccessibilityTraitButton;
+    }
+    return _accessibilityTraits;
 }
 
 - (BOOL)isEqual:(id)other {
@@ -115,7 +141,13 @@ static NSUInteger TTGTextTagAutoIncreasedId = 0;
         copy.style = self.style;
         copy.selected = self.selected;
         copy.selectedContent = self.selectedContent;
-        copy.selectedStyle = self.selectedStyle;        
+        copy.selectedStyle = self.selectedStyle;
+        copy.isAccessibilityElement = self.isAccessibilityElement;
+        copy.accessibilityLabel = self.accessibilityLabel;
+        copy.accessibilityHint = self.accessibilityHint;
+        copy.accessibilityValue = self.accessibilityValue;
+        copy.accessibilityTraits = self.accessibilityTraits;
+        copy.enableAutoDetectAccessibility = self.enableAutoDetectAccessibility;
     }
     return copy;
 }

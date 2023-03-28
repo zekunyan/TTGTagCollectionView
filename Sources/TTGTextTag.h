@@ -12,6 +12,9 @@
 #import "TTGTextTagStyle.h"
 #import "TTGTextTagContent.h"
 
+/// Tag selection state change callback
+typedef void (^OnSelectStateChanged)(bool selected);
+
 @interface TTGTextTag : NSObject <NSCopying>
 
 /// ID
@@ -30,6 +33,24 @@
 
 /// Selection state
 @property (nonatomic, assign) BOOL selected;
+@property (nonatomic, copy) OnSelectStateChanged _Nullable onSelectStateChanged; // State changed callback
+
+/// Accessibility
+@property (nonatomic, assign) BOOL isAccessibilityElement; // Default = NO
+@property (nonatomic, copy) NSString * _Nullable accessibilityLabel; // Default = nil
+@property (nonatomic, copy) NSString * _Nullable accessibilityHint; // Default = nil
+@property (nonatomic, copy) NSString * _Nullable accessibilityValue; // Default = nil
+@property (nonatomic, assign) UIAccessibilityTraits accessibilityTraits; // Default = UIAccessibilityTraitNone
+
+/// Auto detect accessibility
+/// When enableAutoDetectAccessibility = YES, the property below will be set automatically
+/// ----------------------------
+/// isAccessibilityElement = YES
+/// accessibilityLabel = (selected ? selectedContent : content).getContentAttributedString.string
+/// accessibilityTraits = selected ? UIAccessibilityTraitSelected : UIAccessibilityTraitButton
+/// ----------------------------
+/// But: accessibilityHint and accessibilityValue still keep your custom value;
+@property (nonatomic, assign) BOOL enableAutoDetectAccessibility; // Default = NO
 
 /// Init
 
