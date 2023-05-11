@@ -293,7 +293,7 @@
 				ORGANIZATIONNAME = zekunyan;
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
@@ -565,13 +565,13 @@
 			baseConfigurationReference = A3BEAD4EC97CF3D658739779 /* Pods-TTGTagCollectionView_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TTGTagCollectionView/TTGTagCollectionView-Prefix.pch";
 				INFOPLIST_FILE = "TTGTagCollectionView/TTGTagCollectionView-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = me.tutuge.TTGTagCollectionView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -585,13 +585,13 @@
 			baseConfigurationReference = B08B7EC3C54CCD3B82025A5E /* Pods-TTGTagCollectionView_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TTGTagCollectionView/TTGTagCollectionView-Prefix.pch";
 				INFOPLIST_FILE = "TTGTagCollectionView/TTGTagCollectionView-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = me.tutuge.TTGTagCollectionView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
