@@ -84,7 +84,7 @@
 
 - (void)updateContentStyle {
     // Normal background
-    _label.backgroundColor = _config.getRightfulStyle.backgroundColor;
+    _label.backgroundColor = _config.getRightfulStyle.backgroundColor ?: UIColor.clearColor;
     
     // Text alignment
     _label.textAlignment = _config.getRightfulStyle.textAlignment;
@@ -92,6 +92,7 @@
     // Gradient background
     if (_config.getRightfulStyle.enableGradientBackground) {
         _label.backgroundColor = [UIColor clearColor];
+        ((CAGradientLayer *)_label.layer).backgroundColor = UIColor.clearColor.CGColor;
         ((CAGradientLayer *)_label.layer).colors = @[(id)_config.getRightfulStyle.gradientBackgroundStartColor.CGColor,
                                                      (id)_config.getRightfulStyle.gradientBackgroundEndColor.CGColor];
         ((CAGradientLayer *)_label.layer).startPoint = _config.getRightfulStyle.gradientBackgroundStartPoint;
@@ -157,7 +158,7 @@
     [_borderLayer removeFromSuperlayer];
     _borderLayer.frame = self.bounds;
     _borderLayer.path = path.CGPath;
-    _borderLayer.fillColor = nil;
+    _borderLayer.fillColor = UIColor.clearColor.CGColor;
     _borderLayer.opacity = 1;
     _borderLayer.lineWidth = _config.getRightfulStyle.borderWidth;
     _borderLayer.strokeColor = _config.getRightfulStyle.borderColor.CGColor;
