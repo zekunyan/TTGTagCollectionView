@@ -48,6 +48,7 @@
     _label.textAlignment = NSTextAlignmentCenter;
     _label.userInteractionEnabled = YES;
     _label.isAccessibilityElement = NO;
+    _label.lineBreakMode = NSLineBreakByTruncatingMiddle;
     [self addSubview:_label];
 }
 
@@ -57,7 +58,7 @@
     [super layoutSubviews];
 
     // Update frame
-    _label.frame = self.bounds;
+    _label.frame = CGRectInset(self.bounds, _config.getRightfulStyle.extraSpace.width / 2, _config.getRightfulStyle.extraSpace.height / 2);
 
     // Get new path
     UIBezierPath *path = [self getNewPath];
@@ -72,6 +73,9 @@
 #pragma mark - intrinsicContentSize
 
 - (CGSize)intrinsicContentSize {
+    CGSize size = _label.intrinsicContentSize;
+    size.width = size.width + _config.getRightfulStyle.extraSpace.width;
+    size.height = size.height + _config.getRightfulStyle.extraSpace.height;
     return _label.intrinsicContentSize;
 }
 
@@ -84,14 +88,14 @@
 
 - (void)updateContentStyle {
     // Normal background
-    _label.backgroundColor = _config.getRightfulStyle.backgroundColor ?: UIColor.clearColor;
-    
+    self.backgroundColor = _config.getRightfulStyle.backgroundColor ?: UIColor.clearColor;
+
     // Text alignment
     _label.textAlignment = _config.getRightfulStyle.textAlignment;
 
     // Gradient background
     if (_config.getRightfulStyle.enableGradientBackground) {
-        _label.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [UIColor clearColor];
         ((CAGradientLayer *)_label.layer).backgroundColor = UIColor.clearColor.CGColor;
         ((CAGradientLayer *)_label.layer).colors = @[(id)_config.getRightfulStyle.gradientBackgroundStartColor.CGColor,
                                                      (id)_config.getRightfulStyle.gradientBackgroundEndColor.CGColor];
@@ -131,6 +135,7 @@
     CGRect frame = self.frame;
     frame.size = finalSize;
     self.frame = frame;
+    _label.frame = CGRectInset(self.bounds, _config.getRightfulStyle.extraSpace.width / 2, _config.getRightfulStyle.extraSpace.height / 2);
     _label.frame = self.bounds;
 }
 
@@ -148,7 +153,7 @@
     CAShapeLayer *maskLayer = [CAShapeLayer layer];
     maskLayer.frame = self.bounds;
     maskLayer.path = path.CGPath;
-    _label.layer.mask = maskLayer;
+    self.layer.mask = maskLayer;
 }
 
 - (void)updateBorderWithPath:(UIBezierPath *)path {
