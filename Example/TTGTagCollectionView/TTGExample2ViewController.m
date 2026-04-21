@@ -6,7 +6,7 @@
 //  Copyright (c) 2019 zekunyan. All rights reserved.
 //
 
-#import <TTGTags/TTGTagCollectionView.h>
+#import <TTGTags/TTGTags-Swift.h>
 #import "TTGExample2ViewController.h"
 
 @interface TTGExample2ViewController () <TTGTagCollectionViewDelegate, TTGTagCollectionViewDataSource>
@@ -52,21 +52,21 @@
 
 #pragma mark - TTGTagCollectionViewDelegate
 
-- (CGSize)tagCollectionView:(TTGTagCollectionView *)tagCollectionView sizeForTagAtIndex:(NSUInteger)index {
+- (CGSize)tagCollectionView:(TTGTagCollectionView *)tagCollectionView sizeForTagAtIndex:(NSInteger)index {
     return _tagViews[index].frame.size;
 }
 
-- (void)tagCollectionView:(TTGTagCollectionView *)tagCollectionView didSelectTag:(UIView *)tagView atIndex:(NSUInteger)index {
+- (void)tagCollectionView:(TTGTagCollectionView *)tagCollectionView didSelectTag:(UIView *)tagView atIndex:(NSInteger)index {
     _logLabel.text = [NSString stringWithFormat:@"Tap tag: %@, at: %ld", tagView.class, (long) index];
 }
 
 #pragma mark - TTGTagCollectionViewDataSource
 
-- (NSUInteger)numberOfTagsInTagCollectionView:(TTGTagCollectionView *)tagCollectionView {
+- (NSInteger)numberOfTagsInTagCollectionView:(TTGTagCollectionView *)tagCollectionView {
     return _tagViews.count;
 }
 
-- (UIView *)tagCollectionView:(TTGTagCollectionView *)tagCollectionView tagViewForIndex:(NSUInteger)index {
+- (UIView *)tagCollectionView:(TTGTagCollectionView *)tagCollectionView tagViewForIndex:(NSInteger)index {
     return _tagViews[index];
 }
 

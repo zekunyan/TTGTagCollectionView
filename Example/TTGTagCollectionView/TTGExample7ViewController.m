@@ -7,7 +7,7 @@
 //
 
 #import "TTGExample7ViewController.h"
-#import <TTGTags/TTGTextTagCollectionView.h>
+#import <TTGTags/TTGTags-Swift.h>
 
 @interface TTGExample7ViewController () <TTGTextTagCollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet TTGTextTagCollectionView *tagView;
@@ -117,7 +117,7 @@
 
 - (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView
                     didTapTag:(TTGTextTag *)tag
-                      atIndex:(NSUInteger)index {
+                      atIndex:(NSInteger)index {
     NSLog(@"Did tap: %@, config extra: %@", tag.content, tag.attachment);
 }
 

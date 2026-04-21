@@ -7,7 +7,7 @@
 //
 
 #import "TTGExample6ViewController.h"
-#import <TTGTags/TTGTextTagCollectionView.h>
+#import <TTGTags/TTGTags-Swift.h>
 #import <SVPullToRefresh/SVPullToRefresh.h>
 
 @interface TTGExample6ViewController ()
@@ -38,7 +38,7 @@
         });
     }];
     
-    _tagView.scrollView.infiniteScrollingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    _tagView.scrollView.infiniteScrollingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleMedium;
     _tagView.alignment = TTGTagCollectionAlignmentFillByExpandingWidth;
     _tagView.scrollView.alwaysBounceVertical = YES; // Very important
     [_tagView.scrollView triggerPullToRefresh];

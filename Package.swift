@@ -1,10 +1,10 @@
-// swift-tools-version:5.0
+// swift-tools-version:5.9
 
 import PackageDescription
 
 let package = Package(
     name: "TTGTags",
-    platforms: [.iOS(.v11)],
+    platforms: [.iOS(.v16)],
     products: [
         .library(
             name: "TTGTags",
@@ -14,8 +14,12 @@ let package = Package(
     targets: [
         .target(
             name: "TTGTags",
-            path: "Sources",
-            publicHeadersPath: ""
+            path: "Sources/TTGTags"
+        ),
+        .testTarget(
+            name: "TTGTagsTests",
+            dependencies: ["TTGTags"],
+            path: "Tests/TTGTagsTests"
         ),
     ]
 )

@@ -7,7 +7,7 @@
 //
 
 #import "TTGExample3ViewController.h"
-#import <TTGTags/TTGTextTagCollectionView.h>
+#import <TTGTags/TTGTags-Swift.h>
 
 @interface TTGExample3ViewController ()
 @property (nonatomic, strong) TTGTextTagCollectionView *tagView;

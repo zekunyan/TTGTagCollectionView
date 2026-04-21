@@ -7,7 +7,7 @@
 //
 
 #import "TTGExample8ViewController.h"
-#import <TTGTags/TTGTextTagCollectionView.h>
+#import <TTGTags/TTGTags-Swift.h>
 
 #pragma mark - CustomTagData
 
@@ -59,8 +59,8 @@
     NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:_tagView
                                                                      attribute:NSLayoutAttributeTop
                                                                      relatedBy:NSLayoutRelationEqual
-                                                                        toItem:self.topLayoutGuide
-                                                                     attribute:NSLayoutAttributeBottom
+                                                                        toItem:self.view.safeAreaLayoutGuide
+                                                                     attribute:NSLayoutAttributeTop
                                                                     multiplier:1 constant:20];
     [self.view addConstraint:topConstraint];
     [self.view addConstraints:hConstraints];
@@ -146,7 +146,7 @@
 
 - (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView
                     didTapTag:(TTGTextTag *)tag
-                      atIndex:(NSUInteger)index {
+                      atIndex:(NSInteger)index {
     _infoTextView.text = [NSString stringWithFormat:@"%@Did Tap:\n%@\n\n", _infoTextView.text, tag.attachment];
 }
 

@@ -42,7 +42,9 @@ Run `pod update` before try it.
 
 ## Requirements
 
-iOS 9 and later.
+iOS 16 and later. Swift 5.5+.
+
+> **3.0 Note**: 自 3.0.0 起，整个核心源码已使用 Swift 重写，原有 OC 类名、selector、enum 名称在 @objc 层保持兼容；Swift 侧 API 采用全新命名（去 `TTG` 前缀、使用属性代替 getter、嵌套枚举等）。详见 [3.0 迁移指南](#30-migration-guide)。
 
 ## Installation
 
@@ -68,27 +70,30 @@ Use `TTGTextTagCollectionView` to show text tags.
 
 #### Basic usage
 
-##### Swift
+##### Swift（3.0 新 API）
 
 ```swift
-// import
 import TTGTags
-// Create TTGTextTagCollectionView view
-let tagView = TTGTextTagCollectionView.init(frame: CGRect(x: 20, y: 100, width: 200, height: 200))
-self.view .addSubview(tagView)
-// Create TTGTextTag object
-let textTag = TTGTextTag(content: TTGTextTagStringContent(text: "tutuge"), style: TTGTextTagStyle())
-// Add tag
-tagView.addTag(textTag)
-// !!! Never forget this !!!
+
+// 创建集合视图
+let tagView = TextTagCollectionView(frame: CGRect(x: 20, y: 100, width: 200, height: 200))
+view.addSubview(tagView)
+
+// 创建 tag
+let content = TextTagStringContent(text: "tutuge")
+let style = TextTagStyle()
+let tag = TextTag(content: content, style: style)
+
+// 添加并刷新
+tagView.add(tag: tag)
 tagView.reload()
 ```
 
 ##### Objective-C
 
 ```Objective-C
-// import
-#import <TTGTags/TTGTextTagCollectionView.h>
+// import（3.0 起改用 Swift 生成的 umbrella header）
+#import <TTGTags/TTGTags-Swift.h>
 // Create TTGTextTagCollectionView view
 TTGTextTagCollectionView *tagCollectionView = [[TTGTextTagCollectionView alloc] initWithFrame:CGRectMake(20, 20, 200, 200)];
 [self.view addSubview:tagCollectionView];
@@ -471,6 +476,45 @@ Returns the index of the tag located at the specified point.
 ## Fix
 
 `UITableViewAutomaticDimension` may not work when using tagView in tableViewCell. You should reload your tableView in the `viewDidAppear`.
+
+## 3.0 Migration Guide
+
+3.0.0 将全部核心源码从 Objective-C 迁移到 Swift，按职责重新分组；OC 侧通过 `@objc(TTGXxx)` 别名保持类名、selector、枚举名称不变，但 Swift 侧 API 做了激进重命名。
+
+### 主要变化
+
+- 新目录：`Sources/TTGTags/{Model,Style,Layout,View}/*.swift`
+- OC umbrella 头改为 Swift 自动生成的：`#import <TTGTags/TTGTags-Swift.h>`（替代原先的 `<TTGTags/TTGTagCollectionView.h>` 等）
+- 布局算法抽离为纯计算结构体 `TagCollectionLayout`，配套最小单元测试
+- 修复原 `UIRectCorner` 初值位运算的隐式 bug（Swift 侧改为 `[]` 起始，`insert` 累加）
+- `tagId` 自增改为 `NSLock` 保护的线程安全实现
+
+### Swift 端类型映射
+
+| Objective-C | Swift |
+| --- | --- |
+| `TTGTagCollectionView` | `TagCollectionView` |
+| `TTGTextTagCollectionView` | `TextTagCollectionView` |
+| `TTGTextTag` | `TextTag` |
+| `TTGTextTagStyle` | `TextTagStyle` |
+| `TTGTextTagContent` | `TextTagContent` |
+| `TTGTextTagStringContent` | `TextTagStringContent` |
+| `TTGTextTagAttributedStringContent` | `TextTagAttributedStringContent` |
+| `TTGTagCollectionAlignment` | `TagCollectionAlignment` |
+| `TTGTagCollectionScrollDirection` | `TagCollectionScrollDirection` |
+| `TTGTagCollectionViewDataSource` | `TagCollectionViewDataSource` |
+| `TTGTagCollectionViewDelegate` | `TagCollectionViewDelegate` |
+| `TTGTextTagCollectionViewDelegate` | `TextTagCollectionViewDelegate` |
+| `[content getContentAttributedString]` | `content.contentAttributedString` |
+| `[tag getRightfulContent]` | `tag.rightfulContent` |
+| `[tag getRightfulStyle]` | `tag.rightfulStyle` |
+
+### Objective-C 兼容性
+
+- 原类名、selector、枚举 case 名称保持完全一致（例如仍可用 `TTGTagCollectionAlignmentLeft`、`tagCollectionView:sizeForTagAtIndex:`）。
+- `NSUInteger` 参数会以 `NSInteger` 形式暴露（Swift `Int` 桥接结果），OC 实现端的类型不匹配仅触发警告，不影响运行。
+- 原先的 `.h` 桥接头已删除；所有 OC 客户端应统一改为 `#import <TTGTags/TTGTags-Swift.h>`。
+- Swift Package Manager 与 CocoaPods 同时支持；升级后执行 `pod update` 以刷新 Pods 工程索引。
 
 ## Author
 

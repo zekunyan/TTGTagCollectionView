@@ -6,7 +6,7 @@
 //  Copyright (c) 2019 zekunyan. All rights reserved.
 //
 
-#import <TTGTags/TTGTextTagCollectionView.h>
+#import <TTGTags/TTGTags-Swift.h>
 #import "TTGExample1ViewController.h"
 
 @interface TTGExample1ViewController () <TTGTextTagCollectionViewDelegate>
@@ -22,8 +22,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // Remember to set this to NO
-    self.automaticallyAdjustsScrollViewInsets = NO;
+    // Disable auto content inset adjustment
+    _textTagCollectionView1.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    _textTagCollectionView2.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
 
     // Init Tags
     _tags = @[
@@ -182,7 +183,7 @@
 
 #pragma mark - TTGTextTagCollectionViewDelegate
 
-- (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView didTapTag:(TTGTextTag *)tag atIndex:(NSUInteger)index {
+- (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView didTapTag:(TTGTextTag *)tag atIndex:(NSInteger)index {
     _logLabel.text = [NSString stringWithFormat:@"Tap tag: %@, at: %ld, selected: %d", tag.content.getContentAttributedString.string, (long) index, tag.selected];
 }
 

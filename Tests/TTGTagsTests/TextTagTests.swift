@@ -1,0 +1,86 @@
+//
+//  TextTagTests.swift
+//  TTGTagsTests
+//
+
+import XCTest
+@testable import TTGTags
+
+final class TextTagTests: XCTestCase {
+
+    func testUniqueTagId() {
+        let tag1 = TextTag()
+        let tag2 = TextTag()
+        XCTAssertNotEqual(tag1.tagId, tag2.tagId)
+    }
+
+    func testEqualityByTagId() {
+        let tag = TextTag()
+        XCTAssertTrue(tag.isEqual(to: tag))
+        XCTAssertFalse(tag.isEqual(to: TextTag()))
+        XCTAssertFalse(tag.isEqual(to: nil))
+    }
+
+    func testCopyPreservesFieldsButNewId() {
+        let content = TextTagStringContent(text: "hello")
+        let style = TextTagStyle()
+        style.cornerRadius = 8
+        let tag = TextTag(content: content, style: style)
+        tag.selected = true
+        tag.attachment = "foo"
+
+        guard let copied = tag.copy() as? TextTag else {
+            XCTFail("copy should return TextTag")
+            return
+        }
+
+        XCTAssertTrue((copied.content as? TextTagStringContent)?.text == "hello")
+        XCTAssertEqual(copied.style.cornerRadius, 8)
+        XCTAssertTrue(copied.selected)
+        XCTAssertEqual(copied.attachment as? String, "foo")
+    }
+
+    func testSelectedStateChangedCallback() {
+        let tag = TextTag()
+        var captured: Bool?
+        tag.onSelectStateChanged = { selected in
+            captured = selected
+        }
+        tag.selected = true
+        XCTAssertEqual(captured, true)
+        tag.selected = false
+        XCTAssertEqual(captured, false)
+    }
+
+    func testSelectedContentFallbacksToContentCopy() {
+        let content = TextTagStringContent(text: "hi")
+        let style = TextTagStyle()
+        let tag = TextTag(content: content, style: style)
+
+        // 未显式设置 selectedContent，应回退到 content 的拷贝
+        guard let fallback = tag.selectedContent as? TextTagStringContent else {
+            XCTFail("selectedContent fallback should be string content")
+            return
+        }
+        XCTAssertEqual(fallback.text, "hi")
+        // 应为拷贝，不是同一个对象
+        XCTAssertFalse(fallback === content)
+    }
+
+    func testRightfulStyleFollowsSelectedState() {
+        let normal = TextTagStyle()
+        normal.cornerRadius = 2
+        let selected = TextTagStyle()
+        selected.cornerRadius = 10
+
+        let tag = TextTag(
+            content: TextTagStringContent(text: "x"),
+            style: normal,
+            selectedContent: nil,
+            selectedStyle: selected
+        )
+        XCTAssertEqual(tag.rightfulStyle.cornerRadius, 2)
+        tag.selected = true
+        XCTAssertEqual(tag.rightfulStyle.cornerRadius, 10)
+    }
+}
