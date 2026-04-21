@@ -19,20 +19,22 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
-		6B8B32EFC17E5EBDE667B94F /* Pods_TTGTagCollectionView_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F720C119A84D5B2091CA32A2 /* Pods_TTGTagCollectionView_Tests.framework */; };
-		7B07D73D895865CFBDEED958 /* Pods_TTGTagCollectionView_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 844AD402AAC901D5440EC315 /* Pods_TTGTagCollectionView_Example.framework */; };
+		6B8B32EFC17E5EBDE667B94F /* Pods_TTGTagOCExample_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F720C119A84D5B2091CA32A2 /* Pods_TTGTagOCExample_Tests.framework */; };
+		7B07D73D895865CFBDEED958 /* Pods_TTGTagOCExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 844AD402AAC901D5440EC315 /* Pods_TTGTagOCExample.framework */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		BF018B0E1DB3D8F700EF8F4E /* TTGExample5ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF018B021DB3D8F700EF8F4E /* TTGExample5ViewController.m */; };
-		BF018B0F1DB3D8F700EF8F4E /* TTGExample1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF018B041DB3D8F700EF8F4E /* TTGExample1ViewController.m */; };
-		BF018B101DB3D8F700EF8F4E /* TTGExample3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF018B051DB3D8F700EF8F4E /* TTGExample3ViewController.m */; };
-		BF018B111DB3D8F700EF8F4E /* TTGExample2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF018B061DB3D8F700EF8F4E /* TTGExample2ViewController.m */; };
-		BF018B121DB3D8F700EF8F4E /* TTGExample4ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF018B071DB3D8F700EF8F4E /* TTGExample4ViewController.m */; };
-		BF018B131DB3D8F700EF8F4E /* TTGExample4TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BF018B081DB3D8F700EF8F4E /* TTGExample4TableViewCell.m */; };
+		BF018B0E1DB3D8F700EF8F4E /* TTGDemoHorizontalScrollTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF018B021DB3D8F700EF8F4E /* TTGDemoHorizontalScrollTagsViewController.m */; };
+		BF018B0F1DB3D8F700EF8F4E /* TTGDemoBasicTextTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF018B041DB3D8F700EF8F4E /* TTGDemoBasicTextTagsViewController.m */; };
+		BF018B101DB3D8F700EF8F4E /* TTGDemoProgrammaticTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF018B051DB3D8F700EF8F4E /* TTGDemoProgrammaticTagsViewController.m */; };
+		BF018B111DB3D8F700EF8F4E /* TTGDemoCustomSubviewTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF018B061DB3D8F700EF8F4E /* TTGDemoCustomSubviewTagsViewController.m */; };
+		BF018B121DB3D8F700EF8F4E /* TTGDemoTagsInTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF018B071DB3D8F700EF8F4E /* TTGDemoTagsInTableViewController.m */; };
+		BF018B131DB3D8F700EF8F4E /* TTGDemoTagsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BF018B081DB3D8F700EF8F4E /* TTGDemoTagsTableViewCell.m */; };
 		BF018B151DB3D9F600EF8F4E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF018B141DB3D9F600EF8F4E /* Launch Screen.storyboard */; };
-		BF03B0422066A591008D91FA /* TTGExample8ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF03B0412066A591008D91FA /* TTGExample8ViewController.m */; };
-		BF29CA901E673C430048B927 /* TTGExample6ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF29CA8F1E673C430048B927 /* TTGExample6ViewController.m */; };
-		BF73E6AF1E6AEE1300ED50C6 /* TTGExample7ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF73E6AE1E6AEE1300ED50C6 /* TTGExample7ViewController.m */; };
-		BFC1FD6026297C82007F53DB /* TTGExample9ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC1FD5F26297C82007F53DB /* TTGExample9ViewController.m */; };
+		BF03B0422066A591008D91FA /* TTGDemoTagAttachmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF03B0412066A591008D91FA /* TTGDemoTagAttachmentViewController.m */; };
+		BF29CA901E673C430048B927 /* TTGDemoPullRefreshTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF29CA8F1E673C430048B927 /* TTGDemoPullRefreshTagsViewController.m */; };
+		BF73E6AF1E6AEE1300ED50C6 /* TTGDemoPerTagStyleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF73E6AE1E6AEE1300ED50C6 /* TTGDemoPerTagStyleViewController.m */; };
+		BFC1FD6026297C82007F53DB /* TTGDemoAttributedStringTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC1FD5F26297C82007F53DB /* TTGDemoAttributedStringTagsViewController.m */; };
+		D06E00701DB3D8F700EF8F56 /* TTGTagSampleData.m in Sources */ = {isa = PBXBuildFile; fileRef = D06E00301DB3D8F700EF8F52 /* TTGTagSampleData.m */; };
+		D06E00801DB3D8F700EF8F57 /* TTGDemoAttributedTagExamples.m in Sources */ = {isa = PBXBuildFile; fileRef = D06E00401DB3D8F700EF8F53 /* TTGDemoAttributedTagExamples.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,8 +49,8 @@
 
 /* Begin PBXFileReference section */
 		1AFD80F1B77B6CCA84997BE8 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		57FBCEFEFAA13F3996CF84DC /* Pods-TTGTagCollectionView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTGTagCollectionView_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TTGTagCollectionView_Tests/Pods-TTGTagCollectionView_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		6003F58A195388D20070C39A /* TTGTagCollectionView_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TTGTagCollectionView_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		57FBCEFEFAA13F3996CF84DC /* Pods-TTGTagOCExample_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTGTagOCExample_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TTGTagOCExample_Tests/Pods-TTGTagOCExample_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		6003F58A195388D20070C39A /* TTGTagOCExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TTGTagOCExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		6003F591195388D20070C39A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -59,41 +61,45 @@
 		6003F59C195388D20070C39A /* TTGAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTGAppDelegate.h; sourceTree = "<group>"; };
 		6003F59D195388D20070C39A /* TTGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTGAppDelegate.m; sourceTree = "<group>"; };
 		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		6003F5AE195388D20070C39A /* TTGTagCollectionView_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TTGTagCollectionView_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6003F5AE195388D20070C39A /* TTGTagOCExample_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TTGTagOCExample_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6003F5B7195388D20070C39A /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		7D39FA435D29E3F0F5BA649F /* Pods-TTGTagCollectionView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTGTagCollectionView_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TTGTagCollectionView_Tests/Pods-TTGTagCollectionView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		844AD402AAC901D5440EC315 /* Pods_TTGTagCollectionView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TTGTagCollectionView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D39FA435D29E3F0F5BA649F /* Pods-TTGTagOCExample_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTGTagOCExample_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TTGTagOCExample_Tests/Pods-TTGTagOCExample_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		844AD402AAC901D5440EC315 /* Pods_TTGTagOCExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TTGTagOCExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		87DABFE9778E7F9FA5FE7579 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		91C651B0951ED02D10FEF2EC /* TTGTagCollectionView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = TTGTagCollectionView.podspec; path = ../TTGTagCollectionView.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A3BEAD4EC97CF3D658739779 /* Pods-TTGTagCollectionView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTGTagCollectionView_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TTGTagCollectionView_Example/Pods-TTGTagCollectionView_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		B08B7EC3C54CCD3B82025A5E /* Pods-TTGTagCollectionView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTGTagCollectionView_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-TTGTagCollectionView_Example/Pods-TTGTagCollectionView_Example.release.xcconfig"; sourceTree = "<group>"; };
-		BF018B021DB3D8F700EF8F4E /* TTGExample5ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGExample5ViewController.m; sourceTree = "<group>"; };
-		BF018B031DB3D8F700EF8F4E /* TTGExample5ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGExample5ViewController.h; sourceTree = "<group>"; };
-		BF018B041DB3D8F700EF8F4E /* TTGExample1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGExample1ViewController.m; sourceTree = "<group>"; };
-		BF018B051DB3D8F700EF8F4E /* TTGExample3ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGExample3ViewController.m; sourceTree = "<group>"; };
-		BF018B061DB3D8F700EF8F4E /* TTGExample2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGExample2ViewController.m; sourceTree = "<group>"; };
-		BF018B071DB3D8F700EF8F4E /* TTGExample4ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGExample4ViewController.m; sourceTree = "<group>"; };
-		BF018B081DB3D8F700EF8F4E /* TTGExample4TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGExample4TableViewCell.m; sourceTree = "<group>"; };
-		BF018B091DB3D8F700EF8F4E /* TTGExample4TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGExample4TableViewCell.h; sourceTree = "<group>"; };
-		BF018B0A1DB3D8F700EF8F4E /* TTGExample4ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGExample4ViewController.h; sourceTree = "<group>"; };
-		BF018B0B1DB3D8F700EF8F4E /* TTGExample3ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGExample3ViewController.h; sourceTree = "<group>"; };
-		BF018B0C1DB3D8F700EF8F4E /* TTGExample2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGExample2ViewController.h; sourceTree = "<group>"; };
-		BF018B0D1DB3D8F700EF8F4E /* TTGExample1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGExample1ViewController.h; sourceTree = "<group>"; };
+		A3BEAD4EC97CF3D658739779 /* Pods-TTGTagOCExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTGTagOCExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TTGTagOCExample/Pods-TTGTagOCExample.debug.xcconfig"; sourceTree = "<group>"; };
+		B08B7EC3C54CCD3B82025A5E /* Pods-TTGTagOCExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTGTagOCExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-TTGTagOCExample/Pods-TTGTagOCExample.release.xcconfig"; sourceTree = "<group>"; };
+		BF018B021DB3D8F700EF8F4E /* TTGDemoHorizontalScrollTagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Demos/TTGDemoHorizontalScrollTagsViewController.m; sourceTree = "<group>"; };
+		BF018B031DB3D8F700EF8F4E /* TTGDemoHorizontalScrollTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demos/TTGDemoHorizontalScrollTagsViewController.h; sourceTree = "<group>"; };
+		BF018B041DB3D8F700EF8F4E /* TTGDemoBasicTextTagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Demos/TTGDemoBasicTextTagsViewController.m; sourceTree = "<group>"; };
+		BF018B051DB3D8F700EF8F4E /* TTGDemoProgrammaticTagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Demos/TTGDemoProgrammaticTagsViewController.m; sourceTree = "<group>"; };
+		BF018B061DB3D8F700EF8F4E /* TTGDemoCustomSubviewTagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Demos/TTGDemoCustomSubviewTagsViewController.m; sourceTree = "<group>"; };
+		BF018B071DB3D8F700EF8F4E /* TTGDemoTagsInTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Demos/TTGDemoTagsInTableViewController.m; sourceTree = "<group>"; };
+		BF018B081DB3D8F700EF8F4E /* TTGDemoTagsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Demos/TTGDemoTagsTableViewCell.m; sourceTree = "<group>"; };
+		BF018B091DB3D8F700EF8F4E /* TTGDemoTagsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demos/TTGDemoTagsTableViewCell.h; sourceTree = "<group>"; };
+		BF018B0A1DB3D8F700EF8F4E /* TTGDemoTagsInTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demos/TTGDemoTagsInTableViewController.h; sourceTree = "<group>"; };
+		BF018B0B1DB3D8F700EF8F4E /* TTGDemoProgrammaticTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demos/TTGDemoProgrammaticTagsViewController.h; sourceTree = "<group>"; };
+		BF018B0C1DB3D8F700EF8F4E /* TTGDemoCustomSubviewTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demos/TTGDemoCustomSubviewTagsViewController.h; sourceTree = "<group>"; };
+		BF018B0D1DB3D8F700EF8F4E /* TTGDemoBasicTextTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demos/TTGDemoBasicTextTagsViewController.h; sourceTree = "<group>"; };
 		BF018B141DB3D9F600EF8F4E /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		BF03B0402066A591008D91FA /* TTGExample8ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTGExample8ViewController.h; sourceTree = "<group>"; };
-		BF03B0412066A591008D91FA /* TTGExample8ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTGExample8ViewController.m; sourceTree = "<group>"; };
-		BF29CA8E1E673C430048B927 /* TTGExample6ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGExample6ViewController.h; sourceTree = "<group>"; };
-		BF29CA8F1E673C430048B927 /* TTGExample6ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGExample6ViewController.m; sourceTree = "<group>"; };
-		BF73E6AD1E6AEE1300ED50C6 /* TTGExample7ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGExample7ViewController.h; sourceTree = "<group>"; };
-		BF73E6AE1E6AEE1300ED50C6 /* TTGExample7ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGExample7ViewController.m; sourceTree = "<group>"; };
-		BFC1FD5E26297C82007F53DB /* TTGExample9ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTGExample9ViewController.h; sourceTree = "<group>"; };
-		BFC1FD5F26297C82007F53DB /* TTGExample9ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTGExample9ViewController.m; sourceTree = "<group>"; };
-		F720C119A84D5B2091CA32A2 /* Pods_TTGTagCollectionView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TTGTagCollectionView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF03B0402066A591008D91FA /* TTGDemoTagAttachmentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Demos/TTGDemoTagAttachmentViewController.h; sourceTree = "<group>"; };
+		BF03B0412066A591008D91FA /* TTGDemoTagAttachmentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Demos/TTGDemoTagAttachmentViewController.m; sourceTree = "<group>"; };
+		BF29CA8E1E673C430048B927 /* TTGDemoPullRefreshTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demos/TTGDemoPullRefreshTagsViewController.h; sourceTree = "<group>"; };
+		BF29CA8F1E673C430048B927 /* TTGDemoPullRefreshTagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Demos/TTGDemoPullRefreshTagsViewController.m; sourceTree = "<group>"; };
+		BF73E6AD1E6AEE1300ED50C6 /* TTGDemoPerTagStyleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demos/TTGDemoPerTagStyleViewController.h; sourceTree = "<group>"; };
+		BF73E6AE1E6AEE1300ED50C6 /* TTGDemoPerTagStyleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Demos/TTGDemoPerTagStyleViewController.m; sourceTree = "<group>"; };
+		BFC1FD5E26297C82007F53DB /* TTGDemoAttributedStringTagsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Demos/TTGDemoAttributedStringTagsViewController.h; sourceTree = "<group>"; };
+		BFC1FD5F26297C82007F53DB /* TTGDemoAttributedStringTagsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Demos/TTGDemoAttributedStringTagsViewController.m; sourceTree = "<group>"; };
+		D06E00301DB3D8F700EF8F52 /* TTGTagSampleData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Demos/TTGTagSampleData.m; sourceTree = "<group>"; };
+		D06E00401DB3D8F700EF8F53 /* TTGDemoAttributedTagExamples.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Demos/TTGDemoAttributedTagExamples.m; sourceTree = "<group>"; };
+		D06E00501DB3D8F700EF8F54 /* TTGTagSampleData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Demos/TTGTagSampleData.h; sourceTree = "<group>"; };
+		D06E00601DB3D8F700EF8F55 /* TTGDemoAttributedTagExamples.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Demos/TTGDemoAttributedTagExamples.h; sourceTree = "<group>"; };
+		F720C119A84D5B2091CA32A2 /* Pods_TTGTagOCExample_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TTGTagOCExample_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +110,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				7B07D73D895865CFBDEED958 /* Pods_TTGTagCollectionView_Example.framework in Frameworks */,
+				7B07D73D895865CFBDEED958 /* Pods_TTGTagOCExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,7 +121,7 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				6B8B32EFC17E5EBDE667B94F /* Pods_TTGTagCollectionView_Tests.framework in Frameworks */,
+				6B8B32EFC17E5EBDE667B94F /* Pods_TTGTagOCExample_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,8 +143,8 @@
 		6003F58B195388D20070C39A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6003F58A195388D20070C39A /* TTGTagCollectionView_Example.app */,
-				6003F5AE195388D20070C39A /* TTGTagCollectionView_Tests.xctest */,
+				6003F58A195388D20070C39A /* TTGTagOCExample.app */,
+				6003F5AE195388D20070C39A /* TTGTagOCExample_Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -150,8 +156,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				844AD402AAC901D5440EC315 /* Pods_TTGTagCollectionView_Example.framework */,
-				F720C119A84D5B2091CA32A2 /* Pods_TTGTagCollectionView_Tests.framework */,
+				844AD402AAC901D5440EC315 /* Pods_TTGTagOCExample.framework */,
+				F720C119A84D5B2091CA32A2 /* Pods_TTGTagOCExample_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -165,29 +171,33 @@
 				6003F594195388D20070C39A /* Supporting Files */,
 				6003F59C195388D20070C39A /* TTGAppDelegate.h */,
 				6003F59D195388D20070C39A /* TTGAppDelegate.m */,
-				BF018B0D1DB3D8F700EF8F4E /* TTGExample1ViewController.h */,
-				BF018B041DB3D8F700EF8F4E /* TTGExample1ViewController.m */,
-				BF018B0C1DB3D8F700EF8F4E /* TTGExample2ViewController.h */,
-				BF018B061DB3D8F700EF8F4E /* TTGExample2ViewController.m */,
-				BF018B0B1DB3D8F700EF8F4E /* TTGExample3ViewController.h */,
-				BF018B051DB3D8F700EF8F4E /* TTGExample3ViewController.m */,
-				BF018B091DB3D8F700EF8F4E /* TTGExample4TableViewCell.h */,
-				BF018B081DB3D8F700EF8F4E /* TTGExample4TableViewCell.m */,
-				BF018B0A1DB3D8F700EF8F4E /* TTGExample4ViewController.h */,
-				BF018B071DB3D8F700EF8F4E /* TTGExample4ViewController.m */,
-				BF018B031DB3D8F700EF8F4E /* TTGExample5ViewController.h */,
-				BF018B021DB3D8F700EF8F4E /* TTGExample5ViewController.m */,
-				BF29CA8E1E673C430048B927 /* TTGExample6ViewController.h */,
-				BF29CA8F1E673C430048B927 /* TTGExample6ViewController.m */,
-				BF73E6AD1E6AEE1300ED50C6 /* TTGExample7ViewController.h */,
-				BF73E6AE1E6AEE1300ED50C6 /* TTGExample7ViewController.m */,
-				BF03B0402066A591008D91FA /* TTGExample8ViewController.h */,
-				BF03B0412066A591008D91FA /* TTGExample8ViewController.m */,
-				BFC1FD5E26297C82007F53DB /* TTGExample9ViewController.h */,
-				BFC1FD5F26297C82007F53DB /* TTGExample9ViewController.m */,
+				D06E00501DB3D8F700EF8F54 /* TTGTagSampleData.h */,
+				D06E00301DB3D8F700EF8F52 /* TTGTagSampleData.m */,
+				D06E00601DB3D8F700EF8F55 /* TTGDemoAttributedTagExamples.h */,
+				D06E00401DB3D8F700EF8F53 /* TTGDemoAttributedTagExamples.m */,
+				BF018B0D1DB3D8F700EF8F4E /* TTGDemoBasicTextTagsViewController.h */,
+				BF018B041DB3D8F700EF8F4E /* TTGDemoBasicTextTagsViewController.m */,
+				BF018B0C1DB3D8F700EF8F4E /* TTGDemoCustomSubviewTagsViewController.h */,
+				BF018B061DB3D8F700EF8F4E /* TTGDemoCustomSubviewTagsViewController.m */,
+				BF018B0B1DB3D8F700EF8F4E /* TTGDemoProgrammaticTagsViewController.h */,
+				BF018B051DB3D8F700EF8F4E /* TTGDemoProgrammaticTagsViewController.m */,
+				BF018B091DB3D8F700EF8F4E /* TTGDemoTagsTableViewCell.h */,
+				BF018B081DB3D8F700EF8F4E /* TTGDemoTagsTableViewCell.m */,
+				BF018B0A1DB3D8F700EF8F4E /* TTGDemoTagsInTableViewController.h */,
+				BF018B071DB3D8F700EF8F4E /* TTGDemoTagsInTableViewController.m */,
+				BF018B031DB3D8F700EF8F4E /* TTGDemoHorizontalScrollTagsViewController.h */,
+				BF018B021DB3D8F700EF8F4E /* TTGDemoHorizontalScrollTagsViewController.m */,
+				BF29CA8E1E673C430048B927 /* TTGDemoPullRefreshTagsViewController.h */,
+				BF29CA8F1E673C430048B927 /* TTGDemoPullRefreshTagsViewController.m */,
+				BF73E6AD1E6AEE1300ED50C6 /* TTGDemoPerTagStyleViewController.h */,
+				BF73E6AE1E6AEE1300ED50C6 /* TTGDemoPerTagStyleViewController.m */,
+				BF03B0402066A591008D91FA /* TTGDemoTagAttachmentViewController.h */,
+				BF03B0412066A591008D91FA /* TTGDemoTagAttachmentViewController.m */,
+				BFC1FD5E26297C82007F53DB /* TTGDemoAttributedStringTagsViewController.h */,
+				BFC1FD5F26297C82007F53DB /* TTGDemoAttributedStringTagsViewController.m */,
 			);
 			name = "Example for TTGTagCollectionView";
-			path = TTGTagCollectionView;
+			path = TTGTagOCExample;
 			sourceTree = "<group>";
 		};
 		6003F594195388D20070C39A /* Supporting Files */ = {
@@ -233,10 +243,10 @@
 		9D86E571879FBEBCBFFFD8CA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A3BEAD4EC97CF3D658739779 /* Pods-TTGTagCollectionView_Example.debug.xcconfig */,
-				B08B7EC3C54CCD3B82025A5E /* Pods-TTGTagCollectionView_Example.release.xcconfig */,
-				7D39FA435D29E3F0F5BA649F /* Pods-TTGTagCollectionView_Tests.debug.xcconfig */,
-				57FBCEFEFAA13F3996CF84DC /* Pods-TTGTagCollectionView_Tests.release.xcconfig */,
+				A3BEAD4EC97CF3D658739779 /* Pods-TTGTagOCExample.debug.xcconfig */,
+				B08B7EC3C54CCD3B82025A5E /* Pods-TTGTagOCExample.release.xcconfig */,
+				7D39FA435D29E3F0F5BA649F /* Pods-TTGTagOCExample_Tests.debug.xcconfig */,
+				57FBCEFEFAA13F3996CF84DC /* Pods-TTGTagOCExample_Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -244,9 +254,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6003F589195388D20070C39A /* TTGTagCollectionView_Example */ = {
+		6003F589195388D20070C39A /* TTGTagOCExample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "TTGTagCollectionView_Example" */;
+			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "TTGTagOCExample" */;
 			buildPhases = (
 				181694B1CD6ABC50E2CCFC0A /* [CP] Check Pods Manifest.lock */,
 				6003F586195388D20070C39A /* Sources */,
@@ -258,14 +268,14 @@
 			);
 			dependencies = (
 			);
-			name = TTGTagCollectionView_Example;
+			name = TTGTagOCExample;
 			productName = TTGTagCollectionView;
-			productReference = 6003F58A195388D20070C39A /* TTGTagCollectionView_Example.app */;
+			productReference = 6003F58A195388D20070C39A /* TTGTagOCExample.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6003F5AD195388D20070C39A /* TTGTagCollectionView_Tests */ = {
+		6003F5AD195388D20070C39A /* TTGTagOCExample_Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "TTGTagCollectionView_Tests" */;
+			buildConfigurationList = 6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "TTGTagOCExample_Tests" */;
 			buildPhases = (
 				417109D0F4C377F739CF22BF /* [CP] Check Pods Manifest.lock */,
 				6003F5AA195388D20070C39A /* Sources */,
@@ -277,9 +287,9 @@
 			dependencies = (
 				6003F5B4195388D20070C39A /* PBXTargetDependency */,
 			);
-			name = TTGTagCollectionView_Tests;
+			name = TTGTagOCExample_Tests;
 			productName = TTGTagCollectionViewTests;
-			productReference = 6003F5AE195388D20070C39A /* TTGTagCollectionView_Tests.xctest */;
+			productReference = 6003F5AE195388D20070C39A /* TTGTagOCExample_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -293,6 +303,7 @@
 				ORGANIZATIONNAME = zekunyan;
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
+						DevelopmentTeam = 9FBF2PXCKW;
 						ProvisioningStyle = Automatic;
 					};
 					6003F5AD195388D20070C39A = {
@@ -314,8 +325,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6003F589195388D20070C39A /* TTGTagCollectionView_Example */,
-				6003F5AD195388D20070C39A /* TTGTagCollectionView_Tests */,
+				6003F589195388D20070C39A /* TTGTagOCExample */,
+				6003F5AD195388D20070C39A /* TTGTagOCExample_Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -354,7 +365,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TTGTagCollectionView_Example-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-TTGTagOCExample-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -372,7 +383,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TTGTagCollectionView_Tests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-TTGTagOCExample_Tests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -385,7 +396,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TTGTagCollectionView_Example/Pods-TTGTagCollectionView_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-TTGTagOCExample/Pods-TTGTagOCExample-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/SVPullToRefresh/SVPullToRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/TTGTagCollectionView/TTGTags.framework",
@@ -398,7 +409,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TTGTagCollectionView_Example/Pods-TTGTagCollectionView_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TTGTagOCExample/Pods-TTGTagOCExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -409,17 +420,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F59E195388D20070C39A /* TTGAppDelegate.m in Sources */,
-				BFC1FD6026297C82007F53DB /* TTGExample9ViewController.m in Sources */,
-				BF018B0E1DB3D8F700EF8F4E /* TTGExample5ViewController.m in Sources */,
-				BF018B0F1DB3D8F700EF8F4E /* TTGExample1ViewController.m in Sources */,
-				BF018B121DB3D8F700EF8F4E /* TTGExample4ViewController.m in Sources */,
+				D06E00701DB3D8F700EF8F56 /* TTGTagSampleData.m in Sources */,
+				D06E00801DB3D8F700EF8F57 /* TTGDemoAttributedTagExamples.m in Sources */,
+				BFC1FD6026297C82007F53DB /* TTGDemoAttributedStringTagsViewController.m in Sources */,
+				BF018B0E1DB3D8F700EF8F4E /* TTGDemoHorizontalScrollTagsViewController.m in Sources */,
+				BF018B0F1DB3D8F700EF8F4E /* TTGDemoBasicTextTagsViewController.m in Sources */,
+				BF018B121DB3D8F700EF8F4E /* TTGDemoTagsInTableViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
-				BF29CA901E673C430048B927 /* TTGExample6ViewController.m in Sources */,
-				BF018B101DB3D8F700EF8F4E /* TTGExample3ViewController.m in Sources */,
-				BF03B0422066A591008D91FA /* TTGExample8ViewController.m in Sources */,
-				BF018B131DB3D8F700EF8F4E /* TTGExample4TableViewCell.m in Sources */,
-				BF73E6AF1E6AEE1300ED50C6 /* TTGExample7ViewController.m in Sources */,
-				BF018B111DB3D8F700EF8F4E /* TTGExample2ViewController.m in Sources */,
+				BF29CA901E673C430048B927 /* TTGDemoPullRefreshTagsViewController.m in Sources */,
+				BF018B101DB3D8F700EF8F4E /* TTGDemoProgrammaticTagsViewController.m in Sources */,
+				BF03B0422066A591008D91FA /* TTGDemoTagAttachmentViewController.m in Sources */,
+				BF018B131DB3D8F700EF8F4E /* TTGDemoTagsTableViewCell.m in Sources */,
+				BF73E6AF1E6AEE1300ED50C6 /* TTGDemoPerTagStyleViewController.m in Sources */,
+				BF018B111DB3D8F700EF8F4E /* TTGDemoCustomSubviewTagsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,7 +449,7 @@
 /* Begin PBXTargetDependency section */
 		6003F5B4195388D20070C39A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6003F589195388D20070C39A /* TTGTagCollectionView_Example */;
+			target = 6003F589195388D20070C39A /* TTGTagOCExample */;
 			targetProxy = 6003F5B3195388D20070C39A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -562,15 +575,15 @@
 		};
 		6003F5C0195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A3BEAD4EC97CF3D658739779 /* Pods-TTGTagCollectionView_Example.debug.xcconfig */;
+			baseConfigurationReference = A3BEAD4EC97CF3D658739779 /* Pods-TTGTagOCExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 9FBF2PXCKW;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TTGTagCollectionView/TTGTagCollectionView-Prefix.pch";
-				INFOPLIST_FILE = "TTGTagCollectionView/TTGTagCollectionView-Info.plist";
+				GCC_PREFIX_HEADER = "TTGTagOCExample/TTGTagCollectionView-Prefix.pch";
+				INFOPLIST_FILE = "TTGTagOCExample/TTGTagCollectionView-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = me.tutuge.TTGTagCollectionView;
@@ -582,15 +595,15 @@
 		};
 		6003F5C1195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B08B7EC3C54CCD3B82025A5E /* Pods-TTGTagCollectionView_Example.release.xcconfig */;
+			baseConfigurationReference = B08B7EC3C54CCD3B82025A5E /* Pods-TTGTagOCExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 9FBF2PXCKW;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TTGTagCollectionView/TTGTagCollectionView-Prefix.pch";
-				INFOPLIST_FILE = "TTGTagCollectionView/TTGTagCollectionView-Info.plist";
+				GCC_PREFIX_HEADER = "TTGTagOCExample/TTGTagCollectionView-Prefix.pch";
+				INFOPLIST_FILE = "TTGTagOCExample/TTGTagCollectionView-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = me.tutuge.TTGTagCollectionView;
@@ -602,7 +615,7 @@
 		};
 		6003F5C3195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7D39FA435D29E3F0F5BA649F /* Pods-TTGTagCollectionView_Tests.debug.xcconfig */;
+			baseConfigurationReference = 7D39FA435D29E3F0F5BA649F /* Pods-TTGTagOCExample_Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -619,14 +632,14 @@
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TTGTagCollectionView_Example.app/TTGTagCollectionView_Example";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TTGTagOCExample.app/TTGTagOCExample";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
 		};
 		6003F5C4195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 57FBCEFEFAA13F3996CF84DC /* Pods-TTGTagCollectionView_Tests.release.xcconfig */;
+			baseConfigurationReference = 57FBCEFEFAA13F3996CF84DC /* Pods-TTGTagOCExample_Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -639,7 +652,7 @@
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TTGTagCollectionView_Example.app/TTGTagCollectionView_Example";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TTGTagOCExample.app/TTGTagOCExample";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
@@ -656,7 +669,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "TTGTagCollectionView_Example" */ = {
+		6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "TTGTagOCExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6003F5C0195388D20070C39A /* Debug */,
@@ -665,7 +678,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "TTGTagCollectionView_Tests" */ = {
+		6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "TTGTagOCExample_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6003F5C3195388D20070C39A /* Debug */,

@@ -1,498 +1,387 @@
 # TTGTagCollectionView
-✨Learn it by DeepWiki✨: [https://deepwiki.com/zekunyan/TTGTagCollectionView/1-overview](https://deepwiki.com/zekunyan/TTGTagCollectionView/1-overview)
 
-[![CI Status](http://img.shields.io/travis/zekunyan/TTGTagCollectionView.svg?style=flat)](https://travis-ci.org/zekunyan/TTGTagCollectionView)
 [![Version](https://img.shields.io/cocoapods/v/TTGTagCollectionView.svg?style=flat)](http://cocoapods.org/pods/TTGTagCollectionView)
 [![License](https://img.shields.io/cocoapods/l/TTGTagCollectionView.svg?style=flat)](http://cocoapods.org/pods/TTGTagCollectionView)
 [![Platform](https://img.shields.io/cocoapods/p/TTGTagCollectionView.svg?style=flat)](http://cocoapods.org/pods/TTGTagCollectionView)
-[![Apps Using](https://img.shields.io/badge/Apps%20Using-%3E%201,096-blue.svg)](https://github.com/zekunyan/TTGTagCollectionView)
-[![Total Download](https://img.shields.io/badge/Total%20Download-%3E%2068,461-blue.svg)](https://github.com/zekunyan/TTGTagCollectionView)
 
 ![Screenshot](https://github.com/zekunyan/TTGTagCollectionView/raw/master/Resources/screen_shot.png)
 
-![Alignment Type](https://github.com/zekunyan/TTGTagCollectionView/raw/master/Resources/alignment_type.png)
-
-## What
-
-`TTGTagCollectionView` is useful for showing different size tag views in a vertical or horizontal scrollable view. And if you only want to show text tags, you can use `TTGTextTagCollectionView` instead, which has more simple api. At the same time, It is highly customizable that many features of the text tag can be configured, like the tag font size and the background color.
+A flexible tag collection view for iOS — show text tags or fully custom views in a vertically or horizontally scrollable container, with rich layout alignment options and AutoLayout support.
 
 ## Features
 
-* Both rich style text tag and custom view tag supported.
-* Highly customizable, each text tag can be configured.
-* Vertical and horizontal scrollable.
-* Support `NSAttributedString` rich text tag.
-* Support different kinds of alignment types.
-* Support specifying number of lines.
-* Support Autolayout `intrinsicContentSize` to auto determine height based on content size.
-* Support pull to refresh, like `SVPullToRefresh`.
-* Use `preferredMaxLayoutWidth` to set available width like UIlabel.
-* Support `CocoaPods` and `Swift Package Manager`
+- **Two view types**: `TextTagCollectionView` for styled text tags, `TagCollectionView` for any custom `UIView`
+- **6 alignment modes**: left, center, right, fill by space, fill by width, fill by width except last line
+- **Vertical & horizontal** scroll directions with configurable line limits
+- **Per-tag customization**: background color, gradient, corner radius (per-corner), border, shadow, padding, size constraints
+- **Rich text support** via `NSAttributedString`
+- **Selection management**: tap-to-select, selection limit, selected state style
+- **AutoLayout friendly**: `intrinsicContentSize` auto-updates; `preferredMaxLayoutWidth` support
+- **Accessibility**: auto-detect mode or manual `accessibilityLabel / hint / traits`
+- **Swift-first API** with full Objective-C backward compatibility
+- **CocoaPods** and **Swift Package Manager** support
 
-## Demo
+## Screenshots
 
-You can find demos in the `Example->TTGTagCollectionView.xcworkspace` or `ExampleSwift->TTGTagSwiftExample.xcworkspace` project.
-Run `pod update` before try it.
-
-![Example project](https://github.com/zekunyan/TTGTagCollectionView/raw/master/Resources/demo_example.jpeg)
-
-## Code Structure
-
-![Example project](https://github.com/zekunyan/TTGTagCollectionView/raw/master/Resources/code_structure.png)
+![Alignment Types](https://github.com/zekunyan/TTGTagCollectionView/raw/master/Resources/alignment_type.png)
 
 ## Requirements
 
-iOS 16 and later. Swift 5.5+.
-
-> **3.0 Note**: 自 3.0.0 起，整个核心源码已使用 Swift 重写，原有 OC 类名、selector、enum 名称在 @objc 层保持兼容；Swift 侧 API 采用全新命名（去 `TTG` 前缀、使用属性代替 getter、嵌套枚举等）。详见 [3.0 迁移指南](#30-migration-guide)。
+- iOS 16.0+
+- Swift 5.9+
+- Xcode 15+
 
 ## Installation
 
-### CocoaPods for Objective-C
-```ruby
-pod "TTGTagCollectionView"
-```
-
-### CocoaPods for Swift
-```ruby
-use_frameworks!
-pod "TTGTagCollectionView"
-```
-
 ### Swift Package Manager
-Add by `git@github.com:zekunyan/TTGTagCollectionView.git`
+
+In Xcode: **File → Add Package Dependencies**, enter:
+
+```
+https://github.com/zekunyan/TTGTagCollectionView.git
+```
+
+Or add to `Package.swift`:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/zekunyan/TTGTagCollectionView.git", from: "3.0.0")
+]
+```
+
+### CocoaPods
+
+```ruby
+pod 'TTGTagCollectionView'
+```
+
+## Source Structure
+
+```
+Sources/TTGTags/
+├── Model/
+│   ├── TextTag.swift                      # Tag data model (id, content, style, selection)
+│   ├── TextTagContent.swift               # Abstract content base class
+│   ├── TextTagStringContent.swift         # Plain text content
+│   └── TextTagAttributedStringContent.swift  # NSAttributedString content
+├── Style/
+│   └── TextTagStyle.swift                 # Visual style (background, border, shadow, corner, size)
+├── Layout/
+│   └── TagCollectionLayout.swift          # Pure layout calculator (no UIKit side effects)
+└── View/
+    ├── TagCollectionView.swift            # Custom-view tag collection
+    ├── TextTagCollectionView.swift        # Text tag collection
+    └── Internal/
+        ├── TextTagComponentView.swift     # Per-tag rendering view
+        └── TextTagGradientLabel.swift     # CAGradientLayer-backed label
+
+Tests/TTGTagsTests/
+├── TagCollectionLayoutTests.swift
+├── TextTagTests.swift
+└── TextTagContentTests.swift
+```
+
+---
 
 ## Usage
 
-### TTGTextTagCollectionView
+### TextTagCollectionView — text tags
 
-Use `TTGTextTagCollectionView` to show text tags.
-
-#### Basic usage
-
-##### Swift（3.0 新 API）
+#### Quick start (Swift)
 
 ```swift
 import TTGTags
 
-// 创建集合视图
-let tagView = TextTagCollectionView(frame: CGRect(x: 20, y: 100, width: 200, height: 200))
+let tagView = TextTagCollectionView(frame: CGRect(x: 16, y: 100, width: 320, height: 200))
 view.addSubview(tagView)
 
-// 创建 tag
-let content = TextTagStringContent(text: "tutuge")
+// Build a tag
+let content = TextTagStringContent(text: "Swift")
+content.textFont = .boldSystemFont(ofSize: 14)
+content.textColor = .white
+
 let style = TextTagStyle()
+style.backgroundColor = .systemBlue
+style.cornerRadius = 10
+style.extraSpace = CGSize(width: 12, height: 8)
+
+// Selected state (optional)
+let selectedStyle = TextTagStyle()
+selectedStyle.backgroundColor = .systemOrange
+selectedStyle.cornerRadius = 10
+selectedStyle.extraSpace = CGSize(width: 12, height: 8)
+
 let tag = TextTag(content: content, style: style)
+tag.selectedStyle = selectedStyle
 
-// 添加并刷新
 tagView.add(tag: tag)
-tagView.reload()
+tagView.reload()   // always call after mutations
 ```
 
-##### Objective-C
+#### Quick start (Objective-C)
 
-```Objective-C
-// import（3.0 起改用 Swift 生成的 umbrella header）
+```objc
 #import <TTGTags/TTGTags-Swift.h>
-// Create TTGTextTagCollectionView view
-TTGTextTagCollectionView *tagCollectionView = [[TTGTextTagCollectionView alloc] initWithFrame:CGRectMake(20, 20, 200, 200)];
-[self.view addSubview:tagCollectionView];
-// Create TTGTextTag object
-TTGTextTag *textTag = [TTGTextTag tagWithContent:[TTGTextTagStringContent contentWithText:@"Some text"] style:[TTGTextTagStyle new]];
-// Add tag
-[tagCollectionView addTag:textTag];
-// !!! Never forget this !!!
-[tagCollectionView reload];
-```
 
-##### Accessibility
+TTGTextTagCollectionView *tagView = [[TTGTextTagCollectionView alloc] initWithFrame:self.view.bounds];
+[self.view addSubview:tagView];
 
-```Objective-C
-// Auto set accessibilityLabel value
-tag.enableAutoDetectAccessibility = YES;
+TTGTextTagStringContent *content = [TTGTextTagStringContent contentWithText:@"Hello"];
+TTGTextTagStyle *style = [TTGTextTagStyle new];
+style.backgroundColor = UIColor.systemBlueColor;
+style.cornerRadius = 10;
+style.extraSpace = CGSizeMake(12, 8);
 
-// Manual
-tag.isAccessibilityElement = YES;
-tag.accessibilityLabel = text;
-tag.accessibilityIdentifier = [NSString stringWithFormat:@"identifier: %@", text];
-tag.accessibilityHint = [NSString stringWithFormat:@"hint: %@", text];
-tag.accessibilityValue = [NSString stringWithFormat:@"value: %@", text];
+TTGTextTag *tag = [TTGTextTag tagWithContent:content style:style];
+[tagView addTag:tag];
+[tagView reload];
 ```
 
 #### Delegate
 
-Conform the `TTGTextTagCollectionViewDelegate` protocol to get callback when you select the tag or content height changes.
+```swift
+tagView.delegate = self
 
-```Objective-C
-@protocol TTGTextTagCollectionViewDelegate <NSObject>
-@optional
-- (BOOL)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView
-                    canTapTag:(TTGTextTag *)tag
-                      atIndex:(NSUInteger)index;
+// TextTagCollectionViewDelegate
+func textTagCollectionView(_ collectionView: TextTagCollectionView,
+                           canTapTag tag: TextTag, at index: Int) -> Bool { true }
 
-- (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView
-                    didTapTag:(TTGTextTag *)tag
-                      atIndex:(NSUInteger)index;
+func textTagCollectionView(_ collectionView: TextTagCollectionView,
+                           didTapTag tag: TextTag, at index: Int) {
+    print("tapped: \(tag.rightfulContent.contentAttributedString.string), selected: \(tag.selected)")
+}
 
-- (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView
-            updateContentSize:(CGSize)contentSize;
-@end
+func textTagCollectionView(_ collectionView: TextTagCollectionView,
+                           updateContentSize contentSize: CGSize) {
+    // e.g. update a height constraint
+}
 ```
 
-#### Customization
+#### Tag model — TextTag
 
-Each tag can be configured.
+```swift
+let tag = TextTag()
 
-```Objective-C
-@interface TTGTextTag : NSObject <NSCopying>
+// Content & style for normal / selected state
+tag.content         = TextTagStringContent(text: "Label")
+tag.style           = TextTagStyle()
+tag.selectedContent = TextTagStringContent(text: "Selected")   // optional fallback to content copy
+tag.selectedStyle   = TextTagStyle()                           // optional fallback to style copy
 
-/// ID
-@property (nonatomic, assign, readonly) NSUInteger tagId; // Auto increase. The only identifier and main key for a tag
+// Selection
+tag.selected = false
+tag.onSelectStateChanged = { selected in print(selected) }
 
-/// Attachment object. You can use this to bind any object you want to each tag.
-@property (nonatomic, strong) id _Nullable attachment;
+// Attach any object
+tag.attachment = myModel
 
-/// Normal state content and style
-@property (nonatomic, copy) TTGTextTagContent * _Nonnull content;
-@property (nonatomic, copy) TTGTextTagStyle * _Nonnull style;
+// Accessibility
+tag.enableAutoDetectAccessibility = true   // auto sets label + traits from content
+// or manually:
+tag.isAccessibilityElement  = true
+tag.accessibilityLabel      = "My tag"
+tag.accessibilityHint       = "Double tap to select"
+tag.accessibilityTraits     = .button
 
-/// Selected state content and style
-@property (nonatomic, copy) TTGTextTagContent * _Nullable selectedContent;
-@property (nonatomic, copy) TTGTextTagStyle * _Nullable selectedStyle;
-
-/// Selection state
-@property (nonatomic, assign) BOOL selected;
-@property (nonatomic, copy) OnSelectStateChanged _Nullable onSelectStateChanged; // State changed callback
-
-/// Accessibility
-@property (nonatomic, assign) BOOL isAccessibilityElement; // Default = NO
-@property (nonatomic, copy) NSString * _Nullable accessibilityIdentifier; // Default = nil
-@property (nonatomic, copy) NSString * _Nullable accessibilityLabel; // Default = nil
-@property (nonatomic, copy) NSString * _Nullable accessibilityHint; // Default = nil
-@property (nonatomic, copy) NSString * _Nullable accessibilityValue; // Default = nil
-@property (nonatomic, assign) UIAccessibilityTraits accessibilityTraits; // Default = UIAccessibilityTraitNone
-
-/// Auto detect accessibility
-/// When enableAutoDetectAccessibility = YES, the property below will be set automatically
-/// ----------------------------
-/// isAccessibilityElement = YES
-/// accessibilityLabel = (selected ? selectedContent : content).getContentAttributedString.string
-/// accessibilityTraits = selected ? UIAccessibilityTraitSelected : UIAccessibilityTraitButton
-/// ----------------------------
-/// But: accessibilityHint and accessibilityValue still keep your custom value;
-@property (nonatomic, assign) BOOL enableAutoDetectAccessibility; // Default = NO
-
-@end
+// Current active content / style (respects selected state)
+let activeContent = tag.rightfulContent
+let activeStyle   = tag.rightfulStyle
 ```
 
-`TTGTextTagContent` has two sub classes.
+#### Content types
 
-```Objective-C
-// Normal Text
-@interface TTGTextTagStringContent : TTGTextTagContent
-/// Text
-@property (nonatomic, copy) NSString * _Nonnull text;
-/// Text font
-@property (nonatomic, copy) UIFont * _Nonnull textFont;
-/// Text color
-@property (nonatomic, copy) UIColor * _Nonnull textColor;
-@end
+```swift
+// Plain text
+let c1 = TextTagStringContent(text: "Hello")
+c1.textFont  = .systemFont(ofSize: 14)
+c1.textColor = .darkText
 
-// NSAttributedString Text
-@interface TTGTextTagAttributedStringContent : TTGTextTagContent
-/// Attributed text
-@property (nonatomic, copy) NSAttributedString * _Nonnull attributedText;
-@end
+// NSAttributedString
+let attrs: [NSAttributedString.Key: Any] = [
+    .foregroundColor: UIColor.systemRed,
+    .font: UIFont.boldSystemFont(ofSize: 16)
+]
+let c2 = TextTagAttributedStringContent(
+    attributedText: NSAttributedString(string: "Rich", attributes: attrs)
+)
 ```
 
-Config `TTGTextTagStyle` if you want to change tag styles.
+#### Style properties — TextTagStyle
 
-```Objective-C
-@interface TTGTextTagStyle : NSObject <NSCopying>
+```swift
+let style = TextTagStyle()
 
-/// Background color
-@property (nonatomic, copy) UIColor * _Nonnull backgroundColor; // Default is [UIColor lightGrayColor]
+// Background
+style.backgroundColor = .lightGray
 
-/// Text alignment
-@property (nonatomic, assign) NSTextAlignment textAlignment; // Default is NSTextAlignmentCenter
+// Gradient background
+style.enableGradientBackground        = true
+style.gradientBackgroundStartColor    = .systemBlue
+style.gradientBackgroundEndColor      = .systemPurple
+style.gradientBackgroundStartPoint    = CGPoint(x: 0, y: 0.5)
+style.gradientBackgroundEndPoint      = CGPoint(x: 1, y: 0.5)
 
-/// Gradient background color
-@property (nonatomic, assign) BOOL enableGradientBackground; // Default is NO
-@property (nonatomic, copy) UIColor * _Nonnull gradientBackgroundStartColor;
-@property (nonatomic, copy) UIColor * _Nonnull gradientBackgroundEndColor;
-@property (nonatomic, assign) CGPoint gradientBackgroundStartPoint;
-@property (nonatomic, assign) CGPoint gradientBackgroundEndPoint;
+// Corner (all corners by default; set individual flags for per-corner control)
+style.cornerRadius      = 8
+style.cornerTopLeft     = true
+style.cornerTopRight    = true
+style.cornerBottomLeft  = false
+style.cornerBottomRight = false
 
-/// Corner radius
-@property (nonatomic, assign) CGFloat cornerRadius; // Default is 4
-@property (nonatomic, assign) Boolean cornerTopRight;
-@property (nonatomic, assign) Boolean cornerTopLeft;
-@property (nonatomic, assign) Boolean cornerBottomRight;
-@property (nonatomic, assign) Boolean cornerBottomLeft;
+// Border
+style.borderWidth = 1
+style.borderColor = .white
 
-/// Border
-@property (nonatomic, assign) CGFloat borderWidth; // Default is [UIColor whiteColor]
-@property (nonatomic, copy) UIColor * _Nonnull borderColor; // Default is 1
+// Shadow
+style.shadowColor   = .black
+style.shadowOffset  = CGSize(width: 2, height: 2)
+style.shadowRadius  = 2
+style.shadowOpacity = 0.3
 
-/// Shadow.
-@property (nonatomic, copy) UIColor * _Nonnull shadowColor;    // Default is [UIColor blackColor]
-@property (nonatomic, assign) CGSize shadowOffset;   // Default is (2, 2)
-@property (nonatomic, assign) CGFloat shadowRadius;  // Default is 2f
-@property (nonatomic, assign) CGFloat shadowOpacity; // Default is 0.3f
-
-/// Extra space in width and height, will expand each tag's size
-@property (nonatomic, assign) CGSize extraSpace;
-
-/// Max width for a text tag. 0 and below means no max width.
-@property (nonatomic, assign) CGFloat maxWidth;
-/// Min width for a text tag. 0 and below means no min width.
-@property (nonatomic, assign) CGFloat minWidth;
-
-/// Max height for a text tag. 0 and below means no max height.
-@property (nonatomic, assign) CGFloat maxHeight;
-/// Min height for a text tag. 0 and below means no min height.
-@property (nonatomic, assign) CGFloat minHeight;
-
-/// Exact width. 0 and below means no work
-@property (nonatomic, assign) CGFloat exactWidth;
-/// Exact height. 0 and below means no work
-@property (nonatomic, assign) CGFloat exactHeight;
-
-@end
+// Size
+style.extraSpace  = CGSize(width: 8, height: 4)   // padding
+style.minWidth    = 60      // 0 = no limit
+style.maxWidth    = 200
+style.exactWidth  = 0       // 0 = auto
+style.exactHeight = 32
 ```
 
-You can also configure scroll direction, alignment, lines limit, spacing and inset.
+#### Layout configuration
 
-```Objective-C
-// TTGTextTagCollectionView.h
-// Define if the tag can be selected.
-@property (assign, nonatomic) BOOL enableTagSelection;
+```swift
+tagView.scrollDirection  = .vertical     // .vertical (default) or .horizontal
+tagView.alignment        = .left         // see Alignment below
+tagView.numberOfLines    = 0             // 0 = unlimited
+tagView.selectionLimit   = 3             // 0 = unlimited
+tagView.horizontalSpacing = 8
+tagView.verticalSpacing   = 8
+tagView.contentInset      = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
 
-// Tags scroll direction, default is vertical.
-@property (nonatomic, assign) TTGTagCollectionScrollDirection scrollDirection;
+// AutoLayout manual height
+tagView.manualCalculateHeight   = true
+tagView.preferredMaxLayoutWidth = 320
 
-// Tags layout alignment, default is left.
-@property (nonatomic, assign) TTGTagCollectionAlignment alignment;
-
-// Number of lines. 0 means no limit, default is 0 for vertical and 1 for horizontal.
-@property (nonatomic, assign) NSUInteger numberOfLines;
-
-// Tag selection limit, default is 0, means no limit
-@property (nonatomic, assign) NSUInteger selectionLimit;
-
-// Horizontal and vertical space between tags, default is 4.
-@property (assign, nonatomic) CGFloat horizontalSpacing;
-@property (assign, nonatomic) CGFloat verticalSpacing;
-
-// Content inset, default is UIEdgeInsetsMake(2, 2, 2, 2).
-@property (nonatomic, assign) UIEdgeInsets contentInset;
-
-// The true tags content size, readonly
-@property (nonatomic, assign, readonly) CGSize contentSize;
-
-// Manual content height
-// Default = NO, set will update content
-@property (nonatomic, assign) BOOL manualCalculateHeight;
-// Default = 0, set will update content
-@property (nonatomic, assign) CGFloat preferredMaxLayoutWidth;
-
-// Scroll indicator
-@property (nonatomic, assign) BOOL showsHorizontalScrollIndicator;
-@property (nonatomic, assign) BOOL showsVerticalScrollIndicator;
+// Tap callbacks (no delegate needed)
+tagView.onTapBlankArea = { point in print("tapped blank at \(point)") }
+tagView.onTapAllArea   = { point in print("tapped anywhere at \(point)") }
 ```
 
-Alignment types:
+#### Alignment modes
 
-```Objective-C
-typedef NS_ENUM(NSInteger, TTGTagCollectionAlignment) {
-    TTGTagCollectionAlignmentLeft = 0,                           // Default
-    TTGTagCollectionAlignmentCenter,                             // Center
-    TTGTagCollectionAlignmentRight,                              // Right
-    TTGTagCollectionAlignmentFillByExpandingSpace,               // Expand horizontal spacing and fill
-    TTGTagCollectionAlignmentFillByExpandingWidth,               // Expand width and fill
-    TTGTagCollectionAlignmentFillByExpandingWidthExceptLastLine, // Expand width and fill, except last line
-};
+| Swift | Description |
+|---|---|
+| `.left` | Left-aligned (default) |
+| `.center` | Center-aligned |
+| `.right` | Right-aligned |
+| `.fillByExpandingSpace` | Expand spacing between tags to fill each row |
+| `.fillByExpandingWidth` | Expand each tag's width to fill each row |
+| `.fillByExpandingWidthExceptLastLine` | Same as above but skip the last row |
+
+#### Mutating tags
+
+```swift
+// Add
+tagView.add(tag: tag)
+tagView.add(tags: [tag1, tag2])
+
+// Insert
+tagView.insert(tag: tag, at: 0)
+tagView.insert(tags: [tag1, tag2], at: 2)
+
+// Update
+tagView.updateTag(at: 0, selected: true)
+tagView.updateTag(at: 0, with: newTag)
+
+// Remove
+tagView.remove(tag: tag)
+tagView.removeTag(byId: tag.tagId)
+tagView.removeTag(at: 0)
+tagView.removeAllTags()
+
+// Query
+let tag  = tagView.getTag(at: 0)
+let tags = tagView.getTags(in: NSRange(location: 0, length: 3))
+let all      = tagView.allTags()
+let selected = tagView.allSelectedTags()
+let unselected = tagView.allNotSelectedTags()
+
+// Reload (required after any mutation)
+tagView.reload()
 ```
 
-#### Modify tags
+#### Hit-testing
 
-Add tag.
-
-```Objective-C
-// TTGTextTagCollectionView.h
-/// Add
-- (void)addTag:(TTGTextTag *)tag;
-- (void)addTags:(NSArray <TTGTextTag *> *)tags;
+```swift
+let index = tagView.indexOfTag(at: touchPoint)   // NSNotFound if missed
 ```
 
-Insert tag.
+---
 
-```Objective-C
-// TTGTextTagCollectionView.h
-/// Insert
-- (void)insertTag:(TTGTextTag *)tag atIndex:(NSUInteger)index;
-- (void)insertTags:(NSArray <TTGTextTag *> *)tags atIndex:(NSUInteger)index;
-```
+### TagCollectionView — custom views
 
-Update tag.
+Use this when your tags are arbitrary `UIView` subclasses.
 
-```Objective-C
-// TTGTextTagCollectionView.h
-/// Update
-- (void)updateTagAtIndex:(NSUInteger)index selected:(BOOL)selected;
-- (void)updateTagAtIndex:(NSUInteger)index withNewTag:(TTGTextTag *)tag;
-```
+#### DataSource & Delegate
 
-Remove tag.
+```swift
+tagCollectionView.dataSource = self
+tagCollectionView.delegate   = self
 
-```Objective-C
-// TTGTextTagCollectionView.h
-// Remove tag
-- (void)removeTag:(TTGTextTag *)tag;
-- (void)removeTagById:(NSUInteger)tagId;
-- (void)removeTagAtIndex:(NSUInteger)index;
-- (void)removeAllTags;
-```
+// TagCollectionViewDataSource
+func numberOfTags(in tagCollectionView: TagCollectionView) -> Int { items.count }
 
-Get tags.
+func tagCollectionView(_ tagCollectionView: TagCollectionView,
+                       tagViewFor index: Int) -> UIView { myViews[index] }
 
-```Objective-C
-// TTGTextTagCollectionView.h
-/// Get tag
-- (TTGTextTag *)getTagAtIndex:(NSUInteger)index;
-- (NSArray <TTGTextTag *> *)getTagsInRange:(NSRange)range;
+// TagCollectionViewDelegate
+func tagCollectionView(_ tagCollectionView: TagCollectionView,
+                       sizeForTagAt index: Int) -> CGSize { myViews[index].frame.size }
 
-/// Get all
-- (NSArray <TTGTextTag *> *)allTags;
-- (NSArray <TTGTextTag *> *)allSelectedTags;
-- (NSArray <TTGTextTag *> *)allNotSelectedTags;
+func tagCollectionView(_ tagCollectionView: TagCollectionView,
+                       didSelectTag tagView: UIView, at index: Int) {
+    print("selected \(index)")
+}
+
+func tagCollectionView(_ tagCollectionView: TagCollectionView,
+                       updateContentSize contentSize: CGSize) { }
 ```
 
 #### Reload
 
-You can reload tags programmatically.
-
-```Objective-C
-// TTGTextTagCollectionView.h
-- (void)reload;
+```swift
+tagCollectionView.reload()
 ```
 
-#### Index at point
+All layout and spacing properties (`scrollDirection`, `alignment`, `numberOfLines`, `horizontalSpacing`, `verticalSpacing`, `contentInset`, `manualCalculateHeight`, `preferredMaxLayoutWidth`) are identical to `TextTagCollectionView`.
 
-Returns the index of the tag located at the specified point.
+---
 
-```Objective-C
-// TTGTextTagCollectionView.h
-- (NSInteger)indexOfTagAt:(CGPoint)point;
-```
+## Tips
 
-### TTGTagCollectionView
+- Always call `reload()` after adding, removing, or updating tags.
+- When embedding in a `UITableViewCell`, call `tableView.reloadData()` inside `viewDidAppear` if `UITableViewAutomaticDimension` behaves unexpectedly.
+- Use `manualCalculateHeight = true` + `preferredMaxLayoutWidth` when the view's width is not yet determined at layout time (e.g. inside a self-sizing cell).
 
-Use `TTGTagCollectionView` to show custom tag views.
-
-#### DataSource and Delegate
-
-Just like the UITableView, you must conform and implement the required methods of `TTGTagCollectionViewDelegate` and `TTGTagCollectionViewDataSource` to get `TTGTagCollectionView` work.
-
-**DataSource**
-
-```Objective-C
-@protocol TTGTagCollectionViewDataSource <NSObject>
-@required
-- (NSUInteger)numberOfTagsInTagCollectionView:(TTGTagCollectionView *)tagCollectionView;
-
-- (UIView *)tagCollectionView:(TTGTagCollectionView *)tagCollectionView tagViewForIndex:(NSUInteger)index;
-@end
-```
-
-**Delegate**
-
-```Objective-C
-@protocol TTGTagCollectionViewDelegate <NSObject>
-@required
-- (CGSize)tagCollectionView:(TTGTagCollectionView *)tagCollectionView sizeForTagAtIndex:(NSUInteger)index;
-
-@optional
-- (BOOL)tagCollectionView:(TTGTagCollectionView *)tagCollectionView shouldSelectTag:(UIView *)tagView atIndex:(NSUInteger)index;
-
-- (void)tagCollectionView:(TTGTagCollectionView *)tagCollectionView didSelectTag:(UIView *)tagView atIndex:(NSUInteger)index;
-
-- (void)tagCollectionView:(TTGTagCollectionView *)tagCollectionView updateContentSize:(CGSize)contentSize;
-@end
-```
-
-#### Customization
-
-```Objective-C
-// TTGTagCollectionView.h
-// Tags scroll direction, default is vertical.
-@property (nonatomic, assign) TTGTagCollectionScrollDirection scrollDirection;
-
-// Tags layout alignment, default is left.
-@property (nonatomic, assign) TTGTagCollectionAlignment alignment;
-
-// Number of lines. 0 means no limit, default is 0 for vertical and 1 for horizontal.
-@property (nonatomic, assign) NSUInteger numberOfLines;
-
-// Horizontal and vertical space between tags, default is 4.
-@property (nonatomic, assign) CGFloat horizontalSpacing;
-@property (nonatomic, assign) CGFloat verticalSpacing;
-
-// Content inset, default is UIEdgeInsetsMake(2, 2, 2, 2).
-@property (nonatomic, assign) UIEdgeInsets contentInset;
-
-// The true tags content size, readonly
-@property (nonatomic, assign, readonly) CGSize contentSize;
-
-// Manual content height
-// Default = NO, set will update content
-@property (nonatomic, assign) BOOL manualCalculateHeight;
-// Default = 0, set will update content
-@property (nonatomic, assign) CGFloat preferredMaxLayoutWidth;
-
-// Scroll indicator
-@property (nonatomic, assign) BOOL showsHorizontalScrollIndicator;
-@property (nonatomic, assign) BOOL showsVerticalScrollIndicator;
-```
-
-#### Reload
-
-You can reload tags programmatically.
-
-```Objective-C
-// TTGTagCollectionView.h
-- (void)reload;
-```
-
-#### Index at point
-
-Returns the index of the tag located at the specified point.
-
-```Objective-C
-// TTGTagCollectionView.h
-- (NSInteger)indexOfTagAt:(CGPoint)point;
-```
-
-## Fix
-
-`UITableViewAutomaticDimension` may not work when using tagView in tableViewCell. You should reload your tableView in the `viewDidAppear`.
+---
 
 ## 3.0 Migration Guide
 
-3.0.0 将全部核心源码从 Objective-C 迁移到 Swift，按职责重新分组；OC 侧通过 `@objc(TTGXxx)` 别名保持类名、selector、枚举名称不变，但 Swift 侧 API 做了激进重命名。
+Version 3.0 rewrites all core sources in Swift. Objective-C class names, selectors, and enum cases are fully preserved via `@objc(TTGXxx)` aliases — existing OC call sites need only one change: replace the old `.h` imports with the Swift-generated umbrella header.
 
-### 主要变化
+**One-line OC migration:**
 
-- 新目录：`Sources/TTGTags/{Model,Style,Layout,View}/*.swift`
-- OC umbrella 头改为 Swift 自动生成的：`#import <TTGTags/TTGTags-Swift.h>`（替代原先的 `<TTGTags/TTGTagCollectionView.h>` 等）
-- 布局算法抽离为纯计算结构体 `TagCollectionLayout`，配套最小单元测试
-- 修复原 `UIRectCorner` 初值位运算的隐式 bug（Swift 侧改为 `[]` 起始，`insert` 累加）
-- `tagId` 自增改为 `NSLock` 保护的线程安全实现
+```objc
+// Before (2.x)
+#import <TTGTags/TTGTextTagCollectionView.h>
 
-### Swift 端类型映射
+// After (3.0+)
+#import <TTGTags/TTGTags-Swift.h>
+```
 
-| Objective-C | Swift |
-| --- | --- |
+### Swift API mapping
+
+| 2.x / Objective-C | 3.0 Swift |
+|---|---|
 | `TTGTagCollectionView` | `TagCollectionView` |
 | `TTGTextTagCollectionView` | `TextTagCollectionView` |
 | `TTGTextTag` | `TextTag` |
@@ -502,23 +391,28 @@ Returns the index of the tag located at the specified point.
 | `TTGTextTagAttributedStringContent` | `TextTagAttributedStringContent` |
 | `TTGTagCollectionAlignment` | `TagCollectionAlignment` |
 | `TTGTagCollectionScrollDirection` | `TagCollectionScrollDirection` |
-| `TTGTagCollectionViewDataSource` | `TagCollectionViewDataSource` |
-| `TTGTagCollectionViewDelegate` | `TagCollectionViewDelegate` |
-| `TTGTextTagCollectionViewDelegate` | `TextTagCollectionViewDelegate` |
-| `[content getContentAttributedString]` | `content.contentAttributedString` |
 | `[tag getRightfulContent]` | `tag.rightfulContent` |
 | `[tag getRightfulStyle]` | `tag.rightfulStyle` |
+| `[content getContentAttributedString]` | `content.contentAttributedString` |
+| `[tagView addTag:]` | `tagView.add(tag:)` |
+| `[tagView insertTag:atIndex:]` | `tagView.insert(tag:at:)` |
+| `[tagView removeTagAtIndex:]` | `tagView.removeTag(at:)` |
+| `[tagView getTagAtIndex:]` | `tagView.getTag(at:)` |
+| `[tagView updateTagAtIndex:selected:]` | `tagView.updateTag(at:selected:)` |
 
-### Objective-C 兼容性
+### Other changes in 3.0
 
-- 原类名、selector、枚举 case 名称保持完全一致（例如仍可用 `TTGTagCollectionAlignmentLeft`、`tagCollectionView:sizeForTagAtIndex:`）。
-- `NSUInteger` 参数会以 `NSInteger` 形式暴露（Swift `Int` 桥接结果），OC 实现端的类型不匹配仅触发警告，不影响运行。
-- 原先的 `.h` 桥接头已删除；所有 OC 客户端应统一改为 `#import <TTGTags/TTGTags-Swift.h>`。
-- Swift Package Manager 与 CocoaPods 同时支持；升级后执行 `pod update` 以刷新 Pods 工程索引。
+- Minimum deployment target raised from iOS 11 to **iOS 16**
+- `tagId` auto-increment is now thread-safe (`NSLock`)
+- Per-corner `UIRectCorner` bitmask bug fixed
+- Pure layout calculator `TagCollectionLayout` extracted (fully unit-tested)
+- SPM test target added (`Tests/TTGTagsTests`)
+
+---
 
 ## Author
 
-zekunyan, zekunyan@163.com
+zekunyan — zekunyan@163.com
 
 ## License
 

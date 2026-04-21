@@ -11,7 +11,7 @@
         <!--Simple Text Tag-->
         <scene sceneID="a8g-5e-fnx">
             <objects>
-                <viewController title="Simple Text Tag" automaticallyAdjustsScrollViewInsets="NO" id="aJL-vo-W36" customClass="TTGExample1ViewController" sceneMemberID="viewController">
+                <viewController title="Simple Text Tag" automaticallyAdjustsScrollViewInsets="NO" id="aJL-vo-W36" customClass="TTGDemoBasicTextTagsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FdA-i7-Unk"/>
                         <viewControllerLayoutGuide type="bottom" id="oOh-9l-ihZ"/>
@@ -66,7 +66,7 @@
         <!--Custom Tag View-->
         <scene sceneID="Iyd-U8-kYb">
             <objects>
-                <viewController title="Custom Tag View" automaticallyAdjustsScrollViewInsets="NO" id="9Ao-sJ-Q2s" customClass="TTGExample2ViewController" sceneMemberID="viewController">
+                <viewController title="Custom Tag View" automaticallyAdjustsScrollViewInsets="NO" id="9Ao-sJ-Q2s" customClass="TTGDemoCustomSubviewTagsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tdD-rv-c2a"/>
                         <viewControllerLayoutGuide type="bottom" id="uXm-tO-SBw"/>
@@ -114,7 +114,7 @@
         <!--Support Pull To Refresh-->
         <scene sceneID="jvi-f4-CKv">
             <objects>
-                <viewController title="Support Pull To Refresh" automaticallyAdjustsScrollViewInsets="NO" id="qVn-MC-e0u" customClass="TTGExample6ViewController" sceneMemberID="viewController">
+                <viewController title="Support Pull To Refresh" automaticallyAdjustsScrollViewInsets="NO" id="qVn-MC-e0u" customClass="TTGDemoPullRefreshTagsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="g3p-sy-Pdg"/>
                         <viewControllerLayoutGuide type="bottom" id="f96-Ac-Izh"/>
@@ -147,7 +147,7 @@
         <!--Each tag can be different-->
         <scene sceneID="4vM-AW-Qt3">
             <objects>
-                <viewController title="Each tag can be different" automaticallyAdjustsScrollViewInsets="NO" id="ZwH-Mu-cyv" customClass="TTGExample7ViewController" sceneMemberID="viewController">
+                <viewController title="Each tag can be different" automaticallyAdjustsScrollViewInsets="NO" id="ZwH-Mu-cyv" customClass="TTGDemoPerTagStyleViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NXh-Ab-DDh"/>
                         <viewControllerLayoutGuide type="bottom" id="J1U-PO-XPJ"/>
@@ -198,14 +198,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="1. TTGTextTagCollectionView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9iU-zb-JZc">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="1. Basic text tags" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9iU-zb-JZc">
                                                     <rect key="frame" x="16" y="10" width="219.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Powerful text tag flow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ecJ-Pe-JaP">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="TTGDemoBasicTextTagsViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ecJ-Pe-JaP">
                                                     <rect key="frame" x="16" y="33.5" width="123.5" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -225,14 +225,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="2. TTGTagCollectionView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ujO-Ai-P9g">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="2. Custom UIView tags" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ujO-Ai-P9g">
                                                     <rect key="frame" x="16" y="10" width="190.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Custom tag view flow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9Ma-xj-Bsf">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="TTGDemoCustomSubviewTagsViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9Ma-xj-Bsf">
                                                     <rect key="frame" x="16" y="33.5" width="121.5" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -252,14 +252,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="3. Use Autolayout to auto fix height" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PGv-GL-p6Y">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="3. Programmatic layout &amp; auto height" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PGv-GL-p6Y">
                                                     <rect key="frame" x="16" y="10" width="266.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Support Autolayout intrinsicContentSize" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mjV-lf-1ek">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="TTGDemoProgrammaticTagsViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mjV-lf-1ek">
                                                     <rect key="frame" x="16" y="33.5" width="226.5" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -279,14 +279,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="4. Used in UITableViewCell" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lLN-kz-6dL">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="4. Tags in table view cells" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lLN-kz-6dL">
                                                     <rect key="frame" x="16" y="10" width="202.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Easily used in UITableView &amp; StoryBoard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bcx-LS-VnG">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="TTGDemoTagsInTableViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bcx-LS-VnG">
                                                     <rect key="frame" x="16" y="33.5" width="228" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -306,14 +306,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="5. Horizontal scroll" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="91Q-wd-uRn">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="5. Horizontal scroll &amp; line limit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="91Q-wd-uRn">
                                                     <rect key="frame" x="16" y="10" width="141.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Support horizontal tag flow and lines limit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xkj-HN-z3O">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="TTGDemoHorizontalScrollTagsViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xkj-HN-z3O">
                                                     <rect key="frame" x="16" y="33.5" width="235" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -333,14 +333,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="6. Add pull to refresh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e3D-Gc-MuO">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="6. Pull to refresh &amp; infinite scroll" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e3D-Gc-MuO">
                                                     <rect key="frame" x="16" y="10" width="159" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Can use pull-to-refresh control to refresh the tags" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gob-wg-gXS">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="TTGDemoPullRefreshTagsViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gob-wg-gXS">
                                                     <rect key="frame" x="16" y="33.5" width="283.5" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -360,14 +360,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="7. Each text tag's style can be different" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qBu-x4-hZx">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="7. Per-tag styles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qBu-x4-hZx">
                                                     <rect key="frame" x="16" y="10" width="294" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="You can config each text tag separately" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zf7-fh-hC5">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="TTGDemoPerTagStyleViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zf7-fh-hC5">
                                                     <rect key="frame" x="16" y="33.5" width="223.5" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -387,14 +387,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="8. Each tag can bind it's own data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kmE-tW-f16">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="8. Tag attachment (data binding)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kmE-tW-f16">
                                                     <rect key="frame" x="16" y="10" width="255.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="You can bind any data to any tag you wont" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xft-Xc-KY6">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="TTGDemoTagAttachmentViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xft-Xc-KY6">
                                                     <rect key="frame" x="16" y="33.5" width="239" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -414,14 +414,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="9. Use NSAttributedString in tags" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ETa-4D-EX9">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="9. NSAttributedString (rich text)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ETa-4D-EX9">
                                                     <rect key="frame" x="16" y="10" width="252.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Make rich text tag easily" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IPe-SK-L1H">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="TTGDemoAttributedStringTagsViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IPe-SK-L1H">
                                                     <rect key="frame" x="16" y="33.5" width="137.5" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -442,7 +442,7 @@
                             <outlet property="delegate" destination="q4g-wV-ZSH" id="Zne-pM-pzE"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="TTGTag " id="VaC-Zc-Y4o"/>
+                    <navigationItem key="navigationItem" title="Demos" id="VaC-Zc-Y4o"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tYa-eb-9Xq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -451,7 +451,7 @@
         <!--Auto Height-->
         <scene sceneID="X6d-Eg-A4D">
             <objects>
-                <viewController title="Auto Height" id="SYg-bd-7pS" customClass="TTGExample3ViewController" sceneMemberID="viewController">
+                <viewController title="Auto Height" id="SYg-bd-7pS" customClass="TTGDemoProgrammaticTagsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dKK-He-jyi"/>
                         <viewControllerLayoutGuide type="bottom" id="5dX-Gv-7Dk"/>
@@ -487,7 +487,7 @@ to auto fix height</string>
         <!--Horizontal scroll-->
         <scene sceneID="xac-1Y-Hn4">
             <objects>
-                <viewController title="Horizontal scroll" id="Yse-y4-SMJ" customClass="TTGExample5ViewController" sceneMemberID="viewController">
+                <viewController title="Horizontal scroll" id="Yse-y4-SMJ" customClass="TTGDemoHorizontalScrollTagsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ngh-1z-u64"/>
                         <viewControllerLayoutGuide type="bottom" id="Bgl-h5-Qaw"/>
@@ -571,7 +571,7 @@ to auto fix height</string>
         <!--Bind data to tag-->
         <scene sceneID="G11-RK-XYr">
             <objects>
-                <viewController title="Bind data to tag" id="RGR-Vn-BTJ" customClass="TTGExample8ViewController" sceneMemberID="viewController">
+                <viewController title="Bind data to tag" id="RGR-Vn-BTJ" customClass="TTGDemoTagAttachmentViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pyU-IH-tzq"/>
                         <viewControllerLayoutGuide type="bottom" id="eeA-bR-lux"/>
@@ -589,7 +589,7 @@ to auto fix height</string>
         <!--Used in UITableViewCell-->
         <scene sceneID="02n-e3-BRE">
             <objects>
-                <tableViewController title="Used in UITableViewCell" id="JqT-qC-OHQ" customClass="TTGExample4ViewController" sceneMemberID="viewController">
+                <tableViewController title="Used in UITableViewCell" id="JqT-qC-OHQ" customClass="TTGDemoTagsInTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="JNu-yG-Xfh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -597,7 +597,7 @@ to auto fix height</string>
                         <color key="separatorColor" red="0.79607844350000001" green="0.79607844350000001" blue="0.79607844350000001" alpha="1" colorSpace="calibratedRGB"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TTGExample4TableViewCell" rowHeight="120" id="wsw-fP-pAT" customClass="TTGExample4TableViewCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TTGDemoTagsTableViewCell" rowHeight="120" id="wsw-fP-pAT" customClass="TTGDemoTagsTableViewCell">
                                 <rect key="frame" x="0.0" y="28" width="375" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wsw-fP-pAT" id="HQa-Bp-uox">
@@ -666,7 +666,7 @@ to auto fix height</string>
         <!--Use NSAttributedString in tags-->
         <scene sceneID="JHe-WQ-O5e">
             <objects>
-                <viewController title="Use NSAttributedString in tags" id="4LY-WR-TAQ" customClass="TTGExample9ViewController" sceneMemberID="viewController">
+                <viewController title="Use NSAttributedString in tags" id="4LY-WR-TAQ" customClass="TTGDemoAttributedStringTagsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="d90-9X-Y0b"/>
                         <viewControllerLayoutGuide type="bottom" id="gI2-Xo-ZLj"/>
