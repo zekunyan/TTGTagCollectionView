@@ -2,7 +2,7 @@
 //  HorizontalScrollTagsViewController.swift
 //  TTGTagSwiftExample
 //
-//  Demo: 水平滚动和 numberOfLines 行数限制
+//  Demo: Horizontal scroll and numberOfLines line limit
 
 import UIKit
 import TTGTags

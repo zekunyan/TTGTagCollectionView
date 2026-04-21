@@ -8,7 +8,7 @@
 
 import UIKit
 
-/// 文本标签内部视图单元：承载一个 `TextTag` 的内容与样式。
+/// Internal view component for a text tag: hosts the content and style of a single `TextTag`.
 final class TextTagComponentView: UIView {
 
     var config: TextTag?
@@ -53,7 +53,7 @@ final class TextTagComponentView: UIView {
         return label.intrinsicContentSize
     }
 
-    // MARK: - 配置应用
+    // MARK: - Apply Configuration
 
     func updateContent() {
         guard let config = config else { return }
@@ -123,12 +123,13 @@ final class TextTagComponentView: UIView {
         accessibilityTraits = config.accessibilityTraits
     }
 
-    // MARK: - 路径与装饰
+    // MARK: - Path & Decoration
 
-    /// 生成当前圆角配置对应的路径。
+    /// Generates the bezier path for the current corner radius configuration.
     ///
-    /// 原 OC 实现用 `UIRectCorner = -1` 起始再按位或存在逻辑隐患（初值等价 allCorners），
-    /// 迁移时改为空集起始、按需 insert，语义更清晰。
+    /// The original OC implementation used `UIRectCorner = -1` as the initial value
+    /// then applied bitwise OR, which had a logic pitfall (initial value equals allCorners).
+    /// Migrated to start with an empty set and insert as needed for clearer semantics.
     private func makePath() -> UIBezierPath {
         guard let style = config?.getRightfulStyle() else {
             return UIBezierPath(rect: bounds)
@@ -140,7 +141,7 @@ final class TextTagComponentView: UIView {
         if style.cornerBottomLeft { corners.insert(.bottomLeft) }
         if style.cornerBottomRight { corners.insert(.bottomRight) }
 
-        // 与原实现保持兼容：未显式设置任何角时，视作四角同时圆角。
+        // Backward compatible: when no corners are explicitly set, treat as all corners rounded.
         if corners.isEmpty {
             corners = .allCorners
         }
@@ -189,7 +190,7 @@ final class TextTagComponentView: UIView {
         layer.rasterizationScale = UIScreen.main.scale
     }
 
-    // MARK: - 相等性
+    // MARK: - Equality
 
     override func isEqual(_ object: Any?) -> Bool {
         guard let other = object as? TextTagComponentView else { return false }

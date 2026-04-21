@@ -8,15 +8,15 @@
 
 import UIKit
 
-/// 普通文本内容：自定义字体、颜色。
+/// Plain text content with custom font and color.
 @objc(TTGTextTagStringContent)
 public final class TextTagStringContent: TextTagContent {
 
-    /// 文本内容，默认空串。
+    /// Text content. Defaults to an empty string.
     @objc public var text: String = ""
-    /// 文本字体，默认系统 14 号字。
+    /// Text font. Defaults to system font size 14.
     @objc public var textFont: UIFont = .systemFont(ofSize: 14)
-    /// 文本颜色，默认黑色。
+    /// Text color. Defaults to black.
     @objc public var textColor: UIColor = .black
 
     public override init() {

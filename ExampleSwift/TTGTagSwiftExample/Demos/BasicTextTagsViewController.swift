@@ -2,7 +2,7 @@
 //  BasicTextTagsViewController.swift
 //  TTGTagSwiftExample
 //
-//  Demo: TextTagCollectionView 基础用法（两列、样式、选中、delegate）
+//  Demo: TextTagCollectionView basics (two columns, styles, selection, delegate)
 
 import UIKit
 import TTGTags

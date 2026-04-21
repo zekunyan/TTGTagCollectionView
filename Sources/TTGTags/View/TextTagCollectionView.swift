@@ -8,9 +8,9 @@
 
 import UIKit
 
-// MARK: - 代理协议
+// MARK: - Delegate Protocol
 
-/// 文本标签集合视图代理。
+/// Delegate for the text tag collection view.
 @objc(TTGTextTagCollectionViewDelegate)
 public protocol TextTagCollectionViewDelegate: AnyObject {
 
@@ -24,48 +24,48 @@ public protocol TextTagCollectionViewDelegate: AnyObject {
     optional func textTagCollectionView(_ collectionView: TextTagCollectionView, updateContentSize contentSize: CGSize)
 }
 
-// MARK: - 主视图
+// MARK: - Main View
 
-/// 文本标签集合视图。对 `TagCollectionView` 的封装，便于直接传入 `TextTag` 模型进行展示。
+/// Text tag collection view. A wrapper around `TagCollectionView` for displaying `TextTag` models directly.
 @objc(TTGTextTagCollectionView)
 public final class TextTagCollectionView: UIView {
 
-    // MARK: 公共属性
+    // MARK: Public Properties
 
     @objc public weak var delegate: TextTagCollectionViewDelegate?
 
-    /// 内置滚动视图。
+    /// Built-in scroll view.
     @objc public var scrollView: UIScrollView {
         return tagCollectionView.scrollView
     }
 
-    /// 是否允许选中。默认 `true`。
+    /// Whether tag selection is enabled. Defaults to `true`.
     @objc public var enableTagSelection: Bool = true
 
-    /// 滚动方向。
+    /// Scroll direction.
     @objc public var scrollDirection: TagCollectionScrollDirection {
         get { tagCollectionView.scrollDirection }
         set { tagCollectionView.scrollDirection = newValue }
     }
 
-    /// 对齐方式。
+    /// Alignment mode.
     @objc public var alignment: TagCollectionAlignment {
         get { tagCollectionView.alignment }
         set { tagCollectionView.alignment = newValue }
     }
 
-    /// 行数限制。
+    /// Maximum number of lines.
     @objc public var numberOfLines: Int {
         get { tagCollectionView.numberOfLines }
         set { tagCollectionView.numberOfLines = newValue }
     }
 
-    /// 实际行数。
+    /// Actual number of lines rendered.
     @objc public var actualNumberOfLines: Int {
         return tagCollectionView.actualNumberOfLines
     }
 
-    /// 选中上限。0 表示无限制。
+    /// Maximum number of selected tags. 0 means unlimited.
     @objc public var selectionLimit: Int = 0
 
     @objc public var horizontalSpacing: CGFloat {
@@ -117,7 +117,7 @@ public final class TextTagCollectionView: UIView {
         set { tagCollectionView.onTapAllArea = newValue }
     }
 
-    // MARK: 私有属性
+    // MARK: Private Properties
 
     private var tagLabels: [TextTagComponentView] = []
     private var tagCollectionView: TagCollectionView!
@@ -164,7 +164,7 @@ public final class TextTagCollectionView: UIView {
         return contentSize
     }
 
-    // MARK: - 公共 API
+    // MARK: - Public API
 
     @objc public func reload() {
         updateAllLabelStyleAndFrame()
@@ -243,17 +243,17 @@ public final class TextTagCollectionView: UIView {
         return tagLabels[range.location..<end].compactMap { $0.config }
     }
 
-    /// 所有 tag。
+    /// All tags.
     @objc public func allTags() -> [TextTag] {
         return tagLabels.compactMap { $0.config }
     }
 
-    /// 所有已选中的 tag。
+    /// All selected tags.
     @objc public func allSelectedTags() -> [TextTag] {
         return tagLabels.compactMap { $0.config }.filter { $0.selected }
     }
 
-    /// 所有未选中的 tag。
+    /// All unselected tags.
     @objc public func allNotSelectedTags() -> [TextTag] {
         return tagLabels.compactMap { $0.config }.filter { !$0.selected }
     }
@@ -264,7 +264,7 @@ public final class TextTagCollectionView: UIView {
         return tagCollectionView.indexOfTag(at: converted)
     }
 
-    // MARK: - 私有
+    // MARK: - Private
 
     private func updateAllLabelStyleAndFrame() {
         tagLabels.forEach(updateStyleAndFrame(for:))

@@ -8,9 +8,9 @@
 
 import UIKit
 
-/// 标签内容基类。请使用子类 `TextTagStringContent` 或 `TextTagAttributedStringContent`。
+/// Base class for tag content. Use subclass `TextTagStringContent` or `TextTagAttributedStringContent`.
 ///
-/// 该类保留 `NSObject` 基类与 `NSCopying` 协议，以便 Objective-C 侧继续使用拷贝语义。
+/// Retains `NSObject` base class and `NSCopying` protocol for Objective-C copy semantics.
 @objc(TTGTextTagContent)
 open class TextTagContent: NSObject, NSCopying {
 
@@ -18,14 +18,14 @@ open class TextTagContent: NSObject, NSCopying {
         super.init()
     }
 
-    /// 子类必须重写以返回用于渲染的富文本内容。
+    /// Subclasses must override to return the attributed string for rendering.
     @objc(getContentAttributedString)
     open func getContentAttributedString() -> NSAttributedString {
         assertionFailure("Do not use TextTagContent directly, use a subclass instead.")
         return NSAttributedString()
     }
 
-    /// Swift 风格访问入口，等价于 `getContentAttributedString()`。
+    /// Swift-style access, equivalent to `getContentAttributedString()`.
     public var contentAttributedString: NSAttributedString {
         getContentAttributedString()
     }

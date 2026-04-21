@@ -2,7 +2,7 @@
 //  TagsTableViewCell.swift
 //  TTGTagSwiftExample
 //
-//  标签嵌入 UITableViewCell，支持自适应行高
+//  Tags embedded in UITableViewCell with self-sizing row height
 
 import UIKit
 import TTGTags

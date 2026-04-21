@@ -2,7 +2,7 @@
 //  PerTagStyleViewController.swift
 //  TTGTagSwiftExample
 //
-//  Demo: 每个标签独立样式、selectedStyle 和 attachment
+//  Demo: Per-tag independent style, selectedStyle and attachment
 
 import UIKit
 import TTGTags

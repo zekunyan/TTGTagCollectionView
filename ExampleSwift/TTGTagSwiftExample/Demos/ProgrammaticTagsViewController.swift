@@ -2,7 +2,7 @@
 //  ProgrammaticTagsViewController.swift
 //  TTGTagSwiftExample
 //
-//  Demo: 纯代码创建 TextTagCollectionView + Auto Layout（intrinsic height）
+//  Demo: Programmatic TextTagCollectionView + Auto Layout (intrinsic height)
 
 import UIKit
 import TTGTags

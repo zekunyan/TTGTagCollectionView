@@ -8,21 +8,22 @@
 
 import UIKit
 
-/// 标签布局纯计算器。
+/// Pure layout calculator for tags.
 ///
-/// 将原 `TTGTagCollectionView` 中的垂直/水平布局与对齐逻辑抽离为无副作用的计算过程，
-/// 方便单元测试。视图层仅负责将计算结果应用到 tag 视图的 frame 上。
+/// Extracts the vertical/horizontal layout and alignment logic from the original
+/// `TTGTagCollectionView` into a side-effect-free computation, making it easy to
+/// unit test. The view layer only applies the computed results to tag view frames.
 struct TagCollectionLayout {
 
-    /// 单个 tag 的布局结果。
+    /// Layout result for a single tag.
     struct TagFrame {
         let index: Int
         let frame: CGRect
-        /// 因超出行数限制被隐藏。
+        /// Hidden because it exceeds the line count limit.
         let hidden: Bool
     }
 
-    /// 布局输入。
+    /// Layout input parameters.
     struct Input {
         let tagSizes: [CGSize]
         let scrollDirection: TagCollectionScrollDirection
@@ -31,11 +32,11 @@ struct TagCollectionLayout {
         let horizontalSpacing: CGFloat
         let verticalSpacing: CGFloat
         let contentInset: UIEdgeInsets
-        /// 容器可用总宽度（垂直滚动时用来换行计算）。
+        /// Available container width (used for line-wrapping in vertical scroll mode).
         let containerWidth: CGFloat
     }
 
-    /// 布局结果。
+    /// Layout output.
     struct Output {
         let tagFrames: [TagFrame]
         let contentSize: CGSize
@@ -51,7 +52,7 @@ struct TagCollectionLayout {
         }
     }
 
-    // MARK: - 垂直滚动
+    // MARK: - Vertical Scroll
 
     private static func calculateVertical(_ input: Input) -> Output {
         let count = input.tagSizes.count
@@ -65,12 +66,12 @@ struct TagCollectionLayout {
         var currentLineX: CGFloat = 0
         var currentLineMaxHeight: CGFloat = 0
 
-        // 第一遍：划分行
+        // First pass: partition tags into lines
         for i in 0..<count {
             let tagSize = input.tagSizes[i]
 
             if currentLineX + tagSize.width > maxLineWidth && !currentIndices.isEmpty {
-                // 换行
+                // Wrap to next line
                 lineTagIndices.append(currentIndices)
                 lineWidths.append(currentLineX - input.horizontalSpacing)
                 lineMaxHeights.append(currentLineMaxHeight)
@@ -85,7 +86,7 @@ struct TagCollectionLayout {
             currentIndices.append(i)
         }
 
-        // 末行
+        // Last line
         if !currentIndices.isEmpty {
             lineTagIndices.append(currentIndices)
             lineWidths.append(currentLineX - input.horizontalSpacing)
@@ -94,7 +95,7 @@ struct TagCollectionLayout {
 
         let actualLines = lineTagIndices.count
 
-        // 行数限制：超过 numberOfLines 的行整体被截断（对应 tag hidden）
+        // Line limit: lines beyond numberOfLines are truncated (tags marked hidden)
         var visibleLineCount = actualLines
         if input.numberOfLines > 0 {
             visibleLineCount = min(actualLines, input.numberOfLines)
@@ -130,7 +131,7 @@ struct TagCollectionLayout {
         )
     }
 
-    // MARK: - 水平滚动
+    // MARK: - Horizontal Scroll
 
     private static func calculateHorizontal(_ input: Input) -> Output {
         let count = input.tagSizes.count
@@ -171,7 +172,7 @@ struct TagCollectionLayout {
         )
     }
 
-    // MARK: - 公共布局：按行放置 tags 并处理对齐
+    // MARK: - Common Layout: place tags line by line with alignment
 
     private static func layoutLines(
         maxLineWidth: CGFloat,
@@ -216,7 +217,7 @@ struct TagCollectionLayout {
                     currentLineAdditionWidth = (maxLineWidth - currentLineWidth) / CGFloat(currentLineTagsCount)
                 }
                 currentLineWidth = maxLineWidth
-                // 最后一行不扩展
+                // Do not expand the last line
                 if input.alignment == .fillByExpandingWidthExceptLastLine
                     && lineIndex == lineCount - 1
                     && lineCount != 1 {

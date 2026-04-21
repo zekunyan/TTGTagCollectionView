@@ -8,10 +8,10 @@
 
 import UIKit
 
-/// 选中状态变化回调。
+/// Callback for selection state changes.
 public typealias OnSelectStateChanged = (_ selected: Bool) -> Void
 
-/// 线程安全的 tagId 自增器。
+/// Thread-safe auto-incrementing tagId provider.
 enum TagIDProvider {
     private static let lock = NSLock()
     private static var current: Int = 0
@@ -25,23 +25,24 @@ enum TagIDProvider {
     }
 }
 
-/// 文本标签数据模型。
+/// Text tag data model.
 ///
-/// 通过 `tagId` 作为唯一标识参与相等性比较；该 id 在 `init` 和 `copy` 时自动分配。
+/// Uses `tagId` as the unique identifier for equality comparison; the id is
+/// automatically assigned during `init` and `copy`.
 @objc(TTGTextTag)
 public final class TextTag: NSObject, NSCopying {
 
-    /// 唯一标识，递增分配。
+    /// Unique identifier, auto-incremented.
     @objc public private(set) var tagId: Int
 
-    /// 业务自定义挂载对象。
+    /// Custom attachment object for business use.
     @objc public var attachment: Any?
 
-    /// 普通态内容与样式。
+    /// Normal state content and style.
     @objc public var content: TextTagContent
     @objc public var style: TextTagStyle
 
-    /// 选中态内容（未设置时回退到普通态内容的拷贝）。
+    /// Selected state content (falls back to a copy of normal content if not set).
     @objc public var selectedContent: TextTagContent {
         get {
             if let existing = _selectedContent { return existing }
@@ -53,7 +54,7 @@ public final class TextTag: NSObject, NSCopying {
     }
     private var _selectedContent: TextTagContent?
 
-    /// 选中态样式（未设置时回退到普通态样式的拷贝）。
+    /// Selected state style (falls back to a copy of normal style if not set).
     @objc public var selectedStyle: TextTagStyle {
         get {
             if let existing = _selectedStyle { return existing }
@@ -65,15 +66,15 @@ public final class TextTag: NSObject, NSCopying {
     }
     private var _selectedStyle: TextTagStyle?
 
-    /// 选中态。变更时触发回调。
+    /// Selection state. Triggers callback on change.
     @objc public var selected: Bool = false {
         didSet { onSelectStateChanged?(selected) }
     }
 
-    /// 选中态变化回调。
+    /// Selection state change callback.
     @objc public var onSelectStateChanged: OnSelectStateChanged?
 
-    // MARK: - 可访问性
+    // MARK: - Accessibility
 
     @objc public var enableAutoDetectAccessibility: Bool = false
 
@@ -119,7 +120,7 @@ public final class TextTag: NSObject, NSCopying {
     }
     private var _accessibilityTraits: UIAccessibilityTraits = []
 
-    // MARK: - 初始化
+    // MARK: - Initialization
 
     @objc public override init() {
         self.tagId = TagIDProvider.next()
@@ -169,25 +170,25 @@ public final class TextTag: NSObject, NSCopying {
         )
     }
 
-    // MARK: - 状态访问
+    // MARK: - State Access
 
-    /// 当前激活态对应的 content。
+    /// Content for the current active state.
     @objc(getRightfulContent)
     public func getRightfulContent() -> TextTagContent {
         return selected ? selectedContent : content
     }
 
-    /// 当前激活态对应的 style。
+    /// Style for the current active state.
     @objc(getRightfulStyle)
     public func getRightfulStyle() -> TextTagStyle {
         return selected ? selectedStyle : style
     }
 
-    /// Swift 风格访问。
+    /// Swift-style property access.
     public var rightfulContent: TextTagContent { getRightfulContent() }
     public var rightfulStyle: TextTagStyle { getRightfulStyle() }
 
-    // MARK: - 相等 / 哈希
+    // MARK: - Equality / Hash
 
     public override func isEqual(_ object: Any?) -> Bool {
         guard let other = object as? TextTag else { return false }

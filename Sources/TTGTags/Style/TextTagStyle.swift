@@ -8,19 +8,19 @@
 
 import UIKit
 
-/// 标签外观样式。
+/// Tag appearance style.
 @objc(TTGTextTagStyle)
 public final class TextTagStyle: NSObject, NSCopying {
 
-    // MARK: - 背景
+    // MARK: - Background
 
-    /// 背景色。默认 `UIColor.lightGray`。
+    /// Background color. Defaults to `UIColor.lightGray`.
     @objc public var backgroundColor: UIColor = .lightGray
 
-    /// 文本对齐。默认居中。
+    /// Text alignment. Defaults to center.
     @objc public var textAlignment: NSTextAlignment = .center
 
-    // MARK: - 渐变背景
+    // MARK: - Gradient Background
 
     @objc public var enableGradientBackground: Bool = false
     @objc public var gradientBackgroundStartColor: UIColor = .clear
@@ -28,43 +28,43 @@ public final class TextTagStyle: NSObject, NSCopying {
     @objc public var gradientBackgroundStartPoint: CGPoint = .zero
     @objc public var gradientBackgroundEndPoint: CGPoint = .zero
 
-    // MARK: - 圆角
+    // MARK: - Corner Radius
 
-    /// 圆角半径，默认 4。
+    /// Corner radius. Defaults to 4.
     @objc public var cornerRadius: CGFloat = 4
     @objc public var cornerTopRight: Bool = false
     @objc public var cornerTopLeft: Bool = false
     @objc public var cornerBottomRight: Bool = false
     @objc public var cornerBottomLeft: Bool = false
 
-    // MARK: - 边框
+    // MARK: - Border
 
-    /// 边框线宽，默认 1。
+    /// Border line width. Defaults to 1.
     @objc public var borderWidth: CGFloat = 1
-    /// 边框颜色，默认白色。
+    /// Border color. Defaults to white.
     @objc public var borderColor: UIColor = .white
 
-    // MARK: - 阴影
+    // MARK: - Shadow
 
     @objc public var shadowColor: UIColor = .black
     @objc public var shadowOffset: CGSize = CGSize(width: 2, height: 2)
     @objc public var shadowRadius: CGFloat = 2
     @objc public var shadowOpacity: CGFloat = 0.3
 
-    // MARK: - 尺寸
+    // MARK: - Size
 
-    /// 额外撑开的空白。
+    /// Extra padding space around the content.
     @objc public var extraSpace: CGSize = .zero
 
-    /// 宽度上下限，<=0 表示不限制。
+    /// Width constraints. <=0 means no limit.
     @objc public var maxWidth: CGFloat = 0
     @objc public var minWidth: CGFloat = 0
 
-    /// 高度上下限，<=0 表示不限制。
+    /// Height constraints. <=0 means no limit.
     @objc public var maxHeight: CGFloat = 0
     @objc public var minHeight: CGFloat = 0
 
-    /// 精确宽/高，>0 表示强制。
+    /// Exact width/height. >0 means forced.
     @objc public var exactWidth: CGFloat = 0
     @objc public var exactHeight: CGFloat = 0
 

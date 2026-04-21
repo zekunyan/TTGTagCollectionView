@@ -8,11 +8,11 @@
 
 import UIKit
 
-/// 富文本内容。
+/// Attributed string content.
 @objc(TTGTextTagAttributedStringContent)
 public final class TextTagAttributedStringContent: TextTagContent {
 
-    /// 富文本。默认空串。
+    /// Attributed text. Defaults to an empty attributed string.
     @objc public var attributedText: NSAttributedString = NSAttributedString()
 
     public override init() {

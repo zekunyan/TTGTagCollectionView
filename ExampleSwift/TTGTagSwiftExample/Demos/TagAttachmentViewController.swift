@@ -2,12 +2,12 @@
 //  TagAttachmentViewController.swift
 //  TTGTagSwiftExample
 //
-//  Demo: 通过 tag.attachment 绑定任意数据
+//  Demo: Bind arbitrary data via tag.attachment
 
 import UIKit
 import TTGTags
 
-// MARK: - 示例数据模型
+// MARK: - Sample Data Model
 
 private class CustomPayload: NSObject {
     let info: String

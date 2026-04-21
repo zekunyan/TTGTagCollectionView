@@ -7,7 +7,7 @@ import Foundation
 
 enum TagSampleData {
 
-    /// 长段落拆分词，用于两列和大列表 Demo
+    /// Long paragraph words, used for two-column and large list demos
     static let autoLayoutLongParagraphWords: [String] = [
         "AutoLayoutAutoLayoutAutoLayoutAutoLayoutAutoLayoutAutoLayoutAutoLayoutAutoLayoutAutoLayout",
         "dynamically", "calculates", "the", "size", "and", "position",
@@ -21,14 +21,14 @@ enum TagSampleData {
         "position", "changes", "the", "button's", "position", "automatically", "adjusts", "to", "match"
     ]
 
-    /// 短词列表（约22个词），大多数 Demo 复用
+    /// Short word list (~22 words), reused by most demos
     static let shortSampleWords: [String] = [
         "AutoLayout", "dynamically", "calculates", "the", "size", "and", "position",
         "of", "all", "the", "views", "in", "your", "view", "hierarchy", "based",
         "on", "constraints", "placed", "on", "those", "views"
     ]
 
-    /// 将 shortSampleWords 重复 N 次，构建大数组
+    /// Repeat shortSampleWords N times to build a large array
     static func shortWordsRepeated(count: Int) -> [String] {
         guard count > 0 else { return [] }
         return (0..<count).flatMap { _ in shortSampleWords }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-/// `UILabel` 子类，将 layer 替换为 `CAGradientLayer` 以支持渐变背景。
+/// `UILabel` subclass that replaces the layer with `CAGradientLayer` for gradient background support.
 final class TextTagGradientLabel: UILabel {
     override class var layerClass: AnyClass {
         return CAGradientLayer.self

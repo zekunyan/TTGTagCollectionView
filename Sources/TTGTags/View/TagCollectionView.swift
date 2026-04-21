@@ -8,35 +8,35 @@
 
 import UIKit
 
-// MARK: - 枚举
+// MARK: - Enums
 
-/// 标签滚动方向。
+/// Tag scroll direction.
 @objc(TTGTagCollectionScrollDirection)
 public enum TagCollectionScrollDirection: Int {
     case vertical = 0
     case horizontal = 1
 }
 
-/// 标签对齐方式。
+/// Tag alignment mode.
 @objc(TTGTagCollectionAlignment)
 public enum TagCollectionAlignment: Int {
-    /// 左对齐（默认）。
+    /// Left-aligned (default).
     case left = 0
-    /// 居中对齐。
+    /// Center-aligned.
     case center
-    /// 右对齐。
+    /// Right-aligned.
     case right
-    /// 撑开 tag 之间的水平间距以填满每行。
+    /// Expand horizontal spacing between tags to fill each line.
     case fillByExpandingSpace
-    /// 撑开每个 tag 的宽度以填满每行。
+    /// Expand each tag's width to fill each line.
     case fillByExpandingWidth
-    /// 撑开每个 tag 的宽度以填满每行，最后一行除外。
+    /// Expand each tag's width to fill each line, except the last line.
     case fillByExpandingWidthExceptLastLine
 }
 
-// MARK: - 协议
+// MARK: - Protocols
 
-/// 数据源协议。
+/// Data source protocol.
 @objc(TTGTagCollectionViewDataSource)
 public protocol TagCollectionViewDataSource: AnyObject {
 
@@ -47,7 +47,7 @@ public protocol TagCollectionViewDataSource: AnyObject {
     func tagCollectionView(_ tagCollectionView: TagCollectionView, tagViewFor index: Int) -> UIView
 }
 
-/// 代理协议。
+/// Delegate protocol.
 @objc(TTGTagCollectionViewDelegate)
 public protocol TagCollectionViewDelegate: AnyObject {
 
@@ -64,36 +64,36 @@ public protocol TagCollectionViewDelegate: AnyObject {
     optional func tagCollectionView(_ tagCollectionView: TagCollectionView, updateContentSize contentSize: CGSize)
 }
 
-// MARK: - 视图
+// MARK: - View
 
-/// 通用标签集合视图。
+/// General-purpose tag collection view.
 @objc(TTGTagCollectionView)
 public final class TagCollectionView: UIView {
 
-    // MARK: 公共属性
+    // MARK: Public Properties
 
     @objc public weak var dataSource: TagCollectionViewDataSource?
     @objc public weak var delegate: TagCollectionViewDelegate?
 
-    /// 内置的 `UIScrollView`。
+    /// Built-in `UIScrollView`.
     @objc public private(set) var scrollView: UIScrollView!
 
-    /// 滚动方向。默认垂直。
+    /// Scroll direction. Defaults to vertical.
     @objc public var scrollDirection: TagCollectionScrollDirection = .vertical {
         didSet { setNeedsLayoutTagViews() }
     }
 
-    /// 对齐方式。默认左对齐。
+    /// Alignment mode. Defaults to left.
     @objc public var alignment: TagCollectionAlignment = .left {
         didSet { setNeedsLayoutTagViews() }
     }
 
-    /// 行数限制。0 表示不限制，水平滚动时最小取 1。
+    /// Maximum number of lines. 0 means no limit; minimum is 1 for horizontal scroll.
     @objc public var numberOfLines: Int = 0 {
         didSet { setNeedsLayoutTagViews() }
     }
 
-    /// 实际渲染的行数（水平滚动时返回 numberOfLines）。
+    /// Actual number of rendered lines (returns numberOfLines for horizontal scroll).
     @objc public var actualNumberOfLines: Int {
         if scrollDirection == .horizontal {
             return numberOfLines
@@ -102,7 +102,7 @@ public final class TagCollectionView: UIView {
     }
     private var _actualNumberOfLines: Int = 0
 
-    /// 水平/垂直间距，默认 4。
+    /// Horizontal/vertical spacing. Defaults to 4.
     @objc public var horizontalSpacing: CGFloat = 4 {
         didSet { setNeedsLayoutTagViews() }
     }
@@ -110,23 +110,23 @@ public final class TagCollectionView: UIView {
         didSet { setNeedsLayoutTagViews() }
     }
 
-    /// 内容 padding，默认 (2, 2, 2, 2)。
+    /// Content padding. Defaults to (2, 2, 2, 2).
     @objc public var contentInset: UIEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2) {
         didSet { setNeedsLayoutTagViews() }
     }
 
-    /// 实际内容尺寸。访问时会触发一次布局。
+    /// Actual content size. Accessing this triggers a layout pass.
     @objc public var contentSize: CGSize {
         layoutTagViews()
         return scrollView.contentSize
     }
 
-    /// 是否手动计算高度。
+    /// Whether to manually calculate height.
     @objc public var manualCalculateHeight: Bool = false {
         didSet { setNeedsLayoutTagViews() }
     }
 
-    /// 手动计算高度时使用的最大宽度。
+    /// Maximum width used when manually calculating height.
     @objc public var preferredMaxLayoutWidth: CGFloat = 0 {
         didSet { setNeedsLayoutTagViews() }
     }
@@ -141,12 +141,12 @@ public final class TagCollectionView: UIView {
         set { scrollView.showsVerticalScrollIndicator = newValue }
     }
 
-    /// 点击空白区域回调。
+    /// Callback when tapping a blank area.
     @objc public var onTapBlankArea: ((CGPoint) -> Void)?
-    /// 点击任意位置回调。
+    /// Callback when tapping anywhere.
     @objc public var onTapAllArea: ((CGPoint) -> Void)?
 
-    // MARK: 私有属性
+    // MARK: Private Properties
 
     private var containerView: UIView!
     private var needsLayoutTagViews = false
@@ -204,7 +204,7 @@ public final class TagCollectionView: UIView {
 
     // MARK: Public methods
 
-    /// 重新加载所有 tag 视图。
+    /// Reload all tag views.
     @objc public func reload() {
         guard isDelegateAndDataSourceValid, let dataSource = dataSource else { return }
 
@@ -220,7 +220,7 @@ public final class TagCollectionView: UIView {
         layoutTagViews()
     }
 
-    /// 返回指定点位置的 tag 下标，未命中返回 `NSNotFound`。
+    /// Returns the index of the tag at the given point, or `NSNotFound` if no tag is hit.
     @objc(indexOfTagAt:)
     public func indexOfTag(at point: CGPoint) -> Int {
         guard let dataSource = dataSource else { return NSNotFound }
