@@ -7,41 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BF8CF4C928D344240074EB9D /* TTGTextTagStringContent.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CF4BA28D344240074EB9D /* TTGTextTagStringContent.m */; };
-		BF8CF4CA28D344240074EB9D /* TTGTextTag.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CF4BB28D344240074EB9D /* TTGTextTag.m */; };
-		BF8CF4CB28D344240074EB9D /* TTGTextTagAttributedStringContent.h in Headers */ = {isa = PBXBuildFile; fileRef = BF8CF4BC28D344240074EB9D /* TTGTextTagAttributedStringContent.h */; };
-		BF8CF4CC28D344240074EB9D /* TTGTagCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = BF8CF4BD28D344240074EB9D /* TTGTagCollectionView.h */; };
-		BF8CF4CD28D344240074EB9D /* TTGTextTagStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = BF8CF4BE28D344240074EB9D /* TTGTextTagStyle.h */; };
-		BF8CF4CE28D344240074EB9D /* TTGTagCollectionView-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = BF8CF4BF28D344240074EB9D /* TTGTagCollectionView-Bridging-Header.h */; };
-		BF8CF4CF28D344240074EB9D /* TTGTextTagCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = BF8CF4C028D344240074EB9D /* TTGTextTagCollectionView.h */; };
-		BF8CF4D028D344240074EB9D /* TTGTextTagContent.h in Headers */ = {isa = PBXBuildFile; fileRef = BF8CF4C128D344240074EB9D /* TTGTextTagContent.h */; };
-		BF8CF4D128D344240074EB9D /* TTGTagCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CF4C228D344240074EB9D /* TTGTagCollectionView.m */; };
-		BF8CF4D228D344240074EB9D /* TTGTextTagAttributedStringContent.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CF4C328D344240074EB9D /* TTGTextTagAttributedStringContent.m */; };
-		BF8CF4D328D344240074EB9D /* TTGTextTag.h in Headers */ = {isa = PBXBuildFile; fileRef = BF8CF4C428D344240074EB9D /* TTGTextTag.h */; };
-		BF8CF4D428D344240074EB9D /* TTGTextTagStringContent.h in Headers */ = {isa = PBXBuildFile; fileRef = BF8CF4C528D344240074EB9D /* TTGTextTagStringContent.h */; };
-		BF8CF4D528D344240074EB9D /* TTGTextTagStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CF4C628D344240074EB9D /* TTGTextTagStyle.m */; };
-		BF8CF4D628D344240074EB9D /* TTGTextTagContent.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CF4C728D344240074EB9D /* TTGTextTagContent.m */; };
-		BF8CF4D728D344240074EB9D /* TTGTextTagCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CF4C828D344240074EB9D /* TTGTextTagCollectionView.m */; };
+		C0D000000000000000000101 /* TagCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D000000000000000000001 /* TagCollectionLayout.swift */; };
+		C0D000000000000000000102 /* TextTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D000000000000000000002 /* TextTag.swift */; };
+		C0D000000000000000000103 /* TextTagAttributedStringContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D000000000000000000003 /* TextTagAttributedStringContent.swift */; };
+		C0D000000000000000000104 /* TextTagContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D000000000000000000004 /* TextTagContent.swift */; };
+		C0D000000000000000000105 /* TextTagStringContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D000000000000000000005 /* TextTagStringContent.swift */; };
+		C0D000000000000000000106 /* TextTagStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D000000000000000000006 /* TextTagStyle.swift */; };
+		C0D000000000000000000107 /* TextTagComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D000000000000000000007 /* TextTagComponentView.swift */; };
+		C0D000000000000000000108 /* TextTagGradientLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D000000000000000000008 /* TextTagGradientLabel.swift */; };
+		C0D000000000000000000109 /* TagCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D000000000000000000009 /* TagCollectionView.swift */; };
+		C0D000000000000000000110 /* TextTagCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D000000000000000000010 /* TextTagCollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BF695C4C262044EB00B5B6AC /* TTGTagCollectionView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TTGTagCollectionView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF695C50262044EB00B5B6AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BF8CF4BA28D344240074EB9D /* TTGTextTagStringContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagStringContent.m; sourceTree = "<group>"; };
-		BF8CF4BB28D344240074EB9D /* TTGTextTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGTextTag.m; sourceTree = "<group>"; };
-		BF8CF4BC28D344240074EB9D /* TTGTextTagAttributedStringContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGTextTagAttributedStringContent.h; sourceTree = "<group>"; };
-		BF8CF4BD28D344240074EB9D /* TTGTagCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGTagCollectionView.h; sourceTree = "<group>"; };
-		BF8CF4BE28D344240074EB9D /* TTGTextTagStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGTextTagStyle.h; sourceTree = "<group>"; };
-		BF8CF4BF28D344240074EB9D /* TTGTagCollectionView-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TTGTagCollectionView-Bridging-Header.h"; sourceTree = "<group>"; };
-		BF8CF4C028D344240074EB9D /* TTGTextTagCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGTextTagCollectionView.h; sourceTree = "<group>"; };
-		BF8CF4C128D344240074EB9D /* TTGTextTagContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGTextTagContent.h; sourceTree = "<group>"; };
-		BF8CF4C228D344240074EB9D /* TTGTagCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGTagCollectionView.m; sourceTree = "<group>"; };
-		BF8CF4C328D344240074EB9D /* TTGTextTagAttributedStringContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagAttributedStringContent.m; sourceTree = "<group>"; };
-		BF8CF4C428D344240074EB9D /* TTGTextTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGTextTag.h; sourceTree = "<group>"; };
-		BF8CF4C528D344240074EB9D /* TTGTextTagStringContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGTextTagStringContent.h; sourceTree = "<group>"; };
-		BF8CF4C628D344240074EB9D /* TTGTextTagStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagStyle.m; sourceTree = "<group>"; };
-		BF8CF4C728D344240074EB9D /* TTGTextTagContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagContent.m; sourceTree = "<group>"; };
-		BF8CF4C828D344240074EB9D /* TTGTextTagCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagCollectionView.m; sourceTree = "<group>"; };
+		C0D000000000000000000001 /* TagCollectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTGTags/Layout/TagCollectionLayout.swift; sourceTree = "<group>"; };
+		C0D000000000000000000002 /* TextTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTGTags/Model/TextTag.swift; sourceTree = "<group>"; };
+		C0D000000000000000000003 /* TextTagAttributedStringContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTGTags/Model/TextTagAttributedStringContent.swift; sourceTree = "<group>"; };
+		C0D000000000000000000004 /* TextTagContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTGTags/Model/TextTagContent.swift; sourceTree = "<group>"; };
+		C0D000000000000000000005 /* TextTagStringContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTGTags/Model/TextTagStringContent.swift; sourceTree = "<group>"; };
+		C0D000000000000000000006 /* TextTagStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTGTags/Style/TextTagStyle.swift; sourceTree = "<group>"; };
+		C0D000000000000000000007 /* TextTagComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTGTags/View/Internal/TextTagComponentView.swift; sourceTree = "<group>"; };
+		C0D000000000000000000008 /* TextTagGradientLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTGTags/View/Internal/TextTagGradientLabel.swift; sourceTree = "<group>"; };
+		C0D000000000000000000009 /* TagCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTGTags/View/TagCollectionView.swift; sourceTree = "<group>"; };
+		C0D000000000000000000010 /* TextTagCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTGTags/View/TextTagCollectionView.swift; sourceTree = "<group>"; };
 		BFE7206F262EDA69008C29D0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -85,21 +75,16 @@
 		BF8CF4B928D344240074EB9D /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				BF8CF4BA28D344240074EB9D /* TTGTextTagStringContent.m */,
-				BF8CF4BB28D344240074EB9D /* TTGTextTag.m */,
-				BF8CF4BC28D344240074EB9D /* TTGTextTagAttributedStringContent.h */,
-				BF8CF4BD28D344240074EB9D /* TTGTagCollectionView.h */,
-				BF8CF4BE28D344240074EB9D /* TTGTextTagStyle.h */,
-				BF8CF4BF28D344240074EB9D /* TTGTagCollectionView-Bridging-Header.h */,
-				BF8CF4C028D344240074EB9D /* TTGTextTagCollectionView.h */,
-				BF8CF4C128D344240074EB9D /* TTGTextTagContent.h */,
-				BF8CF4C228D344240074EB9D /* TTGTagCollectionView.m */,
-				BF8CF4C328D344240074EB9D /* TTGTextTagAttributedStringContent.m */,
-				BF8CF4C428D344240074EB9D /* TTGTextTag.h */,
-				BF8CF4C528D344240074EB9D /* TTGTextTagStringContent.h */,
-				BF8CF4C628D344240074EB9D /* TTGTextTagStyle.m */,
-				BF8CF4C728D344240074EB9D /* TTGTextTagContent.m */,
-				BF8CF4C828D344240074EB9D /* TTGTextTagCollectionView.m */,
+				C0D000000000000000000001 /* TagCollectionLayout.swift */,
+				C0D000000000000000000002 /* TextTag.swift */,
+				C0D000000000000000000003 /* TextTagAttributedStringContent.swift */,
+				C0D000000000000000000004 /* TextTagContent.swift */,
+				C0D000000000000000000005 /* TextTagStringContent.swift */,
+				C0D000000000000000000006 /* TextTagStyle.swift */,
+				C0D000000000000000000007 /* TextTagComponentView.swift */,
+				C0D000000000000000000008 /* TextTagGradientLabel.swift */,
+				C0D000000000000000000009 /* TagCollectionView.swift */,
+				C0D000000000000000000010 /* TextTagCollectionView.swift */,
 			);
 			name = Sources;
 			path = ../../Sources;
@@ -120,14 +105,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF8CF4CF28D344240074EB9D /* TTGTextTagCollectionView.h in Headers */,
-				BF8CF4D428D344240074EB9D /* TTGTextTagStringContent.h in Headers */,
-				BF8CF4CC28D344240074EB9D /* TTGTagCollectionView.h in Headers */,
-				BF8CF4CB28D344240074EB9D /* TTGTextTagAttributedStringContent.h in Headers */,
-				BF8CF4CD28D344240074EB9D /* TTGTextTagStyle.h in Headers */,
-				BF8CF4D028D344240074EB9D /* TTGTextTagContent.h in Headers */,
-				BF8CF4D328D344240074EB9D /* TTGTextTag.h in Headers */,
-				BF8CF4CE28D344240074EB9D /* TTGTagCollectionView-Bridging-Header.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,13 +175,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF8CF4D228D344240074EB9D /* TTGTextTagAttributedStringContent.m in Sources */,
-				BF8CF4D628D344240074EB9D /* TTGTextTagContent.m in Sources */,
-				BF8CF4D728D344240074EB9D /* TTGTextTagCollectionView.m in Sources */,
-				BF8CF4C928D344240074EB9D /* TTGTextTagStringContent.m in Sources */,
-				BF8CF4D128D344240074EB9D /* TTGTagCollectionView.m in Sources */,
-				BF8CF4D528D344240074EB9D /* TTGTextTagStyle.m in Sources */,
-				BF8CF4CA28D344240074EB9D /* TTGTextTag.m in Sources */,
+				C0D000000000000000000101 /* TagCollectionLayout.swift in Sources */,
+				C0D000000000000000000102 /* TextTag.swift in Sources */,
+				C0D000000000000000000103 /* TextTagAttributedStringContent.swift in Sources */,
+				C0D000000000000000000104 /* TextTagContent.swift in Sources */,
+				C0D000000000000000000105 /* TextTagStringContent.swift in Sources */,
+				C0D000000000000000000106 /* TextTagStyle.swift in Sources */,
+				C0D000000000000000000107 /* TextTagComponentView.swift in Sources */,
+				C0D000000000000000000108 /* TextTagGradientLabel.swift in Sources */,
+				C0D000000000000000000109 /* TagCollectionView.swift in Sources */,
+				C0D000000000000000000110 /* TextTagCollectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,6 +331,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -377,6 +358,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

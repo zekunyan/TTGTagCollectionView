@@ -93,11 +93,8 @@ public final class TagCollectionView: UIView {
         didSet { setNeedsLayoutTagViews() }
     }
 
-    /// Actual number of rendered lines (returns numberOfLines for horizontal scroll).
+    /// Actual number of rendered lines.
     @objc public var actualNumberOfLines: Int {
-        if scrollDirection == .horizontal {
-            return numberOfLines
-        }
         return _actualNumberOfLines
     }
     private var _actualNumberOfLines: Int = 0

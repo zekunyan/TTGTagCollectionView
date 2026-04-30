@@ -27,7 +27,7 @@ final class TextTagTests: XCTestCase {
         style.cornerRadius = 8
         let tag = TextTag(content: content, style: style)
         tag.selected = true
-        tag.attachment = "foo"
+        tag.attachment = "foo" as NSString
 
         guard let copied = tag.copy() as? TextTag else {
             XCTFail("copy should return TextTag")
@@ -38,6 +38,39 @@ final class TextTagTests: XCTestCase {
         XCTAssertEqual(copied.style.cornerRadius, 8)
         XCTAssertTrue(copied.selected)
         XCTAssertEqual(copied.attachment as? String, "foo")
+    }
+
+    func testCopyDeepCopiesMutableContentAndStyle() {
+        let content = TextTagStringContent(text: "hello")
+        let style = TextTagStyle()
+        style.cornerRadius = 8
+        let selectedContent = TextTagStringContent(text: "selected")
+        let selectedStyle = TextTagStyle()
+        selectedStyle.cornerRadius = 12
+
+        let tag = TextTag(
+            content: content,
+            style: style,
+            selectedContent: selectedContent,
+            selectedStyle: selectedStyle
+        )
+
+        guard let copied = tag.copy() as? TextTag,
+              let copiedContent = copied.content as? TextTagStringContent,
+              let copiedSelectedContent = copied.selectedContent as? TextTagStringContent else {
+            XCTFail("copy should preserve concrete content types")
+            return
+        }
+
+        copiedContent.text = "changed"
+        copied.style.cornerRadius = 20
+        copiedSelectedContent.text = "changed selected"
+        copied.selectedStyle.cornerRadius = 24
+
+        XCTAssertEqual(content.text, "hello")
+        XCTAssertEqual(style.cornerRadius, 8)
+        XCTAssertEqual(selectedContent.text, "selected")
+        XCTAssertEqual(selectedStyle.cornerRadius, 12)
     }
 
     func testSelectedStateChangedCallback() {

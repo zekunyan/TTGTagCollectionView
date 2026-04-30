@@ -36,7 +36,7 @@ public final class TextTag: NSObject, NSCopying {
     @objc public private(set) var tagId: Int
 
     /// Custom attachment object for business use.
-    @objc public var attachment: Any?
+    @objc public var attachment: AnyObject?
 
     /// Normal state content and style.
     @objc public var content: TextTagContent
@@ -211,11 +211,11 @@ public final class TextTag: NSObject, NSCopying {
     public func copy(with zone: NSZone? = nil) -> Any {
         let copy = TextTag()
         copy.attachment = attachment
-        copy.content = content
-        copy.style = style
+        copy.content = (content.copy(with: zone) as? TextTagContent) ?? content
+        copy.style = (style.copy(with: zone) as? TextTagStyle) ?? style
         copy.selected = selected
-        copy._selectedContent = _selectedContent
-        copy._selectedStyle = _selectedStyle
+        copy._selectedContent = _selectedContent?.copy(with: zone) as? TextTagContent
+        copy._selectedStyle = _selectedStyle?.copy(with: zone) as? TextTagStyle
         copy._isAccessibilityElement = _isAccessibilityElement
         copy.accessibilityIdentifier = accessibilityIdentifier
         copy._accessibilityLabel = _accessibilityLabel

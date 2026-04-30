@@ -100,6 +100,15 @@ final class TagCollectionLayoutTests: XCTestCase {
         XCTAssertNotEqual(out.tagFrames[0].frame.minY, out.tagFrames[1].frame.minY)
     }
 
+    func testHorizontalDefaultsToOneLine() {
+        let out = TagCollectionLayout.calculate(makeInput(
+            sizes: [CGSize(width: 50, height: 20)],
+            direction: .horizontal,
+            numberOfLines: 0
+        ))
+        XCTAssertEqual(out.actualNumberOfLines, 1)
+    }
+
     // 对齐 - 居中
     func testCenterAlignment() {
         // 可用宽 196；一个 100x20 → 应居中 → x = 2 + (196-100)/2 = 50

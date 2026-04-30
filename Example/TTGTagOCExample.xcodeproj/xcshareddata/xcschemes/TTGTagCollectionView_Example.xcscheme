@@ -17,7 +17,7 @@
                BlueprintIdentifier = "6003F589195388D20070C39A"
                BuildableName = "TTGTagCollectionView_Example.app"
                BlueprintName = "TTGTagCollectionView_Example"
-               ReferencedContainer = "container:TTGTagCollectionView.xcodeproj">
+               ReferencedContainer = "container:TTGTagOCExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
             BlueprintIdentifier = "6003F589195388D20070C39A"
             BuildableName = "TTGTagCollectionView_Example.app"
             BlueprintName = "TTGTagCollectionView_Example"
-            ReferencedContainer = "container:TTGTagCollectionView.xcodeproj">
+            ReferencedContainer = "container:TTGTagOCExample.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -58,7 +58,7 @@
             BlueprintIdentifier = "6003F589195388D20070C39A"
             BuildableName = "TTGTagCollectionView_Example.app"
             BlueprintName = "TTGTagCollectionView_Example"
-            ReferencedContainer = "container:TTGTagCollectionView.xcodeproj">
+            ReferencedContainer = "container:TTGTagOCExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -77,7 +77,7 @@
             BlueprintIdentifier = "6003F589195388D20070C39A"
             BuildableName = "TTGTagCollectionView_Example.app"
             BlueprintName = "TTGTagCollectionView_Example"
-            ReferencedContainer = "container:TTGTagCollectionView.xcodeproj">
+            ReferencedContainer = "container:TTGTagOCExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
