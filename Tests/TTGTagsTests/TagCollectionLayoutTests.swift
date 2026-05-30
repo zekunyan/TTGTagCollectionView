@@ -31,13 +31,11 @@ final class TagCollectionLayoutTests: XCTestCase {
         )
     }
 
-    // 垂直滚动 - 基本换行
+    // Vertical scroll - basic line wrapping
     func testVerticalMultipleLines() {
-        // 容器宽 200，左右 inset=2, 实际可用宽 196
-        // 3 个 100x20 + 4 间距 → 单行放不下 2 个 → 每行 1 个？
-        // 100 + 4 + 100 = 204 > 196，所以第二个 100 要换行。确实每行 1 个。
-        // 等等：第一个 100，currentLineX=104；第二个检查 104+100=204 > 196 → 换行
-        // 所以 3 行，各 1 个。
+        // Container width 200, left/right inset=2, usable width 196
+        // 3 items of 100x20 + spacing 4 → 100+4+100 = 204 > 196, so wrap to new line
+        // Result: 3 lines with 1 tag each.
         let sizes = [
             CGSize(width: 100, height: 20),
             CGSize(width: 100, height: 20),
@@ -47,18 +45,18 @@ final class TagCollectionLayoutTests: XCTestCase {
         XCTAssertEqual(out.actualNumberOfLines, 3)
         XCTAssertEqual(out.tagFrames.count, 3)
 
-        // 各 tag 宽应保留原宽度
+        // Each tag should retain its original width
         for frame in out.tagFrames {
             XCTAssertEqual(frame.frame.width, 100)
             XCTAssertEqual(frame.frame.height, 20)
             XCTAssertFalse(frame.hidden)
         }
-        // Y 递增
+        // Y should be monotonically increasing
         XCTAssertLessThan(out.tagFrames[0].frame.minY, out.tagFrames[1].frame.minY)
         XCTAssertLessThan(out.tagFrames[1].frame.minY, out.tagFrames[2].frame.minY)
     }
 
-    // 垂直滚动 - 行数限制
+    // Vertical scroll - number of lines limit hides overflow tags
     func testVerticalNumberOfLinesHidesOverflow() {
         let sizes = Array(repeating: CGSize(width: 100, height: 20), count: 4)
         var input = makeInput(sizes: sizes)
@@ -80,7 +78,7 @@ final class TagCollectionLayoutTests: XCTestCase {
         XCTAssertTrue(out.tagFrames[3].hidden)
     }
 
-    // 水平滚动 - 多行 round-robin 分配
+    // Horizontal scroll - round-robin distribution across lines
     func testHorizontalDistribution() {
         let sizes = [
             CGSize(width: 50, height: 20),
@@ -93,8 +91,8 @@ final class TagCollectionLayoutTests: XCTestCase {
         XCTAssertEqual(out.actualNumberOfLines, 2)
         XCTAssertEqual(out.tagFrames.count, 4)
 
-        // tag 0 和 tag 2 在第 0 行；tag 1 和 tag 3 在第 1 行
-        // 每行 y 应相同
+        // tag 0 and tag 2 on line 0; tag 1 and tag 3 on line 1
+        // Y should be the same within each line
         XCTAssertEqual(out.tagFrames[0].frame.minY, out.tagFrames[2].frame.minY)
         XCTAssertEqual(out.tagFrames[1].frame.minY, out.tagFrames[3].frame.minY)
         XCTAssertNotEqual(out.tagFrames[0].frame.minY, out.tagFrames[1].frame.minY)
@@ -109,20 +107,20 @@ final class TagCollectionLayoutTests: XCTestCase {
         XCTAssertEqual(out.actualNumberOfLines, 1)
     }
 
-    // 对齐 - 居中
+    // Alignment - center
     func testCenterAlignment() {
-        // 可用宽 196；一个 100x20 → 应居中 → x = 2 + (196-100)/2 = 50
+        // Usable width 196; one 100x20 tag → should be centered → x = 2 + (196-100)/2 = 50
         let sizes = [CGSize(width: 100, height: 20)]
         let input = makeInput(sizes: sizes, alignment: .center)
         let out = TagCollectionLayout.calculate(input)
         XCTAssertEqual(out.tagFrames[0].frame.minX, 50, accuracy: 0.5)
     }
 
-    // 对齐 - 填充扩展宽度
+    // Alignment - fill by expanding width
     func testFillByExpandingWidth() {
-        // 两个 50x20 tag，间距 4，可用 196
-        // 基础线宽 = 50+4+50 = 104, 一行两个 → additionWidth = (196-104)/2 = 46
-        // 每个最终 width = 50 + 46 = 96
+        // Two 50x20 tags, spacing 4, usable width 196
+        // Base line width = 50+4+50 = 104, two tags in one line → additionWidth = (196-104)/2 = 46
+        // Final width per tag = 50 + 46 = 96
         let sizes = [CGSize(width: 50, height: 20), CGSize(width: 50, height: 20)]
         let input = makeInput(sizes: sizes, alignment: .fillByExpandingWidth)
         let out = TagCollectionLayout.calculate(input)
@@ -130,10 +128,10 @@ final class TagCollectionLayoutTests: XCTestCase {
         XCTAssertEqual(out.tagFrames[1].frame.width, 96, accuracy: 0.5)
     }
 
-    // 空数组
+    // Empty input
     func testEmptyInput() {
         let out = TagCollectionLayout.calculate(makeInput(sizes: []))
-        // 仍然会生成一个空行（原实现行为），hidden 数组为空
+        // No tags, no frames
         XCTAssertEqual(out.tagFrames.count, 0)
     }
 }

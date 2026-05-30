@@ -112,9 +112,10 @@ public final class TagCollectionView: UIView {
         didSet { setNeedsLayoutTagViews() }
     }
 
-    /// Actual content size. Accessing this triggers a layout pass.
+    /// Actual content size. Triggers a layout pass to ensure up-to-date results.
     @objc public var contentSize: CGSize {
-        layoutTagViews()
+        setNeedsLayout()
+        layoutIfNeeded()
         return scrollView.contentSize
     }
 
@@ -146,6 +147,7 @@ public final class TagCollectionView: UIView {
     // MARK: Private Properties
 
     private var containerView: UIView!
+    private var _tagViews: [UIView] = []
     private var needsLayoutTagViews = false
 
     // MARK: Init
@@ -185,10 +187,13 @@ public final class TagCollectionView: UIView {
         if !scrollView.frame.equalTo(bounds) {
             scrollView.frame = bounds
             setNeedsLayoutTagViews()
-            layoutTagViews()
-            containerView.frame = CGRect(origin: .zero, size: scrollView.contentSize)
         }
         layoutTagViews()
+
+        // Keep containerView sized to content for hit-testing
+        if !containerView.frame.size.equalTo(scrollView.contentSize) {
+            containerView.frame = CGRect(origin: .zero, size: scrollView.contentSize)
+        }
     }
 
     public override var intrinsicContentSize: CGSize {
@@ -208,10 +213,14 @@ public final class TagCollectionView: UIView {
         containerView.subviews.forEach { $0.removeFromSuperview() }
 
         let count = dataSource.numberOfTags(in: self)
+        var views: [UIView] = []
+        views.reserveCapacity(count)
         for i in 0..<count {
             let view = dataSource.tagCollectionView(self, tagViewFor: i)
             containerView.addSubview(view)
+            views.append(view)
         }
+        _tagViews = views
 
         setNeedsLayoutTagViews()
         layoutTagViews()
@@ -220,12 +229,9 @@ public final class TagCollectionView: UIView {
     /// Returns the index of the tag at the given point, or `NSNotFound` if no tag is hit.
     @objc(indexOfTagAt:)
     public func indexOfTag(at point: CGPoint) -> Int {
-        guard let dataSource = dataSource else { return NSNotFound }
         let convertedPoint = convert(point, to: containerView)
-        let count = dataSource.numberOfTags(in: self)
-        for i in 0..<count {
-            let tagView = dataSource.tagCollectionView(self, tagViewFor: i)
-            if tagView.frame.contains(convertedPoint) && !tagView.isHidden {
+        for (i, view) in _tagViews.enumerated() {
+            if view.frame.contains(convertedPoint) && !view.isHidden {
                 return i
             }
         }
@@ -237,7 +243,7 @@ public final class TagCollectionView: UIView {
     @objc private func onTapGesture(_ gesture: UITapGestureRecognizer) {
         let pointInCollection = gesture.location(in: self)
 
-        guard let dataSource = dataSource, let delegate = delegate else {
+        guard let delegate = delegate else {
             onTapBlankArea?(pointInCollection)
             onTapAllArea?(pointInCollection)
             return
@@ -246,9 +252,7 @@ public final class TagCollectionView: UIView {
         let pointInContainer = gesture.location(in: containerView)
         var hasLocatedToTag = false
 
-        let count = dataSource.numberOfTags(in: self)
-        for i in 0..<count {
-            let tagView = dataSource.tagCollectionView(self, tagViewFor: i)
+        for (i, tagView) in _tagViews.enumerated() {
             if tagView.frame.contains(pointInContainer) && !tagView.isHidden {
                 hasLocatedToTag = true
                 let allowed = delegate.tagCollectionView?(self, shouldSelectTag: tagView, at: i) ?? true
@@ -301,7 +305,8 @@ public final class TagCollectionView: UIView {
         let output = TagCollectionLayout.calculate(input)
 
         for tagFrame in output.tagFrames {
-            let view = dataSource.tagCollectionView(self, tagViewFor: tagFrame.index)
+            guard tagFrame.index < _tagViews.count else { continue }
+            let view = _tagViews[tagFrame.index]
             view.isHidden = tagFrame.hidden
             if !tagFrame.hidden {
                 view.frame = tagFrame.frame

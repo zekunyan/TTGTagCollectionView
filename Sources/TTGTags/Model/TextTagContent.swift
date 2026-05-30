@@ -31,6 +31,7 @@ open class TextTagContent: NSObject, NSCopying {
     }
 
     open func copy(with zone: NSZone? = nil) -> Any {
+        assertionFailure("Do not use TextTagContent directly, use a subclass instead.")
         return TextTagContent()
     }
 }

@@ -151,7 +151,9 @@ struct TagCollectionLayout {
 
         var maxLineWidth: CGFloat = 0
         for i in 0..<numberOfLines {
-            lineWidths[i] -= input.horizontalSpacing
+            if !lineTagIndices[i].isEmpty {
+                lineWidths[i] -= input.horizontalSpacing
+            }
             maxLineWidth = max(maxLineWidth, lineWidths[i])
         }
 

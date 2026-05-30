@@ -14,7 +14,7 @@ final class TextTagContentTests: XCTestCase {
         let attr = c.getContentAttributedString()
         XCTAssertEqual(attr.string, "hello")
 
-        // 默认字体 / 颜色
+        // Default font / color
         let attributes = attr.attributes(at: 0, effectiveRange: nil)
         XCTAssertTrue(attributes[.foregroundColor] is UIColor)
         XCTAssertTrue(attributes[.font] is UIFont)

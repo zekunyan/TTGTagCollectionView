@@ -6,8 +6,8 @@ platform :ios, '16.0'
 
 target 'TTGTagOCExample' do
   pod 'TTGTagCollectionView', :path => '../'
-  pod 'Masonry', :git => 'git@github.com:SnapKit/Masonry.git', :tag => 'v1.1.0'
-  pod 'SVPullToRefresh', :git => 'git@github.com:samvermette/SVPullToRefresh.git', :tag => '0.4.1'
+  pod 'Masonry', :git => 'https://github.com/SnapKit/Masonry.git', :tag => 'v1.1.0'
+  pod 'SVPullToRefresh', :git => 'https://github.com/samvermette/SVPullToRefresh.git', :tag => '0.4.1'
 
   target 'TTGTagOCExample_Tests' do
     inherit! :search_paths

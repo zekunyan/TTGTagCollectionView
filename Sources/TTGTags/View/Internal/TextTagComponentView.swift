@@ -22,6 +22,7 @@ final class TextTagComponentView: UIView {
     }()
 
     private var borderLayer: CAShapeLayer?
+    private var maskLayer: CAShapeLayer?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -155,27 +156,32 @@ final class TextTagComponentView: UIView {
     }
 
     private func updateMask(with path: UIBezierPath) {
-        let maskLayer = CAShapeLayer()
-        maskLayer.frame = bounds
-        maskLayer.path = path.cgPath
-        label.layer.mask = maskLayer
+        let layer = maskLayer ?? CAShapeLayer()
+        layer.frame = bounds
+        layer.path = path.cgPath
+        self.label.layer.mask = layer
+        maskLayer = layer
     }
 
     private func updateBorder(with path: UIBezierPath) {
         guard let style = config?.getRightfulStyle() else { return }
 
-        borderLayer?.removeFromSuperlayer()
-        let layerToUse = borderLayer ?? CAShapeLayer()
+        let layerToUse: CAShapeLayer
+        if let existing = borderLayer {
+            layerToUse = existing
+        } else {
+            layerToUse = CAShapeLayer()
+            layerToUse.fillColor = UIColor.clear.cgColor
+            layerToUse.lineCap = .round
+            layerToUse.lineJoin = .round
+            layer.addSublayer(layerToUse)
+            borderLayer = layerToUse
+        }
+
         layerToUse.frame = bounds
         layerToUse.path = path.cgPath
-        layerToUse.fillColor = UIColor.clear.cgColor
-        layerToUse.opacity = 1
         layerToUse.lineWidth = style.borderWidth
         layerToUse.strokeColor = style.borderColor.cgColor
-        layerToUse.lineCap = .round
-        layerToUse.lineJoin = .round
-        layer.addSublayer(layerToUse)
-        borderLayer = layerToUse
     }
 
     private func updateShadow(with path: UIBezierPath) {
@@ -186,8 +192,6 @@ final class TextTagComponentView: UIView {
         layer.shadowRadius = style.shadowRadius
         layer.shadowOpacity = Float(style.shadowOpacity)
         layer.shadowPath = path.cgPath
-        layer.shouldRasterize = true
-        layer.rasterizationScale = UIScreen.main.scale
     }
 
     // MARK: - Equality

@@ -90,13 +90,13 @@ final class TextTagTests: XCTestCase {
         let style = TextTagStyle()
         let tag = TextTag(content: content, style: style)
 
-        // 未显式设置 selectedContent，应回退到 content 的拷贝
+        // selectedContent not explicitly set, should fall back to a copy of content
         guard let fallback = tag.selectedContent as? TextTagStringContent else {
             XCTFail("selectedContent fallback should be string content")
             return
         }
         XCTAssertEqual(fallback.text, "hi")
-        // 应为拷贝，不是同一个对象
+        // Should be a copy, not the same object
         XCTAssertFalse(fallback === content)
     }
 

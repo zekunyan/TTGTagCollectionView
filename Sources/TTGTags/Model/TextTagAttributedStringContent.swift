@@ -36,6 +36,8 @@ public final class TextTagAttributedStringContent: TextTagContent {
 
     public override func copy(with zone: NSZone? = nil) -> Any {
         let copy = TextTagAttributedStringContent()
+        // NSAttributedString is immutable, so assignment creates a safe shared reference.
+        // If NSMutableAttributedString support is ever added, this must use mutableCopy().
         copy.attributedText = attributedText
         return copy
     }

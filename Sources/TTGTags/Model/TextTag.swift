@@ -42,27 +42,42 @@ public final class TextTag: NSObject, NSCopying {
     @objc public var content: TextTagContent
     @objc public var style: TextTagStyle
 
+    /// Lock protecting lazy initialization of selectedContent and selectedStyle.
+    private let propertyLock = NSLock()
+
     /// Selected state content (falls back to a copy of normal content if not set).
     @objc public var selectedContent: TextTagContent {
         get {
+            propertyLock.lock()
+            defer { propertyLock.unlock() }
             if let existing = _selectedContent { return existing }
             let fallback = (content.copy() as? TextTagContent) ?? TextTagContent()
             _selectedContent = fallback
             return fallback
         }
-        set { _selectedContent = newValue }
+        set {
+            propertyLock.lock()
+            defer { propertyLock.unlock() }
+            _selectedContent = newValue
+        }
     }
     private var _selectedContent: TextTagContent?
 
     /// Selected state style (falls back to a copy of normal style if not set).
     @objc public var selectedStyle: TextTagStyle {
         get {
+            propertyLock.lock()
+            defer { propertyLock.unlock() }
             if let existing = _selectedStyle { return existing }
             let fallback = (style.copy() as? TextTagStyle) ?? TextTagStyle()
             _selectedStyle = fallback
             return fallback
         }
-        set { _selectedStyle = newValue }
+        set {
+            propertyLock.lock()
+            defer { propertyLock.unlock() }
+            _selectedStyle = newValue
+        }
     }
     private var _selectedStyle: TextTagStyle?
 
@@ -214,8 +229,14 @@ public final class TextTag: NSObject, NSCopying {
         copy.content = (content.copy(with: zone) as? TextTagContent) ?? content
         copy.style = (style.copy(with: zone) as? TextTagStyle) ?? style
         copy.selected = selected
-        copy._selectedContent = _selectedContent?.copy(with: zone) as? TextTagContent
-        copy._selectedStyle = _selectedStyle?.copy(with: zone) as? TextTagStyle
+
+        propertyLock.lock()
+        let sc = _selectedContent
+        let ss = _selectedStyle
+        propertyLock.unlock()
+
+        copy._selectedContent = sc?.copy(with: zone) as? TextTagContent
+        copy._selectedStyle = ss?.copy(with: zone) as? TextTagStyle
         copy._isAccessibilityElement = _isAccessibilityElement
         copy.accessibilityIdentifier = accessibilityIdentifier
         copy._accessibilityLabel = _accessibilityLabel
