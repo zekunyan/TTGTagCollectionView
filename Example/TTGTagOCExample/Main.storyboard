@@ -434,6 +434,114 @@
                                             <segue destination="4LY-WR-TAQ" kind="show" id="Ykp-sU-BOo"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Z1A2B3C4D5E6" detailTextLabel="Z1A2B3C4D5E7" style="IBUITableViewCellStyleSubtitle" id="Z1A2B3C4D5E8">
+                                        <rect key="frame" x="0.0" y="568" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z1A2B3C4D5E8" id="Z1A2B3C4D5E9">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="10. Anchor constraint layout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Z1A2B3C4D5E6">
+                                                    <rect key="frame" x="16" y="10" width="240" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="TTGDemoAnchorLayoutViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Z1A2B3C4D5E7">
+                                                    <rect key="frame" x="16" y="33.5" width="200" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="ANCHORVC" kind="show" id="ANCHORSEG"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Z2A2B3C4D5E6" detailTextLabel="Z2A2B3C4D5E7" style="IBUITableViewCellStyleSubtitle" id="Z2A2B3C4D5E8">
+                                        <rect key="frame" x="0.0" y="628" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z2A2B3C4D5E8" id="Z2A2B3C4D5E9">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="11. UIStackView integration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Z2A2B3C4D5E6">
+                                                    <rect key="frame" x="16" y="10" width="240" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="TTGDemoStackViewViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Z2A2B3C4D5E7">
+                                                    <rect key="frame" x="16" y="33.5" width="190" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="STACKVC" kind="show" id="STACKSEG"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Z3A2B3C4D5E6" detailTextLabel="Z3A2B3C4D5E7" style="IBUITableViewCellStyleSubtitle" id="Z3A2B3C4D5E8">
+                                        <rect key="frame" x="0.0" y="688" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z3A2B3C4D5E8" id="Z3A2B3C4D5E9">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="12. Self-sizing (intrinsicContentSize)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Z3A2B3C4D5E6">
+                                                    <rect key="frame" x="16" y="10" width="280" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="TTGDemoSelfSizingViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Z3A2B3C4D5E7">
+                                                    <rect key="frame" x="16" y="33.5" width="200" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="SELFSIZEVC" kind="show" id="SELFSIZESEG"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Z4A2B3C4D5E6" detailTextLabel="Z4A2B3C4D5E7" style="IBUITableViewCellStyleSubtitle" id="Z4A2B3C4D5E8">
+                                        <rect key="frame" x="0.0" y="748" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z4A2B3C4D5E8" id="Z4A2B3C4D5E9">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="13. Auto Layout form (ScrollView + StackView)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Z4A2B3C4D5E6">
+                                                    <rect key="frame" x="16" y="10" width="340" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="TTGDemoAutoLayoutFormViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Z4A2B3C4D5E7">
+                                                    <rect key="frame" x="16" y="33.5" width="230" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="FORMVC" kind="show" id="FORMSEG"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -696,6 +804,62 @@ to auto fix height</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SbG-IG-kfm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-730.39999999999998" y="-285.60719640179911"/>
+        </scene>
+        <!--Anchor Layout-->
+        <scene sceneID="ANCHORSCENE">
+            <objects>
+                <viewController title="Anchor constraint layout" id="ANCHORVC" customClass="TTGDemoAnchorLayoutViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ANCHORVIEW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ANCHORFR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="100" y="200"/>
+        </scene>
+        <!--StackView-->
+        <scene sceneID="STACKSCENE">
+            <objects>
+                <viewController title="UIStackView integration" id="STACKVC" customClass="TTGDemoStackViewViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="STACKVIEW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="STACKFR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="100" y="400"/>
+        </scene>
+        <!--Self-Sizing-->
+        <scene sceneID="SELFSIZESCENE">
+            <objects>
+                <viewController title="Self-sizing (intrinsicContentSize)" id="SELFSIZEVC" customClass="TTGDemoSelfSizingViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SELFSIZEVIEW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SELFSIZEFR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="100" y="600"/>
+        </scene>
+        <!--Auto Layout Form-->
+        <scene sceneID="FORMSCENE">
+            <objects>
+                <viewController title="Auto Layout form (ScrollView + StackView)" id="FORMVC" customClass="TTGDemoAutoLayoutFormViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FORMVIEW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FORMFR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="100" y="800"/>
         </scene>
     </scenes>
     <resources>

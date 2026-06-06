@@ -35,6 +35,10 @@
 		BFC1FD6026297C82007F53DB /* TTGDemoAttributedStringTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC1FD5F26297C82007F53DB /* TTGDemoAttributedStringTagsViewController.m */; };
 		D06E00701DB3D8F700EF8F56 /* TTGTagSampleData.m in Sources */ = {isa = PBXBuildFile; fileRef = D06E00301DB3D8F700EF8F52 /* TTGTagSampleData.m */; };
 		D06E00801DB3D8F700EF8F57 /* TTGDemoAttributedTagExamples.m in Sources */ = {isa = PBXBuildFile; fileRef = D06E00401DB3D8F700EF8F53 /* TTGDemoAttributedTagExamples.m */; };
+		OC01A0B1C2D3E4F500000003 /* TTGDemoAnchorLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = OC01A0B1C2D3E4F500000002 /* TTGDemoAnchorLayoutViewController.m */; };
+		OC01A0B1C2D3E4F500000006 /* TTGDemoStackViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = OC01A0B1C2D3E4F500000005 /* TTGDemoStackViewViewController.m */; };
+		OC01A0B1C2D3E4F500000009 /* TTGDemoSelfSizingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = OC01A0B1C2D3E4F500000008 /* TTGDemoSelfSizingViewController.m */; };
+		OC01A0B1C2D3E4F500000012 /* TTGDemoAutoLayoutFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = OC01A0B1C2D3E4F500000011 /* TTGDemoAutoLayoutFormViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +103,14 @@
 		D06E00401DB3D8F700EF8F53 /* TTGDemoAttributedTagExamples.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Demos/TTGDemoAttributedTagExamples.m; sourceTree = "<group>"; };
 		D06E00501DB3D8F700EF8F54 /* TTGTagSampleData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Demos/TTGTagSampleData.h; sourceTree = "<group>"; };
 		D06E00601DB3D8F700EF8F55 /* TTGDemoAttributedTagExamples.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Demos/TTGDemoAttributedTagExamples.h; sourceTree = "<group>"; };
+		OC01A0B1C2D3E4F500000001 /* TTGDemoAnchorLayoutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Demos/TTGDemoAnchorLayoutViewController.h; sourceTree = "<group>"; };
+		OC01A0B1C2D3E4F500000002 /* TTGDemoAnchorLayoutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Demos/TTGDemoAnchorLayoutViewController.m; sourceTree = "<group>"; };
+		OC01A0B1C2D3E4F500000004 /* TTGDemoStackViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Demos/TTGDemoStackViewViewController.h; sourceTree = "<group>"; };
+		OC01A0B1C2D3E4F500000005 /* TTGDemoStackViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Demos/TTGDemoStackViewViewController.m; sourceTree = "<group>"; };
+		OC01A0B1C2D3E4F500000007 /* TTGDemoSelfSizingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Demos/TTGDemoSelfSizingViewController.h; sourceTree = "<group>"; };
+		OC01A0B1C2D3E4F500000008 /* TTGDemoSelfSizingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Demos/TTGDemoSelfSizingViewController.m; sourceTree = "<group>"; };
+		OC01A0B1C2D3E4F500000010 /* TTGDemoAutoLayoutFormViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Demos/TTGDemoAutoLayoutFormViewController.h; sourceTree = "<group>"; };
+		OC01A0B1C2D3E4F500000011 /* TTGDemoAutoLayoutFormViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Demos/TTGDemoAutoLayoutFormViewController.m; sourceTree = "<group>"; };
 		F720C119A84D5B2091CA32A2 /* Pods_TTGTagOCExample_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TTGTagOCExample_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -195,6 +207,14 @@
 				BF03B0412066A591008D91FA /* TTGDemoTagAttachmentViewController.m */,
 				BFC1FD5E26297C82007F53DB /* TTGDemoAttributedStringTagsViewController.h */,
 				BFC1FD5F26297C82007F53DB /* TTGDemoAttributedStringTagsViewController.m */,
+				OC01A0B1C2D3E4F500000001 /* TTGDemoAnchorLayoutViewController.h */,
+				OC01A0B1C2D3E4F500000002 /* TTGDemoAnchorLayoutViewController.m */,
+				OC01A0B1C2D3E4F500000004 /* TTGDemoStackViewViewController.h */,
+				OC01A0B1C2D3E4F500000005 /* TTGDemoStackViewViewController.m */,
+				OC01A0B1C2D3E4F500000007 /* TTGDemoSelfSizingViewController.h */,
+				OC01A0B1C2D3E4F500000008 /* TTGDemoSelfSizingViewController.m */,
+				OC01A0B1C2D3E4F500000010 /* TTGDemoAutoLayoutFormViewController.h */,
+				OC01A0B1C2D3E4F500000011 /* TTGDemoAutoLayoutFormViewController.m */,
 			);
 			name = "Example for TTGTagCollectionView";
 			path = TTGTagOCExample;
@@ -433,6 +453,10 @@
 				BF018B131DB3D8F700EF8F4E /* TTGDemoTagsTableViewCell.m in Sources */,
 				BF73E6AF1E6AEE1300ED50C6 /* TTGDemoPerTagStyleViewController.m in Sources */,
 				BF018B111DB3D8F700EF8F4E /* TTGDemoCustomSubviewTagsViewController.m in Sources */,
+				OC01A0B1C2D3E4F500000003 /* TTGDemoAnchorLayoutViewController.m in Sources */,
+				OC01A0B1C2D3E4F500000006 /* TTGDemoStackViewViewController.m in Sources */,
+				OC01A0B1C2D3E4F500000009 /* TTGDemoSelfSizingViewController.m in Sources */,
+				OC01A0B1C2D3E4F500000012 /* TTGDemoAutoLayoutFormViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
