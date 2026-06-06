@@ -125,8 +125,13 @@ public final class TagCollectionView: UIView {
     }
 
     /// Maximum width used when manually calculating height.
+    /// Also used by `intrinsicContentSize` to compute height at a known width
+    /// (mirroring `UILabel.preferredMaxLayoutWidth`).
     @objc public var preferredMaxLayoutWidth: CGFloat = 0 {
-        didSet { setNeedsLayoutTagViews() }
+        didSet {
+            setNeedsLayoutTagViews()
+            invalidateIntrinsicContentSize()
+        }
     }
 
     @objc public var showsHorizontalScrollIndicator: Bool {
@@ -184,7 +189,8 @@ public final class TagCollectionView: UIView {
     public override func layoutSubviews() {
         super.layoutSubviews()
 
-        if !scrollView.frame.equalTo(bounds) {
+        let boundsChanged = !scrollView.frame.equalTo(bounds)
+        if boundsChanged {
             scrollView.frame = bounds
             setNeedsLayoutTagViews()
         }
@@ -194,10 +200,53 @@ public final class TagCollectionView: UIView {
         if !containerView.frame.size.equalTo(scrollView.contentSize) {
             containerView.frame = CGRect(origin: .zero, size: scrollView.contentSize)
         }
+
+        // When bounds width changes, intrinsic height may change too
+        if boundsChanged {
+            invalidateIntrinsicContentSize()
+        }
     }
 
+    /// Intrinsic content size for Auto Layout.
+    ///
+    /// When `preferredMaxLayoutWidth` is set, the height is computed at that width
+    /// (mirroring `UILabel.preferredMaxLayoutWidth` behaviour). Otherwise the
+    /// current `bounds.width` is used, which is correct once Auto Layout has
+    /// assigned a concrete width.
     public override var intrinsicContentSize: CGSize {
-        return scrollView.contentSize
+        let measurementWidth: CGFloat
+        if preferredMaxLayoutWidth > 0 {
+            measurementWidth = preferredMaxLayoutWidth
+        } else if bounds.width > 0 {
+            measurementWidth = bounds.width
+        } else {
+            return .zero
+        }
+        return measureSize(forWidth: measurementWidth)
+    }
+
+    /// Two-pass Auto Layout measurement.
+    ///
+    /// Called by the system when it needs to know the view's size for a given
+    /// `targetSize` (typically a known width, height = `.greatestFiniteMagnitude`).
+    /// We temporarily set our bounds to the target width, run a full layout, and
+    /// return the resulting content size.
+    public override func systemLayoutSizeFitting(
+        _ targetSize: CGSize,
+        withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority,
+        verticalFittingPriority: UILayoutPriority
+    ) -> CGSize {
+        let measurementWidth = targetSize.width > 0 ? targetSize.width : bounds.width
+        guard measurementWidth > 0 else { return .zero }
+
+        let originalBounds = bounds
+        bounds = CGRect(x: 0, y: 0, width: measurementWidth, height: 0)
+        scrollView.frame = bounds
+        setNeedsLayoutTagViews()
+        layoutTagViews()
+        let result = scrollView.contentSize
+        bounds = originalBounds
+        return result
     }
 
     public override func sizeThatFits(_ size: CGSize) -> CGSize {
@@ -329,5 +378,40 @@ public final class TagCollectionView: UIView {
 
     private var isDelegateAndDataSourceValid: Bool {
         return delegate != nil && dataSource != nil
+    }
+
+    // MARK: - Measurement
+
+    /// Compute content size at a given width without modifying the view's current bounds permanently.
+    private func measureSize(forWidth width: CGFloat) -> CGSize {
+        guard isDelegateAndDataSourceValid,
+              let dataSource = dataSource, let delegate = delegate,
+              width > 0 else {
+            return scrollView.contentSize
+        }
+
+        let count = dataSource.numberOfTags(in: self)
+        var tagSizes: [CGSize] = []
+        tagSizes.reserveCapacity(count)
+        for i in 0..<count {
+            tagSizes.append(delegate.tagCollectionView(self, sizeForTagAt: i))
+        }
+
+        let containerWidth = (manualCalculateHeight && preferredMaxLayoutWidth > 0)
+            ? preferredMaxLayoutWidth
+            : width
+
+        let input = TagCollectionLayout.Input(
+            tagSizes: tagSizes,
+            scrollDirection: scrollDirection,
+            alignment: alignment,
+            numberOfLines: numberOfLines,
+            horizontalSpacing: horizontalSpacing,
+            verticalSpacing: verticalSpacing,
+            contentInset: contentInset,
+            containerWidth: containerWidth
+        )
+
+        return TagCollectionLayout.calculate(input).contentSize
     }
 }

@@ -20,6 +20,10 @@ class DemoListViewController: UITableViewController {
         DemoItem(title: "Programmatic (Auto Layout)", viewControllerType: ProgrammaticTagsViewController.self),
         DemoItem(title: "Bind data to tag", viewControllerType: TagAttachmentViewController.self),
         DemoItem(title: "Tags in UITableViewCell", viewControllerType: TagsInTableViewController.self),
+        DemoItem(title: "🔗 Anchor constraint layout", viewControllerType: AnchorLayoutDemoViewController.self),
+        DemoItem(title: "📦 UIStackView integration", viewControllerType: StackViewDemoViewController.self),
+        DemoItem(title: "📐 Self-sizing (intrinsicContentSize)", viewControllerType: SelfSizingDemoViewController.self),
+        DemoItem(title: "⚡ SwiftUI (TagCloudView)", viewControllerType: SwiftUIDemoViewController.self),
     ]
 
     override func viewDidLoad() {

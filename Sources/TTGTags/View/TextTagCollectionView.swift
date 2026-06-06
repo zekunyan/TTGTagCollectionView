@@ -94,7 +94,10 @@ public final class TextTagCollectionView: UIView {
 
     @objc public var preferredMaxLayoutWidth: CGFloat {
         get { tagCollectionView.preferredMaxLayoutWidth }
-        set { tagCollectionView.preferredMaxLayoutWidth = newValue }
+        set {
+            tagCollectionView.preferredMaxLayoutWidth = newValue
+            invalidateIntrinsicContentSize()
+        }
     }
 
     @objc public var showsHorizontalScrollIndicator: Bool {
@@ -145,8 +148,51 @@ public final class TextTagCollectionView: UIView {
 
     // MARK: Override
 
+    /// Intrinsic content size for Auto Layout.
+    ///
+    /// When `preferredMaxLayoutWidth` is set, the height is computed at that width
+    /// (mirroring `UILabel.preferredMaxLayoutWidth` behaviour). Otherwise the
+    /// current `bounds.width` is used, which is correct once Auto Layout has
+    /// assigned a concrete width.
     public override var intrinsicContentSize: CGSize {
+        let measurementWidth: CGFloat
+        if preferredMaxLayoutWidth > 0 {
+            measurementWidth = preferredMaxLayoutWidth
+        } else if bounds.width > 0 {
+            measurementWidth = bounds.width
+        } else {
+            return .zero
+        }
+        updateAllLabelStyleAndFrame()
+        tagCollectionView.bounds = CGRect(x: 0, y: 0, width: measurementWidth, height: 0)
+        tagCollectionView.setNeedsLayout()
+        tagCollectionView.layoutIfNeeded()
         return tagCollectionView.intrinsicContentSize
+    }
+
+    /// Two-pass Auto Layout measurement.
+    ///
+    /// Called by the system when it needs to know the view's size for a given
+    /// `targetSize` (typically a known width, height = `.greatestFiniteMagnitude`).
+    /// We temporarily set our bounds to the target width, run a full layout, and
+    /// return the resulting content size.
+    public override func systemLayoutSizeFitting(
+        _ targetSize: CGSize,
+        withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority,
+        verticalFittingPriority: UILayoutPriority
+    ) -> CGSize {
+        let measurementWidth = targetSize.width > 0 ? targetSize.width : bounds.width
+        guard measurementWidth > 0 else { return .zero }
+
+        let originalBounds = bounds
+        bounds = CGRect(x: 0, y: 0, width: measurementWidth, height: 0)
+        updateAllLabelStyleAndFrame()
+        tagCollectionView.frame = bounds
+        tagCollectionView.setNeedsLayout()
+        tagCollectionView.layoutIfNeeded()
+        let result = tagCollectionView.contentSize
+        bounds = originalBounds
+        return result
     }
 
     public override func layoutSubviews() {
