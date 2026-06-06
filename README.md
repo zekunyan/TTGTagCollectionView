@@ -4,9 +4,11 @@
 [![License](https://img.shields.io/cocoapods/l/TTGTagCollectionView.svg?style=flat)](http://cocoapods.org/pods/TTGTagCollectionView)
 [![Platform](https://img.shields.io/cocoapods/p/TTGTagCollectionView.svg?style=flat)](http://cocoapods.org/pods/TTGTagCollectionView)
 
-![Screenshot](https://github.com/zekunyan/TTGTagCollectionView/raw/master/Resources/screen_shot.png)
+**[中文文档 →](README_CN.md)**
 
 A flexible tag collection view for iOS — show text tags or fully custom views in a vertically or horizontally scrollable container, with rich layout alignment options and AutoLayout support.
+
+![Screenshot](https://github.com/zekunyan/TTGTagCollectionView/raw/master/Resources/screen_shot.png)
 
 ## Features
 
@@ -33,7 +35,7 @@ A flexible tag collection view for iOS — show text tags or fully custom views 
 
 ## Installation
 
-### Swift Package Manager
+### Swift Package Manager (Recommended)
 
 In Xcode: **File → Add Package Dependencies**, enter:
 
@@ -55,70 +57,59 @@ dependencies: [
 pod 'TTGTagCollectionView'
 ```
 
-## Source Structure
+## Quick Start
 
-```
-Sources/TTGTags/
-├── Model/
-│   ├── TextTag.swift                      # Tag data model (id, content, style, selection)
-│   ├── TextTagContent.swift               # Abstract content base class
-│   ├── TextTagStringContent.swift         # Plain text content
-│   └── TextTagAttributedStringContent.swift  # NSAttributedString content
-├── Style/
-│   └── TextTagStyle.swift                 # Visual style (background, border, shadow, corner, size)
-├── Layout/
-│   └── TagCollectionLayout.swift          # Pure layout calculator (no UIKit side effects)
-└── View/
-    ├── TagCollectionView.swift            # Custom-view tag collection
-    ├── TextTagCollectionView.swift        # Text tag collection
-    └── Internal/
-        ├── TextTagComponentView.swift     # Per-tag rendering view
-        └── TextTagGradientLabel.swift     # CAGradientLayer-backed label
+> **3 steps to show tags on screen.** For the full API reference, scroll down to [Usage](#usage).
 
-Tests/TTGTagsTests/
-├── TagCollectionLayoutTests.swift
-├── TextTagTests.swift
-└── TextTagContentTests.swift
-```
-
----
-
-## Usage
-
-### TextTagCollectionView — text tags
-
-#### Quick start (Swift)
+### Step 1 — Import and create
 
 ```swift
 import TTGTags
 
 let tagView = TextTagCollectionView(frame: CGRect(x: 16, y: 100, width: 320, height: 200))
 view.addSubview(tagView)
+```
 
-// Build a tag
+### Step 2 — Build tags
+
+Each tag is a `TextTag` composed of **content** (what it says) + **style** (how it looks):
+
+```swift
 let content = TextTagStringContent(text: "Swift")
-content.textFont = .boldSystemFont(ofSize: 14)
+content.textFont  = .boldSystemFont(ofSize: 14)
 content.textColor = .white
 
 let style = TextTagStyle()
 style.backgroundColor = .systemBlue
-style.cornerRadius = 10
-style.extraSpace = CGSize(width: 12, height: 8)
-
-// Selected state (optional)
-let selectedStyle = TextTagStyle()
-selectedStyle.backgroundColor = .systemOrange
-selectedStyle.cornerRadius = 10
-selectedStyle.extraSpace = CGSize(width: 12, height: 8)
+style.cornerRadius    = 10
+style.extraSpace      = CGSize(width: 12, height: 8)   // inner padding
 
 let tag = TextTag(content: content, style: style)
-tag.selectedStyle = selectedStyle
-
-tagView.add(tag: tag)
-tagView.reload()   // always call after mutations
 ```
 
-#### Quick start (Objective-C)
+### Step 3 — Add and reload
+
+```swift
+tagView.add(tag: tag)
+tagView.reload()   // ← always call after mutations
+```
+
+That's it! You'll see a styled blue tag on screen.
+
+### Add selection support
+
+```swift
+let selectedStyle = TextTagStyle()
+selectedStyle.backgroundColor = .systemOrange
+selectedStyle.cornerRadius    = 10
+selectedStyle.extraSpace      = CGSize(width: 12, height: 8)
+
+tag.selectedStyle = selectedStyle    // auto-switches on tap
+
+tagView.delegate = self              // receive tap callbacks
+```
+
+### Objective-C? No problem
 
 ```objc
 #import <TTGTags/TTGTags-Swift.h>
@@ -137,7 +128,39 @@ TTGTextTag *tag = [TTGTextTag tagWithContent:content style:style];
 [tagView reload];
 ```
 
-#### Delegate
+---
+
+## Concepts
+
+Understanding these 4 building blocks will help you use the library effectively:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  TextTagCollectionView (or TagCollectionView)               │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐   │
+│  │ TextTag  │  │ TextTag  │  │ TextTag  │  │ TextTag  │   │
+│  │┌────────┐│  │┌────────┐│  │┌────────┐│  │┌────────┐│   │
+│  ││Content ││  ││Content ││  ││Content ││  ││Content ││   │
+│  ││ Style  ││  ││ Style  ││  ││ Style  ││  ││ Style  ││   │
+│  │└────────┘│  │└────────┘│  │└────────┘│  │└────────┘│   │
+│  └──────────┘  └──────────┘  └──────────┘  └──────────┘   │
+└─────────────────────────────────────────────────────────────┘
+```
+
+| Concept | Class | Role |
+|---|---|---|
+| **Tag** | `TextTag` | Data model: holds content, style, selection state, and an optional `attachment` |
+| **Content** | `TextTagStringContent` / `TextTagAttributedStringContent` | What text to display, with font and color |
+| **Style** | `TextTagStyle` | Visual appearance: background, gradient, corners, border, shadow, size |
+| **Collection View** | `TextTagCollectionView` / `TagCollectionView` | Container that lays out tags with alignment, spacing, and scroll |
+
+> **Key rule**: always call `reload()` after adding, removing, or updating tags.
+
+---
+
+## Usage
+
+### Delegate
 
 ```swift
 tagView.delegate = self
@@ -157,38 +180,7 @@ func textTagCollectionView(_ collectionView: TextTagCollectionView,
 }
 ```
 
-#### Tag model — TextTag
-
-```swift
-let tag = TextTag()
-
-// Content & style for normal / selected state
-tag.content         = TextTagStringContent(text: "Label")
-tag.style           = TextTagStyle()
-tag.selectedContent = TextTagStringContent(text: "Selected")   // optional fallback to content copy
-tag.selectedStyle   = TextTagStyle()                           // optional fallback to style copy
-
-// Selection
-tag.selected = false
-tag.onSelectStateChanged = { selected in print(selected) }
-
-// Attach any object
-tag.attachment = myModel
-
-// Accessibility
-tag.enableAutoDetectAccessibility = true   // auto sets label + traits from content
-// or manually:
-tag.isAccessibilityElement  = true
-tag.accessibilityLabel      = "My tag"
-tag.accessibilityHint       = "Double tap to select"
-tag.accessibilityTraits     = .button
-
-// Current active content / style (respects selected state)
-let activeContent = tag.rightfulContent
-let activeStyle   = tag.rightfulStyle
-```
-
-#### Content types
+### Content types
 
 ```swift
 // Plain text
@@ -196,7 +188,7 @@ let c1 = TextTagStringContent(text: "Hello")
 c1.textFont  = .systemFont(ofSize: 14)
 c1.textColor = .darkText
 
-// NSAttributedString
+// Rich text via NSAttributedString
 let attrs: [NSAttributedString.Key: Any] = [
     .foregroundColor: UIColor.systemRed,
     .font: UIFont.boldSystemFont(ofSize: 16)
@@ -206,7 +198,7 @@ let c2 = TextTagAttributedStringContent(
 )
 ```
 
-#### Style properties — TextTagStyle
+### Style properties — TextTagStyle
 
 ```swift
 let style = TextTagStyle()
@@ -246,7 +238,7 @@ style.exactWidth  = 0       // 0 = auto
 style.exactHeight = 32
 ```
 
-#### Layout configuration
+### Layout configuration
 
 ```swift
 tagView.scrollDirection  = .vertical     // .vertical (default) or .horizontal
@@ -266,7 +258,7 @@ tagView.onTapBlankArea = { point in print("tapped blank at \(point)") }
 tagView.onTapAllArea   = { point in print("tapped anywhere at \(point)") }
 ```
 
-#### Alignment modes
+### Alignment modes
 
 | Swift | Description |
 |---|---|
@@ -277,7 +269,38 @@ tagView.onTapAllArea   = { point in print("tapped anywhere at \(point)") }
 | `.fillByExpandingWidth` | Expand each tag's width to fill each row |
 | `.fillByExpandingWidthExceptLastLine` | Same as above but skip the last row |
 
-#### Mutating tags
+### Tag model — TextTag
+
+```swift
+let tag = TextTag()
+
+// Content & style for normal / selected state
+tag.content         = TextTagStringContent(text: "Label")
+tag.style           = TextTagStyle()
+tag.selectedContent = TextTagStringContent(text: "Selected")   // optional, falls back to content copy
+tag.selectedStyle   = TextTagStyle()                           // optional, falls back to style copy
+
+// Selection
+tag.selected = false
+tag.onSelectStateChanged = { selected in print(selected) }
+
+// Attach any object
+tag.attachment = myModel
+
+// Accessibility
+tag.enableAutoDetectAccessibility = true   // auto sets label + traits from content
+// or manually:
+tag.isAccessibilityElement  = true
+tag.accessibilityLabel      = "My tag"
+tag.accessibilityHint       = "Double tap to select"
+tag.accessibilityTraits     = .button
+
+// Current active content / style (respects selected state)
+let activeContent = tag.rightfulContent
+let activeStyle   = tag.rightfulStyle
+```
+
+### Mutating tags
 
 ```swift
 // Add
@@ -309,7 +332,7 @@ let unselected = tagView.allNotSelectedTags()
 tagView.reload()
 ```
 
-#### Hit-testing
+### Hit-testing
 
 ```swift
 let index = tagView.indexOfTag(at: touchPoint)   // NSNotFound if missed
@@ -319,9 +342,7 @@ let index = tagView.indexOfTag(at: touchPoint)   // NSNotFound if missed
 
 ### TagCollectionView — custom views
 
-Use this when your tags are arbitrary `UIView` subclasses.
-
-#### DataSource & Delegate
+Use `TagCollectionView` when your tags are arbitrary `UIView` subclasses instead of text.
 
 ```swift
 tagCollectionView.dataSource = self
@@ -344,11 +365,8 @@ func tagCollectionView(_ tagCollectionView: TagCollectionView,
 
 func tagCollectionView(_ tagCollectionView: TagCollectionView,
                        updateContentSize contentSize: CGSize) { }
-```
 
-#### Reload
-
-```swift
+// Reload
 tagCollectionView.reload()
 ```
 
@@ -364,9 +382,37 @@ All layout and spacing properties (`scrollDirection`, `alignment`, `numberOfLine
 
 ---
 
+## Source Structure
+
+```
+Sources/TTGTags/
+├── Model/
+│   ├── TextTag.swift                         # Tag data model (id, content, style, selection)
+│   ├── TextTagContent.swift                  # Abstract content base class
+│   ├── TextTagStringContent.swift            # Plain text content
+│   └── TextTagAttributedStringContent.swift  # NSAttributedString content
+├── Style/
+│   └── TextTagStyle.swift                    # Visual style (background, border, shadow, corner, size)
+├── Layout/
+│   └── TagCollectionLayout.swift             # Pure layout calculator (no UIKit side effects)
+└── View/
+    ├── TagCollectionView.swift               # Custom-view tag collection
+    ├── TextTagCollectionView.swift            # Text tag collection
+    └── Internal/
+        ├── TextTagComponentView.swift        # Per-tag rendering view
+        └── TextTagGradientLabel.swift        # CAGradientLayer-backed label
+
+Tests/TTGTagsTests/
+├── TagCollectionLayoutTests.swift
+├── TextTagTests.swift
+└── TextTagContentTests.swift
+```
+
+---
+
 ## 3.0 Migration Guide
 
-Version 3.0 rewrites all core sources in Swift. Objective-C class names, selectors, and enum cases are fully preserved via `@objc(TTGXxx)` aliases — existing OC call sites need only one change: replace the old `.h` imports with the Swift-generated umbrella header.
+Version 3.0 rewrites all core sources in Swift. Objective-C class names, selectors, and enum cases are fully preserved via `@objc(TTGXxx)` aliases — existing OC call sites need only one change: replace the old `.h` imports with the Swift generated umbrella header.
 
 **One-line OC migration:**
 
