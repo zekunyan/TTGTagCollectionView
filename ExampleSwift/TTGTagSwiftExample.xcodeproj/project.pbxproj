@@ -3,31 +3,65 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		002461456F242B71B30AD0C2 /* TagAttachmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C4B828C760CA54D1F6E646 /* TagAttachmentViewController.swift */; };
+		0D0010010000000000000002 /* DemoUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0010010000000000000001 /* DemoUI.swift */; };
+		0D0010020000000000000002 /* CustomSubviewTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0010020000000000000001 /* CustomSubviewTagsViewController.swift */; };
+		0D0010030000000000000002 /* PullRefreshTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0010030000000000000001 /* PullRefreshTagsViewController.swift */; };
+		0D0010040000000000000002 /* AutoLayoutFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0010040000000000000001 /* AutoLayoutFormViewController.swift */; };
+		175C62466C2F946ED109838C /* DemoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E7883B72E341A85F4E25BF /* DemoListViewController.swift */; };
+		4794A3FC75B17E3CBC3960A1 /* AttributedStringTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B513254137B845268F77BDF6 /* AttributedStringTagsViewController.swift */; };
+		5965DE0269160486D40F489A /* PerTagStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A7327EA753E24A519A8122 /* PerTagStyleViewController.swift */; };
+		5A38A1349C3DD9A9DA8F6C1B /* TagsInTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B971BE1FE61B2A2965FBFD9E /* TagsInTableViewController.swift */; };
+		70D23D5E02A972A87D7B986F /* TagsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188F07F96DA028751D15BA5B /* TagsTableViewCell.swift */; };
+		7C17C626C2B6BA4D69BE82A1 /* TagSampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC936D899DA8ACAB40D0573 /* TagSampleData.swift */; };
+		99663A1F494E06EC80CEEBEE /* ProgrammaticTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA62D159FC7C68941F02179 /* ProgrammaticTagsViewController.swift */; };
+		A1B2C3D4E5F60012 /* AnchorLayoutDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60011 /* AnchorLayoutDemoViewController.swift */; };
+		A1B2C3D4E5F60022 /* StackViewDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60021 /* StackViewDemoViewController.swift */; };
+		A1B2C3D4E5F60032 /* SelfSizingDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60031 /* SelfSizingDemoViewController.swift */; };
+		A1B2C3D4E5F60042 /* SwiftUIDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60041 /* SwiftUIDemoViewController.swift */; };
+		B8B00C9B11EE54EFBC8E5412 /* HorizontalScrollTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CD87FCE8B2B2C11597F038 /* HorizontalScrollTagsViewController.swift */; };
 		BF6A36C5263BFF81000CB844 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6A36C4263BFF81000CB844 /* AppDelegate.swift */; };
 		BF6A36C7263BFF81000CB844 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6A36C6263BFF81000CB844 /* SceneDelegate.swift */; };
 		BF6A36C9263BFF81000CB844 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6A36C8263BFF81000CB844 /* ViewController.swift */; };
-		BF6A36CC263BFF81000CB844 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF6A36CA263BFF81000CB844 /* Main.storyboard */; };
 		BF6A36CE263BFF84000CB844 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF6A36CD263BFF84000CB844 /* Assets.xcassets */; };
 		BF6A36D1263BFF84000CB844 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF6A36CF263BFF84000CB844 /* LaunchScreen.storyboard */; };
 		C63AADBAC89AF2627CDBE1E0 /* Pods_TTGTagSwiftExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F9ABBC9733CA17B850DB303 /* Pods_TTGTagSwiftExample.framework */; };
+		E88646145B4D4E3624AE4124 /* BasicTextTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D099B5DDFB6061B8C83D5569 /* BasicTextTagsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		06A7327EA753E24A519A8122 /* PerTagStyleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerTagStyleViewController.swift; sourceTree = "<group>"; };
+		0D0010010000000000000001 /* DemoUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoUI.swift; sourceTree = "<group>"; };
+		0D0010020000000000000001 /* CustomSubviewTagsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSubviewTagsViewController.swift; sourceTree = "<group>"; };
+		0D0010030000000000000001 /* PullRefreshTagsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRefreshTagsViewController.swift; sourceTree = "<group>"; };
+		0D0010040000000000000001 /* AutoLayoutFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutFormViewController.swift; sourceTree = "<group>"; };
+		188F07F96DA028751D15BA5B /* TagsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsTableViewCell.swift; sourceTree = "<group>"; };
 		18FE1A9005B5D818D3FB6510 /* Pods-TTGTagSwiftExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTGTagSwiftExample.debug.xcconfig"; path = "Target Support Files/Pods-TTGTagSwiftExample/Pods-TTGTagSwiftExample.debug.xcconfig"; sourceTree = "<group>"; };
+		41E7883B72E341A85F4E25BF /* DemoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoListViewController.swift; sourceTree = "<group>"; };
+		4EC936D899DA8ACAB40D0573 /* TagSampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSampleData.swift; sourceTree = "<group>"; };
+		60C4B828C760CA54D1F6E646 /* TagAttachmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagAttachmentViewController.swift; sourceTree = "<group>"; };
 		6F9ABBC9733CA17B850DB303 /* Pods_TTGTagSwiftExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TTGTagSwiftExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1B2C3D4E5F60011 /* AnchorLayoutDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorLayoutDemoViewController.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F60021 /* StackViewDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewDemoViewController.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F60031 /* SelfSizingDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizingDemoViewController.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F60041 /* SwiftUIDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIDemoViewController.swift; sourceTree = "<group>"; };
+		A6CD87FCE8B2B2C11597F038 /* HorizontalScrollTagsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollTagsViewController.swift; sourceTree = "<group>"; };
+		B513254137B845268F77BDF6 /* AttributedStringTagsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedStringTagsViewController.swift; sourceTree = "<group>"; };
+		B971BE1FE61B2A2965FBFD9E /* TagsInTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsInTableViewController.swift; sourceTree = "<group>"; };
 		BB73C78F0F625132A98AF918 /* Pods-TTGTagSwiftExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTGTagSwiftExample.release.xcconfig"; path = "Target Support Files/Pods-TTGTagSwiftExample/Pods-TTGTagSwiftExample.release.xcconfig"; sourceTree = "<group>"; };
 		BF6A36C1263BFF81000CB844 /* TTGTagSwiftExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TTGTagSwiftExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF6A36C4263BFF81000CB844 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF6A36C6263BFF81000CB844 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BF6A36C8263BFF81000CB844 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BF6A36CB263BFF81000CB844 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BF6A36CD263BFF84000CB844 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF6A36D0263BFF84000CB844 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF6A36D2263BFF84000CB844 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D099B5DDFB6061B8C83D5569 /* BasicTextTagsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextTagsViewController.swift; sourceTree = "<group>"; };
+		DCA62D159FC7C68941F02179 /* ProgrammaticTagsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammaticTagsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +82,31 @@
 				6F9ABBC9733CA17B850DB303 /* Pods_TTGTagSwiftExample.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		27C3EEDE42F3545B6F696F35 /* Demos */ = {
+			isa = PBXGroup;
+			children = (
+				4EC936D899DA8ACAB40D0573 /* TagSampleData.swift */,
+				0D0010010000000000000001 /* DemoUI.swift */,
+				41E7883B72E341A85F4E25BF /* DemoListViewController.swift */,
+				D099B5DDFB6061B8C83D5569 /* BasicTextTagsViewController.swift */,
+				0D0010020000000000000001 /* CustomSubviewTagsViewController.swift */,
+				B513254137B845268F77BDF6 /* AttributedStringTagsViewController.swift */,
+				A6CD87FCE8B2B2C11597F038 /* HorizontalScrollTagsViewController.swift */,
+				0D0010030000000000000001 /* PullRefreshTagsViewController.swift */,
+				06A7327EA753E24A519A8122 /* PerTagStyleViewController.swift */,
+				DCA62D159FC7C68941F02179 /* ProgrammaticTagsViewController.swift */,
+				60C4B828C760CA54D1F6E646 /* TagAttachmentViewController.swift */,
+				188F07F96DA028751D15BA5B /* TagsTableViewCell.swift */,
+				B971BE1FE61B2A2965FBFD9E /* TagsInTableViewController.swift */,
+				A1B2C3D4E5F60011 /* AnchorLayoutDemoViewController.swift */,
+				A1B2C3D4E5F60021 /* StackViewDemoViewController.swift */,
+				A1B2C3D4E5F60031 /* SelfSizingDemoViewController.swift */,
+				0D0010040000000000000001 /* AutoLayoutFormViewController.swift */,
+				A1B2C3D4E5F60041 /* SwiftUIDemoViewController.swift */,
+			);
+			path = Demos;
 			sourceTree = "<group>";
 		};
 		BF6A36B8263BFF80000CB844 = {
@@ -74,7 +133,7 @@
 				BF6A36C4263BFF81000CB844 /* AppDelegate.swift */,
 				BF6A36C6263BFF81000CB844 /* SceneDelegate.swift */,
 				BF6A36C8263BFF81000CB844 /* ViewController.swift */,
-				BF6A36CA263BFF81000CB844 /* Main.storyboard */,
+				27C3EEDE42F3545B6F696F35 /* Demos */,
 				BF6A36CD263BFF84000CB844 /* Assets.xcassets */,
 				BF6A36CF263BFF84000CB844 /* LaunchScreen.storyboard */,
 				BF6A36D2263BFF84000CB844 /* Info.plist */,
@@ -88,7 +147,6 @@
 				18FE1A9005B5D818D3FB6510 /* Pods-TTGTagSwiftExample.debug.xcconfig */,
 				BB73C78F0F625132A98AF918 /* Pods-TTGTagSwiftExample.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -153,7 +211,6 @@
 			files = (
 				BF6A36D1263BFF84000CB844 /* LaunchScreen.storyboard in Resources */,
 				BF6A36CE263BFF84000CB844 /* Assets.xcassets in Resources */,
-				BF6A36CC263BFF81000CB844 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +264,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF6A36C9263BFF81000CB844 /* ViewController.swift in Sources */,
+				7C17C626C2B6BA4D69BE82A1 /* TagSampleData.swift in Sources */,
+				0D0010010000000000000002 /* DemoUI.swift in Sources */,
+				175C62466C2F946ED109838C /* DemoListViewController.swift in Sources */,
+				E88646145B4D4E3624AE4124 /* BasicTextTagsViewController.swift in Sources */,
+				0D0010020000000000000002 /* CustomSubviewTagsViewController.swift in Sources */,
+				4794A3FC75B17E3CBC3960A1 /* AttributedStringTagsViewController.swift in Sources */,
+				B8B00C9B11EE54EFBC8E5412 /* HorizontalScrollTagsViewController.swift in Sources */,
+				0D0010030000000000000002 /* PullRefreshTagsViewController.swift in Sources */,
+				5965DE0269160486D40F489A /* PerTagStyleViewController.swift in Sources */,
+				99663A1F494E06EC80CEEBEE /* ProgrammaticTagsViewController.swift in Sources */,
+				002461456F242B71B30AD0C2 /* TagAttachmentViewController.swift in Sources */,
+				70D23D5E02A972A87D7B986F /* TagsTableViewCell.swift in Sources */,
+				5A38A1349C3DD9A9DA8F6C1B /* TagsInTableViewController.swift in Sources */,
+				A1B2C3D4E5F60012 /* AnchorLayoutDemoViewController.swift in Sources */,
+				A1B2C3D4E5F60022 /* StackViewDemoViewController.swift in Sources */,
+				A1B2C3D4E5F60032 /* SelfSizingDemoViewController.swift in Sources */,
+				0D0010040000000000000002 /* AutoLayoutFormViewController.swift in Sources */,
+				A1B2C3D4E5F60042 /* SwiftUIDemoViewController.swift in Sources */,
 				BF6A36C5263BFF81000CB844 /* AppDelegate.swift in Sources */,
 				BF6A36C7263BFF81000CB844 /* SceneDelegate.swift in Sources */,
 			);
@@ -215,14 +290,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		BF6A36CA263BFF81000CB844 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BF6A36CB263BFF81000CB844 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BF6A36CF263BFF84000CB844 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -285,7 +352,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -340,7 +407,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -357,6 +424,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9FBF2PXCKW;
 				INFOPLIST_FILE = TTGTagSwiftExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -376,6 +444,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9FBF2PXCKW;
 				INFOPLIST_FILE = TTGTagSwiftExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

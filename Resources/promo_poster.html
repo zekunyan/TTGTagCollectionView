@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TTGTagCollectionView Promo Poster</title>
+  <style>
+    :root {
+      --ink: #111827;
+      --muted: #687385;
+      --subtle: #eef2f7;
+      --panel: #ffffff;
+      --panel-soft: #f7f9fc;
+      --blue: #0a84ff;
+      --blue-deep: #1463d8;
+      --violet: #635bff;
+      --teal: #0aa6a6;
+      --green: #28a745;
+      --amber: #f2a900;
+      --rose: #eb4d70;
+      --line: rgba(17, 24, 39, 0.1);
+      --shadow: 0 32px 90px rgba(30, 42, 64, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+      background: #dfe6ef;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+      color: var(--ink);
+    }
+
+    body {
+      display: grid;
+      place-items: center;
+      padding: 0;
+    }
+
+    .poster {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(10, 132, 255, 0.08), transparent 34%),
+        linear-gradient(315deg, rgba(10, 166, 166, 0.12), transparent 36%),
+        #f6f8fb;
+    }
+
+    .poster::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(17, 24, 39, 0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17, 24, 39, 0.055) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.6), transparent 82%);
+      pointer-events: none;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      padding: 76px 96px 78px;
+      display: grid;
+      grid-template-columns: 620px 1fr;
+      gap: 72px;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-width: 0;
+    }
+
+    .eyebrow {
+      width: fit-content;
+      padding: 14px 20px;
+      border: 1px solid rgba(10, 132, 255, 0.18);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.74);
+      color: var(--blue-deep);
+      font-size: 24px;
+      font-weight: 760;
+      letter-spacing: 0;
+      box-shadow: 0 14px 40px rgba(10, 132, 255, 0.08);
+    }
+
+    h1 {
+      margin: 46px 0 0;
+      font-size: 84px;
+      line-height: 0.98;
+      letter-spacing: 0;
+      font-weight: 860;
+      max-width: 620px;
+    }
+
+    h1 span {
+      display: block;
+    }
+
+    .lead {
+      margin: 34px 0 0;
+      color: var(--muted);
+      font-size: 32px;
+      line-height: 1.32;
+      font-weight: 520;
+      max-width: 590px;
+    }
+
+    .feature-grid {
+      margin-top: 52px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .feature {
+      min-height: 126px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: 0 20px 44px rgba(40, 54, 80, 0.08);
+    }
+
+    .feature strong {
+      display: block;
+      font-size: 28px;
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    .feature span {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 20px;
+      line-height: 1.28;
+      font-weight: 560;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 22px;
+      font-weight: 650;
+    }
+
+    .footer b {
+      color: var(--ink);
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--blue);
+    }
+
+    .showcase {
+      position: relative;
+      min-width: 0;
+    }
+
+    .stage-card {
+      position: absolute;
+      border: 1px solid rgba(17, 24, 39, 0.1);
+      border-radius: 34px;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .device {
+      left: 10px;
+      top: 10px;
+      width: 432px;
+      height: 864px;
+      padding: 22px;
+      border-radius: 58px;
+      background: #111827;
+      box-shadow: 0 42px 110px rgba(17, 24, 39, 0.28);
+    }
+
+    .device-screen {
+      height: 100%;
+      border-radius: 42px;
+      overflow: hidden;
+      background: #fbfcff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .status {
+      height: 56px;
+      padding: 18px 28px 0;
+      display: flex;
+      justify-content: space-between;
+      color: #111827;
+      font-size: 16px;
+      font-weight: 760;
+    }
+
+    .notch {
+      width: 94px;
+      height: 24px;
+      border-radius: 0 0 16px 16px;
+      background: #111827;
+      margin: -1px auto 0;
+    }
+
+    .phone-content {
+      padding: 20px 26px 30px;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .phone-title {
+      font-size: 34px;
+      line-height: 1.02;
+      letter-spacing: 0;
+      font-weight: 840;
+      margin-top: 10px;
+    }
+
+    .phone-subtitle {
+      color: #8992a0;
+      font-size: 18px;
+      line-height: 1.25;
+      font-weight: 620;
+    }
+
+    .tag-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-content: flex-start;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 18px;
+      border-radius: 999px;
+      background: var(--blue);
+      color: white;
+      font-size: 20px;
+      line-height: 1;
+      font-weight: 720;
+      white-space: nowrap;
+      box-shadow: 0 10px 20px rgba(10, 132, 255, 0.2);
+    }
+
+    .tag.teal {
+      background: var(--teal);
+      box-shadow-color: rgba(10, 166, 166, 0.2);
+    }
+
+    .tag.green {
+      background: var(--green);
+      box-shadow-color: rgba(40, 167, 69, 0.18);
+    }
+
+    .tag.amber {
+      background: var(--amber);
+      color: #172033;
+      box-shadow-color: rgba(242, 169, 0, 0.22);
+    }
+
+    .tag.violet {
+      background: var(--violet);
+      box-shadow-color: rgba(99, 91, 255, 0.2);
+    }
+
+    .tag.rose {
+      background: var(--rose);
+      box-shadow-color: rgba(235, 77, 112, 0.18);
+    }
+
+    .section {
+      padding: 18px;
+      border-radius: 24px;
+      background: #f0f3f8;
+    }
+
+    .section-title {
+      margin-bottom: 14px;
+      color: #556172;
+      font-size: 17px;
+      font-weight: 780;
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .row {
+      padding: 14px;
+      border-radius: 18px;
+      background: white;
+      box-shadow: 0 8px 18px rgba(41, 54, 76, 0.06);
+    }
+
+    .row .tag {
+      min-height: 30px;
+      padding: 0 12px;
+      font-size: 14px;
+      box-shadow: none;
+    }
+
+    .layout-board {
+      right: 0;
+      top: 46px;
+      width: 756px;
+      height: 326px;
+      padding: 30px;
+    }
+
+    .board-header,
+    .custom-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 20px;
+    }
+
+    .kicker {
+      color: var(--blue-deep);
+      font-size: 20px;
+      line-height: 1;
+      font-weight: 820;
+    }
+
+    .board-title,
+    .custom-title {
+      margin-top: 10px;
+      font-size: 36px;
+      line-height: 1.05;
+      font-weight: 840;
+      letter-spacing: 0;
+    }
+
+    .metric {
+      padding: 12px 16px;
+      border-radius: 16px;
+      background: #edf6ff;
+      color: var(--blue-deep);
+      font-size: 20px;
+      font-weight: 820;
+      white-space: nowrap;
+    }
+
+    .alignment-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr 1.35fr;
+      gap: 14px;
+    }
+
+    .align-box {
+      min-height: 126px;
+      padding: 14px;
+      border-radius: 20px;
+      background: var(--panel-soft);
+      border: 1px solid rgba(17, 24, 39, 0.07);
+      overflow: hidden;
+    }
+
+    .align-label {
+      color: #596579;
+      font-size: 15px;
+      font-weight: 780;
+      margin-bottom: 12px;
+    }
+
+    .align-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .align-tags.center {
+      justify-content: center;
+    }
+
+    .align-tags.right {
+      margin-top: 10px;
+      justify-content: flex-end;
+    }
+
+    .align-tags.fill .tag {
+      flex: 1;
+    }
+
+    .align-tags .tag {
+      min-height: 28px;
+      padding: 0 10px;
+      font-size: 13px;
+      box-shadow: none;
+    }
+
+    .custom-board {
+      right: 0;
+      top: 404px;
+      width: 756px;
+      height: 284px;
+      padding: 30px;
+    }
+
+    .custom-tags {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .custom-item {
+      min-height: 104px;
+      padding: 16px;
+      border-radius: 20px;
+      background: var(--panel-soft);
+      border: 1px solid rgba(17, 24, 39, 0.07);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 17px;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 24px;
+      font-weight: 860;
+      letter-spacing: 0;
+    }
+
+    .icon.blue {
+      background: var(--blue);
+    }
+
+    .icon.teal {
+      background: var(--teal);
+    }
+
+    .icon.amber {
+      background: var(--amber);
+      color: #172033;
+    }
+
+    .icon.rose {
+      background: var(--rose);
+    }
+
+    .custom-item strong {
+      display: block;
+      font-size: 20px;
+      line-height: 1.1;
+      font-weight: 820;
+    }
+
+    .custom-item span {
+      display: block;
+      margin-top: 6px;
+      color: #788394;
+      font-size: 14px;
+      line-height: 1.18;
+      font-weight: 620;
+    }
+
+    .perf-strip {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 756px;
+      padding: 22px 28px;
+      border-radius: 28px;
+      background: #172033;
+      color: white;
+      box-shadow: 0 34px 82px rgba(17, 24, 39, 0.24);
+    }
+
+    .perf-title {
+      font-size: 22px;
+      font-weight: 840;
+      line-height: 1.1;
+    }
+
+    .perf-bars {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 86px 1fr 44px;
+      gap: 10px;
+      align-items: center;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .bar {
+      height: 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      overflow: hidden;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--teal), var(--blue));
+    }
+
+    .pill-row {
+      margin-top: 14px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .small-pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 14px;
+      font-weight: 760;
+    }
+  </style>
+</head>
+<body>
+  <main class="poster" aria-label="TTGTagCollectionView promotional poster">
+    <div class="content">
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Swift-first tag UI for iOS</div>
+          <h1><span>TTGTag</span><span>CollectionView</span></h1>
+          <p class="lead">A modern tag layout framework for text chips, custom views, self-sizing cells, and dense scrolling lists.</p>
+
+          <div class="feature-grid">
+            <div class="feature">
+              <strong>Programmatic UI</strong>
+              <span>No storyboard dependency in demos. Easier to read, debug, and maintain.</span>
+            </div>
+            <div class="feature">
+              <strong>Auto Layout Ready</strong>
+              <span>Intrinsic size and reload paths support self-sizing containers.</span>
+            </div>
+            <div class="feature">
+              <strong>Custom Tags</strong>
+              <span>Use styled text tags or bring your own UIView-based content.</span>
+            </div>
+            <div class="feature">
+              <strong>Cache Aware</strong>
+              <span>Pure layout and text measurement caches improve list performance.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer">
+          <b>Swift Package</b>
+          <span class="dot"></span>
+          <span>CocoaPods</span>
+          <span class="dot"></span>
+          <span>Objective-C Compatible</span>
+        </div>
+      </section>
+
+      <section class="showcase">
+        <div class="device">
+          <div class="device-screen">
+            <div class="notch"></div>
+            <div class="status">
+              <span>9:41</span>
+              <span>Demo</span>
+            </div>
+            <div class="phone-content">
+              <div>
+                <div class="phone-title">Interactive Tags</div>
+                <div class="phone-subtitle">Selection, insert, delete, and reload with stable layout behavior.</div>
+              </div>
+
+              <div class="section">
+                <div class="section-title">Default text tags</div>
+                <div class="tag-wrap">
+                  <span class="tag">Swift</span>
+                  <span class="tag violet">UIKit</span>
+                  <span class="tag teal">AutoLayout</span>
+                  <span class="tag amber">Reusable</span>
+                  <span class="tag green">Self sizing</span>
+                  <span class="tag rose">Selectable</span>
+                  <span class="tag">Fast cells</span>
+                  <span class="tag teal">Cache</span>
+                  <span class="tag violet">Custom UI</span>
+                </div>
+              </div>
+
+              <div class="section">
+                <div class="section-title">Table view cells</div>
+                <div class="mini-list">
+                  <div class="row">
+                    <div class="tag-wrap">
+                      <span class="tag">iOS</span>
+                      <span class="tag teal">Collection</span>
+                      <span class="tag green">Layout</span>
+                      <span class="tag violet">Height</span>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="tag-wrap">
+                      <span class="tag rose">Dynamic</span>
+                      <span class="tag amber">Dense tags</span>
+                      <span class="tag">Smooth scroll</span>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="tag-wrap">
+                      <span class="tag teal">Bind data</span>
+                      <span class="tag">Reload</span>
+                      <span class="tag green">Tap</span>
+                      <span class="tag violet">Reuse</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage-card layout-board">
+          <div class="board-header">
+            <div>
+              <div class="kicker">Flexible layout</div>
+              <div class="board-title">Alignment modes that match real product UI.</div>
+            </div>
+            <div class="metric">Precise fit</div>
+          </div>
+          <div class="alignment-grid">
+            <div class="align-box">
+              <div class="align-label">Left / Right</div>
+              <div class="align-tags">
+                <span class="tag">News</span>
+                <span class="tag teal">Music</span>
+                <span class="tag amber">Travel</span>
+              </div>
+              <div class="align-tags right">
+                <span class="tag teal">Filter</span>
+                <span class="tag violet">Sort</span>
+                <span class="tag">Search</span>
+              </div>
+            </div>
+            <div class="align-box">
+              <div class="align-label">Center</div>
+              <div class="align-tags center">
+                <span class="tag rose">Design</span>
+                <span class="tag">Code</span>
+                <span class="tag green">QA</span>
+                <span class="tag violet">UIKit</span>
+              </div>
+            </div>
+            <div class="align-box">
+              <div class="align-label">Fill</div>
+              <div class="align-tags fill">
+                <span class="tag">Compact</span>
+                <span class="tag teal" style="flex: 1.25;">Balanced</span>
+                <span class="tag amber" style="flex: 0.9;">Fit</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage-card custom-board">
+          <div class="custom-header">
+            <div>
+              <div class="kicker">UIView tags</div>
+              <div class="custom-title">Text chips, image tags, or fully custom cells.</div>
+            </div>
+            <div class="metric">UIKit native</div>
+          </div>
+          <div class="custom-tags">
+            <div class="custom-item">
+              <div class="icon blue">T</div>
+              <div>
+                <strong>TextTag</strong>
+                <span>System blue default style</span>
+              </div>
+            </div>
+            <div class="custom-item">
+              <div class="icon teal">V</div>
+              <div>
+                <strong>Custom View</strong>
+                <span>Any UIView as a tag</span>
+              </div>
+            </div>
+            <div class="custom-item">
+              <div class="icon amber">A</div>
+              <div>
+                <strong>Auto Height</strong>
+                <span>Intrinsic content size</span>
+              </div>
+            </div>
+            <div class="custom-item">
+              <div class="icon rose">S</div>
+              <div>
+                <strong>SwiftUI Demo</strong>
+                <span>Consistent demo experience</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="perf-strip">
+          <div class="perf-title">Optimized for dense tags in scrolling lists</div>
+          <div class="perf-bars">
+            <div class="bar-row">
+              <span>Layout cache</span>
+              <div class="bar"><span style="width: 92%;"></span></div>
+              <span>Reuse</span>
+            </div>
+            <div class="bar-row">
+              <span>Text size</span>
+              <div class="bar"><span style="width: 86%;"></span></div>
+              <span>Memo</span>
+            </div>
+            <div class="bar-row">
+              <span>Cell height</span>
+              <div class="bar"><span style="width: 78%;"></span></div>
+              <span>Static</span>
+            </div>
+          </div>
+          <div class="pill-row">
+            <span class="small-pill">Precompute height</span>
+            <span class="small-pill">Stable reuse</span>
+            <span class="small-pill">Pure layout engine</span>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

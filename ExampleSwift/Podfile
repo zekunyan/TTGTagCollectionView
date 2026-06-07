@@ -1,6 +1,16 @@
-platform :ios, '11.0'
+platform :ios, '16.0'
 
 target 'TTGTagSwiftExample' do
   use_frameworks!
   pod 'TTGTagCollectionView', :path => '../'
+end
+
+post_install do |installer|
+  installer.generated_projects.each do |project|
+    project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '16.0'
+      end
+    end
+  end
 end
