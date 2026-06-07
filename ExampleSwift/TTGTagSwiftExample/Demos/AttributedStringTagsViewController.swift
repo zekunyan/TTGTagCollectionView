@@ -260,25 +260,37 @@ private enum AttributedTagExamples {
 
 class AttributedStringTagsViewController: UIViewController {
 
+    private let titleLabel = DemoUI.titleLabel("Attributed string tags")
+    private let descriptionLabel = DemoUI.descriptionLabel("TextTagAttributedStringContent supports mixed fonts, colors, paragraph styles, symbols, and selectable attributed content.")
     private let textTagCollectionView = TextTagCollectionView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
+        DemoUI.applyScreenBackground(view)
         setupSubviews()
         configureCollectionView()
         installDemonstrationTags()
     }
 
     private func setupSubviews() {
-        textTagCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        textTagCollectionView.backgroundColor = .systemGray6
-        view.addSubview(textTagCollectionView)
+        DemoUI.styleTagSurface(textTagCollectionView)
+        [titleLabel, descriptionLabel, textTagCollectionView].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview($0)
+        }
 
         NSLayoutConstraint.activate([
-            textTagCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
-            textTagCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            textTagCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+
+            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 6),
+            descriptionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            descriptionLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+
+            textTagCollectionView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 18),
+            textTagCollectionView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            textTagCollectionView.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
             textTagCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
         ])
     }
@@ -288,6 +300,7 @@ class AttributedStringTagsViewController: UIViewController {
         textTagCollectionView.alignment = .fillByExpandingWidth
         textTagCollectionView.horizontalSpacing = 8
         textTagCollectionView.verticalSpacing = 10
+        textTagCollectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
 
     private func installDemonstrationTags() {

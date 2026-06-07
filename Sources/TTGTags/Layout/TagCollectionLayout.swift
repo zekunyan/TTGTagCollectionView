@@ -189,6 +189,12 @@ struct TagCollectionLayout {
 
         var currentYBase = input.contentInset.top
         let lineCount = lineTagIndices.count
+        let contentWidth = maxLineWidth + input.contentInset.left + input.contentInset.right
+
+        if lineCount == 0 {
+            let contentHeight = input.contentInset.top + input.contentInset.bottom
+            return ([], CGSize(width: contentWidth, height: contentHeight))
+        }
 
         for lineIndex in 0..<lineCount {
             var currentLineWidth = lineWidths[lineIndex]
@@ -249,7 +255,6 @@ struct TagCollectionLayout {
             currentYBase += currentLineMaxHeight + input.verticalSpacing
         }
 
-        let contentWidth = maxLineWidth + input.contentInset.left + input.contentInset.right
         let contentHeight = currentYBase - input.verticalSpacing + input.contentInset.bottom
         let contentSize = CGSize(width: contentWidth, height: contentHeight)
 

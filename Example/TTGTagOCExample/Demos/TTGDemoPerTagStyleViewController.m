@@ -3,6 +3,7 @@
 //
 
 #import "TTGDemoPerTagStyleViewController.h"
+#import "TTGDemoUI.h"
 #import "TTGTagSampleData.h"
 #import <TTGTags/TTGTags-Swift.h>
 
@@ -29,15 +30,11 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         baseStyleTemplate = [TTGTextTagStyle new];
-        baseStyleTemplate.backgroundColor = UIColor.whiteColor;
-        baseStyleTemplate.borderColor = UIColor.whiteColor;
-        baseStyleTemplate.borderWidth = 1;
-        baseStyleTemplate.cornerRadius = 4;
-        baseStyleTemplate.extraSpace = CGSizeMake(8, 8);
-        baseStyleTemplate.shadowColor = UIColor.blackColor;
-        baseStyleTemplate.shadowOpacity = 0.3;
-        baseStyleTemplate.shadowRadius = 2;
-        baseStyleTemplate.shadowOffset = CGSizeMake(1, 1);
+        baseStyleTemplate.backgroundColor = UIColor.systemBlueColor;
+        baseStyleTemplate.borderWidth = 0;
+        baseStyleTemplate.cornerRadius = 14;
+        baseStyleTemplate.extraSpace = CGSizeMake(12, 6);
+        baseStyleTemplate.shadowOpacity = 0;
 
         baseContentTemplate = [TTGTextTagStringContent new];
         baseContentTemplate.textFont = [UIFont systemFontOfSize:20];
@@ -58,10 +55,10 @@
         style.backgroundColor = backgroundColor;
 
         TTGTextTagStyle *selectedStyle = [style copy];
-        selectedStyle.backgroundColor = [self complementApproximate:style.backgroundColor];
-        selectedStyle.borderColor = UIColor.blackColor;
-        selectedStyle.cornerRadius = 8;
-        selectedStyle.shadowColor = UIColor.greenColor;
+        selectedStyle.backgroundColor = UIColor.systemIndigoColor;
+        selectedStyle.borderWidth = 0;
+        selectedStyle.cornerRadius = 14;
+        selectedStyle.shadowOpacity = 0;
 
         TTGTextTagStringContent *content = [baseContentTemplate copy];
         content.text = text;
@@ -87,27 +84,65 @@
 #pragma mark - Screen
 
 @interface TTGDemoPerTagStyleViewController () <TTGTextTagCollectionViewDelegate>
-@property (weak, nonatomic) IBOutlet TTGTextTagCollectionView *tagView;
+@property (strong, nonatomic) TTGTextTagCollectionView *tagView;
 @end
 
 @implementation TTGDemoPerTagStyleViewController
+
+- (void)loadView {
+    UIView *view = [UIView new];
+    [TTGDemoUI applyScreenBackground:view];
+
+    UILabel *titleLabel = [TTGDemoUI titleLabel:@"Each tag can be different"];
+    UILabel *descriptionLabel =
+        [TTGDemoUI descriptionLabel:@"Builds batches with different colors, selected styles, accessibility values, and attachments. Tap a tag and inspect the console output."];
+    self.tagView = [TTGTextTagCollectionView new];
+    [TTGDemoUI styleTagSurface:self.tagView];
+    self.tagView.translatesAutoresizingMaskIntoConstraints = NO;
+    titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    descriptionLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [view addSubview:titleLabel];
+    [view addSubview:descriptionLabel];
+    [view addSubview:self.tagView];
+
+    UILayoutGuide *safeArea = view.safeAreaLayoutGuide;
+    [NSLayoutConstraint activateConstraints:@[
+        [titleLabel.topAnchor constraintEqualToAnchor:safeArea.topAnchor constant:16],
+        [titleLabel.leadingAnchor constraintEqualToAnchor:view.leadingAnchor constant:16],
+        [titleLabel.trailingAnchor constraintEqualToAnchor:view.trailingAnchor constant:-16],
+
+        [descriptionLabel.topAnchor constraintEqualToAnchor:titleLabel.bottomAnchor constant:8],
+        [descriptionLabel.leadingAnchor constraintEqualToAnchor:view.leadingAnchor constant:16],
+        [descriptionLabel.trailingAnchor constraintEqualToAnchor:view.trailingAnchor constant:-16],
+
+        [self.tagView.topAnchor constraintEqualToAnchor:descriptionLabel.bottomAnchor constant:18],
+        [self.tagView.leadingAnchor constraintEqualToAnchor:view.leadingAnchor constant:16],
+        [self.tagView.trailingAnchor constraintEqualToAnchor:view.trailingAnchor constant:-16],
+        [safeArea.bottomAnchor constraintGreaterThanOrEqualToAnchor:self.tagView.bottomAnchor constant:16],
+    ]];
+
+    self.view = view;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tagView.alignment = TTGTagCollectionAlignmentFillByExpandingWidth;
     self.tagView.delegate = self;
+    self.tagView.horizontalSpacing = 8;
+    self.tagView.verticalSpacing = 8;
+    self.tagView.contentInset = UIEdgeInsetsMake(10, 10, 10, 10);
 
     NSArray<NSString *> *pool = [TTGTagSampleData shortWordsRepeated:3];
     NSUInteger batchSize = 8;
     NSArray<UIColor *> *palette = @[
-        [UIColor colorWithRed:0.24 green:0.72 blue:0.94 alpha:1],
-        [UIColor colorWithRed:0.30 green:0.72 blue:0.53 alpha:1],
-        [UIColor colorWithRed:0.97 green:0.64 blue:0.27 alpha:1],
-        [UIColor colorWithRed:0.73 green:0.91 blue:0.41 alpha:1],
-        [UIColor colorWithRed:0.35 green:0.35 blue:0.36 alpha:1],
-        [UIColor colorWithRed:1.00 green:0.41 blue:0.42 alpha:1],
-        [UIColor colorWithRed:0.50 green:0.86 blue:0.90 alpha:1],
-        [UIColor colorWithRed:0.33 green:0.23 blue:0.34 alpha:1],
+        UIColor.systemBlueColor,
+        UIColor.systemTealColor,
+        UIColor.systemGreenColor,
+        UIColor.systemOrangeColor,
+        UIColor.systemPurpleColor,
+        UIColor.systemPinkColor,
+        UIColor.systemIndigoColor,
+        UIColor.systemGrayColor,
     ];
 
     for (NSUInteger i = 0; i < palette.count; i++) {

@@ -2,33 +2,38 @@
 //  HorizontalScrollTagsViewController.swift
 //  TTGTagSwiftExample
 //
-//  Demo: Horizontal scroll and numberOfLines line limit
 
 import UIKit
 import TTGTags
 
 class HorizontalScrollTagsViewController: UIViewController {
 
+    private let titleLabel = DemoUI.titleLabel("Horizontal scroll & line limits")
+    private let descriptionLabel = DemoUI.descriptionLabel("Limit horizontal tag views to one, two, or three rows. Swipe each row to inspect overflow content.")
     private let oneLineTagView = TextTagCollectionView()
     private let twoLineTagView = TextTagCollectionView()
     private let threeLineTagView = TextTagCollectionView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
+        DemoUI.applyScreenBackground(view)
         setupSubviews()
         configureScrollAndLineLimits()
         loadSameTagsIntoAllRows()
     }
 
-    // MARK: - Setup
-
     private func setupSubviews() {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 12
+        stackView.spacing = 10
         stackView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stackView)
+
+        stackView.addArrangedSubview(titleLabel)
+        stackView.addArrangedSubview(descriptionLabel)
+        addRow(title: "One line", tagView: oneLineTagView, height: 78, to: stackView)
+        addRow(title: "Two lines", tagView: twoLineTagView, height: 116, to: stackView)
+        addRow(title: "Three lines", tagView: threeLineTagView, height: 154, to: stackView)
 
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
@@ -36,57 +41,39 @@ class HorizontalScrollTagsViewController: UIViewController {
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             stackView.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
         ])
+    }
 
-        let rows: [(String, TextTagCollectionView)] = [
-            ("One line", oneLineTagView),
-            ("Two lines", twoLineTagView),
-            ("Three lines", threeLineTagView),
-        ]
-
-        for (labelText, tagView) in rows {
-            let label = UILabel()
-            label.text = labelText
-            label.font = .systemFont(ofSize: 18, weight: .medium)
-            label.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
-            stackView.addArrangedSubview(label)
-
-            tagView.backgroundColor = UIColor(red: 0.80, green: 0.80, blue: 0.80, alpha: 1)
-            tagView.translatesAutoresizingMaskIntoConstraints = false
-            tagView.heightAnchor.constraint(equalToConstant: 80).isActive = true
-            stackView.addArrangedSubview(tagView)
-        }
+    private func addRow(title: String, tagView: TextTagCollectionView, height: CGFloat, to stackView: UIStackView) {
+        stackView.addArrangedSubview(DemoUI.sectionLabel(title))
+        DemoUI.styleTagSurface(tagView)
+        tagView.heightAnchor.constraint(equalToConstant: height).isActive = true
+        stackView.addArrangedSubview(tagView)
     }
 
     private func configureScrollAndLineLimits() {
         for tagView in [oneLineTagView, twoLineTagView, threeLineTagView] {
             tagView.scrollDirection = .horizontal
             tagView.alignment = .fillByExpandingWidth
+            tagView.horizontalSpacing = 8
+            tagView.verticalSpacing = 8
+            tagView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+            tagView.showsHorizontalScrollIndicator = false
         }
         oneLineTagView.numberOfLines = 1
         twoLineTagView.numberOfLines = 2
         threeLineTagView.numberOfLines = 3
     }
 
-    // MARK: - Data
-
     private func loadSameTagsIntoAllRows() {
-        let tags = buildTextTags()
-        oneLineTagView.add(tags: tags)
-        twoLineTagView.add(tags: tags)
-        threeLineTagView.add(tags: tags)
+        oneLineTagView.add(tags: buildTextTags())
+        twoLineTagView.add(tags: buildTextTags())
+        threeLineTagView.add(tags: buildTextTags())
         oneLineTagView.reload()
         twoLineTagView.reload()
         threeLineTagView.reload()
     }
 
     private func buildTextTags() -> [TextTag] {
-        TagSampleData.shortSampleWords.map { word in
-            let tag = TextTag(
-                content: TextTagStringContent(text: word),
-                style: TextTagStyle()
-            )
-            tag.selectedStyle.backgroundColor = .green
-            return tag
-        }
+        TagSampleData.shortSampleWords.map { DemoUI.tag(text: $0) }
     }
 }

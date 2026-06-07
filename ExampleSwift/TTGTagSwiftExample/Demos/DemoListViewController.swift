@@ -9,26 +9,33 @@ class DemoListViewController: UITableViewController {
 
     private struct DemoItem {
         let title: String
+        let detail: String
         let viewControllerType: UIViewController.Type
     }
 
     private let demoItems: [DemoItem] = [
-        DemoItem(title: "Basic text tags (two columns)", viewControllerType: BasicTextTagsViewController.self),
-        DemoItem(title: "Attributed string tags", viewControllerType: AttributedStringTagsViewController.self),
-        DemoItem(title: "Horizontal scroll & line limits", viewControllerType: HorizontalScrollTagsViewController.self),
-        DemoItem(title: "Per-tag style & attachment", viewControllerType: PerTagStyleViewController.self),
-        DemoItem(title: "Programmatic (Auto Layout)", viewControllerType: ProgrammaticTagsViewController.self),
-        DemoItem(title: "Bind data to tag", viewControllerType: TagAttachmentViewController.self),
-        DemoItem(title: "Tags in UITableViewCell", viewControllerType: TagsInTableViewController.self),
-        DemoItem(title: "🔗 Anchor constraint layout", viewControllerType: AnchorLayoutDemoViewController.self),
-        DemoItem(title: "📦 UIStackView integration", viewControllerType: StackViewDemoViewController.self),
-        DemoItem(title: "📐 Self-sizing (intrinsicContentSize)", viewControllerType: SelfSizingDemoViewController.self),
-        DemoItem(title: "⚡ SwiftUI (TagCloudView)", viewControllerType: SwiftUIDemoViewController.self),
+        DemoItem(title: "1. Basic text tags", detail: "Two vertical tag collections with shared default styling.", viewControllerType: BasicTextTagsViewController.self),
+        DemoItem(title: "2. Custom UIView tags", detail: "Use labels, buttons, and image views as custom tag content.", viewControllerType: CustomSubviewTagsViewController.self),
+        DemoItem(title: "3. Programmatic layout & auto height", detail: "Pure code layout with intrinsic content height.", viewControllerType: ProgrammaticTagsViewController.self),
+        DemoItem(title: "4. Tags in UITableViewCell", detail: "Self-sizing table cells with wrapped tags.", viewControllerType: TagsInTableViewController.self),
+        DemoItem(title: "5. Horizontal scroll & line limits", detail: "One, two, and three-line horizontal scrolling tag rows.", viewControllerType: HorizontalScrollTagsViewController.self),
+        DemoItem(title: "6. Pull to refresh", detail: "Native refresh control plus near-bottom loading.", viewControllerType: PullRefreshTagsViewController.self),
+        DemoItem(title: "7. Each tag can be different", detail: "Independent content, styles, selected styles, and attachments.", viewControllerType: PerTagStyleViewController.self),
+        DemoItem(title: "8. Bind data to tag", detail: "Tap tags and inspect the attached model payload.", viewControllerType: TagAttachmentViewController.self),
+        DemoItem(title: "9. Attributed string tags", detail: "Rich text content with mixed font weight and color.", viewControllerType: AttributedStringTagsViewController.self),
+        DemoItem(title: "10. Anchor constraint layout", detail: "Auto Layout anchor constraints around a tag view.", viewControllerType: AnchorLayoutDemoViewController.self),
+        DemoItem(title: "11. UIStackView integration", detail: "Tag views embedded in vertical stack layouts.", viewControllerType: StackViewDemoViewController.self),
+        DemoItem(title: "12. Self-sizing", detail: "Intrinsic content size and dynamic container updates.", viewControllerType: SelfSizingDemoViewController.self),
+        DemoItem(title: "13. Auto Layout form", detail: "Form sections using tag views without fixed heights.", viewControllerType: AutoLayoutFormViewController.self),
+        DemoItem(title: "14. SwiftUI integration", detail: "Use TagCloudView from SwiftUI and keep UIKit behavior.", viewControllerType: SwiftUIDemoViewController.self),
     ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "TTGTagCollectionView Demos"
+        title = "TTGTag"
+        DemoUI.applyScreenBackground(tableView)
+        tableView.separatorStyle = .none
+        tableView.rowHeight = 72
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DemoCell")
     }
 
@@ -40,7 +47,15 @@ class DemoListViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DemoCell", for: indexPath)
-        cell.textLabel?.text = demoItems[indexPath.row].title
+        let item = demoItems[indexPath.row]
+        var content = cell.defaultContentConfiguration()
+        content.text = item.title
+        content.secondaryText = item.detail
+        content.textProperties.font = .systemFont(ofSize: 16, weight: .semibold)
+        content.secondaryTextProperties.font = .systemFont(ofSize: 13)
+        content.secondaryTextProperties.color = .secondaryLabel
+        cell.contentConfiguration = content
+        cell.backgroundColor = .clear
         cell.accessoryType = .disclosureIndicator
         return cell
     }

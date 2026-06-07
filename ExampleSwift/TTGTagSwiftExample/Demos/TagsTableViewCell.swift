@@ -2,7 +2,6 @@
 //  TagsTableViewCell.swift
 //  TTGTagSwiftExample
 //
-//  Tags embedded in UITableViewCell with self-sizing row height
 
 import UIKit
 import TTGTags
@@ -11,8 +10,9 @@ class TagsTableViewCell: UITableViewCell {
 
     static let reuseIdentifier = "TagsTableViewCell"
 
-    let titleLabel = UILabel()
-    let tagView = TextTagCollectionView()
+    private let surfaceView = UIView()
+    private let titleLabel = UILabel()
+    private let tagView = TextTagCollectionView()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -24,49 +24,84 @@ class TagsTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setupSubviews() {
-        titleLabel.font = .systemFont(ofSize: 18)
-        titleLabel.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(titleLabel)
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if updatePreferredMaxLayoutWidthIfNeeded() {
+            tagView.reload()
+        }
+    }
 
+    @discardableResult
+    private func updatePreferredMaxLayoutWidthIfNeeded() -> Bool {
+        let maxWidth = max(0, surfaceView.bounds.width - 24)
+        if abs(tagView.preferredMaxLayoutWidth - maxWidth) > 0.5 {
+            tagView.preferredMaxLayoutWidth = maxWidth
+            return true
+        }
+        return false
+    }
+
+    private func setupSubviews() {
+        backgroundColor = .clear
+        selectionStyle = .none
+        contentView.backgroundColor = .clear
+
+        surfaceView.backgroundColor = .secondarySystemBackground
+        surfaceView.layer.cornerRadius = 10
+        surfaceView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(surfaceView)
+
+        titleLabel.font = .systemFont(ofSize: 16, weight: .semibold)
+        titleLabel.textColor = .label
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        surfaceView.addSubview(titleLabel)
+
+        DemoUI.styleTagSurface(tagView)
+        tagView.backgroundColor = .clear
         tagView.alignment = .fillByExpandingWidth
         tagView.manualCalculateHeight = true
+        tagView.showsHorizontalScrollIndicator = false
+        tagView.scrollView.alwaysBounceHorizontal = false
+        tagView.scrollDirection = .vertical
+        tagView.contentInset = UIEdgeInsets(top: 4, left: 0, bottom: 4, right: 0)
+        tagView.horizontalSpacing = 8
+        tagView.verticalSpacing = 8
         tagView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(tagView)
+        surfaceView.addSubview(tagView)
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            titleLabel.heightAnchor.constraint(equalToConstant: 24),
+            surfaceView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 6),
+            surfaceView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            surfaceView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            surfaceView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -6),
+
+            titleLabel.topAnchor.constraint(equalTo: surfaceView.topAnchor, constant: 12),
+            titleLabel.leadingAnchor.constraint(equalTo: surfaceView.leadingAnchor, constant: 12),
+            titleLabel.trailingAnchor.constraint(equalTo: surfaceView.trailingAnchor, constant: -12),
 
             tagView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
-            tagView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            tagView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-            tagView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+            tagView.leadingAnchor.constraint(equalTo: surfaceView.leadingAnchor, constant: 12),
+            tagView.trailingAnchor.constraint(equalTo: surfaceView.trailingAnchor, constant: -12),
+            tagView.bottomAnchor.constraint(equalTo: surfaceView.bottomAnchor, constant: -12),
         ])
     }
 
-    func configure(with words: [String]) {
+    func configure(title: String, words: [String]) {
+        titleLabel.text = title
         tagView.removeAllTags()
-
-        let tags: [TextTag] = words.map { word in
-            let tag = TextTag(
-                content: TextTagStringContent(text: word),
-                style: TextTagStyle()
-            )
-            tag.selectedStyle.backgroundColor = .green
-            return tag
-        }
-        tagView.add(tags: tags)
-
-        tagView.preferredMaxLayoutWidth = UIScreen.main.bounds.width - 16
+        tagView.add(tags: words.map { DemoUI.tag(text: $0) })
 
         if !words.isEmpty {
-            for _ in 0..<3 {
+            for _ in 0..<min(3, words.count) {
                 tagView.updateTag(at: Int(arc4random_uniform(UInt32(words.count))), selected: true)
             }
+        }
+
+        if surfaceView.bounds.width <= 0 {
+            let fallbackWidth = max(0, UIScreen.main.bounds.width - 32 - 24)
+            tagView.preferredMaxLayoutWidth = fallbackWidth
+        } else {
+            _ = updatePreferredMaxLayoutWidthIfNeeded()
         }
         tagView.reload()
     }

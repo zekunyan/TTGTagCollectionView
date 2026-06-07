@@ -158,7 +158,7 @@ final class TextTagComponentView: UIView {
     private func updateMask(with path: UIBezierPath) {
         let layer = maskLayer ?? CAShapeLayer()
         layer.frame = bounds
-        layer.path = path.cgPath
+        layer.path = path.cgPath.copy()
         self.label.layer.mask = layer
         maskLayer = layer
     }
@@ -179,7 +179,7 @@ final class TextTagComponentView: UIView {
         }
 
         layerToUse.frame = bounds
-        layerToUse.path = path.cgPath
+        layerToUse.path = path.cgPath.copy()
         layerToUse.lineWidth = style.borderWidth
         layerToUse.strokeColor = style.borderColor.cgColor
     }
@@ -191,7 +191,7 @@ final class TextTagComponentView: UIView {
         layer.shadowOffset = style.shadowOffset
         layer.shadowRadius = style.shadowRadius
         layer.shadowOpacity = Float(style.shadowOpacity)
-        layer.shadowPath = path.cgPath
+        layer.shadowPath = path.cgPath.copy()
     }
 
     // MARK: - Equality

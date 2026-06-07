@@ -124,6 +124,7 @@ public final class TextTagCollectionView: UIView {
 
     private var tagLabels: [TextTagComponentView] = []
     private var tagCollectionView: TagCollectionView!
+    private var lastLaidOutBoundsSize: CGSize = .zero
 
     // MARK: Init
 
@@ -163,11 +164,24 @@ public final class TextTagCollectionView: UIView {
         } else {
             return .zero
         }
+
+        let originalBounds = tagCollectionView.bounds
+        let originalFrame = tagCollectionView.frame
+        let originalScrollFrame = tagCollectionView.scrollView.frame
+        let originalContentSize = tagCollectionView.scrollView.contentSize
+
         updateAllLabelStyleAndFrame()
         tagCollectionView.bounds = CGRect(x: 0, y: 0, width: measurementWidth, height: 0)
         tagCollectionView.setNeedsLayout()
         tagCollectionView.layoutIfNeeded()
-        return tagCollectionView.intrinsicContentSize
+        let result = tagCollectionView.scrollView.contentSize
+
+        tagCollectionView.bounds = originalBounds
+        tagCollectionView.frame = originalFrame
+        tagCollectionView.scrollView.frame = originalScrollFrame
+        tagCollectionView.scrollView.contentSize = originalContentSize
+        tagCollectionView.setNeedsLayout()
+        return result
     }
 
     /// Two-pass Auto Layout measurement.
@@ -185,13 +199,22 @@ public final class TextTagCollectionView: UIView {
         guard measurementWidth > 0 else { return .zero }
 
         let originalBounds = bounds
+        let originalTagCollectionFrame = tagCollectionView.frame
+        let originalScrollFrame = tagCollectionView.scrollView.frame
+        let originalContentSize = tagCollectionView.scrollView.contentSize
+
         bounds = CGRect(x: 0, y: 0, width: measurementWidth, height: 0)
         updateAllLabelStyleAndFrame()
         tagCollectionView.frame = bounds
         tagCollectionView.setNeedsLayout()
         tagCollectionView.layoutIfNeeded()
         let result = tagCollectionView.contentSize
+
         bounds = originalBounds
+        tagCollectionView.frame = originalTagCollectionFrame
+        tagCollectionView.scrollView.frame = originalScrollFrame
+        tagCollectionView.scrollView.contentSize = originalContentSize
+        tagCollectionView.setNeedsLayout()
         return result
     }
 
@@ -201,8 +224,12 @@ public final class TextTagCollectionView: UIView {
             updateAllLabelStyleAndFrame()
             tagCollectionView.frame = bounds
             tagCollectionView.setNeedsLayout()
-            tagCollectionView.layoutIfNeeded()
-            invalidateIntrinsicContentSize()
+            if !lastLaidOutBoundsSize.equalTo(bounds.size) {
+                lastLaidOutBoundsSize = bounds.size
+                DispatchQueue.main.async { [weak self] in
+                    self?.invalidateIntrinsicContentSize()
+                }
+            }
         }
     }
 
@@ -215,6 +242,8 @@ public final class TextTagCollectionView: UIView {
     @objc public func reload() {
         updateAllLabelStyleAndFrame()
         tagCollectionView.reload()
+        setNeedsLayout()
+        superview?.setNeedsLayout()
         invalidateIntrinsicContentSize()
     }
 
@@ -265,7 +294,9 @@ public final class TextTagCollectionView: UIView {
     @objc(updateTagAtIndex:selected:)
     public func updateTag(at index: Int, selected: Bool) {
         guard let tag = getTag(at: index) else { return }
+        guard tag.selected != selected else { return }
         tag.selected = selected
+        reload()
     }
 
     @objc(updateTagAtIndex:withNewTag:)
@@ -273,7 +304,7 @@ public final class TextTagCollectionView: UIView {
         guard index >= 0, index < tagLabels.count else { return }
         let label = tagLabels[index]
         label.config = newTag
-        label.updateContent()
+        reload()
     }
 
     @objc(getTagAtIndex:)
@@ -373,12 +404,7 @@ extension TextTagCollectionView: TagCollectionViewDelegate {
         }
 
         config.selected.toggle()
-
-        if alignment == .fillByExpandingWidth || alignment == .fillByExpandingWidthExceptLastLine {
-            reload()
-        } else {
-            updateStyleAndFrame(for: label)
-        }
+        reload()
 
         delegate?.textTagCollectionView?(self, didTapTag: config, at: index)
     }

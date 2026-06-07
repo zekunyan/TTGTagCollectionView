@@ -3,18 +3,80 @@
 //
 
 #import "TTGDemoBasicTextTagsViewController.h"
+#import "TTGDemoUI.h"
 #import "TTGTagSampleData.h"
 #import <TTGTags/TTGTags-Swift.h>
 
 @interface TTGDemoBasicTextTagsViewController () <TTGTextTagCollectionViewDelegate>
-@property (weak, nonatomic) IBOutlet TTGTextTagCollectionView *textTagCollectionView1;
-@property (weak, nonatomic) IBOutlet TTGTextTagCollectionView *textTagCollectionView2;
-@property (weak, nonatomic) IBOutlet UILabel *logLabel;
+@property (strong, nonatomic) TTGTextTagCollectionView *textTagCollectionView1;
+@property (strong, nonatomic) TTGTextTagCollectionView *textTagCollectionView2;
+@property (strong, nonatomic) UILabel *logLabel;
 
 @property (copy, nonatomic) NSArray<NSString *> *sampleWords;
 @end
 
 @implementation TTGDemoBasicTextTagsViewController
+
+- (void)loadView {
+    UIView *view = [UIView new];
+    [TTGDemoUI applyScreenBackground:view];
+
+    UILabel *titleLabel = [TTGDemoUI titleLabel:@"Basic text tags"];
+    UILabel *descriptionLabel =
+        [TTGDemoUI descriptionLabel:@"Compares two fill alignments with selectable text tags. Tap a tag to inspect selection callbacks below."];
+    UILabel *sectionLabel1 = [TTGDemoUI sectionLabel:@"Fill by expanding width"];
+    UILabel *sectionLabel2 = [TTGDemoUI sectionLabel:@"Fill except the last line"];
+    self.textTagCollectionView1 = [TTGTextTagCollectionView new];
+    self.textTagCollectionView2 = [TTGTextTagCollectionView new];
+    self.logLabel = [UILabel new];
+    [TTGDemoUI styleTagSurface:self.textTagCollectionView1];
+    [TTGDemoUI styleTagSurface:self.textTagCollectionView2];
+    [TTGDemoUI styleLogLabel:self.logLabel];
+
+    NSArray<UIView *> *subviews =
+        @[ titleLabel, descriptionLabel, sectionLabel1, self.textTagCollectionView1,
+           sectionLabel2, self.textTagCollectionView2, self.logLabel ];
+    for (UIView *subview in subviews) {
+        subview.translatesAutoresizingMaskIntoConstraints = NO;
+        [view addSubview:subview];
+    }
+
+    UILayoutGuide *safeArea = view.safeAreaLayoutGuide;
+    [NSLayoutConstraint activateConstraints:@[
+        [titleLabel.topAnchor constraintEqualToAnchor:safeArea.topAnchor constant:16],
+        [titleLabel.leadingAnchor constraintEqualToAnchor:view.leadingAnchor constant:16],
+        [titleLabel.trailingAnchor constraintEqualToAnchor:view.trailingAnchor constant:-16],
+
+        [descriptionLabel.topAnchor constraintEqualToAnchor:titleLabel.bottomAnchor constant:8],
+        [descriptionLabel.leadingAnchor constraintEqualToAnchor:view.leadingAnchor constant:16],
+        [descriptionLabel.trailingAnchor constraintEqualToAnchor:view.trailingAnchor constant:-16],
+
+        [sectionLabel1.topAnchor constraintEqualToAnchor:descriptionLabel.bottomAnchor constant:18],
+        [sectionLabel1.leadingAnchor constraintEqualToAnchor:view.leadingAnchor constant:20],
+        [sectionLabel1.trailingAnchor constraintEqualToAnchor:view.trailingAnchor constant:-20],
+
+        [self.textTagCollectionView1.topAnchor constraintEqualToAnchor:sectionLabel1.bottomAnchor constant:8],
+        [self.textTagCollectionView1.leadingAnchor constraintEqualToAnchor:view.leadingAnchor constant:20],
+        [self.textTagCollectionView1.trailingAnchor constraintEqualToAnchor:view.trailingAnchor constant:-20],
+        [self.textTagCollectionView1.heightAnchor constraintEqualToConstant:210],
+
+        [sectionLabel2.topAnchor constraintEqualToAnchor:self.textTagCollectionView1.bottomAnchor constant:14],
+        [sectionLabel2.leadingAnchor constraintEqualToAnchor:view.leadingAnchor constant:20],
+        [sectionLabel2.trailingAnchor constraintEqualToAnchor:view.trailingAnchor constant:-20],
+
+        [self.textTagCollectionView2.topAnchor constraintEqualToAnchor:sectionLabel2.bottomAnchor constant:8],
+        [self.textTagCollectionView2.leadingAnchor constraintEqualToAnchor:view.leadingAnchor constant:20],
+        [self.textTagCollectionView2.trailingAnchor constraintEqualToAnchor:view.trailingAnchor constant:-20],
+        [self.textTagCollectionView2.heightAnchor constraintEqualToConstant:170],
+
+        [self.logLabel.topAnchor constraintEqualToAnchor:self.textTagCollectionView2.bottomAnchor constant:14],
+        [self.logLabel.leadingAnchor constraintEqualToAnchor:view.leadingAnchor constant:20],
+        [self.logLabel.trailingAnchor constraintEqualToAnchor:view.trailingAnchor constant:-20],
+        [safeArea.bottomAnchor constraintGreaterThanOrEqualToAnchor:self.logLabel.bottomAnchor constant:12],
+    ]];
+
+    self.view = view;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,7 +94,6 @@
     self.textTagCollectionView1.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     self.textTagCollectionView2.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
 
-    self.logLabel.adjustsFontSizeToFitWidth = YES;
     self.textTagCollectionView1.delegate = self;
     self.textTagCollectionView2.delegate = self;
 
@@ -41,8 +102,10 @@
 
     self.textTagCollectionView1.horizontalSpacing = 6;
     self.textTagCollectionView1.verticalSpacing = 8;
+    self.textTagCollectionView1.contentInset = UIEdgeInsetsMake(10, 10, 10, 10);
     self.textTagCollectionView2.horizontalSpacing = 8;
     self.textTagCollectionView2.verticalSpacing = 8;
+    self.textTagCollectionView2.contentInset = UIEdgeInsetsMake(10, 10, 10, 10);
 
     self.textTagCollectionView1.alignment = TTGTagCollectionAlignmentFillByExpandingWidth;
     self.textTagCollectionView2.alignment = TTGTagCollectionAlignmentFillByExpandingWidthExceptLastLine;
@@ -63,28 +126,20 @@
 
     content.textFont = [UIFont boldSystemFontOfSize:18];
     selectedContent.textFont = content.textFont;
-    content.textColor = [UIColor colorWithRed:0.23 green:0.23 blue:0.23 alpha:1];
+    content.textColor = UIColor.whiteColor;
     selectedContent.textColor = [UIColor whiteColor];
 
-    style.backgroundColor = [UIColor colorWithRed:0.31 green:0.70 blue:0.80 alpha:1];
-    selectedStyle.backgroundColor = [UIColor colorWithRed:0.38 green:0.36 blue:0.63 alpha:1];
+    style.backgroundColor = UIColor.systemBlueColor;
+    selectedStyle.backgroundColor = UIColor.systemIndigoColor;
 
-    style.borderColor = selectedStyle.borderColor = [UIColor colorWithRed:0.18 green:0.19 blue:0.22 alpha:1];
-    style.borderWidth = selectedStyle.borderWidth = 1;
+    style.borderWidth = selectedStyle.borderWidth = 0;
 
-    style.shadowColor = [UIColor grayColor];
-    style.shadowOffset = CGSizeMake(0, 1);
-    style.shadowOpacity = 0.5f;
-    style.shadowRadius = 2;
+    style.shadowOpacity = 0;
 
-    selectedStyle.shadowColor = [UIColor greenColor];
-    selectedStyle.shadowOffset = CGSizeMake(0, 2);
-    selectedStyle.shadowOpacity = 0.5f;
-    selectedStyle.shadowRadius = 1;
+    selectedStyle.shadowOpacity = 0;
 
-    style.cornerRadius = 2;
-    selectedStyle.cornerRadius = 4;
-    style.extraSpace = selectedStyle.extraSpace = CGSizeMake(4, 4);
+    style.cornerRadius = selectedStyle.cornerRadius = 14;
+    style.extraSpace = selectedStyle.extraSpace = CGSizeMake(12, 6);
 
     NSMutableArray *tags = [NSMutableArray array];
     for (NSString *word in self.sampleWords) {
@@ -111,12 +166,12 @@
     content.textFont = [UIFont systemFontOfSize:18];
     selectedContent.textFont = [UIFont systemFontOfSize:20];
     content.textColor = [UIColor whiteColor];
-    selectedContent.textColor = [UIColor greenColor];
+    selectedContent.textColor = [UIColor whiteColor];
 
     style.extraSpace = selectedStyle.extraSpace = CGSizeMake(12, 12);
 
-    style.backgroundColor = [UIColor colorWithRed:0.10 green:0.53 blue:0.85 alpha:1];
-    selectedStyle.backgroundColor = [UIColor colorWithRed:0.21 green:0.29 blue:0.36 alpha:1];
+    style.backgroundColor = UIColor.systemBlueColor;
+    selectedStyle.backgroundColor = UIColor.systemIndigoColor;
 
     style.cornerRadius = 12;
     style.cornerBottomRight = YES;
@@ -130,17 +185,17 @@
     selectedStyle.cornerTopRight = YES;
     selectedStyle.cornerTopLeft = NO;
 
-    style.borderWidth = 1;
-    selectedStyle.borderWidth = 4;
-    style.borderColor = [UIColor redColor];
-    selectedStyle.borderColor = [UIColor orangeColor];
+    style.borderWidth = 0;
+    selectedStyle.borderWidth = 0;
+    style.borderColor = UIColor.clearColor;
+    selectedStyle.borderColor = UIColor.clearColor;
 
     style.shadowColor = [UIColor blackColor];
     style.shadowOffset = CGSizeMake(0, 4);
     style.shadowOpacity = 0.3f;
     style.shadowRadius = 4;
 
-    selectedStyle.shadowColor = [UIColor redColor];
+    selectedStyle.shadowColor = UIColor.systemIndigoColor;
     selectedStyle.shadowOffset = CGSizeMake(0, 1);
     selectedStyle.shadowOpacity = 0.3f;
     selectedStyle.shadowRadius = 2;

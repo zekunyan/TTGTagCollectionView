@@ -2,8 +2,6 @@
 //  SwiftUIDemoViewController.swift
 //  TTGTagSwiftExample
 //
-//  Demo 4: SwiftUI integration via TagCloudView (UIViewRepresentable).
-//  Hosts a SwiftUI view inside UIKit using UIHostingController.
 
 import UIKit
 import SwiftUI
@@ -13,10 +11,10 @@ class SwiftUIDemoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
+        DemoUI.applyScreenBackground(view)
 
-        let swiftUIView = SwiftUIDemoView()
-        let hostingController = UIHostingController(rootView: swiftUIView)
+        let hostingController = UIHostingController(rootView: SwiftUIDemoView())
+        hostingController.view.backgroundColor = .clear
 
         addChild(hostingController)
         view.addSubview(hostingController.view)
@@ -31,100 +29,171 @@ class SwiftUIDemoViewController: UIViewController {
     }
 }
 
-// MARK: - SwiftUI View
-
-import SwiftUI
-
 struct SwiftUIDemoView: View {
     @State private var extraTags: [String] = []
+    @State private var selectedTags: Set<String> = ["Swift"]
+    @State private var lastTappedText = "Tap a tag to update selection."
+    @State private var flowHeight: CGFloat = 150
+    @State private var centerHeight: CGFloat = 74
 
-    private let baseTags = ["Swift", "Kotlin", "Dart", "Rust", "Go", "Python", "TypeScript"]
+    private let baseTags = [
+        "Swift", "UIKit", "SwiftUI", "Objective-C",
+        "Auto Layout", "Accessibility", "Testing", "Animation",
+        "Intrinsic Size", "UIViewRepresentable"
+    ]
 
-    var allTags: [String] { baseTags + extraTags }
+    private var allTags: [String] {
+        baseTags + extraTags
+    }
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 24) {
+        GeometryReader { geometry in
+            let contentWidth = max(0, geometry.size.width - 32)
 
-                // Section 1: Basic tag cloud
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Programming Languages")
-                        .font(.headline)
+            ScrollView {
+                VStack(alignment: .leading, spacing: 16) {
+                    header
 
-                    TagCloudView(tags: allTags) { tag in
-                        if let content = tag.content as? TextTagStringContent {
-                            content.textFont = .systemFont(ofSize: 14, weight: .medium)
-                            content.textColor = .white
-                        }
-                        tag.style.backgroundColor = .systemBlue
-                        tag.style.cornerRadius = 14
-                        tag.style.extraSpace = CGSize(width: 12, height: 6)
+                    tagSection(title: "Flow layout", width: contentWidth, contentHeight: flowHeight) {
+                        TagCloudView(
+                            tags: allTags,
+                            configurator: configureBlueTag,
+                            onTapTag: handleTap,
+                            onUpdateContentSize: { flowHeight = max(54, ceil($0.height)) }
+                        )
                     }
-                    .background(Color(.systemGray6))
-                    .cornerRadius(8)
-                }
-                .padding(.horizontal)
 
-                // Section 2: Different alignment
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Center Aligned")
-                        .font(.headline)
-
-                    TagCloudView(
-                        tags: ["One", "Two", "Three"],
-                        alignment: .center
-                    ) { tag in
-                        if let content = tag.content as? TextTagStringContent {
-                            content.textFont = .systemFont(ofSize: 14, weight: .medium)
-                            content.textColor = .white
-                        }
-                        tag.style.backgroundColor = .systemGreen
-                        tag.style.cornerRadius = 14
-                        tag.style.extraSpace = CGSize(width: 12, height: 6)
+                    tagSection(title: "Center aligned", width: contentWidth, contentHeight: centerHeight) {
+                        TagCloudView(
+                            tags: ["One", "Two", "Three", "Four"],
+                            alignment: .center,
+                            configurator: configureGreenTag,
+                            onTapTag: handleTap,
+                            onUpdateContentSize: { centerHeight = max(54, ceil($0.height)) }
+                        )
                     }
-                    .background(Color(.systemGray6))
-                    .cornerRadius(8)
-                }
-                .padding(.horizontal)
 
-                // Section 3: Add tag dynamically
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Dynamic (\(allTags.count) tags)")
-                        .font(.headline)
+                    selectionSummary
+                    addButton
 
-                    Button("Add Random Tag") {
-                        let randomTag = "Tag \(Int.random(in: 100...999))"
-                        extraTags.append(randomTag)
+                    tagSection(title: "Horizontal scroll", width: contentWidth, contentHeight: 54) {
+                        TagCloudView(
+                            tags: allTags,
+                            scrollDirection: .horizontal,
+                            numberOfLines: 1,
+                            configurator: configureOrangeTag,
+                            onTapTag: handleTap
+                        )
                     }
-                    .buttonStyle(.borderedProminent)
                 }
-                .padding(.horizontal)
-
-                // Section 4: Horizontal scroll
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Horizontal Scroll")
-                        .font(.headline)
-
-                    TagCloudView(
-                        tags: allTags,
-                        scrollDirection: .horizontal,
-                        numberOfLines: 1
-                    ) { tag in
-                        if let content = tag.content as? TextTagStringContent {
-                            content.textFont = .systemFont(ofSize: 13, weight: .medium)
-                            content.textColor = .white
-                        }
-                        tag.style.backgroundColor = .systemOrange
-                        tag.style.cornerRadius = 12
-                        tag.style.extraSpace = CGSize(width: 10, height: 4)
-                    }
-                    .frame(height: 44)
-                    .background(Color(.systemGray6))
-                    .cornerRadius(8)
-                }
-                .padding(.horizontal)
+                .frame(width: contentWidth, alignment: .leading)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 16)
             }
-            .padding(.vertical)
+            .background(Color(.systemBackground))
         }
+    }
+
+    private var header: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text("SwiftUI integration")
+                .font(.system(size: 18, weight: .bold))
+                .foregroundStyle(.primary)
+            Text("TagCloudView exposes TTGTagCollectionView in SwiftUI. The demo constrains every embedded UIKit tag view to the available screen width.")
+                .font(.system(size: 14))
+                .foregroundStyle(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+    }
+
+    private var addButton: some View {
+        Button {
+            let newTag = "Tag \(Int.random(in: 100...999))"
+            extraTags.append(newTag)
+            lastTappedText = "Added \(newTag)"
+        } label: {
+            Label("Add random tag", systemImage: "plus")
+                .font(.system(size: 15, weight: .semibold))
+                .frame(maxWidth: .infinity)
+        }
+        .buttonStyle(.borderedProminent)
+    }
+
+    private var selectionSummary: some View {
+        Text(lastTappedText)
+            .font(.system(size: 13))
+            .foregroundStyle(.secondary)
+            .fixedSize(horizontal: false, vertical: true)
+            .padding(10)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(Color(.systemGray6))
+            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+    }
+
+    private func tagSection<Content: View>(
+        title: String,
+        width: CGFloat,
+        contentHeight: CGFloat,
+        @ViewBuilder content: () -> Content
+    ) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(title)
+                .font(.system(size: 13, weight: .semibold))
+                .foregroundStyle(.secondary)
+
+            content()
+                .frame(width: max(0, width - 20), height: contentHeight, alignment: .leading)
+                .padding(10)
+                .frame(width: width, alignment: .leading)
+                .background(Color(.systemGray6))
+                .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                .clipped()
+        }
+        .frame(width: width, alignment: .leading)
+    }
+
+    private func configureBlueTag(_ tag: TextTag) {
+        configure(tag, color: .systemBlue, fontSize: 14)
+    }
+
+    private func configureGreenTag(_ tag: TextTag) {
+        configure(tag, color: .systemGreen, fontSize: 14)
+    }
+
+    private func configureOrangeTag(_ tag: TextTag) {
+        configure(tag, color: .systemOrange, fontSize: 13)
+    }
+
+    private func configure(_ tag: TextTag, color: UIColor, fontSize: CGFloat) {
+        let text = tag.content.getContentAttributedString().string
+
+        if let content = tag.content as? TextTagStringContent {
+            content.textFont = .systemFont(ofSize: fontSize, weight: .medium)
+            content.textColor = .white
+        }
+
+        tag.style.backgroundColor = color
+        tag.style.cornerRadius = 14
+        tag.style.extraSpace = CGSize(width: 12, height: 6)
+        tag.style.borderWidth = 0
+        tag.style.shadowOpacity = 0
+
+        let selectedStyle = TextTagStyle()
+        selectedStyle.backgroundColor = .systemIndigo
+        selectedStyle.cornerRadius = 14
+        selectedStyle.extraSpace = CGSize(width: 12, height: 6)
+        selectedStyle.borderWidth = 0
+        selectedStyle.shadowOpacity = 0
+        tag.selectedStyle = selectedStyle
+        tag.selected = selectedTags.contains(text)
+    }
+
+    private func handleTap(_ text: String, _ index: Int, _ selected: Bool) {
+        if selected {
+            selectedTags.insert(text)
+        } else {
+            selectedTags.remove(text)
+        }
+        lastTappedText = "\(selected ? "Selected" : "Deselected") \(text) at index \(index)"
     }
 }

@@ -204,7 +204,7 @@ let c2 = TextTagAttributedStringContent(
 let style = TextTagStyle()
 
 // Background
-style.backgroundColor = .lightGray
+style.backgroundColor = .systemBlue
 
 // Gradient background
 style.enableGradientBackground        = true
@@ -214,7 +214,7 @@ style.gradientBackgroundStartPoint    = CGPoint(x: 0, y: 0.5)
 style.gradientBackgroundEndPoint      = CGPoint(x: 1, y: 0.5)
 
 // Corner (all corners by default; set individual flags for per-corner control)
-style.cornerRadius      = 8
+style.cornerRadius      = 14
 style.cornerTopLeft     = true
 style.cornerTopRight    = true
 style.cornerBottomLeft  = false
@@ -231,7 +231,7 @@ style.shadowRadius  = 2
 style.shadowOpacity = 0.3
 
 // Size
-style.extraSpace  = CGSize(width: 8, height: 4)   // padding
+style.extraSpace  = CGSize(width: 12, height: 6)  // padding
 style.minWidth    = 60      // 0 = no limit
 style.maxWidth    = 200
 style.exactWidth  = 0       // 0 = auto

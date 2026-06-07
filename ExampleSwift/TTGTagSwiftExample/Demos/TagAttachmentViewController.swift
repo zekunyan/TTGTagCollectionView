@@ -2,12 +2,9 @@
 //  TagAttachmentViewController.swift
 //  TTGTagSwiftExample
 //
-//  Demo: Bind arbitrary data via tag.attachment
 
 import UIKit
 import TTGTags
-
-// MARK: - Sample Data Model
 
 private class CustomPayload: NSObject {
     let info: String
@@ -21,71 +18,55 @@ private class CustomPayload: NSObject {
     }
 }
 
-// MARK: - ViewController
-
 class TagAttachmentViewController: UIViewController {
 
+    private let titleLabel = DemoUI.titleLabel("Bind data to tag")
+    private let descriptionLabel = DemoUI.descriptionLabel("Every tag can carry arbitrary attachment data. Tap a tag to inspect the bound object in the log.")
     private let tagView = TextTagCollectionView()
     private let logTextView = UITextView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
+        DemoUI.applyScreenBackground(view)
         setupViews()
-        setupConstraints()
         loadAttachmentDemonstrationTags()
         tagView.delegate = self
     }
 
-    // MARK: - UI
-
     private func setupViews() {
+        DemoUI.styleTagSurface(tagView)
         tagView.alignment = .fillByExpandingWidth
-        tagView.layer.borderColor = UIColor.gray.cgColor
-        tagView.layer.borderWidth = 1
-        tagView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(tagView)
+        tagView.horizontalSpacing = 8
+        tagView.verticalSpacing = 8
+        tagView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 
-        logTextView.layer.borderColor = UIColor.gray.cgColor
-        logTextView.layer.borderWidth = 1
-        logTextView.textColor = .gray
-        logTextView.font = .systemFont(ofSize: 12)
-        logTextView.isEditable = false
-        logTextView.translatesAutoresizingMaskIntoConstraints = false
-        logTextView.contentInset = .zero
-        logTextView.textContainerInset = .zero
-        logTextView.showsHorizontalScrollIndicator = true
-        view.addSubview(logTextView)
-    }
+        DemoUI.styleLogTextView(logTextView)
+        logTextView.text = "Tap a tag to print its attachment..."
 
-    private func setupConstraints() {
+        [titleLabel, descriptionLabel, tagView, logTextView].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview($0)
+        }
+
         NSLayoutConstraint.activate([
-            tagView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            tagView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            tagView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            tagView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3),
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
 
-            logTextView.topAnchor.constraint(equalTo: tagView.bottomAnchor, constant: 20),
-            logTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            logTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            logTextView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 6),
+            descriptionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            descriptionLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+
+            tagView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 18),
+            tagView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            tagView.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+            tagView.heightAnchor.constraint(equalToConstant: 170),
+
+            logTextView.topAnchor.constraint(equalTo: tagView.bottomAnchor, constant: 16),
+            logTextView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            logTextView.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+            logTextView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
         ])
-    }
-
-    // MARK: - Tags
-
-    private func sharedBlueTagStyle() -> TextTagStyle {
-        let style = TextTagStyle()
-        style.backgroundColor = UIColor(red: 0.24, green: 0.72, blue: 0.94, alpha: 1)
-        style.borderColor = .white
-        style.borderWidth = 1
-        style.cornerRadius = 4
-        style.extraSpace = CGSize(width: 8, height: 8)
-        style.shadowColor = .black
-        style.shadowOpacity = 0.3
-        style.shadowRadius = 2
-        style.shadowOffset = CGSize(width: 1, height: 1)
-        return style
     }
 
     private func loadAttachmentDemonstrationTags() {
@@ -99,12 +80,8 @@ class TagAttachmentViewController: UIViewController {
         ]
 
         for item in items {
-            let content = TextTagStringContent()
-            content.text = item.title
-            let tag = TextTag()
+            let tag = DemoUI.tag(text: item.title)
             tag.attachment = item.attachment
-            tag.style = sharedBlueTagStyle()
-            tag.content = content
             tagView.add(tag: tag)
         }
 
@@ -112,14 +89,11 @@ class TagAttachmentViewController: UIViewController {
     }
 }
 
-// MARK: - TextTagCollectionViewDelegate
-
 extension TagAttachmentViewController: TextTagCollectionViewDelegate {
-
     func textTagCollectionView(_ textTagCollectionView: TextTagCollectionView!,
                                didTapTag tag: TextTag!,
                                at index: Int) {
-        let currentText = logTextView.text ?? ""
-        logTextView.text = "\(currentText)\nTapped attachment:\n\(String(describing: tag.attachment))\n"
+        let prefix = logTextView.text == nil || logTextView.text.isEmpty ? "" : "\(logTextView.text!)\n\n"
+        logTextView.text = "\(prefix)Tapped attachment:\n\(String(describing: tag.attachment))"
     }
 }

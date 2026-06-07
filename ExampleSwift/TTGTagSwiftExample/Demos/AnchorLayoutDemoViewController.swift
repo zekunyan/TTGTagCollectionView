@@ -2,58 +2,57 @@
 //  AnchorLayoutDemoViewController.swift
 //  TTGTagSwiftExample
 //
-//  Demo 1: Pure anchor-based Auto Layout.
-//  The tag view is pinned with NSLayoutConstraint anchors — no frame math,
-//  no manual height. The height is derived from intrinsicContentSize.
 
 import UIKit
 import TTGTags
 
 class AnchorLayoutDemoViewController: UIViewController {
 
+    private let titleLabel = DemoUI.titleLabel("Anchor constraint layout")
+    private let descriptionLabel = DemoUI.descriptionLabel("The tag view is pinned with NSLayoutConstraint anchors. Its height comes from intrinsicContentSize, so no frame math or storyboard sizing is needed.")
     private let tagView = TextTagCollectionView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        setupTagView()
+        DemoUI.applyScreenBackground(view)
+        setupViews()
         populateTags()
     }
 
-    private func setupTagView() {
-        tagView.translatesAutoresizingMaskIntoConstraints = false
-        tagView.backgroundColor = .systemGray6
+    private func setupViews() {
+        DemoUI.styleTagSurface(tagView)
         tagView.horizontalSpacing = 8
         tagView.verticalSpacing = 8
-        tagView.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-        view.addSubview(tagView)
+        tagView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        tagView.alignment = .fillByExpandingWidth
 
-        // Pin to safe area with anchors — height is auto-calculated via intrinsicContentSize
+        [titleLabel, descriptionLabel, tagView].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview($0)
+        }
+
         NSLayoutConstraint.activate([
-            tagView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            tagView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            tagView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+
+            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 6),
+            descriptionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            descriptionLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+
+            tagView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 18),
+            tagView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            tagView.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
         ])
     }
 
     private func populateTags() {
-        let words = TagSampleData.shortSampleWords
-        let colors: [UIColor] = [.systemBlue, .systemGreen, .systemOrange, .systemPurple, .systemPink]
-
-        for (index, word) in words.enumerated() {
-            let content = TextTagStringContent(text: word)
-            content.textFont = .systemFont(ofSize: 14, weight: .medium)
-            content.textColor = .white
-
-            let style = TextTagStyle()
-            style.backgroundColor = colors[index % colors.count]
-            style.cornerRadius = 14
-            style.extraSpace = CGSize(width: 12, height: 6)
-
-            let tag = TextTag(content: content, style: style)
+        TagSampleData.shortSampleWords.enumerated().forEach { index, word in
+            let tag = DemoUI.tag(text: word)
+            let colors: [UIColor] = [.systemBlue, .systemGreen, .systemOrange, .systemPurple, .systemPink]
+            tag.style.backgroundColor = colors[index % colors.count]
             tagView.add(tag: tag)
         }
-
         tagView.reload()
     }
 }

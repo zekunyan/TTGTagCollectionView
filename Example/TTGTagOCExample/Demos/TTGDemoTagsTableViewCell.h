@@ -8,8 +8,8 @@
 
 @interface TTGDemoTagsTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet TTGTextTagCollectionView *tagView;
-@property (weak, nonatomic) IBOutlet UILabel *label;
+@property (strong, nonatomic) TTGTextTagCollectionView *tagView;
+@property (strong, nonatomic) UILabel *label;
 
 - (void)configureWithWords:(NSArray<NSString *> *)words;
 

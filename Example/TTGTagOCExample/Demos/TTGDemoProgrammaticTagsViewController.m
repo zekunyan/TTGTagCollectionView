@@ -3,6 +3,7 @@
 //
 
 #import "TTGDemoProgrammaticTagsViewController.h"
+#import "TTGDemoUI.h"
 #import "TTGTagSampleData.h"
 #import <TTGTags/TTGTags-Swift.h>
 
@@ -14,19 +15,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [TTGDemoUI applyScreenBackground:self.view];
     [self setupTagCollectionViewHierarchy];
-    [self applyLayoutConstraints];
     [self populateTagsFromSampleWords];
 }
 
 #pragma mark - View hierarchy
 
 - (void)setupTagCollectionViewHierarchy {
+    UILabel *titleLabel = [TTGDemoUI titleLabel:@"Programmatic layout & auto height"];
+    UILabel *descriptionLabel =
+        [TTGDemoUI descriptionLabel:@"Creates TTGTextTagCollectionView entirely in code. The tag view has no fixed height; Auto Layout reads its intrinsicContentSize after reload()."];
+
     self.tagView = [TTGTextTagCollectionView new];
     self.tagView.alignment = TTGTagCollectionAlignmentFillByExpandingWidth;
-    self.tagView.layer.borderColor = UIColor.grayColor.CGColor;
-    self.tagView.layer.borderWidth = 1;
-    self.tagView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.tagView.horizontalSpacing = 8;
+    self.tagView.verticalSpacing = 8;
+    self.tagView.contentInset = UIEdgeInsetsMake(10, 10, 10, 10);
+    [TTGDemoUI styleTagSurface:self.tagView];
 
     self.tagView.onTapAllArea = ^(CGPoint location) {
         NSLog(@"onTapAllArea: %@", NSStringFromCGPoint(location));
@@ -35,21 +41,19 @@
         NSLog(@"onTapBlankArea: %@", NSStringFromCGPoint(location));
     };
 
-    [self.view addSubview:self.tagView];
-}
+    UIStackView *stack = [[UIStackView alloc] initWithArrangedSubviews:@[ titleLabel, descriptionLabel, self.tagView ]];
+    stack.axis = UILayoutConstraintAxisVertical;
+    stack.spacing = 12;
+    [stack setCustomSpacing:18 afterView:descriptionLabel];
+    stack.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:stack];
 
-#pragma mark - Layout
-
-- (void)applyLayoutConstraints {
-    NSDictionary *views = @{ @"tagView": self.tagView };
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[tagView]-20-|"
-                                                                      options:0 metrics:nil views:views]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.tagView
-                                                           attribute:NSLayoutAttributeTop
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:self.view
-                                                           attribute:NSLayoutAttributeTop
-                                                          multiplier:1 constant:180]];
+    UILayoutGuide *safeArea = self.view.safeAreaLayoutGuide;
+    [NSLayoutConstraint activateConstraints:@[
+        [stack.topAnchor constraintEqualToAnchor:safeArea.topAnchor constant:20],
+        [stack.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:16],
+        [stack.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-16],
+    ]];
 }
 
 #pragma mark - Data
@@ -58,9 +62,7 @@
     NSArray<NSString *> *words = [TTGTagSampleData shortSampleWords];
     NSMutableArray<TTGTextTag *> *tags = [NSMutableArray array];
     for (NSString *word in words) {
-        TTGTextTag *t = [TTGTextTag tagWithContent:[TTGTextTagStringContent contentWithText:word]
-                                             style:[TTGTextTagStyle new]];
-        t.selectedStyle.backgroundColor = [UIColor greenColor];
+        TTGTextTag *t = [TTGDemoUI tagWithText:word];
         [tags addObject:t];
     }
     [self.tagView addTags:tags];

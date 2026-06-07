@@ -16,8 +16,8 @@ public final class TextTagStringContent: TextTagContent {
     @objc public var text: String = ""
     /// Text font. Defaults to system font size 14.
     @objc public var textFont: UIFont = .systemFont(ofSize: 14)
-    /// Text color. Defaults to black.
-    @objc public var textColor: UIColor = .black
+    /// Text color. Defaults to white.
+    @objc public var textColor: UIColor = .white
 
     public override init() {
         super.init()

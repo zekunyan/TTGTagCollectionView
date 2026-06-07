@@ -2,30 +2,33 @@
 //  ProgrammaticTagsViewController.swift
 //  TTGTagSwiftExample
 //
-//  Demo: Programmatic TextTagCollectionView + Auto Layout (intrinsic height)
 
 import UIKit
 import TTGTags
 
 class ProgrammaticTagsViewController: UIViewController {
 
+    private let titleLabel = DemoUI.titleLabel("Programmatic layout & auto height")
+    private let descriptionLabel = DemoUI.descriptionLabel("The tag view is created entirely in code. No height constraint is required because TTGTagCollectionView reports intrinsic height from its content.")
     private let tagView = TextTagCollectionView()
+    private let logLabel = UILabel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        setupTagCollectionView()
-        applyLayoutConstraints()
+        DemoUI.applyScreenBackground(view)
+        setupSubviews()
         populateTagsFromSampleWords()
     }
 
-    // MARK: - View Hierarchy
-
-    private func setupTagCollectionView() {
+    private func setupSubviews() {
+        DemoUI.styleTagSurface(tagView)
         tagView.alignment = .fillByExpandingWidth
-        tagView.layer.borderColor = UIColor.gray.cgColor
-        tagView.layer.borderWidth = 1
-        tagView.translatesAutoresizingMaskIntoConstraints = false
+        tagView.horizontalSpacing = 8
+        tagView.verticalSpacing = 8
+        tagView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+
+        DemoUI.styleLogLabel(logLabel)
+        logLabel.text = "Tap blank area or tags to inspect callbacks in console."
 
         tagView.onTapAllArea = { location in
             print("onTapAllArea: \(location)")
@@ -34,32 +37,33 @@ class ProgrammaticTagsViewController: UIViewController {
             print("onTapBlankArea: \(location)")
         }
 
-        view.addSubview(tagView)
-    }
+        [titleLabel, descriptionLabel, tagView, logLabel].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview($0)
+        }
 
-    // MARK: - Layout
-
-    private func applyLayoutConstraints() {
         NSLayoutConstraint.activate([
-            tagView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            tagView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            tagView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+
+            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 6),
+            descriptionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            descriptionLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+
+            tagView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 18),
+            tagView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            tagView.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+
+            logLabel.topAnchor.constraint(equalTo: tagView.bottomAnchor, constant: 16),
+            logLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            logLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
         ])
     }
 
-    // MARK: - Data
-
     private func populateTagsFromSampleWords() {
         let words = TagSampleData.shortSampleWords
-        let tags: [TextTag] = words.map { word in
-            let tag = TextTag(
-                content: TextTagStringContent(text: word),
-                style: TextTagStyle()
-            )
-            tag.selectedStyle.backgroundColor = .green
-            return tag
-        }
-        tagView.add(tags: tags)
+        tagView.add(tags: words.map { DemoUI.tag(text: $0) })
 
         for _ in 0..<5 {
             tagView.updateTag(at: Int(arc4random_uniform(UInt32(words.count))), selected: true)

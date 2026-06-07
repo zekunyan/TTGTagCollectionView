@@ -14,8 +14,8 @@ public final class TextTagStyle: NSObject, NSCopying {
 
     // MARK: - Background
 
-    /// Background color. Defaults to `UIColor.lightGray`.
-    @objc public var backgroundColor: UIColor = .lightGray
+    /// Background color. Defaults to `UIColor.systemBlue`.
+    @objc public var backgroundColor: UIColor = .systemBlue
 
     /// Text alignment. Defaults to center.
     @objc public var textAlignment: NSTextAlignment = .center
@@ -30,8 +30,8 @@ public final class TextTagStyle: NSObject, NSCopying {
 
     // MARK: - Corner Radius
 
-    /// Corner radius. Defaults to 4.
-    @objc public var cornerRadius: CGFloat = 4
+    /// Corner radius. Defaults to 14.
+    @objc public var cornerRadius: CGFloat = 14
     @objc public var cornerTopRight: Bool = false
     @objc public var cornerTopLeft: Bool = false
     @objc public var cornerBottomRight: Bool = false
@@ -53,8 +53,8 @@ public final class TextTagStyle: NSObject, NSCopying {
 
     // MARK: - Size
 
-    /// Extra padding space around the content.
-    @objc public var extraSpace: CGSize = .zero
+    /// Extra padding space around the content. Defaults to `CGSize(width: 12, height: 6)`.
+    @objc public var extraSpace: CGSize = CGSize(width: 12, height: 6)
 
     /// Width constraints. <=0 means no limit.
     @objc public var maxWidth: CGFloat = 0

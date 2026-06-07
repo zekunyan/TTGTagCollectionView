@@ -3,6 +3,7 @@
 //
 
 #import "TTGDemoStackViewViewController.h"
+#import "TTGDemoUI.h"
 #import <TTGTags/TTGTags-Swift.h>
 
 @interface TTGDemoStackViewViewController ()
@@ -33,6 +34,9 @@
     self.stackView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.stackView];
 
+    [self.stackView addArrangedSubview:[TTGDemoUI titleLabel:@"UIStackView integration"]];
+    [self.stackView addArrangedSubview:[TTGDemoUI descriptionLabel:@"Places multiple TTGTextTagCollectionView instances inside a vertical UIStackView. Toggling a section shows how hidden arranged subviews collapse automatically."]];
+
     [NSLayoutConstraint activateConstraints:@[
         [self.stackView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor constant:20],
         [self.stackView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:16],
@@ -42,7 +46,7 @@
 
 - (TTGTextTagCollectionView *)createTagView {
     TTGTextTagCollectionView *tagView = [TTGTextTagCollectionView new];
-    tagView.backgroundColor = UIColor.systemGray6Color;
+    [TTGDemoUI styleTagSurface:tagView];
     tagView.horizontalSpacing = 6;
     tagView.verticalSpacing = 6;
     tagView.contentInset = UIEdgeInsetsMake(6, 6, 6, 6);

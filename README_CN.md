@@ -206,7 +206,7 @@ let c2 = TextTagAttributedStringContent(
 let style = TextTagStyle()
 
 // 背景色
-style.backgroundColor = .lightGray
+style.backgroundColor = .systemBlue
 
 // 渐变背景
 style.enableGradientBackground        = true
@@ -216,7 +216,7 @@ style.gradientBackgroundStartPoint    = CGPoint(x: 0, y: 0.5)
 style.gradientBackgroundEndPoint      = CGPoint(x: 1, y: 0.5)
 
 // 圆角（默认四角全部圆角；设置独立标志控制每个角）
-style.cornerRadius      = 8
+style.cornerRadius      = 14
 style.cornerTopLeft     = true
 style.cornerTopRight    = true
 style.cornerBottomLeft  = false
@@ -233,7 +233,7 @@ style.shadowRadius  = 2
 style.shadowOpacity = 0.3
 
 // 尺寸
-style.extraSpace  = CGSize(width: 8, height: 4)   // 内边距
+style.extraSpace  = CGSize(width: 12, height: 6)  // 内边距
 style.minWidth    = 60      // 0 = 不限制
 style.maxWidth    = 200
 style.exactWidth  = 0       // 0 = 自动

@@ -240,12 +240,21 @@ public final class TagCollectionView: UIView {
         guard measurementWidth > 0 else { return .zero }
 
         let originalBounds = bounds
+        let originalScrollFrame = scrollView.frame
+        let originalContentSize = scrollView.contentSize
+        let originalContainerFrame = containerView.frame
+
         bounds = CGRect(x: 0, y: 0, width: measurementWidth, height: 0)
         scrollView.frame = bounds
         setNeedsLayoutTagViews()
         layoutTagViews()
         let result = scrollView.contentSize
+
         bounds = originalBounds
+        scrollView.frame = originalScrollFrame
+        scrollView.contentSize = originalContentSize
+        containerView.frame = originalContainerFrame
+        setNeedsLayoutTagViews()
         return result
     }
 
@@ -364,14 +373,19 @@ public final class TagCollectionView: UIView {
 
         _actualNumberOfLines = output.actualNumberOfLines
 
-        if !scrollView.contentSize.equalTo(output.contentSize) {
+        let contentSizeChanged = !scrollView.contentSize.equalTo(output.contentSize)
+        if contentSizeChanged {
             scrollView.contentSize = output.contentSize
             containerView.frame = CGRect(origin: .zero, size: output.contentSize)
             delegate.tagCollectionView?(self, updateContentSize: output.contentSize)
         }
 
         needsLayoutTagViews = false
-        invalidateIntrinsicContentSize()
+        if contentSizeChanged {
+            DispatchQueue.main.async { [weak self] in
+                self?.invalidateIntrinsicContentSize()
+            }
+        }
     }
 
     // MARK: - Validation

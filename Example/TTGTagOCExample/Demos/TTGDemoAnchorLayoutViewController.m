@@ -3,6 +3,7 @@
 //
 
 #import "TTGDemoAnchorLayoutViewController.h"
+#import "TTGDemoUI.h"
 #import "TTGTagSampleData.h"
 #import <TTGTags/TTGTags-Swift.h>
 
@@ -22,9 +23,17 @@
 #pragma mark - Setup
 
 - (void)setupTagView {
+    UILabel *titleLabel = [TTGDemoUI titleLabel:@"Anchor constraint layout"];
+    UILabel *descriptionLabel =
+        [TTGDemoUI descriptionLabel:@"Pins the tag view with NSLayoutAnchor constraints. No fixed height is supplied; intrinsicContentSize drives the final layout."];
+    titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    descriptionLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:titleLabel];
+    [self.view addSubview:descriptionLabel];
+
     self.tagView = [TTGTextTagCollectionView new];
     self.tagView.translatesAutoresizingMaskIntoConstraints = NO;
-    self.tagView.backgroundColor = UIColor.systemGray6Color;
+    [TTGDemoUI styleTagSurface:self.tagView];
     self.tagView.horizontalSpacing = 8;
     self.tagView.verticalSpacing = 8;
     self.tagView.contentInset = UIEdgeInsetsMake(8, 8, 8, 8);
@@ -32,7 +41,15 @@
 
     // Pin to safe area with anchors — height is auto-calculated via intrinsicContentSize
     [NSLayoutConstraint activateConstraints:@[
-        [self.tagView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor constant:20],
+        [titleLabel.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor constant:16],
+        [titleLabel.leadingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.leadingAnchor constant:16],
+        [titleLabel.trailingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.trailingAnchor constant:-16],
+
+        [descriptionLabel.topAnchor constraintEqualToAnchor:titleLabel.bottomAnchor constant:8],
+        [descriptionLabel.leadingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.leadingAnchor constant:16],
+        [descriptionLabel.trailingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.trailingAnchor constant:-16],
+
+        [self.tagView.topAnchor constraintEqualToAnchor:descriptionLabel.bottomAnchor constant:18],
         [self.tagView.leadingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.leadingAnchor constant:16],
         [self.tagView.trailingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.trailingAnchor constant:-16],
     ]];

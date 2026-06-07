@@ -3,6 +3,7 @@
 //
 
 #import "TTGDemoTagAttachmentViewController.h"
+#import "TTGDemoUI.h"
 #import <TTGTags/TTGTags-Swift.h>
 
 #pragma mark - Sample model
@@ -28,6 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [TTGDemoUI applyScreenBackground:self.view];
     [self setupViews];
     [self setupConstraints];
     [self loadAttachmentDemonstrationTags];
@@ -37,65 +39,88 @@
 #pragma mark - UI
 
 - (void)setupViews {
+    UILabel *titleLabel = [TTGDemoUI titleLabel:@"Bind data to tag"];
+    titleLabel.tag = 1001;
+    titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:titleLabel];
+
+    UILabel *descriptionLabel =
+        [TTGDemoUI descriptionLabel:@"Stores custom NSObject, NSDictionary, and NSString values in TTGTextTag. Tap a tag to read the attachment from the delegate callback."];
+    descriptionLabel.tag = 1002;
+    descriptionLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:descriptionLabel];
+
     self.tagView = [TTGTextTagCollectionView new];
     self.tagView.alignment = TTGTagCollectionAlignmentFillByExpandingWidth;
-    self.tagView.layer.borderColor = UIColor.grayColor.CGColor;
-    self.tagView.layer.borderWidth = 1;
+    self.tagView.horizontalSpacing = 8;
+    self.tagView.verticalSpacing = 8;
+    self.tagView.contentInset = UIEdgeInsetsMake(10, 10, 10, 10);
+    [TTGDemoUI styleTagSurface:self.tagView];
     self.tagView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.tagView];
 
     self.logTextView = [UITextView new];
-    self.logTextView.layer.borderColor = UIColor.grayColor.CGColor;
-    self.logTextView.layer.borderWidth = 1;
-    self.logTextView.textColor = UIColor.grayColor;
-    self.logTextView.font = [UIFont systemFontOfSize:12];
+    [TTGDemoUI styleLogTextView:self.logTextView];
+    self.logTextView.text = @"Tap a tag to print its bound attachment here.";
     self.logTextView.translatesAutoresizingMaskIntoConstraints = NO;
-    self.logTextView.contentInset = UIEdgeInsetsZero;
-    self.logTextView.textContainerInset = UIEdgeInsetsZero;
     self.logTextView.showsHorizontalScrollIndicator = YES;
     [self.view addSubview:self.logTextView];
 }
 
 - (void)setupConstraints {
-    NSDictionary *views = @{ @"tv": self.tagView, @"log": self.logTextView };
+    UILabel *titleLabel = (UILabel *)[self.view viewWithTag:1001];
+    UILabel *descriptionLabel = (UILabel *)[self.view viewWithTag:1002];
+    NSDictionary *views = @{ @"title": titleLabel, @"desc": descriptionLabel, @"tv": self.tagView, @"log": self.logTextView };
 
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[tv]-20-|"
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-16-[title]-16-|"
                                                                       options:0 metrics:nil views:views]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[log]-20-|"
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-16-[desc]-16-|"
                                                                       options:0 metrics:nil views:views]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.tagView
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-16-[tv]-16-|"
+                                                                      options:0 metrics:nil views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-16-[log]-16-|"
+                                                                      options:0 metrics:nil views:views]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:titleLabel
                                                            attribute:NSLayoutAttributeTop
                                                            relatedBy:NSLayoutRelationEqual
                                                               toItem:self.view.safeAreaLayoutGuide
                                                            attribute:NSLayoutAttributeTop
-                                                          multiplier:1 constant:20]];
+                                                          multiplier:1 constant:16]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:descriptionLabel
+                                                           attribute:NSLayoutAttributeTop
+                                                           relatedBy:NSLayoutRelationEqual
+                                                              toItem:titleLabel
+                                                           attribute:NSLayoutAttributeBottom
+                                                          multiplier:1 constant:8]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.tagView
+                                                           attribute:NSLayoutAttributeTop
+                                                           relatedBy:NSLayoutRelationEqual
+                                                              toItem:descriptionLabel
+                                                           attribute:NSLayoutAttributeBottom
+                                                          multiplier:1 constant:18]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.logTextView
                                                            attribute:NSLayoutAttributeTop
                                                            relatedBy:NSLayoutRelationEqual
                                                               toItem:self.tagView
                                                            attribute:NSLayoutAttributeBottom
-                                                          multiplier:1 constant:20]];
+                                                          multiplier:1 constant:16]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.logTextView
                                                            attribute:NSLayoutAttributeBottom
                                                            relatedBy:NSLayoutRelationEqual
                                                               toItem:self.view
                                                            attribute:NSLayoutAttributeBottom
-                                                          multiplier:1 constant:-20]];
+                                                          multiplier:1 constant:-16]];
 }
 
 #pragma mark - Tags
 
 - (TTGTextTagStyle *)sharedBlueTagChrome {
     TTGTextTagStyle *s = [TTGTextTagStyle new];
-    s.backgroundColor = [UIColor colorWithRed:0.24 green:0.72 blue:0.94 alpha:1];
-    s.borderColor = UIColor.whiteColor;
-    s.borderWidth = 1;
-    s.cornerRadius = 4;
-    s.extraSpace = CGSizeMake(8, 8);
-    s.shadowColor = UIColor.blackColor;
-    s.shadowOpacity = 0.3;
-    s.shadowRadius = 2;
-    s.shadowOffset = CGSizeMake(1, 1);
+    s.backgroundColor = UIColor.systemBlueColor;
+    s.borderWidth = 0;
+    s.cornerRadius = 14;
+    s.extraSpace = CGSizeMake(12, 6);
+    s.shadowOpacity = 0;
     return s;
 }
 

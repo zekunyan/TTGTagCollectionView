@@ -133,5 +133,24 @@ final class TagCollectionLayoutTests: XCTestCase {
         let out = TagCollectionLayout.calculate(makeInput(sizes: []))
         // No tags, no frames
         XCTAssertEqual(out.tagFrames.count, 0)
+        XCTAssertEqual(out.contentSize.height, 4)
+    }
+
+    func testVerticalEmptyInputDoesNotSubtractSpacing() {
+        let out = TagCollectionLayout.calculate(makeInput(
+            sizes: [],
+            verticalSpacing: 8,
+            contentInset: UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+        ))
+        XCTAssertEqual(out.contentSize.height, 4)
+    }
+
+    func testVerticalEmptyInputWithZeroInsetsDoesNotGoNegative() {
+        let out = TagCollectionLayout.calculate(makeInput(
+            sizes: [],
+            verticalSpacing: 8,
+            contentInset: .zero
+        ))
+        XCTAssertEqual(out.contentSize.height, 0)
     }
 }

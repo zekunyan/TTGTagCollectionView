@@ -3,6 +3,7 @@
 //
 
 #import "TTGDemoTagsInTableViewController.h"
+#import "TTGDemoUI.h"
 #import "TTGDemoTagsTableViewCell.h"
 #import "TTGTagSampleData.h"
 
@@ -17,8 +18,14 @@ static const NSInteger kDemoRowCount = 50;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = UIColor.systemBackgroundColor;
+    self.tableView.backgroundColor = UIColor.systemBackgroundColor;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 80;
+    [self.tableView registerClass:TTGDemoTagsTableViewCell.class
+           forCellReuseIdentifier:NSStringFromClass([TTGDemoTagsTableViewCell class])];
+    [self configureHeader];
 
     self.wordPool = [TTGTagSampleData shortSampleWords];
     self.rows = [NSMutableArray arrayWithCapacity:kDemoRowCount];
@@ -28,6 +35,19 @@ static const NSInteger kDemoRowCount = 50;
         NSRange range = NSMakeRange(0, len);
         [self.rows addObject:[self.wordPool subarrayWithRange:range]];
     }
+}
+
+- (void)configureHeader {
+    UILabel *titleLabel = [TTGDemoUI titleLabel:@"Tags in UITableViewCell"];
+    UILabel *descriptionLabel =
+        [TTGDemoUI descriptionLabel:@"Each row owns a TTGTextTagCollectionView. UITableViewAutomaticDimension reads the tag view height as the tags wrap into multiple lines."];
+    UIStackView *stack = [[UIStackView alloc] initWithArrangedSubviews:@[ titleLabel, descriptionLabel ]];
+    stack.axis = UILayoutConstraintAxisVertical;
+    stack.spacing = 8;
+    stack.layoutMargins = UIEdgeInsetsMake(16, 16, 16, 16);
+    stack.layoutMarginsRelativeArrangement = YES;
+    stack.frame = CGRectMake(0, 0, UIScreen.mainScreen.bounds.size.width, 104);
+    self.tableView.tableHeaderView = stack;
 }
 
 #pragma mark - UITableViewDataSource
@@ -41,7 +61,7 @@ static const NSInteger kDemoRowCount = 50;
         [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TTGDemoTagsTableViewCell class])
                                           forIndexPath:indexPath];
     [cell configureWithWords:self.rows[(NSUInteger)indexPath.row]];
-    cell.label.text = [NSString stringWithFormat:@"Cell: %ld", (long)indexPath.row];
+    cell.label.text = [NSString stringWithFormat:@"Row %ld · %lu tags", (long)indexPath.row, (unsigned long)self.rows[(NSUInteger)indexPath.row].count];
     return cell;
 }
 
