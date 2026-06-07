@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=1600, initial-scale=1">
+  <title>TTGTagCollectionView Architecture Poster</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #5e6878;
+      --line: #d9dee8;
+      --paper: #f7f8fb;
+      --panel: #ffffff;
+      --blue: #1473e6;
+      --teal: #00a19a;
+      --green: #24a148;
+      --amber: #d97706;
+      --rose: #d43f5e;
+      --violet: #6d5dfc;
+      --slate: #263142;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      width: 1600px;
+      min-height: 1500px;
+      background: #eef1f6;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+    }
+
+    body {
+      padding: 34px;
+    }
+
+    .poster {
+      width: 1532px;
+      height: 1432px;
+      background:
+        linear-gradient(135deg, rgba(20, 115, 230, 0.08), rgba(0, 161, 154, 0.06) 34%, rgba(217, 119, 6, 0.06) 100%),
+        var(--paper);
+      border: 1px solid #d7ddea;
+      border-radius: 26px;
+      box-shadow: 0 24px 70px rgba(23, 32, 51, 0.16);
+      padding: 46px 52px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .top {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 36px;
+      align-items: start;
+      margin-bottom: 30px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--blue);
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 0;
+      margin-bottom: 14px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 0 6px rgba(0, 161, 154, 0.12);
+    }
+
+    h1 {
+      font-size: 62px;
+      line-height: 1.03;
+      margin: 0;
+      letter-spacing: 0;
+      color: #121827;
+    }
+
+    .subtitle {
+      margin: 18px 0 0;
+      font-size: 24px;
+      line-height: 1.42;
+      color: var(--muted);
+      max-width: 850px;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .metric {
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px 20px;
+      min-height: 112px;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 26px;
+      color: var(--slate);
+      margin-bottom: 8px;
+    }
+
+    .metric span {
+      display: block;
+      font-size: 17px;
+      line-height: 1.35;
+      color: var(--muted);
+    }
+
+    .main {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 26px;
+    }
+
+    .pipeline {
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 26px;
+      min-height: 558px;
+    }
+
+    .section-title {
+      margin: 0 0 18px;
+      color: var(--slate);
+      font-size: 24px;
+      font-weight: 850;
+    }
+
+    .layers {
+      display: grid;
+      grid-template-columns: 1fr 56px 1fr 56px 1fr;
+      align-items: stretch;
+      gap: 12px;
+    }
+
+    .layer {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--panel);
+      min-height: 354px;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .layer::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 7px;
+      background: var(--blue);
+    }
+
+    .layer.layout::before {
+      background: var(--teal);
+    }
+
+    .layer.render::before {
+      background: var(--amber);
+    }
+
+    .layer h2 {
+      font-size: 27px;
+      margin: 6px 0 14px;
+      letter-spacing: 0;
+    }
+
+    .layer p {
+      font-size: 17px;
+      line-height: 1.42;
+      color: var(--muted);
+      margin: 0 0 14px;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 16px;
+    }
+
+    .pill {
+      background: #edf3ff;
+      border: 1px solid #cfe0ff;
+      color: #194d8f;
+      border-radius: 999px;
+      padding: 8px 11px;
+      font-size: 14px;
+      font-weight: 750;
+    }
+
+    .layout .pill {
+      background: #e9fbf7;
+      border-color: #c5eee5;
+      color: #086f68;
+    }
+
+    .render .pill {
+      background: #fff4df;
+      border-color: #f7dfad;
+      color: #8a4b00;
+    }
+
+    .arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 32px;
+      font-weight: 900;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .step {
+      border-radius: 15px;
+      border: 1px solid var(--line);
+      padding: 15px 15px 17px;
+      background: #fbfcff;
+      min-height: 118px;
+    }
+
+    .step b {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: var(--slate);
+    }
+
+    .step span {
+      display: block;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.34;
+    }
+
+    .side {
+      display: grid;
+      gap: 18px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px;
+    }
+
+    .card h3 {
+      margin: 0 0 14px;
+      font-size: 24px;
+      color: var(--slate);
+    }
+
+    .checks {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .checks li {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 10px;
+      align-items: start;
+      font-size: 17px;
+      line-height: 1.33;
+      color: var(--muted);
+    }
+
+    .mark {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(36, 161, 72, 0.13);
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 950;
+    }
+
+    .cache {
+      display: grid;
+      gap: 12px;
+    }
+
+    .cache-row {
+      display: grid;
+      grid-template-columns: 118px 1fr;
+      gap: 12px;
+      align-items: center;
+      border: 1px solid #e1e6ef;
+      border-radius: 14px;
+      padding: 12px;
+      background: #fbfcff;
+    }
+
+    .cache-row b {
+      color: var(--rose);
+      font-size: 16px;
+    }
+
+    .cache-row span {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.32;
+    }
+
+    .footer {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 18px;
+      margin-top: 26px;
+    }
+
+    .footer-item {
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px 20px;
+    }
+
+    .footer-item b {
+      display: block;
+      color: var(--slate);
+      font-size: 19px;
+      margin-bottom: 7px;
+    }
+
+    .footer-item span {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.35;
+    }
+  </style>
+</head>
+<body>
+  <main class="poster" aria-label="TTGTagCollectionView architecture poster">
+    <section class="top">
+      <div>
+        <div class="eyebrow"><span class="dot"></span>Swift-first tag layout framework</div>
+        <h1>TTGTagCollectionView Architecture</h1>
+        <p class="subtitle">A UIKit tag engine that separates data, layout, and rendering. It keeps Objective-C call sites compatible while the core layout and text tag stack are now Swift-based and cache-aware.</p>
+      </div>
+      <div class="meta">
+        <div class="metric"><strong>2 APIs</strong><span>TextTagCollectionView for styled text, TagCollectionView for any custom UIView.</span></div>
+        <div class="metric"><strong>6 modes</strong><span>Left, center, right, fill space, fill width, and fill width except last line.</span></div>
+        <div class="metric"><strong>Fast cells</strong><span>Precompute content size and reuse row heights for dense UITableView lists.</span></div>
+        <div class="metric"><strong>OC ready</strong><span>Swift internals with @objc names and generated TTGTags-Swift.h imports.</span></div>
+      </div>
+    </section>
+
+    <section class="main">
+      <div class="pipeline">
+        <h2 class="section-title">Core Pipeline</h2>
+        <div class="layers">
+          <article class="layer api">
+            <h2>API Layer</h2>
+            <p>Apps create tags and configure collection behavior with stable Swift and Objective-C compatible entry points.</p>
+            <div class="pill-list">
+              <span class="pill">TextTag</span>
+              <span class="pill">Content</span>
+              <span class="pill">Style</span>
+              <span class="pill">Selection</span>
+              <span class="pill">Delegate</span>
+            </div>
+          </article>
+          <div class="arrow">-&gt;</div>
+          <article class="layer layout">
+            <h2>Layout Engine</h2>
+            <p>TagCollectionLayout is a pure calculator. It wraps tags into lines, applies alignment, enforces line limits, and returns frames plus content size.</p>
+            <div class="pill-list">
+              <span class="pill">Pure function</span>
+              <span class="pill">Frame output</span>
+              <span class="pill">Layout cache</span>
+              <span class="pill">Auto height</span>
+            </div>
+          </article>
+          <div class="arrow">-&gt;</div>
+          <article class="layer render">
+            <h2>Render Layer</h2>
+            <p>Text tags render through lightweight component views. Custom tags are regular UIViews supplied by the app.</p>
+            <div class="pill-list">
+              <span class="pill">UILabel text</span>
+              <span class="pill">Gradient layer</span>
+              <span class="pill">Corners</span>
+              <span class="pill">Borders</span>
+              <span class="pill">Accessibility</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="flow">
+          <div class="step"><b>1. Build models</b><span>TextTag combines content, style, selected state, and optional attachment.</span></div>
+          <div class="step"><b>2. Measure tags</b><span>Text sizes are cached by attributed content, style constraints, state, and width.</span></div>
+          <div class="step"><b>3. Calculate layout</b><span>Sizes plus spacing and alignment produce deterministic tag frames.</span></div>
+          <div class="step"><b>4. Apply frames</b><span>The view layer updates subviews and contentSize for scrolling or Auto Layout.</span></div>
+        </div>
+      </div>
+
+      <aside class="side">
+        <section class="card">
+          <h3>Performance Strategy</h3>
+          <div class="cache">
+            <div class="cache-row"><b>Measure</b><span>Cache text tag sizes instead of repeatedly asking UILabel to size every tag.</span></div>
+            <div class="cache-row"><b>Layout</b><span>Cache layout outputs for repeated size arrays and view configuration.</span></div>
+            <div class="cache-row"><b>UITableView</b><span>Use contentSize(for:width:...) to precompute row height before cell display.</span></div>
+            <div class="cache-row"><b>Reload</b><span>Batch tag configuration and reload once per cell reuse pass.</span></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h3>Why It Works</h3>
+          <ul class="checks">
+            <li><span class="mark">✓</span><span>Layout is side-effect-free, testable, and easy to cache.</span></li>
+            <li><span class="mark">✓</span><span>TextTagCollectionView hides rendering details behind a small data model.</span></li>
+            <li><span class="mark">✓</span><span>Auto Layout sees stable intrinsicContentSize and system fitting sizes.</span></li>
+            <li><span class="mark">✓</span><span>Objective-C apps keep existing selectors while using the Swift implementation.</span></li>
+          </ul>
+        </section>
+      </aside>
+    </section>
+
+    <section class="footer">
+      <div class="footer-item"><b>Use TextTagCollectionView</b><span>Best for styled text chips, selected states, rich text, gradients, and accessibility.</span></div>
+      <div class="footer-item"><b>Use TagCollectionView</b><span>Best for avatars, buttons, custom controls, or any UIView-backed tag content.</span></div>
+      <div class="footer-item"><b>Use precomputed size</b><span>Best for dense tags inside self-sizing UITableViewCell or UICollectionView layouts.</span></div>
+    </section>
+  </main>
+</body>
+</html>

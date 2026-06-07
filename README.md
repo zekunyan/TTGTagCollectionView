@@ -8,7 +8,15 @@
 
 A flexible tag collection view for iOS — show text tags or fully custom views in a vertically or horizontally scrollable container, with rich layout alignment options and AutoLayout support.
 
-![Screenshot](https://github.com/zekunyan/TTGTagCollectionView/raw/master/Resources/screen_shot.png)
+![TTGTagCollectionView Promo](Resources/promo_poster.png)
+
+The promo poster is generated from [Resources/promo_poster.html](Resources/promo_poster.html), so the visual can be maintained together with the README.
+
+## Architecture at a Glance
+
+![TTGTagCollectionView Architecture](Resources/architecture_poster.png)
+
+The poster above is generated from [Resources/architecture_poster.html](Resources/architecture_poster.html). It summarizes the Swift-first architecture, Objective-C compatibility layer, pure layout engine, rendering flow, and the cache-aware path used for dense tag lists.
 
 ## Features
 
@@ -19,13 +27,10 @@ A flexible tag collection view for iOS — show text tags or fully custom views 
 - **Rich text support** via `NSAttributedString`
 - **Selection management**: tap-to-select, selection limit, selected state style
 - **AutoLayout friendly**: `intrinsicContentSize` auto-updates; `preferredMaxLayoutWidth` support
+- **Cache-aware layout path**: text measurement cache, pure layout result cache, and precomputed content size API for dense table/list cells
 - **Accessibility**: auto-detect mode or manual `accessibilityLabel / hint / traits`
 - **Swift-first API** with full Objective-C backward compatibility
 - **CocoaPods** and **Swift Package Manager** support
-
-## Screenshots
-
-![Alignment Types](https://github.com/zekunyan/TTGTagCollectionView/raw/master/Resources/alignment_type.png)
 
 ## Requirements
 
@@ -374,11 +379,62 @@ All layout and spacing properties (`scrollDirection`, `alignment`, `numberOfLine
 
 ---
 
+## Performance
+
+TTGTagCollectionView 3.0 keeps layout deterministic and cache-friendly:
+
+- `TagCollectionLayout` is a pure calculator: the same tag sizes and configuration produce the same frames and content size.
+- `TextTagCollectionView` caches text tag measurements by attributed content, style constraints, selected state, and available width.
+- Layout results are cached for repeated tag size arrays and collection view configuration.
+- `TextTagCollectionView.contentSize(for:width:...)` lets table/list screens precompute row height without creating or laying out a cell.
+- Demo table cells batch tag configuration and call `reload()` once per reuse pass.
+
+### Dense tags inside UITableViewCell
+
+For smooth scrolling, build tag models once, cache the row height by table width, and configure the cell in one pass:
+
+```swift
+let tagSize = TextTagCollectionView.contentSize(
+    for: tags,
+    width: availableTagWidth,
+    scrollDirection: .vertical,
+    alignment: .fillByExpandingWidth,
+    numberOfLines: 0,
+    horizontalSpacing: 8,
+    verticalSpacing: 8,
+    contentInset: UIEdgeInsets(top: 4, left: 0, bottom: 4, right: 0)
+)
+
+let rowHeight = titleHeight + tagSize.height + verticalPadding
+```
+
+Objective-C uses the same API through `TTGTags-Swift.h`:
+
+```objc
+CGSize tagSize = [TTGTextTagCollectionView contentSizeForTags:tags
+                                                        width:availableTagWidth
+                                              scrollDirection:TTGTagCollectionScrollDirectionVertical
+                                                    alignment:TTGTagCollectionAlignmentFillByExpandingWidth
+                                                numberOfLines:0
+                                            horizontalSpacing:8
+                                              verticalSpacing:8
+                                                 contentInset:UIEdgeInsetsMake(4, 0, 4, 0)];
+```
+
+When data changes globally or you need to benchmark a cold path, clear both caches:
+
+```swift
+TextTagCollectionView.clearMeasurementCache()
+```
+
+---
+
 ## Tips
 
 - Always call `reload()` after adding, removing, or updating tags.
-- When embedding in a `UITableViewCell`, call `tableView.reloadData()` inside `viewDidAppear` if `UITableViewAutomaticDimension` behaves unexpectedly.
-- Use `manualCalculateHeight = true` + `preferredMaxLayoutWidth` when the view's width is not yet determined at layout time (e.g. inside a self-sizing cell).
+- When embedding in a `UITableViewCell`, prefer precomputing row height with `TextTagCollectionView.contentSize(for:width:...)` and reusing the result by table width.
+- Configure all tags first, then call `reload()` once. Avoid repeated `updateTag(...)` calls during cell reuse.
+- Use `manualCalculateHeight = true` + `preferredMaxLayoutWidth` when the view's width is not yet determined at layout time.
 
 ---
 
@@ -452,6 +508,8 @@ Version 3.0 rewrites all core sources in Swift. Objective-C class names, selecto
 - `tagId` auto-increment is now thread-safe (`NSLock`)
 - Per-corner `UIRectCorner` bitmask bug fixed
 - Pure layout calculator `TagCollectionLayout` extracted (fully unit-tested)
+- Text measurement and layout caches added for dense tag lists
+- `TextTagCollectionView.contentSize(for:width:...)` added for precomputing list row height
 - SPM test target added (`Tests/TTGTagsTests`)
 
 ---
