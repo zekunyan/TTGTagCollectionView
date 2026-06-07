@@ -28,6 +28,7 @@
 		BF6A36C7263BFF81000CB844 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6A36C6263BFF81000CB844 /* SceneDelegate.swift */; };
 		BF6A36C9263BFF81000CB844 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6A36C8263BFF81000CB844 /* ViewController.swift */; };
 		BF6A36CE263BFF84000CB844 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF6A36CD263BFF84000CB844 /* Assets.xcassets */; };
+		BF6A36D1263BFF84000CB844 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF6A36CF263BFF84000CB844 /* LaunchScreen.storyboard */; };
 		C63AADBAC89AF2627CDBE1E0 /* Pods_TTGTagSwiftExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F9ABBC9733CA17B850DB303 /* Pods_TTGTagSwiftExample.framework */; };
 		E88646145B4D4E3624AE4124 /* BasicTextTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D099B5DDFB6061B8C83D5569 /* BasicTextTagsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -57,6 +58,7 @@
 		BF6A36C6263BFF81000CB844 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BF6A36C8263BFF81000CB844 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BF6A36CD263BFF84000CB844 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BF6A36D0263BFF84000CB844 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF6A36D2263BFF84000CB844 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D099B5DDFB6061B8C83D5569 /* BasicTextTagsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextTagsViewController.swift; sourceTree = "<group>"; };
 		DCA62D159FC7C68941F02179 /* ProgrammaticTagsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammaticTagsViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				BF6A36C8263BFF81000CB844 /* ViewController.swift */,
 				27C3EEDE42F3545B6F696F35 /* Demos */,
 				BF6A36CD263BFF84000CB844 /* Assets.xcassets */,
+				BF6A36CF263BFF84000CB844 /* LaunchScreen.storyboard */,
 				BF6A36D2263BFF84000CB844 /* Info.plist */,
 			);
 			path = TTGTagSwiftExample;
@@ -206,6 +209,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF6A36D1263BFF84000CB844 /* LaunchScreen.storyboard in Resources */,
 				BF6A36CE263BFF84000CB844 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,6 +288,17 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BF6A36CF263BFF84000CB844 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF6A36D0263BFF84000CB844 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		BF6A36D3263BFF84000CB844 /* Debug */ = {

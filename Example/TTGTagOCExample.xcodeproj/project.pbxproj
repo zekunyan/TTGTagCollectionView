@@ -27,6 +27,7 @@
 		BF018B111DB3D8F700EF8F4E /* TTGDemoCustomSubviewTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF018B061DB3D8F700EF8F4E /* TTGDemoCustomSubviewTagsViewController.m */; };
 		BF018B121DB3D8F700EF8F4E /* TTGDemoTagsInTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF018B071DB3D8F700EF8F4E /* TTGDemoTagsInTableViewController.m */; };
 		BF018B131DB3D8F700EF8F4E /* TTGDemoTagsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BF018B081DB3D8F700EF8F4E /* TTGDemoTagsTableViewCell.m */; };
+		BF018B151DB3D9F600EF8F4E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF018B141DB3D9F600EF8F4E /* Launch Screen.storyboard */; };
 		BF03B0422066A591008D91FA /* TTGDemoTagAttachmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF03B0412066A591008D91FA /* TTGDemoTagAttachmentViewController.m */; };
 		BF29CA901E673C430048B927 /* TTGDemoPullRefreshTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF29CA8F1E673C430048B927 /* TTGDemoPullRefreshTagsViewController.m */; };
 		BF73E6AF1E6AEE1300ED50C6 /* TTGDemoPerTagStyleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF73E6AE1E6AEE1300ED50C6 /* TTGDemoPerTagStyleViewController.m */; };
@@ -89,6 +90,7 @@
 		BF018B0B1DB3D8F700EF8F4E /* TTGDemoProgrammaticTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demos/TTGDemoProgrammaticTagsViewController.h; sourceTree = "<group>"; };
 		BF018B0C1DB3D8F700EF8F4E /* TTGDemoCustomSubviewTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demos/TTGDemoCustomSubviewTagsViewController.h; sourceTree = "<group>"; };
 		BF018B0D1DB3D8F700EF8F4E /* TTGDemoBasicTextTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demos/TTGDemoBasicTextTagsViewController.h; sourceTree = "<group>"; };
+		BF018B141DB3D9F600EF8F4E /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		BF03B0402066A591008D91FA /* TTGDemoTagAttachmentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Demos/TTGDemoTagAttachmentViewController.h; sourceTree = "<group>"; };
 		BF03B0412066A591008D91FA /* TTGDemoTagAttachmentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Demos/TTGDemoTagAttachmentViewController.m; sourceTree = "<group>"; };
 		BF29CA8E1E673C430048B927 /* TTGDemoPullRefreshTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demos/TTGDemoPullRefreshTagsViewController.h; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				6003F5A8195388D20070C39A /* Images.xcassets */,
+				BF018B141DB3D9F600EF8F4E /* Launch Screen.storyboard */,
 				6003F594195388D20070C39A /* Supporting Files */,
 				6003F59C195388D20070C39A /* TTGAppDelegate.h */,
 				6003F59D195388D20070C39A /* TTGAppDelegate.m */,
@@ -361,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				BF018B151DB3D9F600EF8F4E /* Launch Screen.storyboard in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
