@@ -86,19 +86,19 @@ class TagsTableViewCell: UITableViewCell {
         ])
     }
 
-    func configure(title: String, words: [String]) {
+    func configure(title: String, tags: [TextTag], availableWidth: CGFloat) {
         titleLabel.text = title
-        tagView.removeAllTags()
-        tagView.add(tags: words.map { DemoUI.tag(text: $0) })
 
-        if !words.isEmpty {
-            for _ in 0..<min(3, words.count) {
-                tagView.updateTag(at: Int(arc4random_uniform(UInt32(words.count))), selected: true)
-            }
+        let tagWidth = max(0, availableWidth - 24)
+        if tagWidth > 0 {
+            tagView.preferredMaxLayoutWidth = tagWidth
         }
 
+        tagView.removeAllTags()
+        tagView.add(tags: tags)
+
         if surfaceView.bounds.width <= 0 {
-            let fallbackWidth = max(0, UIScreen.main.bounds.width - 32 - 24)
+            let fallbackWidth = max(0, availableWidth - 24)
             tagView.preferredMaxLayoutWidth = fallbackWidth
         } else {
             _ = updatePreferredMaxLayoutWidthIfNeeded()

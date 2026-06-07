@@ -114,6 +114,13 @@ final class TextTagComponentView: UIView {
         label.frame = bounds
     }
 
+    func updateFrame(size: CGSize) {
+        var newFrame = frame
+        newFrame.size = size
+        frame = newFrame
+        label.frame = bounds
+    }
+
     func updateAccessibility() {
         guard let config = config else { return }
         isAccessibilityElement = config.isAccessibilityElement

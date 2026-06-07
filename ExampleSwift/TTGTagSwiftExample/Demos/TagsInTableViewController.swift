@@ -4,12 +4,19 @@
 //
 
 import UIKit
+import TTGTags
 
 class TagsInTableViewController: UITableViewController {
 
+    private struct Row {
+        let title: String
+        let tags: [TextTag]
+    }
+
     private let rowCount = 50
     private let wordPool = TagSampleData.shortSampleWords
-    private lazy var rows: [[String]] = buildRows()
+    private lazy var rows: [Row] = buildRows()
+    private var rowHeightCache: [String: CGFloat] = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,11 +65,50 @@ class TagsInTableViewController: UITableViewController {
         return container
     }
 
-    private func buildRows() -> [[String]] {
+    private func buildRows() -> [Row] {
         (0..<rowCount).map { index in
             let length = max(1, index % (wordPool.count + 1))
-            return Array(wordPool.prefix(length))
+            let tags = Array(wordPool.prefix(length)).enumerated().map { tagIndex, word in
+                let tag = DemoUI.tag(text: word)
+                tag.selected = shouldPreselectTag(at: tagIndex, tagCount: length)
+                return tag
+            }
+            return Row(title: "Cell \(index + 1)", tags: tags)
         }
+    }
+
+    private func shouldPreselectTag(at index: Int, tagCount: Int) -> Bool {
+        guard tagCount > 0 else { return false }
+        return (0..<min(3, tagCount)).contains { selectedSlot in
+            index == (selectedSlot * 7 + tagCount / 2) % tagCount
+        }
+    }
+
+    private func cachedHeight(for row: Row, tableWidth: CGFloat, index: Int) -> CGFloat {
+        let width = max(0, tableWidth)
+        let cacheKey = "\(index)|\(Int(width.rounded()))"
+        if let cached = rowHeightCache[cacheKey] {
+            return cached
+        }
+
+        let surfaceHorizontalInset: CGFloat = 32
+        let tagHorizontalInset: CGFloat = 24
+        let tagWidth = max(0, width - surfaceHorizontalInset - tagHorizontalInset)
+        let tagSize = TextTagCollectionView.contentSize(
+            for: row.tags,
+            width: tagWidth,
+            scrollDirection: .vertical,
+            alignment: .fillByExpandingWidth,
+            numberOfLines: 0,
+            horizontalSpacing: 8,
+            verticalSpacing: 8,
+            contentInset: UIEdgeInsets(top: 4, left: 0, bottom: 4, right: 0)
+        )
+
+        let titleHeight = ceil(UIFont.systemFont(ofSize: 16, weight: .semibold).lineHeight)
+        let height = 6 + 12 + titleHeight + 8 + ceil(tagSize.height) + 12 + 6
+        rowHeightCache[cacheKey] = height
+        return height
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -74,7 +120,12 @@ class TagsInTableViewController: UITableViewController {
             withIdentifier: TagsTableViewCell.reuseIdentifier,
             for: indexPath
         ) as! TagsTableViewCell
-        cell.configure(title: "Cell \(indexPath.row + 1)", words: rows[indexPath.row])
+        let row = rows[indexPath.row]
+        cell.configure(title: row.title, tags: row.tags, availableWidth: tableView.bounds.width - 32)
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return cachedHeight(for: rows[indexPath.row], tableWidth: tableView.bounds.width, index: indexPath.row)
     }
 }

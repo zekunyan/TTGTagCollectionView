@@ -43,13 +43,64 @@ struct TagCollectionLayout {
         let actualNumberOfLines: Int
     }
 
+    private final class CachedOutput {
+        let output: Output
+
+        init(_ output: Output) {
+            self.output = output
+        }
+    }
+
+    private static let layoutCache: NSCache<NSString, CachedOutput> = {
+        let cache = NSCache<NSString, CachedOutput>()
+        cache.countLimit = 512
+        return cache
+    }()
+
     static func calculate(_ input: Input) -> Output {
+        let key = cacheKey(for: input)
+        if let cachedOutput = layoutCache.object(forKey: key)?.output {
+            return cachedOutput
+        }
+
+        let output: Output
         switch input.scrollDirection {
         case .vertical:
-            return calculateVertical(input)
+            output = calculateVertical(input)
         case .horizontal:
-            return calculateHorizontal(input)
+            output = calculateHorizontal(input)
         }
+        layoutCache.setObject(CachedOutput(output), forKey: key)
+        return output
+    }
+
+    static func clearCache() {
+        layoutCache.removeAllObjects()
+    }
+
+    private static func cacheKey(for input: Input) -> NSString {
+        var parts: [String] = [
+            String(input.scrollDirection.rawValue),
+            String(input.alignment.rawValue),
+            String(input.numberOfLines),
+            cacheValue(input.horizontalSpacing),
+            cacheValue(input.verticalSpacing),
+            cacheValue(input.contentInset.top),
+            cacheValue(input.contentInset.left),
+            cacheValue(input.contentInset.bottom),
+            cacheValue(input.contentInset.right),
+            cacheValue(input.containerWidth),
+        ]
+        parts.reserveCapacity(parts.count + input.tagSizes.count * 2)
+        for size in input.tagSizes {
+            parts.append(cacheValue(size.width))
+            parts.append(cacheValue(size.height))
+        }
+        return parts.joined(separator: "|") as NSString
+    }
+
+    private static func cacheValue(_ value: CGFloat) -> String {
+        return String(format: "%.3f", Double(value))
     }
 
     // MARK: - Vertical Scroll

@@ -73,26 +73,20 @@ static const CGFloat kTagViewHorizontalMargin = 16;
     self.tagView.scrollView.directionalLockEnabled = YES;
 }
 
-- (void)configureWithWords:(NSArray<NSString *> *)words {
-    [self.tagView removeAllTags];
-
-    NSMutableArray<TTGTextTag *> *tags = [NSMutableArray array];
-    for (NSString *word in words) {
-        TTGTextTag *t = [TTGDemoUI tagWithText:word];
-        [tags addObject:t];
+- (void)configureWithTags:(NSArray<TTGTextTag *> *)tags availableWidth:(CGFloat)availableWidth {
+    CGFloat tagWidth = MAX(0, availableWidth);
+    if (tagWidth > 0) {
+        self.tagView.preferredMaxLayoutWidth = tagWidth;
     }
+
+    [self.tagView removeAllTags];
     [self.tagView addTags:tags];
 
-    CGFloat availableWidth = CGRectGetWidth(self.contentView.bounds) - kTagViewHorizontalMargin * 2;
-    if (availableWidth > 0) {
-        self.tagView.preferredMaxLayoutWidth = availableWidth;
+    CGFloat contentAvailableWidth = CGRectGetWidth(self.contentView.bounds) - kTagViewHorizontalMargin * 2;
+    if (contentAvailableWidth > 0) {
+        self.tagView.preferredMaxLayoutWidth = contentAvailableWidth;
     }
 
-    if (words.count > 0) {
-        for (NSInteger i = 0; i < 3; i++) {
-            [self.tagView updateTagAtIndex:arc4random_uniform((uint32_t)words.count) selected:YES];
-        }
-    }
     [self.tagView reload];
 }
 

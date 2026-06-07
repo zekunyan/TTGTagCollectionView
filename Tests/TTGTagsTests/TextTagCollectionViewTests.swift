@@ -49,6 +49,38 @@ final class TextTagCollectionViewTests: XCTestCase {
         XCTAssertEqual(view.contentSize.height, 40)
     }
 
+    func testStaticContentSizeMatchesRenderedContentSize() {
+        TextTagCollectionView.clearMeasurementCache()
+
+        let tags = [
+            makeTag(width: 45, height: 20),
+            makeTag(width: 45, height: 20),
+            makeTag(width: 45, height: 20),
+        ]
+
+        let view = TextTagCollectionView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        view.contentInset = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+        view.horizontalSpacing = 4
+        view.verticalSpacing = 4
+        view.alignment = .left
+        view.add(tags: tags)
+        view.reload()
+
+        let measuredSize = TextTagCollectionView.contentSize(
+            for: tags,
+            width: 100,
+            scrollDirection: .vertical,
+            alignment: .left,
+            numberOfLines: 0,
+            horizontalSpacing: 4,
+            verticalSpacing: 4,
+            contentInset: UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+        )
+
+        XCTAssertEqual(measuredSize.width, view.contentSize.width, accuracy: 0.5)
+        XCTAssertEqual(measuredSize.height, view.contentSize.height, accuracy: 0.5)
+    }
+
     private func makeTag(width: CGFloat, height: CGFloat) -> TextTag {
         let content = TextTagStringContent(text: "Tag")
         let style = makeStyle(width: width, height: height)

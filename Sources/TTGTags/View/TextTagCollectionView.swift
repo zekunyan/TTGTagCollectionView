@@ -126,6 +126,20 @@ public final class TextTagCollectionView: UIView {
     private var tagCollectionView: TagCollectionView!
     private var lastLaidOutBoundsSize: CGSize = .zero
 
+    private final class CachedMeasurement {
+        let size: CGSize
+
+        init(size: CGSize) {
+            self.size = size
+        }
+    }
+
+    private static let measurementCache: NSCache<NSString, CachedMeasurement> = {
+        let cache = NSCache<NSString, CachedMeasurement>()
+        cache.countLimit = 2_048
+        return cache
+    }()
+
     // MARK: Init
 
     public override init(frame: CGRect) {
@@ -238,6 +252,40 @@ public final class TextTagCollectionView: UIView {
     }
 
     // MARK: - Public API
+
+    @objc(contentSizeForTags:width:scrollDirection:alignment:numberOfLines:horizontalSpacing:verticalSpacing:contentInset:)
+    public static func contentSize(
+        for tags: [TextTag],
+        width: CGFloat,
+        scrollDirection: TagCollectionScrollDirection,
+        alignment: TagCollectionAlignment,
+        numberOfLines: Int,
+        horizontalSpacing: CGFloat,
+        verticalSpacing: CGFloat,
+        contentInset: UIEdgeInsets
+    ) -> CGSize {
+        let maxTagWidth = scrollDirection == .vertical ? max(0, width - contentInset.left - contentInset.right) : 0
+        let tagSizes = tags.map { tag in
+            measuredSize(for: tag, maxSize: CGSize(width: maxTagWidth, height: 0))
+        }
+        let input = TagCollectionLayout.Input(
+            tagSizes: tagSizes,
+            scrollDirection: scrollDirection,
+            alignment: alignment,
+            numberOfLines: numberOfLines,
+            horizontalSpacing: horizontalSpacing,
+            verticalSpacing: verticalSpacing,
+            contentInset: contentInset,
+            containerWidth: width
+        )
+        return TagCollectionLayout.calculate(input).contentSize
+    }
+
+    @objc(clearMeasurementCache)
+    public static func clearMeasurementCache() {
+        measurementCache.removeAllObjects()
+        TagCollectionLayout.clearCache()
+    }
 
     @objc public func reload() {
         updateAllLabelStyleAndFrame()
@@ -356,13 +404,101 @@ public final class TextTagCollectionView: UIView {
         if scrollDirection == .vertical, bounds.width > 0 {
             maxSize.width = bounds.width - contentInset.left - contentInset.right
         }
-        label.updateFrame(maxSize: maxSize)
+        if let tag = label.config {
+            label.updateFrame(size: Self.measuredSize(for: tag, maxSize: maxSize))
+        } else {
+            label.updateFrame(maxSize: maxSize)
+        }
     }
 
     private func newLabel(with config: TextTag) -> TextTagComponentView {
         let label = TextTagComponentView()
         label.config = config
         return label
+    }
+
+    private static func measuredSize(for tag: TextTag, maxSize: CGSize) -> CGSize {
+        let attributedString = tag.getRightfulContent().getContentAttributedString()
+        let style = tag.getRightfulStyle()
+        let key = measurementCacheKey(
+            attributedString: attributedString,
+            style: style,
+            selected: tag.selected,
+            maxSize: maxSize
+        )
+        if let cached = measurementCache.object(forKey: key) {
+            return cached.size
+        }
+
+        let constrainedWidth = maxSize.width > 0 ? maxSize.width : CGFloat.greatestFiniteMagnitude
+        let constrainedHeight = maxSize.height > 0 ? maxSize.height : CGFloat.greatestFiniteMagnitude
+        let textBounds = attributedString.boundingRect(
+            with: CGSize(width: constrainedWidth, height: constrainedHeight),
+            options: [.usesLineFragmentOrigin, .usesFontLeading],
+            context: nil
+        )
+
+        var finalSize = CGSize(
+            width: ceil(textBounds.width) + style.extraSpace.width,
+            height: ceil(textBounds.height) + style.extraSpace.height
+        )
+
+        if style.maxWidth > 0, finalSize.width > style.maxWidth {
+            finalSize.width = style.maxWidth
+        }
+        if style.minWidth > 0, finalSize.width < style.minWidth {
+            finalSize.width = style.minWidth
+        }
+        if style.maxHeight > 0, finalSize.height > style.maxHeight {
+            finalSize.height = style.maxHeight
+        }
+        if style.minHeight > 0, finalSize.height < style.minHeight {
+            finalSize.height = style.minHeight
+        }
+        if style.exactWidth > 0 {
+            finalSize.width = style.exactWidth
+        }
+        if style.exactHeight > 0 {
+            finalSize.height = style.exactHeight
+        }
+
+        if maxSize.width > 0 {
+            finalSize.width = min(maxSize.width, finalSize.width)
+        }
+        if maxSize.height > 0 {
+            finalSize.height = min(maxSize.height, finalSize.height)
+        }
+
+        measurementCache.setObject(CachedMeasurement(size: finalSize), forKey: key)
+        return finalSize
+    }
+
+    private static func measurementCacheKey(
+        attributedString: NSAttributedString,
+        style: TextTagStyle,
+        selected: Bool,
+        maxSize: CGSize
+    ) -> NSString {
+        let parts: [String] = [
+            attributedString.string,
+            String(attributedString.hash),
+            selected ? "1" : "0",
+            cacheValue(style.extraSpace.width),
+            cacheValue(style.extraSpace.height),
+            cacheValue(style.maxWidth),
+            cacheValue(style.minWidth),
+            cacheValue(style.maxHeight),
+            cacheValue(style.minHeight),
+            cacheValue(style.exactWidth),
+            cacheValue(style.exactHeight),
+            cacheValue(maxSize.width),
+            cacheValue(maxSize.height),
+        ]
+        return parts.joined(separator: "|") as NSString
+    }
+
+    private static func cacheValue(_ value: CGFloat) -> String {
+        return String(format: "%.3f", Double(value))
     }
 }
 
