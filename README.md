@@ -4,33 +4,20 @@
 [![License](https://img.shields.io/cocoapods/l/TTGTagCollectionView.svg?style=flat)](http://cocoapods.org/pods/TTGTagCollectionView)
 [![Platform](https://img.shields.io/cocoapods/p/TTGTagCollectionView.svg?style=flat)](http://cocoapods.org/pods/TTGTagCollectionView)
 
-**[中文文档 →](README_CN.md)**
+**[中文文档 ->](README_CN.md)**
 
-A flexible tag collection view for iOS — show text tags or fully custom views in a vertically or horizontally scrollable container, with rich layout alignment options and AutoLayout support.
+TTGTagCollectionView is a Swift-first iOS tag layout component. Use it for filter chips, topic labels, search facets, dense table cells, custom tag views, and any UI that needs predictable wrapping or horizontal tag rows.
 
 ![TTGTagCollectionView Promo](Resources/promo_poster.png)
 
-The promo poster is generated from [Resources/promo_poster.html](Resources/promo_poster.html), so the visual can be maintained together with the README.
+## Highlights
 
-## Architecture at a Glance
-
-![TTGTagCollectionView Architecture](Resources/architecture_poster.png)
-
-The poster above is generated from [Resources/architecture_poster.html](Resources/architecture_poster.html). It summarizes the Swift-first architecture, Objective-C compatibility layer, pure layout engine, rendering flow, and the cache-aware path used for dense tag lists.
-
-## Features
-
-- **Two view types**: `TextTagCollectionView` for styled text tags, `TagCollectionView` for any custom `UIView`
-- **6 alignment modes**: left, center, right, fill by space, fill by width, fill by width except last line
-- **Vertical & horizontal** scroll directions with configurable line limits
-- **Per-tag customization**: background color, gradient, corner radius (per-corner), border, shadow, padding, size constraints
-- **Rich text support** via `NSAttributedString`
-- **Selection management**: tap-to-select, selection limit, selected state style
-- **AutoLayout friendly**: `intrinsicContentSize` auto-updates; `preferredMaxLayoutWidth` support
-- **Cache-aware layout path**: text measurement cache, pure layout result cache, and precomputed content size API for dense table/list cells
-- **Accessibility**: auto-detect mode or manual `accessibilityLabel / hint / traits`
-- **Swift-first API** with full Objective-C backward compatibility
-- **CocoaPods** and **Swift Package Manager** support
+- **Text tags or custom views**: `TextTagCollectionView` for styled text, `TagCollectionView` for arbitrary `UIView` content.
+- **Flexible layout**: vertical wrapping, horizontal scrolling, line limits, spacing, insets, and 6 alignment modes.
+- **Per-tag appearance**: gradient backgrounds, borders, shadows, corner radius, padding, size constraints, and selected states.
+- **AutoLayout friendly**: intrinsic size updates and `preferredMaxLayoutWidth` for stack views, forms, and self-sizing cells.
+- **Cache-aware performance**: text measurement cache, pure layout cache, and precomputed content-size APIs for dense lists.
+- **Swift and Objective-C**: modern Swift sources with Objective-C-compatible names and selectors.
 
 ## Requirements
 
@@ -40,15 +27,15 @@ The poster above is generated from [Resources/architecture_poster.html](Resource
 
 ## Installation
 
-### Swift Package Manager (Recommended)
+### Swift Package Manager
 
-In Xcode: **File → Add Package Dependencies**, enter:
+In Xcode, choose **File -> Add Package Dependencies** and enter:
 
-```
+```text
 https://github.com/zekunyan/TTGTagCollectionView.git
 ```
 
-Or add to `Package.swift`:
+Or add it to `Package.swift`:
 
 ```swift
 dependencies: [
@@ -64,57 +51,86 @@ pod 'TTGTagCollectionView'
 
 ## Quick Start
 
-> **3 steps to show tags on screen.** For the full API reference, scroll down to [Usage](#usage).
+The screenshots below are generated from the Swift example app running in an iOS Simulator.
 
-### Step 1 — Import and create
+### 1. Create the view
+
+![Create TextTagCollectionView](Resources/quick_start_01_create.png)
 
 ```swift
 import TTGTags
 
-let tagView = TextTagCollectionView(frame: CGRect(x: 16, y: 100, width: 320, height: 200))
+let tagView = TextTagCollectionView()
+tagView.translatesAutoresizingMaskIntoConstraints = false
 view.addSubview(tagView)
+
+NSLayoutConstraint.activate([
+    tagView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+    tagView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+    tagView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24)
+])
 ```
 
-### Step 2 — Build tags
+### 2. Build content plus style
 
-Each tag is a `TextTag` composed of **content** (what it says) + **style** (how it looks):
+![Build TextTag content and style](Resources/quick_start_02_style.png)
+
+Each `TextTag` is built from content and style. The same model also carries selection state, accessibility metadata, and optional attachment data.
 
 ```swift
 let content = TextTagStringContent(text: "Swift")
-content.textFont  = .boldSystemFont(ofSize: 14)
+content.textFont = .boldSystemFont(ofSize: 14)
 content.textColor = .white
 
 let style = TextTagStyle()
-style.backgroundColor = .systemBlue
-style.cornerRadius    = 10
-style.extraSpace      = CGSize(width: 12, height: 8)   // inner padding
+style.enableGradientBackground = true
+style.gradientBackgroundStartColor = .systemBlue
+style.gradientBackgroundEndColor = .systemPurple
+style.cornerRadius = 12
+style.extraSpace = CGSize(width: 14, height: 8)
 
 let tag = TextTag(content: content, style: style)
-```
-
-### Step 3 — Add and reload
-
-```swift
 tagView.add(tag: tag)
-tagView.reload()   // ← always call after mutations
+tagView.reload()
 ```
 
-That's it! You'll see a styled blue tag on screen.
+### 3. Add selected states
 
-### Add selection support
+![Add selected states](Resources/quick_start_03_selection.png)
+
+`selectedStyle` is applied automatically when a tag is selected. Use `selectionLimit` and the delegate callbacks for app-specific behavior.
 
 ```swift
 let selectedStyle = TextTagStyle()
 selectedStyle.backgroundColor = .systemOrange
-selectedStyle.cornerRadius    = 10
-selectedStyle.extraSpace      = CGSize(width: 12, height: 8)
+selectedStyle.cornerRadius = 12
+selectedStyle.extraSpace = CGSize(width: 14, height: 8)
 
-tag.selectedStyle = selectedStyle    // auto-switches on tap
-
-tagView.delegate = self              // receive tap callbacks
+tag.selectedStyle = selectedStyle
+tagView.selectionLimit = 3
+tagView.delegate = self
 ```
 
-### Objective-C? No problem
+### 4. Control layout behavior
+
+![Control layout behavior](Resources/quick_start_04_layout.png)
+
+Use the same view for normal wrapping tag clouds, fill-width rows, or horizontal filter bars.
+
+```swift
+tagView.alignment = .fillByExpandingWidth
+tagView.horizontalSpacing = 8
+tagView.verticalSpacing = 8
+tagView.contentInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
+
+tagView.scrollDirection = .horizontal
+tagView.numberOfLines = 2
+tagView.showsHorizontalScrollIndicator = false
+
+tagView.reload()
+```
+
+### Objective-C
 
 ```objc
 #import <TTGTags/TTGTags-Swift.h>
@@ -133,24 +149,11 @@ TTGTextTag *tag = [TTGTextTag tagWithContent:content style:style];
 [tagView reload];
 ```
 
----
-
 ## Concepts
 
 Understanding these 4 building blocks will help you use the library effectively:
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│  TextTagCollectionView (or TagCollectionView)               │
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐   │
-│  │ TextTag  │  │ TextTag  │  │ TextTag  │  │ TextTag  │   │
-│  │┌────────┐│  │┌────────┐│  │┌────────┐│  │┌────────┐│   │
-│  ││Content ││  ││Content ││  ││Content ││  ││Content ││   │
-│  ││ Style  ││  ││ Style  ││  ││ Style  ││  ││ Style  ││   │
-│  │└────────┘│  │└────────┘│  │└────────┘│  │└────────┘│   │
-│  └──────────┘  └──────────┘  └──────────┘  └──────────┘   │
-└─────────────────────────────────────────────────────────────┘
-```
+![TTGTagCollectionView Concepts](Resources/concepts_poster.png)
 
 | Concept | Class | Role |
 |---|---|---|
@@ -161,7 +164,19 @@ Understanding these 4 building blocks will help you use the library effectively:
 
 > **Key rule**: always call `reload()` after adding, removing, or updating tags.
 
----
+## Visual Assets
+
+- Promo poster: [Resources/promo_poster.png](Resources/promo_poster.png)
+- Quick Start images: [Resources/quick_start_01_create.png](Resources/quick_start_01_create.png), [Resources/quick_start_02_style.png](Resources/quick_start_02_style.png), [Resources/quick_start_03_selection.png](Resources/quick_start_03_selection.png), [Resources/quick_start_04_layout.png](Resources/quick_start_04_layout.png)
+- Concepts image: [Resources/concepts_poster.png](Resources/concepts_poster.png)
+- Review HTML: [Resources/promo_poster.html](Resources/promo_poster.html), [Resources/quick_start_01_create.html](Resources/quick_start_01_create.html), [Resources/quick_start_02_style.html](Resources/quick_start_02_style.html), [Resources/quick_start_03_selection.html](Resources/quick_start_03_selection.html), [Resources/quick_start_04_layout.html](Resources/quick_start_04_layout.html)
+- Regenerate PNG assets with `node Resources/render_readme_images.mjs`.
+
+## Architecture at a Glance
+
+![TTGTagCollectionView Architecture](Resources/architecture_poster.png)
+
+The architecture poster is generated from [Resources/architecture_poster.html](Resources/architecture_poster.html). It summarizes the Swift-first architecture, Objective-C compatibility layer, pure layout engine, rendering flow, and the cache-aware path used for dense tag lists.
 
 ## Usage
 

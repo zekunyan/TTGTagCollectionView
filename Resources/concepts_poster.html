@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TTGTagCollectionView Concepts</title>
+  <style>
+    :root {
+      --ink: #111827;
+      --muted: #607086;
+      --line: rgba(17, 24, 39, 0.12);
+      --blue: #0a84ff;
+      --teal: #16a394;
+      --teal-dark: #0f8f82;
+      --green: #22a06b;
+      --orange: #f97316;
+      --purple: #6256f6;
+      --rose: #f43f5e;
+      --surface: rgba(255, 255, 255, 0.9);
+      --surface-soft: rgba(246, 249, 253, 0.94);
+      --dark: #101828;
+      --shadow: 0 30px 90px rgba(22, 34, 51, 0.16);
+    }
+
+    * { box-sizing: border-box; }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+      background: #dfe7f1;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+    }
+
+    body {
+      display: grid;
+      place-items: center;
+    }
+
+    .poster {
+      width: 1920px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(10, 132, 255, 0.12), transparent 34%),
+        radial-gradient(circle at 88% 84%, rgba(22, 163, 148, 0.16), transparent 36%),
+        linear-gradient(135deg, #f8fbff 0%, #edf3fa 100%);
+    }
+
+    .poster::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle, rgba(96, 112, 134, 0.22) 1.4px, transparent 1.6px),
+        linear-gradient(rgba(17, 24, 39, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17, 24, 39, 0.035) 1px, transparent 1px);
+      background-size: 24px 24px, 56px 56px, 56px 56px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.62), transparent 96%);
+      pointer-events: none;
+    }
+
+    .layout {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: grid;
+      grid-template-columns: 560px 1fr;
+      gap: 54px;
+      padding: 70px 86px;
+    }
+
+    .left {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .eyebrow {
+      width: fit-content;
+      padding: 12px 18px;
+      border: 1px solid rgba(10, 132, 255, 0.2);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.78);
+      color: #0b63ce;
+      font-size: 22px;
+      font-weight: 760;
+      box-shadow: 0 16px 40px rgba(10, 132, 255, 0.08);
+    }
+
+    h1 {
+      margin: 34px 0 0;
+      max-width: 520px;
+      font-size: 76px;
+      line-height: 0.98;
+      letter-spacing: 0;
+      font-weight: 880;
+    }
+
+    .lead {
+      max-width: 520px;
+      margin: 26px 0 0;
+      color: var(--muted);
+      font-size: 28px;
+      line-height: 1.32;
+      font-weight: 560;
+    }
+
+    .phone {
+      width: 250px;
+      height: 544px;
+      padding: 18px;
+      border-radius: 54px;
+      background: var(--dark);
+      box-shadow: var(--shadow);
+      transform: rotate(-2.5deg);
+      align-self: center;
+      margin-top: 18px;
+    }
+
+    .phone img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 38px;
+      background: #fff;
+    }
+
+    .note {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: 12px 1fr;
+      gap: 12px;
+      align-items: start;
+      color: var(--muted);
+      font-size: 19px;
+      line-height: 1.32;
+      font-weight: 620;
+    }
+
+    .note::before {
+      content: "";
+      width: 12px;
+      height: 12px;
+      margin-top: 7px;
+      border-radius: 50%;
+      background: var(--teal);
+    }
+
+    .diagram {
+      position: relative;
+      min-width: 0;
+      height: 100%;
+      display: grid;
+      grid-template-columns: 1fr 372px;
+      gap: 34px;
+      align-items: stretch;
+    }
+
+    .flow {
+      position: relative;
+      min-width: 0;
+      padding-top: 24px;
+    }
+
+    .block {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--surface);
+      box-shadow: 0 20px 60px rgba(22, 34, 51, 0.1);
+    }
+
+    .collection {
+      padding: 26px;
+    }
+
+    .block-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .class-name {
+      font-size: 30px;
+      line-height: 1;
+      font-weight: 860;
+      letter-spacing: 0;
+    }
+
+    .class-role {
+      color: var(--muted);
+      font-size: 17px;
+      font-weight: 680;
+      white-space: nowrap;
+    }
+
+    .tags {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .tag-card {
+      min-height: 188px;
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(15, 143, 130, 0.22);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(232, 247, 245, 0.78));
+      box-shadow: 0 12px 28px rgba(22, 34, 51, 0.08);
+    }
+
+    .tag-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 0 16px;
+      border-radius: 999px;
+      background: var(--teal);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 820;
+      box-shadow: 0 10px 24px rgba(22, 163, 148, 0.24);
+    }
+
+    .tag-body {
+      margin-top: 16px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .slot {
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 2px solid rgba(22, 163, 148, 0.42);
+      background: rgba(255, 255, 255, 0.82);
+      color: #263241;
+      font-size: 18px;
+      font-weight: 760;
+      text-align: center;
+    }
+
+    .state-row {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .state {
+      padding: 22px;
+      border-radius: 22px;
+      border: 2px dashed rgba(22, 163, 148, 0.58);
+      background: rgba(226, 246, 243, 0.64);
+    }
+
+    .state h3 {
+      margin: 0 0 14px;
+      color: #263241;
+      font-size: 25px;
+      line-height: 1;
+      font-weight: 850;
+      text-align: center;
+    }
+
+    .state-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .content-area {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .content-card {
+      padding: 22px;
+      border-radius: 22px;
+      border: 2px dashed rgba(10, 132, 255, 0.42);
+      background: rgba(235, 244, 255, 0.68);
+    }
+
+    .content-card .header {
+      margin-bottom: 16px;
+      padding: 15px 18px;
+      border-radius: 14px;
+      background: var(--blue);
+      color: #fff;
+      text-align: center;
+      font-size: 23px;
+      font-weight: 840;
+      box-shadow: 0 12px 28px rgba(10, 132, 255, 0.16);
+    }
+
+    .mini-fields {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .field {
+      min-height: 38px;
+      padding: 7px 13px;
+      border-radius: 10px;
+      border: 2px solid rgba(10, 132, 255, 0.36);
+      background: rgba(255, 255, 255, 0.86);
+      color: #263241;
+      font-size: 18px;
+      font-weight: 720;
+    }
+
+    .style-panel {
+      align-self: center;
+      min-height: 790px;
+      padding: 26px;
+      border: 2px dashed rgba(22, 163, 148, 0.56);
+      border-radius: 26px;
+      background: rgba(218, 245, 241, 0.66);
+      box-shadow: 0 24px 70px rgba(22, 34, 51, 0.1);
+    }
+
+    .style-panel .header {
+      padding: 19px 20px;
+      border-radius: 16px;
+      background: var(--teal);
+      color: #fff;
+      text-align: center;
+      font-size: 28px;
+      font-weight: 860;
+      box-shadow: 0 14px 30px rgba(22, 163, 148, 0.24);
+    }
+
+    .style-list {
+      margin-top: 22px;
+      display: grid;
+      gap: 13px;
+    }
+
+    .style-item {
+      min-height: 43px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      border: 2px dashed rgba(96, 112, 134, 0.28);
+      background: rgba(255, 255, 255, 0.82);
+      color: #263241;
+      font-size: 19px;
+      font-weight: 720;
+    }
+
+    .connector {
+      position: absolute;
+      background: rgba(96, 112, 134, 0.66);
+      border-radius: 999px;
+    }
+
+    .connector::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+    }
+
+    .to-style {
+      left: calc(100% - 18px);
+      top: 452px;
+      width: 68px;
+      height: 6px;
+    }
+
+    .to-style::after {
+      right: -13px;
+      top: -7px;
+      border-width: 10px 0 10px 15px;
+      border-color: transparent transparent transparent rgba(96, 112, 134, 0.66);
+    }
+
+    .flow-caption {
+      position: absolute;
+      left: 26px;
+      bottom: 0;
+      color: var(--muted);
+      font-size: 18px;
+      font-weight: 650;
+    }
+  </style>
+</head>
+<body>
+  <main class="poster">
+    <section class="layout">
+      <div class="left">
+        <div>
+          <div class="eyebrow">Concepts</div>
+          <h1>How tags are composed on screen.</h1>
+          <p class="lead">A collection view lays out tag models. Each tag chooses content and style for normal and selected states.</p>
+          <div class="phone">
+            <img src="screenshots/poster-overview.png" alt="Real iOS simulator screenshot showing rendered tags">
+          </div>
+        </div>
+        <div class="note">The left side is a real iOS Simulator render. The right side maps that rendered UI back to the core classes and properties.</div>
+      </div>
+
+      <div class="diagram">
+        <div class="flow">
+          <section class="block collection">
+            <div class="block-title">
+              <div class="class-name">TextTagCollectionView</div>
+              <div class="class-role">layout + scroll + selection</div>
+            </div>
+
+            <div class="tags">
+              <div class="tag-card">
+                <div class="tag-pill">TextTag</div>
+                <div class="tag-body">
+                  <div class="slot">Content</div>
+                  <div class="slot">Style</div>
+                </div>
+              </div>
+              <div class="tag-card">
+                <div class="tag-pill">TextTag</div>
+                <div class="tag-body">
+                  <div class="slot">Content</div>
+                  <div class="slot">Style</div>
+                </div>
+              </div>
+              <div class="tag-card">
+                <div class="tag-pill">TextTag</div>
+                <div class="tag-body">
+                  <div class="slot">Content</div>
+                  <div class="slot">Style</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="state-row">
+              <div class="state">
+                <h3>Normal</h3>
+                <div class="state-grid">
+                  <div class="slot">content</div>
+                  <div class="slot">style</div>
+                </div>
+              </div>
+              <div class="state">
+                <h3>Selected</h3>
+                <div class="state-grid">
+                  <div class="slot">selectedContent</div>
+                  <div class="slot">selectedStyle</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="content-area">
+              <div class="content-card">
+                <div class="header">TextTagStringContent</div>
+                <div class="mini-fields">
+                  <div class="field">text</div>
+                  <div class="field">textFont</div>
+                  <div class="field">textColor</div>
+                </div>
+              </div>
+              <div class="content-card">
+                <div class="header">TextTagAttributedStringContent</div>
+                <div class="mini-fields">
+                  <div class="field">attributedText</div>
+                  <div class="field">NSAttributedString</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div class="connector to-style"></div>
+          <div class="flow-caption">Call `reload()` after mutating tags so layout and rendering stay in sync.</div>
+        </div>
+
+        <aside class="style-panel">
+          <div class="header">TextTagStyle</div>
+          <div class="style-list">
+            <div class="style-item">textAlignment</div>
+            <div class="style-item">backgroundColor</div>
+            <div class="style-item">gradientBackground</div>
+            <div class="style-item">cornerRadius</div>
+            <div class="style-item">border</div>
+            <div class="style-item">shadow</div>
+            <div class="style-item">extraSpace</div>
+            <div class="style-item">min / max width</div>
+            <div class="style-item">min / max height</div>
+            <div class="style-item">exact width / height</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

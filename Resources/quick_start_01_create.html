@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quick Start 01 - Create</title>
+  <link rel="stylesheet" href="quick_start_review.css">
+</head>
+<body>
+  <main class="page">
+    <section class="copy">
+      <p class="eyebrow">Quick Start 01</p>
+      <h1>Create the tag view</h1>
+      <p class="lead">Start with a single <code>TextTagCollectionView</code>. Add it to your view hierarchy like any other UIKit view.</p>
+      <pre><code>import TTGTags
+
+let tagView = TextTagCollectionView()
+tagView.translatesAutoresizingMaskIntoConstraints = false
+view.addSubview(tagView)
+
+NSLayoutConstraint.activate([
+    tagView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+    tagView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+    tagView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24)
+])</code></pre>
+    </section>
+    <section class="phone">
+      <img src="screenshots/quick-start-create.png" alt="Create TextTagCollectionView simulator screenshot">
+    </section>
+  </main>
+</body>
+</html>

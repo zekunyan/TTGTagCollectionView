@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quick Start 03 - Selection</title>
+  <link rel="stylesheet" href="quick_start_review.css">
+</head>
+<body>
+  <main class="page">
+    <section class="copy">
+      <p class="eyebrow">Quick Start 03</p>
+      <h1>Add selected states</h1>
+      <p class="lead">Assign <code>selectedStyle</code>, set a selection limit, and use the delegate callback for app behavior.</p>
+      <pre><code>let selectedStyle = TextTagStyle()
+selectedStyle.backgroundColor = .systemOrange
+selectedStyle.cornerRadius = 12
+selectedStyle.extraSpace = CGSize(width: 14, height: 8)
+
+tag.selectedStyle = selectedStyle
+tagView.selectionLimit = 3
+tagView.delegate = self
+
+func textTagCollectionView(_ view: TextTagCollectionView,
+                           didTapTag tag: TextTag,
+                           at index: Int) {
+    print(index, tag.selected)
+}</code></pre>
+    </section>
+    <section class="phone">
+      <img src="screenshots/quick-start-selection.png" alt="Selection simulator screenshot">
+    </section>
+  </main>
+</body>
+</html>

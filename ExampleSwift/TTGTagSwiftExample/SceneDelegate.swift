@@ -15,7 +15,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
-        let rootViewController = DemoListViewController(style: .plain)
+        let rootViewController: UIViewController
+        if let scenario = ScreenshotShowcaseViewController.Scenario.fromLaunchArguments() {
+            rootViewController = ScreenshotShowcaseViewController(scenario: scenario)
+        } else {
+            rootViewController = DemoListViewController(style: .plain)
+        }
         let navigationController = UINavigationController(rootViewController: rootViewController)
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
@@ -53,3 +58,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
+private extension ScreenshotShowcaseViewController.Scenario {
+    static func fromLaunchArguments() -> ScreenshotShowcaseViewController.Scenario? {
+        let arguments = CommandLine.arguments
+        guard let keyIndex = arguments.firstIndex(of: "--ttg-screenshot") else { return nil }
+        let valueIndex = arguments.index(after: keyIndex)
+        guard valueIndex < arguments.endIndex else { return nil }
+        return ScreenshotShowcaseViewController.Scenario(rawValue: arguments[valueIndex])
+    }
+}

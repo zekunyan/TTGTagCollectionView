@@ -12,6 +12,7 @@
 		0D0010020000000000000002 /* CustomSubviewTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0010020000000000000001 /* CustomSubviewTagsViewController.swift */; };
 		0D0010030000000000000002 /* PullRefreshTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0010030000000000000001 /* PullRefreshTagsViewController.swift */; };
 		0D0010040000000000000002 /* AutoLayoutFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0010040000000000000001 /* AutoLayoutFormViewController.swift */; };
+		0D0010050000000000000002 /* ScreenshotShowcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0010050000000000000001 /* ScreenshotShowcaseViewController.swift */; };
 		175C62466C2F946ED109838C /* DemoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E7883B72E341A85F4E25BF /* DemoListViewController.swift */; };
 		4794A3FC75B17E3CBC3960A1 /* AttributedStringTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B513254137B845268F77BDF6 /* AttributedStringTagsViewController.swift */; };
 		5965DE0269160486D40F489A /* PerTagStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A7327EA753E24A519A8122 /* PerTagStyleViewController.swift */; };
@@ -39,6 +40,7 @@
 		0D0010020000000000000001 /* CustomSubviewTagsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSubviewTagsViewController.swift; sourceTree = "<group>"; };
 		0D0010030000000000000001 /* PullRefreshTagsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRefreshTagsViewController.swift; sourceTree = "<group>"; };
 		0D0010040000000000000001 /* AutoLayoutFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutFormViewController.swift; sourceTree = "<group>"; };
+		0D0010050000000000000001 /* ScreenshotShowcaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotShowcaseViewController.swift; sourceTree = "<group>"; };
 		188F07F96DA028751D15BA5B /* TagsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsTableViewCell.swift; sourceTree = "<group>"; };
 		18FE1A9005B5D818D3FB6510 /* Pods-TTGTagSwiftExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTGTagSwiftExample.debug.xcconfig"; path = "Target Support Files/Pods-TTGTagSwiftExample/Pods-TTGTagSwiftExample.debug.xcconfig"; sourceTree = "<group>"; };
 		41E7883B72E341A85F4E25BF /* DemoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoListViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 			children = (
 				4EC936D899DA8ACAB40D0573 /* TagSampleData.swift */,
 				0D0010010000000000000001 /* DemoUI.swift */,
+				0D0010050000000000000001 /* ScreenshotShowcaseViewController.swift */,
 				41E7883B72E341A85F4E25BF /* DemoListViewController.swift */,
 				D099B5DDFB6061B8C83D5569 /* BasicTextTagsViewController.swift */,
 				0D0010020000000000000001 /* CustomSubviewTagsViewController.swift */,
@@ -266,6 +269,7 @@
 				BF6A36C9263BFF81000CB844 /* ViewController.swift in Sources */,
 				7C17C626C2B6BA4D69BE82A1 /* TagSampleData.swift in Sources */,
 				0D0010010000000000000002 /* DemoUI.swift in Sources */,
+				0D0010050000000000000002 /* ScreenshotShowcaseViewController.swift in Sources */,
 				175C62466C2F946ED109838C /* DemoListViewController.swift in Sources */,
 				E88646145B4D4E3624AE4124 /* BasicTextTagsViewController.swift in Sources */,
 				0D0010020000000000000002 /* CustomSubviewTagsViewController.swift in Sources */,

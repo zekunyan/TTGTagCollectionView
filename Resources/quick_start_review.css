@@ -1,0 +1,102 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  background: #dfe7f1;
+  color: #111827;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+}
+
+body {
+  display: grid;
+  place-items: center;
+}
+
+.page {
+  width: 1440px;
+  height: 900px;
+  display: grid;
+  grid-template-columns: 1fr 430px;
+  gap: 76px;
+  align-items: center;
+  padding: 72px 96px;
+  background:
+    radial-gradient(circle at 12% 12%, rgba(10, 132, 255, 0.13), transparent 36%),
+    radial-gradient(circle at 88% 82%, rgba(34, 160, 107, 0.14), transparent 34%),
+    linear-gradient(135deg, #f8fbff 0%, #edf3fa 100%);
+  overflow: hidden;
+}
+
+.copy {
+  min-width: 0;
+}
+
+.eyebrow {
+  width: fit-content;
+  margin: 0 0 24px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(10, 132, 255, 0.18);
+  background: rgba(255, 255, 255, 0.78);
+  color: #0b63ce;
+  font-size: 20px;
+  font-weight: 760;
+}
+
+h1 {
+  max-width: 760px;
+  margin: 0;
+  font-size: 72px;
+  line-height: 0.98;
+  letter-spacing: 0;
+  font-weight: 880;
+}
+
+.lead {
+  max-width: 760px;
+  margin: 28px 0 36px;
+  color: #5f6b7a;
+  font-size: 28px;
+  line-height: 1.34;
+  font-weight: 540;
+}
+
+code {
+  font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+pre {
+  width: 100%;
+  max-width: 830px;
+  margin: 0;
+  padding: 28px;
+  border-radius: 22px;
+  background: #0f172a;
+  box-shadow: 0 28px 80px rgba(22, 34, 51, 0.16);
+  color: #dbeafe;
+  font: 20px/1.48 "SFMono-Regular", Menlo, Consolas, monospace;
+  white-space: pre-wrap;
+}
+
+.phone {
+  width: 430px;
+  height: 820px;
+  padding: 22px;
+  border-radius: 58px;
+  background: #101828;
+  box-shadow: 0 34px 90px rgba(22, 34, 51, 0.24);
+}
+
+.phone img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 40px;
+  background: #fff;
+}

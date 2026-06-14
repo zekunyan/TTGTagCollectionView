@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quick Start 02 - Style</title>
+  <link rel="stylesheet" href="quick_start_review.css">
+</head>
+<body>
+  <main class="page">
+    <section class="copy">
+      <p class="eyebrow">Quick Start 02</p>
+      <h1>Build content plus style</h1>
+      <p class="lead">A <code>TextTag</code> combines content and style. Each tag can own an independent appearance.</p>
+      <pre><code>let content = TextTagStringContent(text: "Swift")
+content.textFont = .boldSystemFont(ofSize: 14)
+content.textColor = .white
+
+let style = TextTagStyle()
+style.enableGradientBackground = true
+style.gradientBackgroundStartColor = .systemBlue
+style.gradientBackgroundEndColor = .systemPurple
+style.cornerRadius = 12
+style.extraSpace = CGSize(width: 14, height: 8)
+
+let tag = TextTag(content: content, style: style)</code></pre>
+    </section>
+    <section class="phone">
+      <img src="screenshots/quick-start-style.png" alt="TextTagStyle simulator screenshot">
+    </section>
+  </main>
+</body>
+</html>

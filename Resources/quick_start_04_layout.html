@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quick Start 04 - Layout</title>
+  <link rel="stylesheet" href="quick_start_review.css">
+</head>
+<body>
+  <main class="page">
+    <section class="copy">
+      <p class="eyebrow">Quick Start 04</p>
+      <h1>Control layout behavior</h1>
+      <p class="lead">Use the same view for wrapping tag clouds, fill-width rows, and horizontal filter bars.</p>
+      <pre><code>tagView.alignment = .fillByExpandingWidth
+tagView.horizontalSpacing = 8
+tagView.verticalSpacing = 8
+tagView.contentInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
+
+tagView.scrollDirection = .horizontal
+tagView.numberOfLines = 2
+tagView.showsHorizontalScrollIndicator = false
+
+tagView.reload()</code></pre>
+    </section>
+    <section class="phone">
+      <img src="screenshots/quick-start-layout.png" alt="Layout controls simulator screenshot">
+    </section>
+  </main>
+</body>
+</html>
