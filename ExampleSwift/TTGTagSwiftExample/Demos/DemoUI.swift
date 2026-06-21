@@ -62,10 +62,17 @@ enum DemoUI {
     }
 
     static func stylePrimaryButton(_ button: UIButton) {
-        button.titleLabel?.font = .systemFont(ofSize: 15, weight: .semibold)
-        button.backgroundColor = .systemGray6
-        button.layer.cornerRadius = 10
-        button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 12, bottom: 10, right: 12)
+        var configuration = UIButton.Configuration.plain()
+        if let title = button.title(for: .normal) {
+            var attributedTitle = AttributedString(title)
+            attributedTitle.font = .systemFont(ofSize: 15, weight: .semibold)
+            configuration.attributedTitle = attributedTitle
+        }
+        configuration.baseForegroundColor = .systemBlue
+        configuration.background.backgroundColor = .systemGray6
+        configuration.background.cornerRadius = 10
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 12, bottom: 10, trailing: 12)
+        button.configuration = configuration
     }
 
     static func content(text: String) -> TextTagStringContent {

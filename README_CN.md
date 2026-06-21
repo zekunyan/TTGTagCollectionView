@@ -45,7 +45,7 @@ https://github.com/zekunyan/TTGTagCollectionView.git
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/zekunyan/TTGTagCollectionView.git", from: "3.0.0")
+    .package(url: "https://github.com/zekunyan/TTGTagCollectionView.git", from: "3.1.0")
 ]
 ```
 
@@ -205,6 +205,9 @@ let style = TextTagStyle()
 
 // 背景色
 style.backgroundColor = .systemBlue
+style.textAlignment = .center
+style.numberOfLines = 1                  // 0 = 不限制行数
+style.lineBreakMode = .byTruncatingTail
 
 // 渐变背景
 style.enableGradientBackground        = true
@@ -243,6 +246,8 @@ style.exactHeight = 32
 ```swift
 tagView.scrollDirection  = .vertical     // .vertical（默认）或 .horizontal
 tagView.alignment        = .left         // 参见下方对齐模式
+tagView.horizontalDistribution = .rowMajor
+tagView.contentVerticalAlignment = .top
 tagView.numberOfLines    = 0             // 0 = 不限
 tagView.selectionLimit   = 3             // 0 = 不限
 tagView.horizontalSpacing = 8
@@ -268,6 +273,33 @@ tagView.onTapAllArea   = { point in print("点击任意区域 \(point)") }
 | `.fillByExpandingSpace` | 扩展标签间距以填满每行 |
 | `.fillByExpandingWidth` | 扩展每个标签的宽度以填满每行 |
 | `.fillByExpandingWidthExceptLastLine` | 同上，但跳过最后一行 |
+
+### 横向多行和垂直摆放
+
+```swift
+// 横向多行默认按自然阅读顺序逐行排列（3.1 默认）
+tagView.scrollDirection = .horizontal
+tagView.numberOfLines = 2
+tagView.horizontalDistribution = .rowMajor
+
+// 如果需要保留旧版上下交错的列优先排列
+tagView.horizontalDistribution = .columnMajor
+
+// 固定高度容器中垂直居中内容
+tagView.contentVerticalAlignment = .center
+```
+
+### 多行文本标签
+
+```swift
+let content = TextTagStringContent(text: "可以自动换行的长标签")
+let style = TextTagStyle()
+style.numberOfLines = 0
+style.maxWidth = 180
+style.lineBreakMode = .byWordWrapping
+
+let tag = TextTag(content: content, style: style)
+```
 
 ### 标签模型 — TextTag
 
@@ -314,6 +346,8 @@ tagView.insert(tags: [tag1, tag2], at: 2)
 // 更新
 tagView.updateTag(at: 0, selected: true)
 tagView.updateTag(at: 0, with: newTag)
+tagView.updateTag(byId: tag.tagId, selected: true)
+tagView.updateTag(byId: tag.tagId, with: newTag)
 
 // 删除
 tagView.remove(tag: tag)
@@ -323,6 +357,8 @@ tagView.removeAllTags()
 
 // 查询
 let tag  = tagView.getTag(at: 0)
+let sameTag = tagView.getTag(byId: tagId)
+let index = tagView.indexOfTag(byId: tagId)
 let tags = tagView.getTags(in: NSRange(location: 0, length: 3))
 let all      = tagView.allTags()
 let selected = tagView.allSelectedTags()
@@ -336,6 +372,13 @@ tagView.reload()
 
 ```swift
 let index = tagView.indexOfTag(at: touchPoint)   // 未命中时返回 NSNotFound
+```
+
+### 滚动到指定标签
+
+```swift
+tagView.scrollToTag(at: 12, position: .center, animated: true)
+tagView.scrollToTag(byId: tag.tagId, position: .end, animated: true)
 ```
 
 ---
@@ -370,7 +413,7 @@ func tagCollectionView(_ tagCollectionView: TagCollectionView,
 tagCollectionView.reload()
 ```
 
-所有布局和间距属性（`scrollDirection`、`alignment`、`numberOfLines`、`horizontalSpacing`、`verticalSpacing`、`contentInset`、`manualCalculateHeight`、`preferredMaxLayoutWidth`）与 `TextTagCollectionView` 完全一致。
+所有布局和间距属性（`scrollDirection`、`alignment`、`horizontalDistribution`、`contentVerticalAlignment`、`numberOfLines`、`horizontalSpacing`、`verticalSpacing`、`contentInset`、`manualCalculateHeight`、`preferredMaxLayoutWidth`）与 `TextTagCollectionView` 完全一致。
 
 ---
 
@@ -425,6 +468,15 @@ tagCollectionView.reload()
 - 修复 `UIRectCorner` 按角设置的位掩码 bug
 - 提取纯布局计算器 `TagCollectionLayout`（含完整单元测试）
 - 新增 SPM 测试 target（`Tests/TTGTagsTests`）
+
+### 3.1 API 新增
+
+- 横向多行默认改为 `.rowMajor`，符合自然阅读顺序。
+- `.columnMajor` 可保留旧版上下交错的列优先排列。
+- `contentVerticalAlignment` 支持在固定高度标签容器中顶部、居中或底部摆放内容。
+- `TextTagStyle.numberOfLines` 和 `lineBreakMode` 支持配合 `maxWidth` 或容器宽度实现多行文本标签。
+- `getTag(byId:)`、`indexOfTag(byId:)`、`updateTag(byId:...)`、`scrollToTag(byId:...)` 让基于 id 的更新更直接。
+- `scrollToTag(at:position:animated:)` 支持 `.nearest`、`.start`、`.center`、`.end`。
 
 ---
 

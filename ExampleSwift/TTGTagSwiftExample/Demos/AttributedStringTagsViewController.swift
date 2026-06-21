@@ -315,8 +315,8 @@ class AttributedStringTagsViewController: UIViewController {
 
 extension AttributedStringTagsViewController: TextTagCollectionViewDelegate {
 
-    func textTagCollectionView(_ textTagCollectionView: TextTagCollectionView!,
-                               didTapTag tag: TextTag!,
+    func textTagCollectionView(_ textTagCollectionView: TextTagCollectionView,
+                               didTapTag tag: TextTag,
                                at index: Int) {
         let plain = tag.content.getContentAttributedString().string
         print("Tap [\(index)]: \"\(plain)\" selected: \(tag.selected)")

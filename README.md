@@ -39,7 +39,7 @@ Or add it to `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/zekunyan/TTGTagCollectionView.git", from: "3.0.0")
+    .package(url: "https://github.com/zekunyan/TTGTagCollectionView.git", from: "3.1.0")
 ]
 ```
 
@@ -225,6 +225,9 @@ let style = TextTagStyle()
 
 // Background
 style.backgroundColor = .systemBlue
+style.textAlignment = .center
+style.numberOfLines = 1                  // 0 = unlimited multiline
+style.lineBreakMode = .byTruncatingTail
 
 // Gradient background
 style.enableGradientBackground        = true
@@ -263,6 +266,8 @@ style.exactHeight = 32
 ```swift
 tagView.scrollDirection  = .vertical     // .vertical (default) or .horizontal
 tagView.alignment        = .left         // see Alignment below
+tagView.horizontalDistribution = .rowMajor
+tagView.contentVerticalAlignment = .top
 tagView.numberOfLines    = 0             // 0 = unlimited
 tagView.selectionLimit   = 3             // 0 = unlimited
 tagView.horizontalSpacing = 8
@@ -288,6 +293,33 @@ tagView.onTapAllArea   = { point in print("tapped anywhere at \(point)") }
 | `.fillByExpandingSpace` | Expand spacing between tags to fill each row |
 | `.fillByExpandingWidth` | Expand each tag's width to fill each row |
 | `.fillByExpandingWidthExceptLastLine` | Same as above but skip the last row |
+
+### Horizontal rows and vertical placement
+
+```swift
+// Natural reading order in horizontal multi-line rows (default in 3.1)
+tagView.scrollDirection = .horizontal
+tagView.numberOfLines = 2
+tagView.horizontalDistribution = .rowMajor
+
+// Preserve the old round-robin column-first behavior when needed
+tagView.horizontalDistribution = .columnMajor
+
+// Center content inside a fixed-height tag surface
+tagView.contentVerticalAlignment = .center
+```
+
+### Multiline text tags
+
+```swift
+let content = TextTagStringContent(text: "Long filter label that can wrap")
+let style = TextTagStyle()
+style.numberOfLines = 0
+style.maxWidth = 180
+style.lineBreakMode = .byWordWrapping
+
+let tag = TextTag(content: content, style: style)
+```
 
 ### Tag model — TextTag
 
@@ -334,6 +366,8 @@ tagView.insert(tags: [tag1, tag2], at: 2)
 // Update
 tagView.updateTag(at: 0, selected: true)
 tagView.updateTag(at: 0, with: newTag)
+tagView.updateTag(byId: tag.tagId, selected: true)
+tagView.updateTag(byId: tag.tagId, with: newTag)
 
 // Remove
 tagView.remove(tag: tag)
@@ -343,6 +377,8 @@ tagView.removeAllTags()
 
 // Query
 let tag  = tagView.getTag(at: 0)
+let sameTag = tagView.getTag(byId: tagId)
+let index = tagView.indexOfTag(byId: tagId)
 let tags = tagView.getTags(in: NSRange(location: 0, length: 3))
 let all      = tagView.allTags()
 let selected = tagView.allSelectedTags()
@@ -356,6 +392,13 @@ tagView.reload()
 
 ```swift
 let index = tagView.indexOfTag(at: touchPoint)   // NSNotFound if missed
+```
+
+### Scroll to a tag
+
+```swift
+tagView.scrollToTag(at: 12, position: .center, animated: true)
+tagView.scrollToTag(byId: tag.tagId, position: .end, animated: true)
 ```
 
 ---
@@ -390,13 +433,13 @@ func tagCollectionView(_ tagCollectionView: TagCollectionView,
 tagCollectionView.reload()
 ```
 
-All layout and spacing properties (`scrollDirection`, `alignment`, `numberOfLines`, `horizontalSpacing`, `verticalSpacing`, `contentInset`, `manualCalculateHeight`, `preferredMaxLayoutWidth`) are identical to `TextTagCollectionView`.
+All layout and spacing properties (`scrollDirection`, `alignment`, `horizontalDistribution`, `contentVerticalAlignment`, `numberOfLines`, `horizontalSpacing`, `verticalSpacing`, `contentInset`, `manualCalculateHeight`, `preferredMaxLayoutWidth`) are identical to `TextTagCollectionView`.
 
 ---
 
 ## Performance
 
-TTGTagCollectionView 3.0 keeps layout deterministic and cache-friendly:
+TTGTagCollectionView 3.1 keeps layout deterministic and cache-friendly:
 
 - `TagCollectionLayout` is a pure calculator: the same tag sizes and configuration produce the same frames and content size.
 - `TextTagCollectionView` caches text tag measurements by attributed content, style constraints, selected state, and available width.
@@ -414,6 +457,7 @@ let tagSize = TextTagCollectionView.contentSize(
     width: availableTagWidth,
     scrollDirection: .vertical,
     alignment: .fillByExpandingWidth,
+    horizontalDistribution: .rowMajor,
     numberOfLines: 0,
     horizontalSpacing: 8,
     verticalSpacing: 8,
@@ -430,6 +474,7 @@ CGSize tagSize = [TTGTextTagCollectionView contentSizeForTags:tags
                                                         width:availableTagWidth
                                               scrollDirection:TTGTagCollectionScrollDirectionVertical
                                                     alignment:TTGTagCollectionAlignmentFillByExpandingWidth
+                                       horizontalDistribution:TTGTagCollectionHorizontalDistributionRowMajor
                                                 numberOfLines:0
                                             horizontalSpacing:8
                                               verticalSpacing:8
@@ -526,6 +571,15 @@ Version 3.0 rewrites all core sources in Swift. Objective-C class names, selecto
 - Text measurement and layout caches added for dense tag lists
 - `TextTagCollectionView.contentSize(for:width:...)` added for precomputing list row height
 - SPM test target added (`Tests/TTGTagsTests`)
+
+### 3.1 API additions
+
+- Horizontal multi-line rows now default to `.rowMajor`, matching natural reading order.
+- `.columnMajor` keeps the previous round-robin horizontal distribution when apps need it.
+- `contentVerticalAlignment` can place short tag content at the top, center, or bottom of a fixed-height tag view.
+- `TextTagStyle.numberOfLines` and `lineBreakMode` enable multiline text tags with `maxWidth` or container-width constraints.
+- `getTag(byId:)`, `indexOfTag(byId:)`, `updateTag(byId:...)`, and `scrollToTag(byId:...)` make id-driven updates straightforward.
+- `scrollToTag(at:position:animated:)` supports `.nearest`, `.start`, `.center`, and `.end`.
 
 ---
 

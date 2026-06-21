@@ -9,7 +9,7 @@ import TTGTags
 class HorizontalScrollTagsViewController: UIViewController {
 
     private let titleLabel = DemoUI.titleLabel("Horizontal scroll & line limits")
-    private let descriptionLabel = DemoUI.descriptionLabel("Limit horizontal tag views to one, two, or three rows. Swipe each row to inspect overflow content.")
+    private let descriptionLabel = DemoUI.descriptionLabel("Horizontal rows now default to row-major reading order. Fixed-height rows can vertically center their content, and legacy column-major distribution remains available.")
     private let oneLineTagView = TextTagCollectionView()
     private let twoLineTagView = TextTagCollectionView()
     private let threeLineTagView = TextTagCollectionView()
@@ -31,9 +31,9 @@ class HorizontalScrollTagsViewController: UIViewController {
 
         stackView.addArrangedSubview(titleLabel)
         stackView.addArrangedSubview(descriptionLabel)
-        addRow(title: "One line", tagView: oneLineTagView, height: 78, to: stackView)
-        addRow(title: "Two lines", tagView: twoLineTagView, height: 116, to: stackView)
-        addRow(title: "Three lines", tagView: threeLineTagView, height: 154, to: stackView)
+        addRow(title: "One line - row major", tagView: oneLineTagView, height: 78, to: stackView)
+        addRow(title: "Two lines - row major", tagView: twoLineTagView, height: 116, to: stackView)
+        addRow(title: "Three lines - legacy column major", tagView: threeLineTagView, height: 154, to: stackView)
 
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
@@ -54,6 +54,8 @@ class HorizontalScrollTagsViewController: UIViewController {
         for tagView in [oneLineTagView, twoLineTagView, threeLineTagView] {
             tagView.scrollDirection = .horizontal
             tagView.alignment = .fillByExpandingWidth
+            tagView.horizontalDistribution = .rowMajor
+            tagView.contentVerticalAlignment = .center
             tagView.horizontalSpacing = 8
             tagView.verticalSpacing = 8
             tagView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
@@ -62,6 +64,7 @@ class HorizontalScrollTagsViewController: UIViewController {
         oneLineTagView.numberOfLines = 1
         twoLineTagView.numberOfLines = 2
         threeLineTagView.numberOfLines = 3
+        threeLineTagView.horizontalDistribution = .columnMajor
     }
 
     private func loadSameTagsIntoAllRows() {

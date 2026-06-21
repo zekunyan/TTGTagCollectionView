@@ -90,8 +90,8 @@ class TagAttachmentViewController: UIViewController {
 }
 
 extension TagAttachmentViewController: TextTagCollectionViewDelegate {
-    func textTagCollectionView(_ textTagCollectionView: TextTagCollectionView!,
-                               didTapTag tag: TextTag!,
+    func textTagCollectionView(_ textTagCollectionView: TextTagCollectionView,
+                               didTapTag tag: TextTag,
                                at index: Int) {
         let prefix = logTextView.text == nil || logTextView.text.isEmpty ? "" : "\(logTextView.text!)\n\n"
         logTextView.text = "\(prefix)Tapped attachment:\n\(String(describing: tag.attachment))"

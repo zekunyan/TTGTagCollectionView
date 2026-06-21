@@ -20,6 +20,12 @@ public final class TextTagStyle: NSObject, NSCopying {
     /// Text alignment. Defaults to center.
     @objc public var textAlignment: NSTextAlignment = .center
 
+    /// Maximum number of text lines. 1 keeps the historical single-line chip behavior; 0 allows unlimited lines.
+    @objc public var numberOfLines: Int = 1
+
+    /// Text line break mode. Defaults to tail truncation.
+    @objc public var lineBreakMode: NSLineBreakMode = .byTruncatingTail
+
     // MARK: - Gradient Background
 
     @objc public var enableGradientBackground: Bool = false
@@ -76,6 +82,8 @@ public final class TextTagStyle: NSObject, NSCopying {
         let copy = TextTagStyle()
         copy.backgroundColor = backgroundColor
         copy.textAlignment = textAlignment
+        copy.numberOfLines = numberOfLines
+        copy.lineBreakMode = lineBreakMode
         copy.enableGradientBackground = enableGradientBackground
         copy.gradientBackgroundStartColor = gradientBackgroundStartColor
         copy.gradientBackgroundEndColor = gradientBackgroundEndColor

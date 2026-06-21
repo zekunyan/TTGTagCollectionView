@@ -21,10 +21,10 @@
 
     UILabel *titleLabel = [TTGDemoUI titleLabel:@"Horizontal scroll & line limits"];
     UILabel *descriptionLabel =
-        [TTGDemoUI descriptionLabel:@"Shows horizontal scrolling with numberOfLines set to 1, 2, and 3. Each row uses the same tags so line wrapping behavior is easy to compare."];
-    UILabel *oneLineLabel = [TTGDemoUI sectionLabel:@"1 line"];
-    UILabel *twoLineLabel = [TTGDemoUI sectionLabel:@"2 lines"];
-    UILabel *threeLineLabel = [TTGDemoUI sectionLabel:@"3 lines"];
+        [TTGDemoUI descriptionLabel:@"Horizontal rows use row-major reading order by default. Fixed-height rows can center their content, and legacy column-major distribution remains available."];
+    UILabel *oneLineLabel = [TTGDemoUI sectionLabel:@"1 line - row major"];
+    UILabel *twoLineLabel = [TTGDemoUI sectionLabel:@"2 lines - row major"];
+    UILabel *threeLineLabel = [TTGDemoUI sectionLabel:@"3 lines - legacy column major"];
     self.oneLineTagView = [TTGTextTagCollectionView new];
     self.twoLineTagView = [TTGTextTagCollectionView new];
     self.threeLineTagView = [TTGTextTagCollectionView new];
@@ -95,6 +95,8 @@
     for (TTGTextTagCollectionView *v in rows) {
         v.scrollDirection = TTGTagCollectionScrollDirectionHorizontal;
         v.alignment = TTGTagCollectionAlignmentFillByExpandingWidth;
+        v.horizontalDistribution = TTGTagCollectionHorizontalDistributionRowMajor;
+        v.contentVerticalAlignment = TTGTagCollectionContentVerticalAlignmentCenter;
         v.horizontalSpacing = 8;
         v.verticalSpacing = 8;
         v.contentInset = UIEdgeInsetsMake(10, 10, 10, 10);
@@ -102,6 +104,7 @@
     self.oneLineTagView.numberOfLines = 1;
     self.twoLineTagView.numberOfLines = 2;
     self.threeLineTagView.numberOfLines = 3;
+    self.threeLineTagView.horizontalDistribution = TTGTagCollectionHorizontalDistributionColumnMajor;
 }
 
 #pragma mark - Data

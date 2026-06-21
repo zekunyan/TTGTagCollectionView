@@ -61,10 +61,17 @@
 }
 
 + (void)stylePrimaryButton:(UIButton *)button {
-    button.titleLabel.font = [UIFont systemFontOfSize:15 weight:UIFontWeightSemibold];
-    button.backgroundColor = UIColor.systemGray6Color;
-    button.layer.cornerRadius = 10;
-    button.contentEdgeInsets = UIEdgeInsetsMake(10, 12, 10, 12);
+    UIButtonConfiguration *configuration = [UIButtonConfiguration plainButtonConfiguration];
+    NSString *title = [button titleForState:UIControlStateNormal];
+    if (title.length > 0) {
+        NSDictionary *attributes = @{ NSFontAttributeName: [UIFont systemFontOfSize:15 weight:UIFontWeightSemibold] };
+        configuration.attributedTitle = [[NSAttributedString alloc] initWithString:title attributes:attributes];
+    }
+    configuration.baseForegroundColor = UIColor.systemBlueColor;
+    configuration.background.backgroundColor = UIColor.systemGray6Color;
+    configuration.background.cornerRadius = 10;
+    configuration.contentInsets = NSDirectionalEdgeInsetsMake(10, 12, 10, 12);
+    button.configuration = configuration;
 }
 
 + (TTGTextTagStringContent *)contentWithText:(NSString *)text {

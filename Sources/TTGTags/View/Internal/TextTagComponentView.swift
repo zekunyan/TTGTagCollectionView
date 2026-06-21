@@ -66,6 +66,8 @@ final class TextTagComponentView: UIView {
 
         label.backgroundColor = style.backgroundColor
         label.textAlignment = style.textAlignment
+        label.numberOfLines = style.numberOfLines
+        label.lineBreakMode = style.lineBreakMode
 
         if style.enableGradientBackground, let gradientLayer = label.layer as? CAGradientLayer {
             label.backgroundColor = .clear

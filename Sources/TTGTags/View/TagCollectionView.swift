@@ -34,6 +34,32 @@ public enum TagCollectionAlignment: Int {
     case fillByExpandingWidthExceptLastLine
 }
 
+/// Horizontal multi-line distribution mode.
+@objc(TTGTagCollectionHorizontalDistribution)
+public enum TagCollectionHorizontalDistribution: Int {
+    /// Fill each horizontal row in natural reading order before moving to the next row.
+    case rowMajor = 0
+    /// Fill columns first, preserving the pre-3.1 round-robin behavior.
+    case columnMajor
+}
+
+/// Vertical placement of tag content when the view is taller than its content.
+@objc(TTGTagCollectionContentVerticalAlignment)
+public enum TagCollectionContentVerticalAlignment: Int {
+    case top = 0
+    case center
+    case bottom
+}
+
+/// Scroll target position when programmatically revealing a tag.
+@objc(TTGTagCollectionScrollPosition)
+public enum TagCollectionScrollPosition: Int {
+    case nearest = 0
+    case start
+    case center
+    case end
+}
+
 // MARK: - Protocols
 
 /// Data source protocol.
@@ -85,6 +111,16 @@ public final class TagCollectionView: UIView {
 
     /// Alignment mode. Defaults to left.
     @objc public var alignment: TagCollectionAlignment = .left {
+        didSet { setNeedsLayoutTagViews() }
+    }
+
+    /// Horizontal multi-line distribution. Defaults to row-major reading order.
+    @objc public var horizontalDistribution: TagCollectionHorizontalDistribution = .rowMajor {
+        didSet { setNeedsLayoutTagViews() }
+    }
+
+    /// Vertical placement when content is shorter than the view. Defaults to top.
+    @objc public var contentVerticalAlignment: TagCollectionContentVerticalAlignment = .top {
         didSet { setNeedsLayoutTagViews() }
     }
 
@@ -296,6 +332,50 @@ public final class TagCollectionView: UIView {
         return NSNotFound
     }
 
+    /// Returns the current frame for the tag at the given index in content coordinates.
+    @objc(frameForTagAtIndex:)
+    public func frameForTag(at index: Int) -> CGRect {
+        setNeedsLayout()
+        layoutIfNeeded()
+        guard index >= 0, index < _tagViews.count, !_tagViews[index].isHidden else {
+            return .null
+        }
+        return _tagViews[index].frame
+    }
+
+    /// Scrolls along the primary axis so the tag at `index` is visible.
+    @objc(scrollToTagAtIndex:position:animated:)
+    public func scrollToTag(at index: Int, position: TagCollectionScrollPosition, animated: Bool) {
+        let tagFrame = frameForTag(at: index)
+        guard !tagFrame.isNull else { return }
+
+        let resolvedOffset: CGPoint
+        switch scrollDirection {
+        case .vertical:
+            let offsetY = targetOffsetValue(
+                currentOffset: scrollView.contentOffset.y,
+                viewportLength: scrollView.bounds.height,
+                contentLength: scrollView.contentSize.height,
+                itemStart: tagFrame.minY,
+                itemEnd: tagFrame.maxY,
+                position: position
+            )
+            resolvedOffset = CGPoint(x: scrollView.contentOffset.x, y: offsetY)
+        case .horizontal:
+            let offsetX = targetOffsetValue(
+                currentOffset: scrollView.contentOffset.x,
+                viewportLength: scrollView.bounds.width,
+                contentLength: scrollView.contentSize.width,
+                itemStart: tagFrame.minX,
+                itemEnd: tagFrame.maxX,
+                position: position
+            )
+            resolvedOffset = CGPoint(x: offsetX, y: scrollView.contentOffset.y)
+        }
+
+        scrollView.setContentOffset(resolvedOffset, animated: animated)
+    }
+
     // MARK: Gesture
 
     @objc private func onTapGesture(_ gesture: UITapGestureRecognizer) {
@@ -353,11 +433,14 @@ public final class TagCollectionView: UIView {
             tagSizes: tagSizes,
             scrollDirection: scrollDirection,
             alignment: alignment,
+            horizontalDistribution: horizontalDistribution,
+            contentVerticalAlignment: contentVerticalAlignment,
             numberOfLines: numberOfLines,
             horizontalSpacing: horizontalSpacing,
             verticalSpacing: verticalSpacing,
             contentInset: contentInset,
-            containerWidth: containerWidth
+            containerWidth: containerWidth,
+            containerHeight: bounds.height
         )
 
         let output = TagCollectionLayout.calculate(input)
@@ -386,6 +469,37 @@ public final class TagCollectionView: UIView {
                 self?.invalidateIntrinsicContentSize()
             }
         }
+    }
+
+    private func targetOffsetValue(
+        currentOffset: CGFloat,
+        viewportLength: CGFloat,
+        contentLength: CGFloat,
+        itemStart: CGFloat,
+        itemEnd: CGFloat,
+        position: TagCollectionScrollPosition
+    ) -> CGFloat {
+        guard viewportLength > 0, contentLength > viewportLength else { return 0 }
+
+        let rawOffset: CGFloat
+        switch position {
+        case .nearest:
+            if itemStart < currentOffset {
+                rawOffset = itemStart
+            } else if itemEnd > currentOffset + viewportLength {
+                rawOffset = itemEnd - viewportLength
+            } else {
+                rawOffset = currentOffset
+            }
+        case .start:
+            rawOffset = itemStart
+        case .center:
+            rawOffset = (itemStart + itemEnd - viewportLength) / 2
+        case .end:
+            rawOffset = itemEnd - viewportLength
+        }
+
+        return min(max(0, rawOffset), max(0, contentLength - viewportLength))
     }
 
     // MARK: - Validation
@@ -419,11 +533,14 @@ public final class TagCollectionView: UIView {
             tagSizes: tagSizes,
             scrollDirection: scrollDirection,
             alignment: alignment,
+            horizontalDistribution: horizontalDistribution,
+            contentVerticalAlignment: .top,
             numberOfLines: numberOfLines,
             horizontalSpacing: horizontalSpacing,
             verticalSpacing: verticalSpacing,
             contentInset: contentInset,
-            containerWidth: containerWidth
+            containerWidth: containerWidth,
+            containerHeight: 0
         )
 
         return TagCollectionLayout.calculate(input).contentSize

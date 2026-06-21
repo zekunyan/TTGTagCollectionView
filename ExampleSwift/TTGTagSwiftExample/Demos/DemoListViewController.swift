@@ -16,7 +16,7 @@ class DemoListViewController: UITableViewController {
     private let demoItems: [DemoItem] = [
         DemoItem(title: "1. Basic text tags", detail: "Two vertical tag collections with shared default styling.", viewControllerType: BasicTextTagsViewController.self),
         DemoItem(title: "2. Custom UIView tags", detail: "Use labels, buttons, and image views as custom tag content.", viewControllerType: CustomSubviewTagsViewController.self),
-        DemoItem(title: "3. Programmatic layout & auto height", detail: "Pure code layout with intrinsic content height.", viewControllerType: ProgrammaticTagsViewController.self),
+        DemoItem(title: "3. Programmatic APIs", detail: "Multiline tags, tagId updates, and scroll-to-tag.", viewControllerType: ProgrammaticTagsViewController.self),
         DemoItem(title: "4. Tags in UITableViewCell", detail: "Self-sizing table cells with wrapped tags.", viewControllerType: TagsInTableViewController.self),
         DemoItem(title: "5. Horizontal scroll & line limits", detail: "One, two, and three-line horizontal scrolling tag rows.", viewControllerType: HorizontalScrollTagsViewController.self),
         DemoItem(title: "6. Pull to refresh", detail: "Native refresh control plus near-bottom loading.", viewControllerType: PullRefreshTagsViewController.self),

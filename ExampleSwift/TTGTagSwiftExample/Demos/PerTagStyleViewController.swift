@@ -88,8 +88,8 @@ class PerTagStyleViewController: UIViewController {
 }
 
 extension PerTagStyleViewController: TextTagCollectionViewDelegate {
-    func textTagCollectionView(_ textTagCollectionView: TextTagCollectionView!,
-                               didTapTag tag: TextTag!,
+    func textTagCollectionView(_ textTagCollectionView: TextTagCollectionView,
+                               didTapTag tag: TextTag,
                                at index: Int) {
         print("Did tap: \(tag.content), attachment: \(String(describing: tag.attachment))")
     }

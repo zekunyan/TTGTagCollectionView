@@ -109,8 +109,8 @@ class BasicTextTagsViewController: UIViewController {
 }
 
 extension BasicTextTagsViewController: TextTagCollectionViewDelegate {
-    func textTagCollectionView(_ textTagCollectionView: TextTagCollectionView!,
-                               didTapTag tag: TextTag!,
+    func textTagCollectionView(_ textTagCollectionView: TextTagCollectionView,
+                               didTapTag tag: TextTag,
                                at index: Int) {
         let text = tag.content.getContentAttributedString().string
         logLabel.text = "Tap tag: \(text), at: \(index), selected: \(tag.selected)"

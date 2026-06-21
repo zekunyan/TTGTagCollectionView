@@ -23,11 +23,14 @@ final class TagCollectionLayoutTests: XCTestCase {
             tagSizes: sizes,
             scrollDirection: direction,
             alignment: alignment,
+            horizontalDistribution: .rowMajor,
+            contentVerticalAlignment: .top,
             numberOfLines: numberOfLines,
             horizontalSpacing: horizontalSpacing,
             verticalSpacing: verticalSpacing,
             contentInset: contentInset,
-            containerWidth: containerWidth
+            containerWidth: containerWidth,
+            containerHeight: 0
         )
     }
 
@@ -64,11 +67,14 @@ final class TagCollectionLayoutTests: XCTestCase {
             tagSizes: input.tagSizes,
             scrollDirection: input.scrollDirection,
             alignment: input.alignment,
+            horizontalDistribution: input.horizontalDistribution,
+            contentVerticalAlignment: input.contentVerticalAlignment,
             numberOfLines: 2,
             horizontalSpacing: input.horizontalSpacing,
             verticalSpacing: input.verticalSpacing,
             contentInset: input.contentInset,
-            containerWidth: input.containerWidth
+            containerWidth: input.containerWidth,
+            containerHeight: input.containerHeight
         )
         let out = TagCollectionLayout.calculate(input)
         XCTAssertEqual(out.actualNumberOfLines, 4)
@@ -78,8 +84,8 @@ final class TagCollectionLayoutTests: XCTestCase {
         XCTAssertTrue(out.tagFrames[3].hidden)
     }
 
-    // Horizontal scroll - round-robin distribution across lines
-    func testHorizontalDistribution() {
+    // Horizontal scroll - row-major distribution across lines
+    func testHorizontalRowMajorDistribution() {
         let sizes = [
             CGSize(width: 50, height: 20),
             CGSize(width: 60, height: 20),
@@ -91,8 +97,40 @@ final class TagCollectionLayoutTests: XCTestCase {
         XCTAssertEqual(out.actualNumberOfLines, 2)
         XCTAssertEqual(out.tagFrames.count, 4)
 
-        // tag 0 and tag 2 on line 0; tag 1 and tag 3 on line 1
+        // tag 0 and tag 1 on line 0; tag 2 and tag 3 on line 1
         // Y should be the same within each line
+        XCTAssertEqual(out.tagFrames[0].frame.minY, out.tagFrames[1].frame.minY)
+        XCTAssertEqual(out.tagFrames[2].frame.minY, out.tagFrames[3].frame.minY)
+        XCTAssertNotEqual(out.tagFrames[0].frame.minY, out.tagFrames[2].frame.minY)
+    }
+
+    func testHorizontalColumnMajorDistribution() {
+        var input = makeInput(
+            sizes: [
+                CGSize(width: 50, height: 20),
+                CGSize(width: 60, height: 20),
+                CGSize(width: 70, height: 20),
+                CGSize(width: 80, height: 20),
+            ],
+            direction: .horizontal,
+            numberOfLines: 2,
+            containerWidth: 0
+        )
+        input = TagCollectionLayout.Input(
+            tagSizes: input.tagSizes,
+            scrollDirection: input.scrollDirection,
+            alignment: input.alignment,
+            horizontalDistribution: .columnMajor,
+            contentVerticalAlignment: input.contentVerticalAlignment,
+            numberOfLines: input.numberOfLines,
+            horizontalSpacing: input.horizontalSpacing,
+            verticalSpacing: input.verticalSpacing,
+            contentInset: input.contentInset,
+            containerWidth: input.containerWidth,
+            containerHeight: input.containerHeight
+        )
+        let out = TagCollectionLayout.calculate(input)
+
         XCTAssertEqual(out.tagFrames[0].frame.minY, out.tagFrames[2].frame.minY)
         XCTAssertEqual(out.tagFrames[1].frame.minY, out.tagFrames[3].frame.minY)
         XCTAssertNotEqual(out.tagFrames[0].frame.minY, out.tagFrames[1].frame.minY)
@@ -152,5 +190,30 @@ final class TagCollectionLayoutTests: XCTestCase {
             contentInset: .zero
         ))
         XCTAssertEqual(out.contentSize.height, 0)
+    }
+
+    func testContentVerticalAlignmentCentersShortContentInFixedHeight() {
+        let base = makeInput(
+            sizes: [CGSize(width: 50, height: 20)],
+            containerWidth: 100,
+            contentInset: .zero
+        )
+        let input = TagCollectionLayout.Input(
+            tagSizes: base.tagSizes,
+            scrollDirection: base.scrollDirection,
+            alignment: base.alignment,
+            horizontalDistribution: base.horizontalDistribution,
+            contentVerticalAlignment: .center,
+            numberOfLines: base.numberOfLines,
+            horizontalSpacing: base.horizontalSpacing,
+            verticalSpacing: base.verticalSpacing,
+            contentInset: base.contentInset,
+            containerWidth: base.containerWidth,
+            containerHeight: 100
+        )
+        let out = TagCollectionLayout.calculate(input)
+
+        XCTAssertEqual(out.contentSize.height, 100)
+        XCTAssertEqual(out.tagFrames[0].frame.minY, 40, accuracy: 0.5)
     }
 }

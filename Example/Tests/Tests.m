@@ -102,6 +102,22 @@
     XCTAssertEqual(updatedContent.textFont.pointSize, 40);
 }
 
+- (void)testUpdateTagById {
+    TTGTextTagCollectionView *textTagView = [self textTagViewWithNineTags];
+    TTGTextTag *thirdTag = [textTagView getTagAtIndex:2];
+
+    [textTagView updateTagById:thirdTag.tagId selected:YES];
+
+    XCTAssertEqual([textTagView indexOfTagById:thirdTag.tagId], 2);
+    XCTAssertEqual([textTagView getTagById:thirdTag.tagId], thirdTag);
+    XCTAssertTrue([textTagView getTagAtIndex:2].selected);
+
+    TTGTextTag *replacement = [self tagWithText:@"by-id" fontSize:18];
+    [textTagView updateTagById:thirdTag.tagId withNewTag:replacement];
+    TTGTextTagStringContent *updatedContent = (TTGTextTagStringContent *)[textTagView getTagAtIndex:2].content;
+    XCTAssertEqualObjects(updatedContent.text, @"by-id");
+}
+
 - (void)testRemoveTag {
     TTGTextTagCollectionView *textTagView = [self textTagViewWithNineTags];
     XCTAssertEqual([textTagView allTags].count, 9);

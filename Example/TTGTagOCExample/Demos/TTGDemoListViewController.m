@@ -60,8 +60,8 @@
         [TTGDemoListItem itemWithTitle:@"2. Custom UIView tags"
                                 detail:@"TTGDemoCustomSubviewTagsViewController"
                    viewControllerClass:TTGDemoCustomSubviewTagsViewController.class],
-        [TTGDemoListItem itemWithTitle:@"3. Programmatic layout & auto height"
-                                detail:@"TTGDemoProgrammaticTagsViewController"
+        [TTGDemoListItem itemWithTitle:@"3. Programmatic APIs"
+                                detail:@"Multiline tags, tagId updates, and scroll-to-tag"
                    viewControllerClass:TTGDemoProgrammaticTagsViewController.class],
         [TTGDemoListItem itemWithTitle:@"4. Tags in UITableViewCell"
                                 detail:@"TTGDemoTagsInTableViewController"

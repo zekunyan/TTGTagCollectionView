@@ -54,6 +54,18 @@ public final class TextTagCollectionView: UIView {
         set { tagCollectionView.alignment = newValue }
     }
 
+    /// Horizontal multi-line distribution.
+    @objc public var horizontalDistribution: TagCollectionHorizontalDistribution {
+        get { tagCollectionView.horizontalDistribution }
+        set { tagCollectionView.horizontalDistribution = newValue }
+    }
+
+    /// Vertical placement when the view is taller than its content.
+    @objc public var contentVerticalAlignment: TagCollectionContentVerticalAlignment {
+        get { tagCollectionView.contentVerticalAlignment }
+        set { tagCollectionView.contentVerticalAlignment = newValue }
+    }
+
     /// Maximum number of lines.
     @objc public var numberOfLines: Int {
         get { tagCollectionView.numberOfLines }
@@ -264,6 +276,31 @@ public final class TextTagCollectionView: UIView {
         verticalSpacing: CGFloat,
         contentInset: UIEdgeInsets
     ) -> CGSize {
+        return contentSize(
+            for: tags,
+            width: width,
+            scrollDirection: scrollDirection,
+            alignment: alignment,
+            horizontalDistribution: .rowMajor,
+            numberOfLines: numberOfLines,
+            horizontalSpacing: horizontalSpacing,
+            verticalSpacing: verticalSpacing,
+            contentInset: contentInset
+        )
+    }
+
+    @objc(contentSizeForTags:width:scrollDirection:alignment:horizontalDistribution:numberOfLines:horizontalSpacing:verticalSpacing:contentInset:)
+    public static func contentSize(
+        for tags: [TextTag],
+        width: CGFloat,
+        scrollDirection: TagCollectionScrollDirection,
+        alignment: TagCollectionAlignment,
+        horizontalDistribution: TagCollectionHorizontalDistribution,
+        numberOfLines: Int,
+        horizontalSpacing: CGFloat,
+        verticalSpacing: CGFloat,
+        contentInset: UIEdgeInsets
+    ) -> CGSize {
         let maxTagWidth = scrollDirection == .vertical ? max(0, width - contentInset.left - contentInset.right) : 0
         let tagSizes = tags.map { tag in
             measuredSize(for: tag, maxSize: CGSize(width: maxTagWidth, height: 0))
@@ -272,11 +309,14 @@ public final class TextTagCollectionView: UIView {
             tagSizes: tagSizes,
             scrollDirection: scrollDirection,
             alignment: alignment,
+            horizontalDistribution: horizontalDistribution,
+            contentVerticalAlignment: .top,
             numberOfLines: numberOfLines,
             horizontalSpacing: horizontalSpacing,
             verticalSpacing: verticalSpacing,
             contentInset: contentInset,
-            containerWidth: width
+            containerWidth: width,
+            containerHeight: 0
         )
         return TagCollectionLayout.calculate(input).contentSize
     }
@@ -355,10 +395,31 @@ public final class TextTagCollectionView: UIView {
         reload()
     }
 
+    @objc(updateTagById:selected:)
+    public func updateTag(byId tagId: Int, selected: Bool) {
+        let index = indexOfTag(byId: tagId)
+        guard index != NSNotFound else { return }
+        updateTag(at: index, selected: selected)
+    }
+
+    @objc(updateTagById:withNewTag:)
+    public func updateTag(byId tagId: Int, with newTag: TextTag) {
+        let index = indexOfTag(byId: tagId)
+        guard index != NSNotFound else { return }
+        updateTag(at: index, with: newTag)
+    }
+
     @objc(getTagAtIndex:)
     public func getTag(at index: Int) -> TextTag? {
         guard index >= 0, index < tagLabels.count else { return nil }
         return tagLabels[index].config
+    }
+
+    @objc(getTagById:)
+    public func getTag(byId tagId: Int) -> TextTag? {
+        let index = indexOfTag(byId: tagId)
+        guard index != NSNotFound else { return nil }
+        return getTag(at: index)
     }
 
     @objc(getTagsInRange:)
@@ -387,6 +448,31 @@ public final class TextTagCollectionView: UIView {
     public func indexOfTag(at point: CGPoint) -> Int {
         let converted = convert(point, to: tagCollectionView)
         return tagCollectionView.indexOfTag(at: converted)
+    }
+
+    @objc(indexOfTagById:)
+    public func indexOfTag(byId tagId: Int) -> Int {
+        guard let index = tagLabels.firstIndex(where: { $0.config?.tagId == tagId }) else {
+            return NSNotFound
+        }
+        return index
+    }
+
+    @objc(frameForTagAtIndex:)
+    public func frameForTag(at index: Int) -> CGRect {
+        return tagCollectionView.frameForTag(at: index)
+    }
+
+    @objc(scrollToTagAtIndex:position:animated:)
+    public func scrollToTag(at index: Int, position: TagCollectionScrollPosition, animated: Bool) {
+        tagCollectionView.scrollToTag(at: index, position: position, animated: animated)
+    }
+
+    @objc(scrollToTagById:position:animated:)
+    public func scrollToTag(byId tagId: Int, position: TagCollectionScrollPosition, animated: Bool) {
+        let index = indexOfTag(byId: tagId)
+        guard index != NSNotFound else { return }
+        scrollToTag(at: index, position: position, animated: animated)
     }
 
     // MARK: - Private
@@ -430,12 +516,15 @@ public final class TextTagCollectionView: UIView {
             return cached.size
         }
 
-        let constrainedWidth = maxSize.width > 0 ? maxSize.width : CGFloat.greatestFiniteMagnitude
-        let constrainedHeight = maxSize.height > 0 ? maxSize.height : CGFloat.greatestFiniteMagnitude
-        let textBounds = attributedString.boundingRect(
-            with: CGSize(width: constrainedWidth, height: constrainedHeight),
-            options: [.usesLineFragmentOrigin, .usesFontLeading],
-            context: nil
+        let constrainedTextWidth = textConstraintWidth(for: style, maxSize: maxSize)
+        let constrainedHeight = maxSize.height > 0
+            ? max(0, maxSize.height - style.extraSpace.height)
+            : CGFloat.greatestFiniteMagnitude
+        let textBounds = measuredTextBounds(
+            for: attributedString,
+            constrainedWidth: constrainedTextWidth,
+            constrainedHeight: constrainedHeight,
+            numberOfLines: style.numberOfLines
         )
 
         var finalSize = CGSize(
@@ -473,6 +562,54 @@ public final class TextTagCollectionView: UIView {
         return finalSize
     }
 
+    private static func textConstraintWidth(for style: TextTagStyle, maxSize: CGSize) -> CGFloat {
+        var tagWidthLimit = CGFloat.greatestFiniteMagnitude
+        if maxSize.width > 0 {
+            tagWidthLimit = min(tagWidthLimit, maxSize.width)
+        }
+        if style.maxWidth > 0 {
+            tagWidthLimit = min(tagWidthLimit, style.maxWidth)
+        }
+        if style.exactWidth > 0 {
+            tagWidthLimit = min(tagWidthLimit, style.exactWidth)
+        }
+
+        guard tagWidthLimit < CGFloat.greatestFiniteMagnitude else {
+            return CGFloat.greatestFiniteMagnitude
+        }
+        return max(0, tagWidthLimit - style.extraSpace.width)
+    }
+
+    private static func measuredTextBounds(
+        for attributedString: NSAttributedString,
+        constrainedWidth: CGFloat,
+        constrainedHeight: CGFloat,
+        numberOfLines: Int
+    ) -> CGRect {
+        let boundedWidth = constrainedWidth > 0 ? constrainedWidth : CGFloat.greatestFiniteMagnitude
+        let fullBounds = attributedString.boundingRect(
+            with: CGSize(width: boundedWidth, height: constrainedHeight),
+            options: [.usesLineFragmentOrigin, .usesFontLeading],
+            context: nil
+        )
+
+        guard numberOfLines > 0 else { return fullBounds }
+
+        let singleLineBounds = attributedString.boundingRect(
+            with: CGSize(width: CGFloat.greatestFiniteMagnitude, height: constrainedHeight),
+            options: [.usesLineFragmentOrigin, .usesFontLeading],
+            context: nil
+        )
+        let maxLineHeight = ceil(singleLineBounds.height) * CGFloat(numberOfLines)
+        return CGRect(
+            origin: .zero,
+            size: CGSize(
+                width: min(fullBounds.width, boundedWidth),
+                height: min(fullBounds.height, maxLineHeight)
+            )
+        )
+    }
+
     private static func measurementCacheKey(
         attributedString: NSAttributedString,
         style: TextTagStyle,
@@ -485,6 +622,8 @@ public final class TextTagCollectionView: UIView {
             selected ? "1" : "0",
             cacheValue(style.extraSpace.width),
             cacheValue(style.extraSpace.height),
+            String(style.numberOfLines),
+            String(style.lineBreakMode.rawValue),
             cacheValue(style.maxWidth),
             cacheValue(style.minWidth),
             cacheValue(style.maxHeight),

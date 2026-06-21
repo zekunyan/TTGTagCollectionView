@@ -125,8 +125,8 @@ class AutoLayoutFormViewController: UIViewController {
 }
 
 extension AutoLayoutFormViewController: TextTagCollectionViewDelegate {
-    func textTagCollectionView(_ textTagCollectionView: TextTagCollectionView!,
-                               didTapTag tag: TextTag!,
+    func textTagCollectionView(_ textTagCollectionView: TextTagCollectionView,
+                               didTapTag tag: TextTag,
                                at index: Int) {
         updateSummary()
     }

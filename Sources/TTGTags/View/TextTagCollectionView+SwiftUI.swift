@@ -26,6 +26,8 @@ public struct TagCloudView: UIViewRepresentable {
     private let texts: [String]
     private let scrollDirection: TagCollectionScrollDirection
     private let alignment: TagCollectionAlignment
+    private let horizontalDistribution: TagCollectionHorizontalDistribution
+    private let contentVerticalAlignment: TagCollectionContentVerticalAlignment
     private let numberOfLines: Int
     private let horizontalSpacing: CGFloat
     private let verticalSpacing: CGFloat
@@ -40,6 +42,8 @@ public struct TagCloudView: UIViewRepresentable {
     ///   - tags: The text strings to display.
     ///   - scrollDirection: Scroll direction. Defaults to `.vertical`.
     ///   - alignment: Tag alignment. Defaults to `.left`.
+    ///   - horizontalDistribution: Horizontal multi-line distribution. Defaults to `.rowMajor`.
+    ///   - contentVerticalAlignment: Vertical placement in fixed-height containers. Defaults to `.top`.
     ///   - numberOfLines: Maximum number of lines (0 = unlimited). Defaults to `0`.
     ///   - horizontalSpacing: Horizontal spacing between tags. Defaults to `8`.
     ///   - verticalSpacing: Vertical spacing between lines. Defaults to `8`.
@@ -51,6 +55,8 @@ public struct TagCloudView: UIViewRepresentable {
         tags: [String],
         scrollDirection: TagCollectionScrollDirection = .vertical,
         alignment: TagCollectionAlignment = .left,
+        horizontalDistribution: TagCollectionHorizontalDistribution = .rowMajor,
+        contentVerticalAlignment: TagCollectionContentVerticalAlignment = .top,
         numberOfLines: Int = 0,
         horizontalSpacing: CGFloat = 8,
         verticalSpacing: CGFloat = 8,
@@ -62,6 +68,8 @@ public struct TagCloudView: UIViewRepresentable {
         self.texts = tags
         self.scrollDirection = scrollDirection
         self.alignment = alignment
+        self.horizontalDistribution = horizontalDistribution
+        self.contentVerticalAlignment = contentVerticalAlignment
         self.numberOfLines = numberOfLines
         self.horizontalSpacing = horizontalSpacing
         self.verticalSpacing = verticalSpacing
@@ -80,6 +88,8 @@ public struct TagCloudView: UIViewRepresentable {
         view.delegate = context.coordinator
         view.scrollDirection = scrollDirection
         view.alignment = alignment
+        view.horizontalDistribution = horizontalDistribution
+        view.contentVerticalAlignment = contentVerticalAlignment
         view.numberOfLines = numberOfLines
         view.horizontalSpacing = horizontalSpacing
         view.verticalSpacing = verticalSpacing
@@ -93,6 +103,8 @@ public struct TagCloudView: UIViewRepresentable {
         uiView.delegate = context.coordinator
         uiView.scrollDirection = scrollDirection
         uiView.alignment = alignment
+        uiView.horizontalDistribution = horizontalDistribution
+        uiView.contentVerticalAlignment = contentVerticalAlignment
         uiView.numberOfLines = numberOfLines
         uiView.horizontalSpacing = horizontalSpacing
         uiView.verticalSpacing = verticalSpacing

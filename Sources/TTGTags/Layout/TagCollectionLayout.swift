@@ -28,12 +28,16 @@ struct TagCollectionLayout {
         let tagSizes: [CGSize]
         let scrollDirection: TagCollectionScrollDirection
         let alignment: TagCollectionAlignment
+        let horizontalDistribution: TagCollectionHorizontalDistribution
+        let contentVerticalAlignment: TagCollectionContentVerticalAlignment
         let numberOfLines: Int
         let horizontalSpacing: CGFloat
         let verticalSpacing: CGFloat
         let contentInset: UIEdgeInsets
         /// Available container width (used for line-wrapping in vertical scroll mode).
         let containerWidth: CGFloat
+        /// Available container height (used for fixed-height vertical content alignment).
+        let containerHeight: CGFloat
     }
 
     /// Layout output.
@@ -82,6 +86,8 @@ struct TagCollectionLayout {
         var parts: [String] = [
             String(input.scrollDirection.rawValue),
             String(input.alignment.rawValue),
+            String(input.horizontalDistribution.rawValue),
+            String(input.contentVerticalAlignment.rawValue),
             String(input.numberOfLines),
             cacheValue(input.horizontalSpacing),
             cacheValue(input.verticalSpacing),
@@ -90,6 +96,7 @@ struct TagCollectionLayout {
             cacheValue(input.contentInset.bottom),
             cacheValue(input.contentInset.right),
             cacheValue(input.containerWidth),
+            cacheValue(input.containerHeight),
         ]
         parts.reserveCapacity(parts.count + input.tagSizes.count * 2)
         for size in input.tagSizes {
@@ -193,7 +200,14 @@ struct TagCollectionLayout {
         var lineMaxHeights: [CGFloat] = Array(repeating: 0, count: numberOfLines)
 
         for tagIndex in 0..<count {
-            let line = tagIndex % numberOfLines
+            let line: Int
+            switch input.horizontalDistribution {
+            case .rowMajor:
+                let tagsPerLine = Int(ceil(Double(count) / Double(numberOfLines)))
+                line = min(tagIndex / max(1, tagsPerLine), numberOfLines - 1)
+            case .columnMajor:
+                line = tagIndex % numberOfLines
+            }
             let size = input.tagSizes[tagIndex]
             lineWidths[line] += size.width + input.horizontalSpacing
             lineMaxHeights[line] = max(lineMaxHeights[line], size.height)
@@ -309,16 +323,40 @@ struct TagCollectionLayout {
         let contentHeight = currentYBase - input.verticalSpacing + input.contentInset.bottom
         let contentSize = CGSize(width: contentWidth, height: contentHeight)
 
+        let alignedContentSize = alignedSize(contentSize, input: input)
+        let verticalOffset = verticalAlignmentOffset(contentSize: contentSize, alignedContentSize: alignedContentSize, input: input)
+
         var output: [TagFrame] = []
         output.reserveCapacity(totalCount)
         for i in 0..<totalCount {
+            let frame = verticalOffset == 0
+                ? frames[i]
+                : frames[i].offsetBy(dx: 0, dy: verticalOffset)
             output.append(TagFrame(
                 index: i,
-                frame: frames[i],
+                frame: frame,
                 hidden: hiddenIndices.contains(i)
             ))
         }
 
-        return (output, contentSize)
+        return (output, alignedContentSize)
+    }
+
+    private static func alignedSize(_ contentSize: CGSize, input: Input) -> CGSize {
+        guard input.contentVerticalAlignment != .top, input.containerHeight > contentSize.height else { return contentSize }
+        return CGSize(width: contentSize.width, height: input.containerHeight)
+    }
+
+    private static func verticalAlignmentOffset(contentSize: CGSize, alignedContentSize: CGSize, input: Input) -> CGFloat {
+        guard input.contentVerticalAlignment != .top, input.containerHeight > contentSize.height else { return 0 }
+        let extraHeight = alignedContentSize.height - contentSize.height
+        switch input.contentVerticalAlignment {
+        case .top:
+            return 0
+        case .center:
+            return extraHeight / 2
+        case .bottom:
+            return extraHeight
+        }
     }
 }
