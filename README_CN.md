@@ -45,7 +45,7 @@ https://github.com/zekunyan/TTGTagCollectionView.git
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/zekunyan/TTGTagCollectionView.git", from: "3.1.0")
+    .package(url: "https://github.com/zekunyan/TTGTagCollectionView.git", from: "3.2.0")
 ]
 ```
 
@@ -355,6 +355,10 @@ tagView.removeTag(byId: tag.tagId)
 tagView.removeTag(at: 0)
 tagView.removeAllTags()
 
+// 移动（会自动 reload）
+tagView.moveTag(at: 0, to: 3)
+tagView.moveTag(byId: tag.tagId, to: 1)
+
 // 查询
 let tag  = tagView.getTag(at: 0)
 let sameTag = tagView.getTag(byId: tagId)
@@ -379,6 +383,73 @@ let index = tagView.indexOfTag(at: touchPoint)   // 未命中时返回 NSNotFoun
 ```swift
 tagView.scrollToTag(at: 12, position: .center, animated: true)
 tagView.scrollToTag(byId: tag.tagId, position: .end, animated: true)
+```
+
+### 拖拽排序和拖拽删除
+
+`TextTagCollectionView` 支持通过长按拖拽重排文字标签。拖拽删除需要显式开启，拖拽时底部会显示删除区域。
+
+```swift
+tagView.enableTagReordering = true
+tagView.enableDragToDelete = true
+tagView.enableTagSelection = false
+tagView.delegate = self
+
+// 可选：自定义删除区域样式
+tagView.dragDeleteZoneHeight = 52
+tagView.dragDeleteZoneInsets = UIEdgeInsets(top: 0, left: 18, bottom: 12, right: 18)
+tagView.dragDeleteZoneCornerRadius = 16
+tagView.dragDeleteZoneBackgroundColor = UIColor.systemGray.withAlphaComponent(0.92)
+tagView.dragDeleteZoneHighlightedBackgroundColor = UIColor.systemPink.withAlphaComponent(0.96)
+tagView.dragDeleteZoneText = "Drop tag to remove"
+tagView.dragDeleteZoneTextColor = .white
+tagView.dragDeleteZoneFont = .systemFont(ofSize: 15, weight: .semibold)
+tagView.dragDeleteZoneImage = UIImage(systemName: "trash.fill")
+tagView.dragDeleteZoneImageTintColor = .white
+```
+
+```swift
+func textTagCollectionView(_ collectionView: TextTagCollectionView,
+                           canMoveTag tag: TextTag,
+                           fromIndex: Int,
+                           toIndex: Int) -> Bool {
+    return true
+}
+
+func textTagCollectionView(_ collectionView: TextTagCollectionView,
+                           didMoveTag tag: TextTag,
+                           fromIndex: Int,
+                           toIndex: Int) {
+    print("moved \(fromIndex) -> \(toIndex)")
+}
+
+func textTagCollectionView(_ collectionView: TextTagCollectionView,
+                           canDeleteTag tag: TextTag,
+                           at index: Int) -> Bool {
+    return true
+}
+
+func textTagCollectionView(_ collectionView: TextTagCollectionView,
+                           didDeleteTag tag: TextTag,
+                           at index: Int) {
+    print("deleted \(index)")
+}
+```
+
+Objective-C 通过 `TTGTags-Swift.h` 使用同一组 API：
+
+```objc
+tagView.enableTagReordering = YES;
+tagView.enableDragToDelete = YES;
+[tagView moveTagAtIndex:0 toIndex:3];
+[tagView moveTagById:tag.tagId toIndex:1];
+
+tagView.dragDeleteZoneHeight = 52;
+tagView.dragDeleteZoneInsets = UIEdgeInsetsMake(0, 18, 12, 18);
+tagView.dragDeleteZoneBackgroundColor = [UIColor.systemGrayColor colorWithAlphaComponent:0.92];
+tagView.dragDeleteZoneHighlightedBackgroundColor = [UIColor.systemPinkColor colorWithAlphaComponent:0.96];
+tagView.dragDeleteZoneText = @"Drop tag to remove";
+tagView.dragDeleteZoneImage = [UIImage systemImageNamed:@"trash.fill"];
 ```
 
 ---
@@ -420,6 +491,8 @@ tagCollectionView.reload()
 ## 使用技巧
 
 - 每次添加、删除或更新标签后，**必须调用 `reload()`**。
+- `moveTag(at:to:)` 和 `moveTag(byId:to:)` 会自动刷新。
+- 拖拽删除是破坏性操作，建议用 `canDeleteTag` 阻止受保护标签或最后一个标签被删除。
 - 嵌入 `UITableViewCell` 时，如果 `UITableViewAutomaticDimension` 行为异常，请在 `viewDidAppear` 中调用 `tableView.reloadData()`。
 - 当视图宽度在布局时还未确定（如在自适应高度的 Cell 中），使用 `manualCalculateHeight = true` + `preferredMaxLayoutWidth`。
 
@@ -477,6 +550,15 @@ tagCollectionView.reload()
 - `TextTagStyle.numberOfLines` 和 `lineBreakMode` 支持配合 `maxWidth` 或容器宽度实现多行文本标签。
 - `getTag(byId:)`、`indexOfTag(byId:)`、`updateTag(byId:...)`、`scrollToTag(byId:...)` 让基于 id 的更新更直接。
 - `scrollToTag(at:position:animated:)` 支持 `.nearest`、`.start`、`.center`、`.end`。
+
+### 3.2 API 新增
+
+- `enableTagReordering` 为 `TextTagCollectionView` 开启长按拖拽排序。
+- `enableDragToDelete` 在拖拽时显示底部删除区域。
+- `dragDeleteZoneHeight`、`dragDeleteZoneInsets`、颜色、文案、字体、图标和 tint 属性可定制删除区域，无需替换内部 view。
+- `moveTag(at:to:)` 和 `moveTag(byId:to:)` 支持代码触发重排。
+- `canMoveTag` / `didMoveTag` 和 `canDeleteTag` / `didDeleteTag` 覆盖排序和删除决策。
+- SwiftUI `TagCloudView` 暂不暴露重排能力，因为它每次 update 都会从值输入重建 tags；需要排序/删除时请使用 UIKit `TextTagCollectionView`。
 
 ---
 

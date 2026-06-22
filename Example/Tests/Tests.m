@@ -118,6 +118,41 @@
     XCTAssertEqualObjects(updatedContent.text, @"by-id");
 }
 
+- (void)testMoveTag {
+    TTGTextTagCollectionView *textTagView = [self textTagViewWithNineTags];
+    TTGTextTag *firstTag = [textTagView getTagAtIndex:0];
+    TTGTextTag *thirdTag = [textTagView getTagAtIndex:2];
+
+    XCTAssertTrue([textTagView moveTagAtIndex:0 toIndex:2]);
+    XCTAssertEqual([textTagView getTagAtIndex:2], firstTag);
+    XCTAssertEqual([textTagView getTagAtIndex:1], thirdTag);
+
+    XCTAssertTrue([textTagView moveTagById:thirdTag.tagId toIndex:0]);
+    XCTAssertEqual([textTagView getTagAtIndex:0], thirdTag);
+    XCTAssertFalse([textTagView moveTagAtIndex:0 toIndex:100]);
+}
+
+- (void)testDragDeleteZoneCustomization {
+    TTGTextTagCollectionView *textTagView = [TTGTextTagCollectionView new];
+    textTagView.dragDeleteZoneHeight = 64;
+    textTagView.dragDeleteZoneInsets = UIEdgeInsetsMake(4, 20, 12, 20);
+    textTagView.dragDeleteZoneCornerRadius = 18;
+    textTagView.dragDeleteZoneBackgroundColor = UIColor.systemGrayColor;
+    textTagView.dragDeleteZoneHighlightedBackgroundColor = UIColor.systemOrangeColor;
+    textTagView.dragDeleteZoneText = @"Drop here";
+    textTagView.dragDeleteZoneTextColor = UIColor.systemYellowColor;
+    textTagView.dragDeleteZoneFont = [UIFont systemFontOfSize:12 weight:UIFontWeightBold];
+    textTagView.dragDeleteZoneImage = [UIImage systemImageNamed:@"xmark.circle"];
+    textTagView.dragDeleteZoneImageTintColor = UIColor.systemGreenColor;
+
+    XCTAssertEqual(textTagView.dragDeleteZoneHeight, 64);
+    XCTAssertTrue(UIEdgeInsetsEqualToEdgeInsets(textTagView.dragDeleteZoneInsets, UIEdgeInsetsMake(4, 20, 12, 20)));
+    XCTAssertEqual(textTagView.dragDeleteZoneCornerRadius, 18);
+    XCTAssertEqualObjects(textTagView.dragDeleteZoneText, @"Drop here");
+    XCTAssertEqualObjects(textTagView.dragDeleteZoneTextColor, UIColor.systemYellowColor);
+    XCTAssertEqualObjects(textTagView.dragDeleteZoneImageTintColor, UIColor.systemGreenColor);
+}
+
 - (void)testRemoveTag {
     TTGTextTagCollectionView *textTagView = [self textTagViewWithNineTags];
     XCTAssertEqual([textTagView allTags].count, 9);

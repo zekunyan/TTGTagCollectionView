@@ -16,6 +16,7 @@
 #import "TTGDemoStackViewViewController.h"
 #import "TTGDemoSelfSizingViewController.h"
 #import "TTGDemoAutoLayoutFormViewController.h"
+#import "TTGDemoReorderTagsViewController.h"
 
 @interface TTGDemoListItem : NSObject
 @property (nonatomic, copy) NSString *title;
@@ -93,6 +94,9 @@
         [TTGDemoListItem itemWithTitle:@"13. Auto Layout form"
                                 detail:@"TTGDemoAutoLayoutFormViewController"
                    viewControllerClass:TTGDemoAutoLayoutFormViewController.class],
+        [TTGDemoListItem itemWithTitle:@"14. Reorder & delete"
+                                detail:@"Long-press drag to reorder tags or drop one into the delete zone"
+                   viewControllerClass:TTGDemoReorderTagsViewController.class],
     ];
 }
 

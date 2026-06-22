@@ -39,7 +39,7 @@ Or add it to `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/zekunyan/TTGTagCollectionView.git", from: "3.1.0")
+    .package(url: "https://github.com/zekunyan/TTGTagCollectionView.git", from: "3.2.0")
 ]
 ```
 
@@ -375,6 +375,10 @@ tagView.removeTag(byId: tag.tagId)
 tagView.removeTag(at: 0)
 tagView.removeAllTags()
 
+// Move (auto reloads)
+tagView.moveTag(at: 0, to: 3)
+tagView.moveTag(byId: tag.tagId, to: 1)
+
 // Query
 let tag  = tagView.getTag(at: 0)
 let sameTag = tagView.getTag(byId: tagId)
@@ -399,6 +403,73 @@ let index = tagView.indexOfTag(at: touchPoint)   // NSNotFound if missed
 ```swift
 tagView.scrollToTag(at: 12, position: .center, animated: true)
 tagView.scrollToTag(byId: tag.tagId, position: .end, animated: true)
+```
+
+### Reorder and drag-to-delete
+
+`TextTagCollectionView` can reorder text tags with a long-press drag gesture. Drag-to-delete is opt-in and shows a bottom delete zone while dragging.
+
+```swift
+tagView.enableTagReordering = true
+tagView.enableDragToDelete = true
+tagView.enableTagSelection = false
+tagView.delegate = self
+
+// Optional delete-zone styling
+tagView.dragDeleteZoneHeight = 52
+tagView.dragDeleteZoneInsets = UIEdgeInsets(top: 0, left: 18, bottom: 12, right: 18)
+tagView.dragDeleteZoneCornerRadius = 16
+tagView.dragDeleteZoneBackgroundColor = UIColor.systemGray.withAlphaComponent(0.92)
+tagView.dragDeleteZoneHighlightedBackgroundColor = UIColor.systemPink.withAlphaComponent(0.96)
+tagView.dragDeleteZoneText = "Drop tag to remove"
+tagView.dragDeleteZoneTextColor = .white
+tagView.dragDeleteZoneFont = .systemFont(ofSize: 15, weight: .semibold)
+tagView.dragDeleteZoneImage = UIImage(systemName: "trash.fill")
+tagView.dragDeleteZoneImageTintColor = .white
+```
+
+```swift
+func textTagCollectionView(_ collectionView: TextTagCollectionView,
+                           canMoveTag tag: TextTag,
+                           fromIndex: Int,
+                           toIndex: Int) -> Bool {
+    return true
+}
+
+func textTagCollectionView(_ collectionView: TextTagCollectionView,
+                           didMoveTag tag: TextTag,
+                           fromIndex: Int,
+                           toIndex: Int) {
+    print("moved \(fromIndex) -> \(toIndex)")
+}
+
+func textTagCollectionView(_ collectionView: TextTagCollectionView,
+                           canDeleteTag tag: TextTag,
+                           at index: Int) -> Bool {
+    return true
+}
+
+func textTagCollectionView(_ collectionView: TextTagCollectionView,
+                           didDeleteTag tag: TextTag,
+                           at index: Int) {
+    print("deleted \(index)")
+}
+```
+
+Objective-C uses the same API through `TTGTags-Swift.h`:
+
+```objc
+tagView.enableTagReordering = YES;
+tagView.enableDragToDelete = YES;
+[tagView moveTagAtIndex:0 toIndex:3];
+[tagView moveTagById:tag.tagId toIndex:1];
+
+tagView.dragDeleteZoneHeight = 52;
+tagView.dragDeleteZoneInsets = UIEdgeInsetsMake(0, 18, 12, 18);
+tagView.dragDeleteZoneBackgroundColor = [UIColor.systemGrayColor colorWithAlphaComponent:0.92];
+tagView.dragDeleteZoneHighlightedBackgroundColor = [UIColor.systemPinkColor colorWithAlphaComponent:0.96];
+tagView.dragDeleteZoneText = @"Drop tag to remove";
+tagView.dragDeleteZoneImage = [UIImage systemImageNamed:@"trash.fill"];
 ```
 
 ---
@@ -439,7 +510,7 @@ All layout and spacing properties (`scrollDirection`, `alignment`, `horizontalDi
 
 ## Performance
 
-TTGTagCollectionView 3.1 keeps layout deterministic and cache-friendly:
+TTGTagCollectionView keeps layout deterministic and cache-friendly:
 
 - `TagCollectionLayout` is a pure calculator: the same tag sizes and configuration produce the same frames and content size.
 - `TextTagCollectionView` caches text tag measurements by attributed content, style constraints, selected state, and available width.
@@ -492,6 +563,8 @@ TextTagCollectionView.clearMeasurementCache()
 ## Tips
 
 - Always call `reload()` after adding, removing, or updating tags.
+- `moveTag(at:to:)` and `moveTag(byId:to:)` reload automatically.
+- Drag-to-delete is destructive. Use `canDeleteTag` to block protected tags or the last remaining tag.
 - When embedding in a `UITableViewCell`, prefer precomputing row height with `TextTagCollectionView.contentSize(for:width:...)` and reusing the result by table width.
 - Configure all tags first, then call `reload()` once. Avoid repeated `updateTag(...)` calls during cell reuse.
 - Use `manualCalculateHeight = true` + `preferredMaxLayoutWidth` when the view's width is not yet determined at layout time.
@@ -580,6 +653,15 @@ Version 3.0 rewrites all core sources in Swift. Objective-C class names, selecto
 - `TextTagStyle.numberOfLines` and `lineBreakMode` enable multiline text tags with `maxWidth` or container-width constraints.
 - `getTag(byId:)`, `indexOfTag(byId:)`, `updateTag(byId:...)`, and `scrollToTag(byId:...)` make id-driven updates straightforward.
 - `scrollToTag(at:position:animated:)` supports `.nearest`, `.start`, `.center`, and `.end`.
+
+### 3.2 API additions
+
+- `enableTagReordering` enables long-press drag reordering for `TextTagCollectionView`.
+- `enableDragToDelete` shows a bottom delete zone while dragging.
+- `dragDeleteZoneHeight`, `dragDeleteZoneInsets`, colors, text, font, image, and tint properties customize the delete zone without replacing its view.
+- `moveTag(at:to:)` and `moveTag(byId:to:)` support programmatic reordering.
+- `canMoveTag` / `didMoveTag` and `canDeleteTag` / `didDeleteTag` cover reorder and delete decisions.
+- SwiftUI `TagCloudView` does not expose reordering yet because it rebuilds tags from value input on each update; use UIKit `TextTagCollectionView` for reorder/delete workflows.
 
 ---
 

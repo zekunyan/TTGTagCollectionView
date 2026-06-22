@@ -22,6 +22,36 @@ public protocol TextTagCollectionViewDelegate: AnyObject {
 
     @objc(textTagCollectionView:updateContentSize:)
     optional func textTagCollectionView(_ collectionView: TextTagCollectionView, updateContentSize contentSize: CGSize)
+
+    @objc(textTagCollectionView:canMoveTag:fromIndex:toIndex:)
+    optional func textTagCollectionView(
+        _ collectionView: TextTagCollectionView,
+        canMoveTag tag: TextTag,
+        fromIndex: Int,
+        toIndex: Int
+    ) -> Bool
+
+    @objc(textTagCollectionView:didMoveTag:fromIndex:toIndex:)
+    optional func textTagCollectionView(
+        _ collectionView: TextTagCollectionView,
+        didMoveTag tag: TextTag,
+        fromIndex: Int,
+        toIndex: Int
+    )
+
+    @objc(textTagCollectionView:canDeleteTag:atIndex:)
+    optional func textTagCollectionView(
+        _ collectionView: TextTagCollectionView,
+        canDeleteTag tag: TextTag,
+        at index: Int
+    ) -> Bool
+
+    @objc(textTagCollectionView:didDeleteTag:atIndex:)
+    optional func textTagCollectionView(
+        _ collectionView: TextTagCollectionView,
+        didDeleteTag tag: TextTag,
+        at index: Int
+    )
 }
 
 // MARK: - Main View
@@ -41,6 +71,71 @@ public final class TextTagCollectionView: UIView {
 
     /// Whether tag selection is enabled. Defaults to `true`.
     @objc public var enableTagSelection: Bool = true
+
+    /// Whether long-press drag reordering is enabled. Defaults to `false`.
+    @objc public var enableTagReordering: Bool = false {
+        didSet { updateDragGestureEnabled() }
+    }
+
+    /// Whether dragging a tag to the delete zone removes it. Defaults to `false`.
+    @objc public var enableDragToDelete: Bool = false {
+        didSet {
+            updateDragGestureEnabled()
+            if !enableDragToDelete {
+                hideDragDeleteZone()
+            }
+        }
+    }
+
+    /// Height of the drag-to-delete zone. Defaults to `56`.
+    @objc public var dragDeleteZoneHeight: CGFloat = 56 {
+        didSet { updateDragDeleteZoneLayout() }
+    }
+
+    /// Insets from this view's bounds to the drag-to-delete zone. Defaults to `(0, 12, 8, 12)`.
+    @objc public var dragDeleteZoneInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 12, bottom: 8, right: 12) {
+        didSet { updateDragDeleteZoneLayout() }
+    }
+
+    /// Corner radius of the drag-to-delete zone. Defaults to `12`.
+    @objc public var dragDeleteZoneCornerRadius: CGFloat = 12 {
+        didSet { applyDragDeleteZoneAppearance(isHighlighted: isDragDeleteZoneHighlighted) }
+    }
+
+    /// Background color of the drag-to-delete zone.
+    @objc public var dragDeleteZoneBackgroundColor: UIColor = UIColor.systemRed.withAlphaComponent(0.84) {
+        didSet { applyDragDeleteZoneAppearance(isHighlighted: isDragDeleteZoneHighlighted) }
+    }
+
+    /// Highlighted background color while the dragged tag is inside the delete zone.
+    @objc public var dragDeleteZoneHighlightedBackgroundColor: UIColor = UIColor.systemRed.withAlphaComponent(0.96) {
+        didSet { applyDragDeleteZoneAppearance(isHighlighted: isDragDeleteZoneHighlighted) }
+    }
+
+    /// Text shown in the drag-to-delete zone. Set to `nil` or an empty string to hide it.
+    @objc public var dragDeleteZoneText: String? = "Release to delete" {
+        didSet { applyDragDeleteZoneAppearance(isHighlighted: isDragDeleteZoneHighlighted) }
+    }
+
+    /// Text color shown in the drag-to-delete zone.
+    @objc public var dragDeleteZoneTextColor: UIColor = .white {
+        didSet { applyDragDeleteZoneAppearance(isHighlighted: isDragDeleteZoneHighlighted) }
+    }
+
+    /// Font used by the drag-to-delete zone text.
+    @objc public var dragDeleteZoneFont: UIFont = .systemFont(ofSize: 15, weight: .semibold) {
+        didSet { applyDragDeleteZoneAppearance(isHighlighted: isDragDeleteZoneHighlighted) }
+    }
+
+    /// Icon shown in the drag-to-delete zone. Set to `nil` to hide it.
+    @objc public var dragDeleteZoneImage: UIImage? = UIImage(systemName: "trash") {
+        didSet { applyDragDeleteZoneAppearance(isHighlighted: isDragDeleteZoneHighlighted) }
+    }
+
+    /// Icon tint color shown in the drag-to-delete zone.
+    @objc public var dragDeleteZoneImageTintColor: UIColor = .white {
+        didSet { applyDragDeleteZoneAppearance(isHighlighted: isDragDeleteZoneHighlighted) }
+    }
 
     /// Scroll direction.
     @objc public var scrollDirection: TagCollectionScrollDirection {
@@ -137,6 +232,28 @@ public final class TextTagCollectionView: UIView {
     private var tagLabels: [TextTagComponentView] = []
     private var tagCollectionView: TagCollectionView!
     private var lastLaidOutBoundsSize: CGSize = .zero
+    private var reorderLongPressGesture: UILongPressGestureRecognizer!
+    private var dragDeleteZoneView: UIView!
+    private var dragDeleteImageView: UIImageView!
+    private var dragDeleteLabel: UILabel!
+    private var dragDeleteZoneTopConstraint: NSLayoutConstraint!
+    private var dragDeleteZoneLeadingConstraint: NSLayoutConstraint!
+    private var dragDeleteZoneTrailingConstraint: NSLayoutConstraint!
+    private var dragDeleteZoneBottomConstraint: NSLayoutConstraint!
+    private var dragDeleteZoneHeightConstraint: NSLayoutConstraint!
+    private var dragAutoScrollDisplayLink: CADisplayLink?
+    private var dragLastLocation: CGPoint = .zero
+    private var dragSnapshotView: UIView?
+    private var draggedLabel: TextTagComponentView?
+    private var dragOriginalLabels: [TextTagComponentView] = []
+    private var dragOriginalIndex: Int = NSNotFound
+    private var dragCurrentIndex: Int = NSNotFound
+    private var dragTouchOffsetFromSnapshotCenter: CGPoint = .zero
+    private var wasScrollEnabledBeforeDrag = true
+    private var isDragDeleteZoneHighlighted = false
+
+    private let dragAutoScrollEdgeThreshold: CGFloat = 44
+    private let dragAutoScrollMaximumStep: CGFloat = 10
 
     private final class CachedMeasurement {
         let size: CGSize
@@ -164,6 +281,10 @@ public final class TextTagCollectionView: UIView {
         commonInit()
     }
 
+    deinit {
+        stopDragAutoScroll()
+    }
+
     private func commonInit() {
         tagCollectionView = TagCollectionView(frame: bounds)
         tagCollectionView.delegate = self
@@ -171,6 +292,9 @@ public final class TextTagCollectionView: UIView {
         tagCollectionView.horizontalSpacing = 8
         tagCollectionView.verticalSpacing = 8
         addSubview(tagCollectionView)
+
+        setupDragDeleteZone()
+        setupReorderGesture()
     }
 
     // MARK: Override
@@ -257,6 +381,16 @@ public final class TextTagCollectionView: UIView {
                 }
             }
         }
+
+        bringDragOverlayToFront()
+    }
+
+    public override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        guard gestureRecognizer === reorderLongPressGesture else {
+            return super.gestureRecognizerShouldBegin(gestureRecognizer)
+        }
+        guard enableTagReordering || enableDragToDelete else { return false }
+        return indexOfTag(at: gestureRecognizer.location(in: self)) != NSNotFound
     }
 
     public override func sizeThatFits(_ size: CGSize) -> CGSize {
@@ -379,6 +513,20 @@ public final class TextTagCollectionView: UIView {
         tagLabels.removeAll()
     }
 
+    @objc(moveTagAtIndex:toIndex:)
+    @discardableResult
+    public func moveTag(at fromIndex: Int, to toIndex: Int) -> Bool {
+        return moveTag(from: fromIndex, to: toIndex, notifyDelegate: true, reloadAfterMove: true)
+    }
+
+    @objc(moveTagById:toIndex:)
+    @discardableResult
+    public func moveTag(byId tagId: Int, to toIndex: Int) -> Bool {
+        let fromIndex = indexOfTag(byId: tagId)
+        guard fromIndex != NSNotFound else { return false }
+        return moveTag(at: fromIndex, to: toIndex)
+    }
+
     @objc(updateTagAtIndex:selected:)
     public func updateTag(at index: Int, selected: Bool) {
         guard let tag = getTag(at: index) else { return }
@@ -475,7 +623,430 @@ public final class TextTagCollectionView: UIView {
         scrollToTag(at: index, position: position, animated: animated)
     }
 
+    func targetIndexForDragLocation(_ location: CGPoint) -> Int {
+        let hitIndex = indexOfTag(at: location)
+        if hitIndex != NSNotFound {
+            return hitIndex
+        }
+
+        var nearestIndex = NSNotFound
+        var nearestDistance = CGFloat.greatestFiniteMagnitude
+        for index in tagLabels.indices {
+            let frame = visibleFrameForTag(at: index)
+            guard !frame.isNull, !frame.isEmpty else { continue }
+            let center = CGPoint(x: frame.midX, y: frame.midY)
+            let dx = center.x - location.x
+            let dy = center.y - location.y
+            let distance = dx * dx + dy * dy
+            if distance < nearestDistance {
+                nearestDistance = distance
+                nearestIndex = index
+            }
+        }
+        return nearestIndex
+    }
+
     // MARK: - Private
+
+    private func setupReorderGesture() {
+        reorderLongPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleReorderLongPress(_:)))
+        reorderLongPressGesture.minimumPressDuration = 0.35
+        reorderLongPressGesture.cancelsTouchesInView = true
+        reorderLongPressGesture.isEnabled = false
+        addGestureRecognizer(reorderLongPressGesture)
+    }
+
+    private func setupDragDeleteZone() {
+        dragDeleteZoneView = UIView()
+        dragDeleteZoneView.translatesAutoresizingMaskIntoConstraints = false
+        dragDeleteZoneView.layer.masksToBounds = true
+        dragDeleteZoneView.alpha = 0
+        dragDeleteZoneView.isHidden = true
+
+        dragDeleteImageView = UIImageView()
+        dragDeleteImageView.translatesAutoresizingMaskIntoConstraints = false
+        dragDeleteImageView.contentMode = .scaleAspectFit
+
+        dragDeleteLabel = UILabel()
+        dragDeleteLabel.translatesAutoresizingMaskIntoConstraints = false
+        dragDeleteLabel.textAlignment = .center
+
+        let stack = UIStackView(arrangedSubviews: [dragDeleteImageView, dragDeleteLabel])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .horizontal
+        stack.alignment = .center
+        stack.spacing = 8
+        dragDeleteZoneView.addSubview(stack)
+        addSubview(dragDeleteZoneView)
+
+        dragDeleteZoneTopConstraint = dragDeleteZoneView.topAnchor.constraint(greaterThanOrEqualTo: topAnchor, constant: dragDeleteZoneInsets.top)
+        dragDeleteZoneTopConstraint.priority = .defaultHigh
+        dragDeleteZoneLeadingConstraint = dragDeleteZoneView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: dragDeleteZoneInsets.left)
+        dragDeleteZoneTrailingConstraint = dragDeleteZoneView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -dragDeleteZoneInsets.right)
+        dragDeleteZoneBottomConstraint = dragDeleteZoneView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -dragDeleteZoneInsets.bottom)
+        dragDeleteZoneHeightConstraint = dragDeleteZoneView.heightAnchor.constraint(equalToConstant: dragDeleteZoneHeight)
+
+        NSLayoutConstraint.activate([
+            dragDeleteZoneTopConstraint,
+            dragDeleteZoneLeadingConstraint,
+            dragDeleteZoneTrailingConstraint,
+            dragDeleteZoneBottomConstraint,
+            dragDeleteZoneHeightConstraint,
+
+            dragDeleteImageView.widthAnchor.constraint(equalToConstant: 20),
+            dragDeleteImageView.heightAnchor.constraint(equalToConstant: 20),
+
+            stack.centerXAnchor.constraint(equalTo: dragDeleteZoneView.centerXAnchor),
+            stack.centerYAnchor.constraint(equalTo: dragDeleteZoneView.centerYAnchor),
+            stack.leadingAnchor.constraint(greaterThanOrEqualTo: dragDeleteZoneView.leadingAnchor, constant: 16),
+            stack.trailingAnchor.constraint(lessThanOrEqualTo: dragDeleteZoneView.trailingAnchor, constant: -16),
+        ])
+
+        applyDragDeleteZoneAppearance(isHighlighted: false)
+    }
+
+    private func updateDragGestureEnabled() {
+        reorderLongPressGesture?.isEnabled = enableTagReordering || enableDragToDelete
+    }
+
+    private func updateDragDeleteZoneLayout() {
+        guard dragDeleteZoneView != nil else { return }
+        dragDeleteZoneTopConstraint.constant = dragDeleteZoneInsets.top
+        dragDeleteZoneLeadingConstraint.constant = dragDeleteZoneInsets.left
+        dragDeleteZoneTrailingConstraint.constant = -dragDeleteZoneInsets.right
+        dragDeleteZoneBottomConstraint.constant = -dragDeleteZoneInsets.bottom
+        dragDeleteZoneHeightConstraint.constant = max(0, dragDeleteZoneHeight)
+        setNeedsLayout()
+    }
+
+    private func applyDragDeleteZoneAppearance(isHighlighted: Bool) {
+        guard dragDeleteZoneView != nil else { return }
+        isDragDeleteZoneHighlighted = isHighlighted
+        dragDeleteZoneView.backgroundColor = isHighlighted
+            ? dragDeleteZoneHighlightedBackgroundColor
+            : dragDeleteZoneBackgroundColor
+        dragDeleteZoneView.layer.cornerRadius = dragDeleteZoneCornerRadius
+
+        dragDeleteLabel.text = dragDeleteZoneText
+        dragDeleteLabel.textColor = dragDeleteZoneTextColor
+        dragDeleteLabel.font = dragDeleteZoneFont
+        dragDeleteLabel.isHidden = (dragDeleteZoneText ?? "").isEmpty
+
+        dragDeleteImageView.image = dragDeleteZoneImage
+        dragDeleteImageView.tintColor = dragDeleteZoneImageTintColor
+        dragDeleteImageView.isHidden = dragDeleteZoneImage == nil
+    }
+
+    private func bringDragOverlayToFront() {
+        if let dragDeleteZoneView {
+            bringSubviewToFront(dragDeleteZoneView)
+        }
+        if let dragSnapshotView {
+            bringSubviewToFront(dragSnapshotView)
+        }
+    }
+
+    @objc private func handleReorderLongPress(_ gesture: UILongPressGestureRecognizer) {
+        let location = gesture.location(in: self)
+        switch gesture.state {
+        case .began:
+            beginDragging(at: location)
+        case .changed:
+            updateDragging(at: location)
+        case .ended:
+            endDragging(at: location)
+        case .cancelled, .failed:
+            cancelDragging()
+        default:
+            break
+        }
+    }
+
+    private func beginDragging(at location: CGPoint) {
+        guard enableTagReordering || enableDragToDelete else { return }
+        let index = indexOfTag(at: location)
+        guard index != NSNotFound, index < tagLabels.count else { return }
+
+        let label = tagLabels[index]
+        guard label.config != nil else { return }
+
+        layoutIfNeeded()
+        tagCollectionView.layoutIfNeeded()
+
+        dragOriginalLabels = tagLabels
+        dragOriginalIndex = index
+        dragCurrentIndex = index
+        draggedLabel = label
+        dragLastLocation = location
+        wasScrollEnabledBeforeDrag = scrollView.isScrollEnabled
+        scrollView.isScrollEnabled = false
+
+        let visibleFrame = visibleFrameForTag(at: index)
+        let snapshot = label.snapshotView(afterScreenUpdates: false) ?? makeFallbackSnapshot(for: label)
+        snapshot.frame = visibleFrame
+        snapshot.layer.shadowColor = UIColor.black.cgColor
+        snapshot.layer.shadowOpacity = 0.18
+        snapshot.layer.shadowRadius = 10
+        snapshot.layer.shadowOffset = CGSize(width: 0, height: 6)
+        snapshot.transform = CGAffineTransform(scaleX: 1.04, y: 1.04)
+        snapshot.isUserInteractionEnabled = false
+        addSubview(snapshot)
+        dragSnapshotView = snapshot
+        dragTouchOffsetFromSnapshotCenter = CGPoint(
+            x: location.x - snapshot.center.x,
+            y: location.y - snapshot.center.y
+        )
+
+        label.alpha = 0
+        showDragDeleteZoneIfNeeded()
+        bringDragOverlayToFront()
+        startDragAutoScroll()
+    }
+
+    private func updateDragging(at location: CGPoint) {
+        guard dragSnapshotView != nil, draggedLabel != nil else { return }
+        dragLastLocation = location
+        updateDragSnapshotCenter(for: location)
+        updateDragDeleteZoneHighlight(location: location)
+
+        guard enableTagReordering, !isLocationInDragDeleteZone(location) else { return }
+        updateDragTarget(at: location)
+    }
+
+    private func endDragging(at location: CGPoint) {
+        guard let draggedLabel = draggedLabel, let tag = draggedLabel.config else {
+            cleanupDragging()
+            return
+        }
+
+        dragLastLocation = location
+        updateDragSnapshotCenter(for: location)
+
+        let currentIndex = currentDraggedLabelIndex()
+        let shouldDelete = enableDragToDelete
+            && isLocationInDragDeleteZone(location)
+            && currentIndex != NSNotFound
+            && (delegate?.textTagCollectionView?(self, canDeleteTag: tag, at: currentIndex) ?? true)
+
+        if shouldDelete {
+            tagLabels.remove(at: currentIndex)
+            cleanupDragging()
+            reload()
+            delegate?.textTagCollectionView?(self, didDeleteTag: tag, at: currentIndex)
+            return
+        }
+
+        let finalIndex = currentIndex
+        let originalIndex = dragOriginalIndex
+        cleanupDragging()
+        reload()
+        if originalIndex != NSNotFound, finalIndex != NSNotFound, originalIndex != finalIndex {
+            delegate?.textTagCollectionView?(self, didMoveTag: tag, fromIndex: originalIndex, toIndex: finalIndex)
+        }
+    }
+
+    private func cancelDragging() {
+        if !dragOriginalLabels.isEmpty {
+            tagLabels = dragOriginalLabels
+        }
+        cleanupDragging()
+        reload()
+    }
+
+    private func cleanupDragging() {
+        stopDragAutoScroll()
+        scrollView.isScrollEnabled = wasScrollEnabledBeforeDrag
+        draggedLabel?.alpha = 1
+        dragSnapshotView?.removeFromSuperview()
+        dragSnapshotView = nil
+        draggedLabel = nil
+        dragOriginalLabels = []
+        dragOriginalIndex = NSNotFound
+        dragCurrentIndex = NSNotFound
+        dragTouchOffsetFromSnapshotCenter = .zero
+        hideDragDeleteZone()
+    }
+
+    private func updateDragSnapshotCenter(for location: CGPoint) {
+        dragSnapshotView?.center = CGPoint(
+            x: location.x - dragTouchOffsetFromSnapshotCenter.x,
+            y: location.y - dragTouchOffsetFromSnapshotCenter.y
+        )
+    }
+
+    private func updateDragTarget(at location: CGPoint) {
+        let targetIndex = targetIndexForDragLocation(location)
+        guard targetIndex != NSNotFound,
+              dragCurrentIndex != NSNotFound,
+              targetIndex != dragCurrentIndex else {
+            return
+        }
+        if moveTag(from: dragCurrentIndex, to: targetIndex, notifyDelegate: false, reloadAfterMove: true) {
+            dragCurrentIndex = targetIndex
+            draggedLabel?.alpha = 0
+            bringDragOverlayToFront()
+        }
+    }
+
+    private func moveTag(
+        from fromIndex: Int,
+        to toIndex: Int,
+        notifyDelegate: Bool,
+        reloadAfterMove: Bool
+    ) -> Bool {
+        guard fromIndex >= 0,
+              fromIndex < tagLabels.count,
+              toIndex >= 0,
+              toIndex < tagLabels.count,
+              fromIndex != toIndex,
+              let tag = tagLabels[fromIndex].config else {
+            return false
+        }
+
+        let allowed = delegate?.textTagCollectionView?(
+            self,
+            canMoveTag: tag,
+            fromIndex: fromIndex,
+            toIndex: toIndex
+        ) ?? true
+        guard allowed else { return false }
+
+        let label = tagLabels.remove(at: fromIndex)
+        tagLabels.insert(label, at: toIndex)
+
+        if reloadAfterMove {
+            reload()
+        }
+        if notifyDelegate {
+            delegate?.textTagCollectionView?(self, didMoveTag: tag, fromIndex: fromIndex, toIndex: toIndex)
+        }
+        return true
+    }
+
+    private func currentDraggedLabelIndex() -> Int {
+        guard let draggedLabel = draggedLabel,
+              let index = tagLabels.firstIndex(where: { $0 === draggedLabel }) else {
+            return NSNotFound
+        }
+        return index
+    }
+
+    private func visibleFrameForTag(at index: Int) -> CGRect {
+        let frame = tagCollectionView.frameForTag(at: index)
+        guard !frame.isNull else { return .null }
+        let scrollOffset = scrollView.contentOffset
+        return CGRect(
+            x: tagCollectionView.frame.minX + frame.minX - scrollOffset.x,
+            y: tagCollectionView.frame.minY + frame.minY - scrollOffset.y,
+            width: frame.width,
+            height: frame.height
+        )
+    }
+
+    private func makeFallbackSnapshot(for label: TextTagComponentView) -> UIView {
+        let snapshot = TextTagComponentView(frame: label.bounds)
+        snapshot.config = label.config
+        snapshot.updateContent()
+        snapshot.updateContentStyle()
+        snapshot.updateAccessibility()
+        return snapshot
+    }
+
+    private func showDragDeleteZoneIfNeeded() {
+        guard enableDragToDelete else { return }
+        dragDeleteZoneView.isHidden = false
+        dragDeleteZoneView.alpha = 0
+        updateDragDeleteZoneHighlight(location: dragLastLocation)
+        UIView.animate(withDuration: 0.16) {
+            self.dragDeleteZoneView.alpha = 1
+        }
+    }
+
+    private func hideDragDeleteZone() {
+        guard dragDeleteZoneView != nil else { return }
+        dragDeleteZoneView.alpha = 0
+        dragDeleteZoneView.isHidden = true
+        dragDeleteZoneView.transform = .identity
+        applyDragDeleteZoneAppearance(isHighlighted: false)
+    }
+
+    private func isLocationInDragDeleteZone(_ location: CGPoint) -> Bool {
+        guard enableDragToDelete,
+              dragDeleteZoneView != nil,
+              !dragDeleteZoneView.isHidden else {
+            return false
+        }
+        let locationInDeleteZone = convert(location, to: dragDeleteZoneView)
+        return dragDeleteZoneView.bounds.contains(locationInDeleteZone)
+    }
+
+    private func updateDragDeleteZoneHighlight(location: CGPoint) {
+        guard enableDragToDelete, dragDeleteZoneView != nil else { return }
+        let isHighlighted = isLocationInDragDeleteZone(location)
+        applyDragDeleteZoneAppearance(isHighlighted: isHighlighted)
+        dragDeleteZoneView.transform = isHighlighted
+            ? CGAffineTransform(scaleX: 1.02, y: 1.02)
+            : .identity
+    }
+
+    private func startDragAutoScroll() {
+        stopDragAutoScroll()
+        let displayLink = CADisplayLink(target: self, selector: #selector(handleDragAutoScroll))
+        displayLink.add(to: .main, forMode: .common)
+        dragAutoScrollDisplayLink = displayLink
+    }
+
+    private func stopDragAutoScroll() {
+        dragAutoScrollDisplayLink?.invalidate()
+        dragAutoScrollDisplayLink = nil
+    }
+
+    @objc private func handleDragAutoScroll() {
+        guard dragSnapshotView != nil else { return }
+
+        let step: CGFloat
+        switch scrollDirection {
+        case .vertical:
+            step = autoScrollStep(
+                location: dragLastLocation.y,
+                viewportStart: bounds.minY,
+                viewportEnd: enableDragToDelete ? dragDeleteZoneView.frame.minY : bounds.maxY
+            )
+            guard step != 0 else { return }
+            let maxOffset = max(0, scrollView.contentSize.height - scrollView.bounds.height)
+            let nextY = min(max(0, scrollView.contentOffset.y + step), maxOffset)
+            guard nextY != scrollView.contentOffset.y else { return }
+            scrollView.contentOffset = CGPoint(x: scrollView.contentOffset.x, y: nextY)
+        case .horizontal:
+            step = autoScrollStep(
+                location: dragLastLocation.x,
+                viewportStart: bounds.minX,
+                viewportEnd: bounds.maxX
+            )
+            guard step != 0 else { return }
+            let maxOffset = max(0, scrollView.contentSize.width - scrollView.bounds.width)
+            let nextX = min(max(0, scrollView.contentOffset.x + step), maxOffset)
+            guard nextX != scrollView.contentOffset.x else { return }
+            scrollView.contentOffset = CGPoint(x: nextX, y: scrollView.contentOffset.y)
+        }
+
+        if enableTagReordering && !isLocationInDragDeleteZone(dragLastLocation) {
+            updateDragTarget(at: dragLastLocation)
+        }
+    }
+
+    private func autoScrollStep(location: CGFloat, viewportStart: CGFloat, viewportEnd: CGFloat) -> CGFloat {
+        guard viewportEnd > viewportStart else { return 0 }
+        if location < viewportStart + dragAutoScrollEdgeThreshold {
+            let progress = min(1, max(0, (viewportStart + dragAutoScrollEdgeThreshold - location) / dragAutoScrollEdgeThreshold))
+            return -dragAutoScrollMaximumStep * progress
+        }
+        if location > viewportEnd - dragAutoScrollEdgeThreshold {
+            let progress = min(1, max(0, (location - (viewportEnd - dragAutoScrollEdgeThreshold)) / dragAutoScrollEdgeThreshold))
+            return dragAutoScrollMaximumStep * progress
+        }
+        return 0
+    }
 
     private func updateAllLabelStyleAndFrame() {
         tagLabels.forEach(updateStyleAndFrame(for:))

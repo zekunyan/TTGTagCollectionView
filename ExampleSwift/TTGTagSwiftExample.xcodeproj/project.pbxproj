@@ -31,6 +31,7 @@
 		BF6A36CE263BFF84000CB844 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF6A36CD263BFF84000CB844 /* Assets.xcassets */; };
 		BF6A36D1263BFF84000CB844 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF6A36CF263BFF84000CB844 /* LaunchScreen.storyboard */; };
 		C63AADBAC89AF2627CDBE1E0 /* Pods_TTGTagSwiftExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F9ABBC9733CA17B850DB303 /* Pods_TTGTagSwiftExample.framework */; };
+		D3A2F0010000000000000002 /* ReorderTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A2F0010000000000000001 /* ReorderTagsViewController.swift */; };
 		E88646145B4D4E3624AE4124 /* BasicTextTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D099B5DDFB6061B8C83D5569 /* BasicTextTagsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		BF6A36CD263BFF84000CB844 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF6A36D0263BFF84000CB844 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF6A36D2263BFF84000CB844 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3A2F0010000000000000001 /* ReorderTagsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderTagsViewController.swift; sourceTree = "<group>"; };
 		D099B5DDFB6061B8C83D5569 /* BasicTextTagsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextTagsViewController.swift; sourceTree = "<group>"; };
 		DCA62D159FC7C68941F02179 /* ProgrammaticTagsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammaticTagsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +109,7 @@
 				A1B2C3D4E5F60021 /* StackViewDemoViewController.swift */,
 				A1B2C3D4E5F60031 /* SelfSizingDemoViewController.swift */,
 				0D0010040000000000000001 /* AutoLayoutFormViewController.swift */,
+				D3A2F0010000000000000001 /* ReorderTagsViewController.swift */,
 				A1B2C3D4E5F60041 /* SwiftUIDemoViewController.swift */,
 			);
 			path = Demos;
@@ -285,6 +288,7 @@
 				A1B2C3D4E5F60022 /* StackViewDemoViewController.swift in Sources */,
 				A1B2C3D4E5F60032 /* SelfSizingDemoViewController.swift in Sources */,
 				0D0010040000000000000002 /* AutoLayoutFormViewController.swift in Sources */,
+				D3A2F0010000000000000002 /* ReorderTagsViewController.swift in Sources */,
 				A1B2C3D4E5F60042 /* SwiftUIDemoViewController.swift in Sources */,
 				BF6A36C5263BFF81000CB844 /* AppDelegate.swift in Sources */,
 				BF6A36C7263BFF81000CB844 /* SceneDelegate.swift in Sources */,

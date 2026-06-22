@@ -131,6 +131,134 @@ final class TextTagCollectionViewTests: XCTestCase {
         XCTAssertEqual(view.getTag(byId: second.tagId), second)
     }
 
+    func testMoveTagReordersTagsAndKeepsModelState() {
+        let view = TextTagCollectionView(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
+        let first = makeTag(width: 40, height: 20)
+        first.selected = true
+        first.attachment = "payload" as NSString
+        let second = makeTag(width: 40, height: 20)
+        let third = makeTag(width: 40, height: 20)
+        view.add(tags: [first, second, third])
+        view.reload()
+
+        XCTAssertTrue(view.moveTag(at: 0, to: 2))
+
+        XCTAssertEqual(view.allTags().map(\.tagId), [second.tagId, third.tagId, first.tagId])
+        XCTAssertTrue(view.getTag(at: 2)?.selected == true)
+        XCTAssertEqual(view.getTag(at: 2)?.attachment as? NSString, "payload")
+    }
+
+    func testMoveTagRejectsInvalidIndexes() {
+        let view = TextTagCollectionView(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
+        let first = makeTag(width: 40, height: 20)
+        let second = makeTag(width: 40, height: 20)
+        view.add(tags: [first, second])
+        view.reload()
+
+        XCTAssertFalse(view.moveTag(at: -1, to: 1))
+        XCTAssertFalse(view.moveTag(at: 0, to: 2))
+        XCTAssertFalse(view.moveTag(at: 0, to: 0))
+        XCTAssertEqual(view.allTags().map(\.tagId), [first.tagId, second.tagId])
+    }
+
+    func testMoveTagByIdMovesMatchingTag() {
+        let view = TextTagCollectionView(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
+        let first = makeTag(width: 40, height: 20)
+        let second = makeTag(width: 40, height: 20)
+        let third = makeTag(width: 40, height: 20)
+        view.add(tags: [first, second, third])
+        view.reload()
+
+        XCTAssertTrue(view.moveTag(byId: third.tagId, to: 0))
+
+        XCTAssertEqual(view.allTags().map(\.tagId), [third.tagId, first.tagId, second.tagId])
+    }
+
+    func testDragDeleteZoneCustomizationPropertiesAreMutable() {
+        let view = TextTagCollectionView(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
+        let backgroundColor = UIColor.systemGray
+        let highlightedColor = UIColor.systemOrange
+        let textColor = UIColor.systemYellow
+        let imageTintColor = UIColor.systemGreen
+        let font = UIFont.systemFont(ofSize: 12, weight: .bold)
+        let image = UIImage(systemName: "xmark.circle")
+
+        view.dragDeleteZoneHeight = 64
+        view.dragDeleteZoneInsets = UIEdgeInsets(top: 4, left: 20, bottom: 12, right: 20)
+        view.dragDeleteZoneCornerRadius = 18
+        view.dragDeleteZoneBackgroundColor = backgroundColor
+        view.dragDeleteZoneHighlightedBackgroundColor = highlightedColor
+        view.dragDeleteZoneText = "Drop here"
+        view.dragDeleteZoneTextColor = textColor
+        view.dragDeleteZoneFont = font
+        view.dragDeleteZoneImage = image
+        view.dragDeleteZoneImageTintColor = imageTintColor
+
+        XCTAssertEqual(view.dragDeleteZoneHeight, 64)
+        XCTAssertEqual(view.dragDeleteZoneInsets, UIEdgeInsets(top: 4, left: 20, bottom: 12, right: 20))
+        XCTAssertEqual(view.dragDeleteZoneCornerRadius, 18)
+        XCTAssertEqual(view.dragDeleteZoneBackgroundColor, backgroundColor)
+        XCTAssertEqual(view.dragDeleteZoneHighlightedBackgroundColor, highlightedColor)
+        XCTAssertEqual(view.dragDeleteZoneText, "Drop here")
+        XCTAssertEqual(view.dragDeleteZoneTextColor, textColor)
+        XCTAssertEqual(view.dragDeleteZoneFont, font)
+        XCTAssertEqual(view.dragDeleteZoneImage, image)
+        XCTAssertEqual(view.dragDeleteZoneImageTintColor, imageTintColor)
+    }
+
+    func testMoveTagRespectsDelegateCanMove() {
+        let view = TextTagCollectionView(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
+        let delegate = MoveDelegate()
+        delegate.allowMove = false
+        view.delegate = delegate
+        let first = makeTag(width: 40, height: 20)
+        let second = makeTag(width: 40, height: 20)
+        view.add(tags: [first, second])
+        view.reload()
+
+        XCTAssertFalse(view.moveTag(at: 0, to: 1))
+
+        XCTAssertEqual(delegate.canMoveCalls, 1)
+        XCTAssertEqual(delegate.didMoveCalls, 0)
+        XCTAssertEqual(view.allTags().map(\.tagId), [first.tagId, second.tagId])
+    }
+
+    func testMoveTagNotifiesDelegateOnce() {
+        let view = TextTagCollectionView(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
+        let delegate = MoveDelegate()
+        view.delegate = delegate
+        let first = makeTag(width: 40, height: 20)
+        let second = makeTag(width: 40, height: 20)
+        view.add(tags: [first, second])
+        view.reload()
+
+        XCTAssertTrue(view.moveTag(at: 0, to: 1))
+
+        XCTAssertEqual(delegate.canMoveCalls, 1)
+        XCTAssertEqual(delegate.didMoveCalls, 1)
+        XCTAssertEqual(delegate.lastMoveFromIndex, 0)
+        XCTAssertEqual(delegate.lastMoveToIndex, 1)
+        XCTAssertEqual(delegate.lastMovedTagId, first.tagId)
+    }
+
+    func testDragTargetIndexFallsBackToNearestTagCenter() {
+        let view = TextTagCollectionView(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
+        view.contentInset = .zero
+        view.horizontalSpacing = 10
+        view.verticalSpacing = 0
+        let tags = [
+            makeTag(width: 40, height: 20),
+            makeTag(width: 40, height: 20),
+            makeTag(width: 40, height: 20),
+        ]
+        view.add(tags: tags)
+        view.reload()
+
+        let target = view.targetIndexForDragLocation(CGPoint(x: 96, y: 10))
+
+        XCTAssertEqual(target, 2)
+    }
+
     func testScrollToTagByIdCentersHorizontalTag() {
         let view = TextTagCollectionView(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
         view.scrollDirection = .horizontal
@@ -186,5 +314,36 @@ final class TextTagCollectionViewTests: XCTestCase {
         style.exactHeight = height
         style.extraSpace = .zero
         return style
+    }
+}
+
+private final class MoveDelegate: NSObject, TextTagCollectionViewDelegate {
+    var allowMove = true
+    var canMoveCalls = 0
+    var didMoveCalls = 0
+    var lastMovedTagId: Int?
+    var lastMoveFromIndex: Int?
+    var lastMoveToIndex: Int?
+
+    func textTagCollectionView(
+        _ collectionView: TextTagCollectionView,
+        canMoveTag tag: TextTag,
+        fromIndex: Int,
+        toIndex: Int
+    ) -> Bool {
+        canMoveCalls += 1
+        return allowMove
+    }
+
+    func textTagCollectionView(
+        _ collectionView: TextTagCollectionView,
+        didMoveTag tag: TextTag,
+        fromIndex: Int,
+        toIndex: Int
+    ) {
+        didMoveCalls += 1
+        lastMovedTagId = tag.tagId
+        lastMoveFromIndex = fromIndex
+        lastMoveToIndex = toIndex
     }
 }

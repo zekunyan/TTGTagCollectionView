@@ -27,7 +27,8 @@ class DemoListViewController: UITableViewController {
         DemoItem(title: "11. UIStackView integration", detail: "Tag views embedded in vertical stack layouts.", viewControllerType: StackViewDemoViewController.self),
         DemoItem(title: "12. Self-sizing", detail: "Intrinsic content size and dynamic container updates.", viewControllerType: SelfSizingDemoViewController.self),
         DemoItem(title: "13. Auto Layout form", detail: "Form sections using tag views without fixed heights.", viewControllerType: AutoLayoutFormViewController.self),
-        DemoItem(title: "14. SwiftUI integration", detail: "Use TagCloudView from SwiftUI and keep UIKit behavior.", viewControllerType: SwiftUIDemoViewController.self),
+        DemoItem(title: "14. Reorder & delete", detail: "Long-press drag to reorder tags or drop one into the delete zone.", viewControllerType: ReorderTagsViewController.self),
+        DemoItem(title: "15. SwiftUI integration", detail: "Use TagCloudView from SwiftUI and keep UIKit behavior.", viewControllerType: SwiftUIDemoViewController.self),
     ]
 
     override func viewDidLoad() {
