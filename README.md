@@ -39,7 +39,7 @@ Or add it to `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/zekunyan/TTGTagCollectionView.git", from: "3.2.0")
+    .package(url: "https://github.com/zekunyan/TTGTagCollectionView.git", from: "3.3.0")
 ]
 ```
 
@@ -192,6 +192,14 @@ func textTagCollectionView(_ collectionView: TextTagCollectionView,
 func textTagCollectionView(_ collectionView: TextTagCollectionView,
                            didTapTag tag: TextTag, at index: Int) {
     print("tapped: \(tag.rightfulContent.contentAttributedString.string), selected: \(tag.selected)")
+}
+
+func textTagCollectionView(_ collectionView: TextTagCollectionView,
+                           canSwipeSelectTag tag: TextTag, at index: Int) -> Bool { true }
+
+func textTagCollectionView(_ collectionView: TextTagCollectionView,
+                           didSwipeSelectTag tag: TextTag, at index: Int) {
+    print("swipe selected: \(index)")
 }
 
 func textTagCollectionView(_ collectionView: TextTagCollectionView,
@@ -405,6 +413,33 @@ tagView.scrollToTag(at: 12, position: .center, animated: true)
 tagView.scrollToTag(byId: tag.tagId, position: .end, animated: true)
 ```
 
+### Swipe selection
+
+`TextTagCollectionView` can select tags as the user's finger moves across them. Swipe selection is opt-in, selects only unselected tags, and respects `selectionLimit`.
+
+```swift
+tagView.enableSwipeSelection = true
+tagView.selectionLimit = 6
+tagView.delegate = self
+
+func textTagCollectionView(_ collectionView: TextTagCollectionView,
+                           canSwipeSelectTag tag: TextTag,
+                           at index: Int) -> Bool {
+    return true
+}
+
+func textTagCollectionView(_ collectionView: TextTagCollectionView,
+                           didSwipeSelectTag tag: TextTag,
+                           at index: Int) {
+    print("swipe selected \(index)")
+}
+```
+
+```objc
+tagView.enableSwipeSelection = YES;
+tagView.selectionLimit = 6;
+```
+
 ### Reorder and drag-to-delete
 
 `TextTagCollectionView` can reorder text tags with a long-press drag gesture. Drag-to-delete is opt-in and shows a bottom delete zone while dragging.
@@ -564,6 +599,7 @@ TextTagCollectionView.clearMeasurementCache()
 
 - Always call `reload()` after adding, removing, or updating tags.
 - `moveTag(at:to:)` and `moveTag(byId:to:)` reload automatically.
+- Swipe selection starts only from a tag, selects unselected tags, and does not toggle already selected tags off.
 - Drag-to-delete is destructive. Use `canDeleteTag` to block protected tags or the last remaining tag.
 - When embedding in a `UITableViewCell`, prefer precomputing row height with `TextTagCollectionView.contentSize(for:width:...)` and reusing the result by table width.
 - Configure all tags first, then call `reload()` once. Avoid repeated `updateTag(...)` calls during cell reuse.
@@ -662,6 +698,12 @@ Version 3.0 rewrites all core sources in Swift. Objective-C class names, selecto
 - `moveTag(at:to:)` and `moveTag(byId:to:)` support programmatic reordering.
 - `canMoveTag` / `didMoveTag` and `canDeleteTag` / `didDeleteTag` cover reorder and delete decisions.
 - SwiftUI `TagCloudView` does not expose reordering yet because it rebuilds tags from value input on each update; use UIKit `TextTagCollectionView` for reorder/delete workflows.
+
+### Swipe selection API additions
+
+- `enableSwipeSelection` enables finger-swipe selection for `TextTagCollectionView`.
+- `canSwipeSelectTag` / `didSwipeSelectTag` cover swipe selection decisions and results.
+- Swipe selection falls back to `canTapTag` when `canSwipeSelectTag` is not implemented, so existing selection gates still apply.
 
 ---
 

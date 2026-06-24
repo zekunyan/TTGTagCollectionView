@@ -45,7 +45,7 @@ https://github.com/zekunyan/TTGTagCollectionView.git
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/zekunyan/TTGTagCollectionView.git", from: "3.2.0")
+    .package(url: "https://github.com/zekunyan/TTGTagCollectionView.git", from: "3.3.0")
 ]
 ```
 
@@ -172,6 +172,14 @@ func textTagCollectionView(_ collectionView: TextTagCollectionView,
 func textTagCollectionView(_ collectionView: TextTagCollectionView,
                            didTapTag tag: TextTag, at index: Int) {
     print("点击: \(tag.rightfulContent.contentAttributedString.string), 选中: \(tag.selected)")
+}
+
+func textTagCollectionView(_ collectionView: TextTagCollectionView,
+                           canSwipeSelectTag tag: TextTag, at index: Int) -> Bool { true }
+
+func textTagCollectionView(_ collectionView: TextTagCollectionView,
+                           didSwipeSelectTag tag: TextTag, at index: Int) {
+    print("滑动选中: \(index)")
 }
 
 func textTagCollectionView(_ collectionView: TextTagCollectionView,
@@ -385,6 +393,33 @@ tagView.scrollToTag(at: 12, position: .center, animated: true)
 tagView.scrollToTag(byId: tag.tagId, position: .end, animated: true)
 ```
 
+### 滑动选择
+
+`TextTagCollectionView` 支持手指划过标签时批量选中。滑动选择需要显式开启，只会选中未选中的标签，并且会遵守 `selectionLimit`。
+
+```swift
+tagView.enableSwipeSelection = true
+tagView.selectionLimit = 6
+tagView.delegate = self
+
+func textTagCollectionView(_ collectionView: TextTagCollectionView,
+                           canSwipeSelectTag tag: TextTag,
+                           at index: Int) -> Bool {
+    return true
+}
+
+func textTagCollectionView(_ collectionView: TextTagCollectionView,
+                           didSwipeSelectTag tag: TextTag,
+                           at index: Int) {
+    print("滑动选中 \(index)")
+}
+```
+
+```objc
+tagView.enableSwipeSelection = YES;
+tagView.selectionLimit = 6;
+```
+
 ### 拖拽排序和拖拽删除
 
 `TextTagCollectionView` 支持通过长按拖拽重排文字标签。拖拽删除需要显式开启，拖拽时底部会显示删除区域。
@@ -492,6 +527,7 @@ tagCollectionView.reload()
 
 - 每次添加、删除或更新标签后，**必须调用 `reload()`**。
 - `moveTag(at:to:)` 和 `moveTag(byId:to:)` 会自动刷新。
+- 滑动选择只会从标签上开始，只选中未选中的标签，不会把已选标签反选。
 - 拖拽删除是破坏性操作，建议用 `canDeleteTag` 阻止受保护标签或最后一个标签被删除。
 - 嵌入 `UITableViewCell` 时，如果 `UITableViewAutomaticDimension` 行为异常，请在 `viewDidAppear` 中调用 `tableView.reloadData()`。
 - 当视图宽度在布局时还未确定（如在自适应高度的 Cell 中），使用 `manualCalculateHeight = true` + `preferredMaxLayoutWidth`。
@@ -559,6 +595,12 @@ tagCollectionView.reload()
 - `moveTag(at:to:)` 和 `moveTag(byId:to:)` 支持代码触发重排。
 - `canMoveTag` / `didMoveTag` 和 `canDeleteTag` / `didDeleteTag` 覆盖排序和删除决策。
 - SwiftUI `TagCloudView` 暂不暴露重排能力，因为它每次 update 都会从值输入重建 tags；需要排序/删除时请使用 UIKit `TextTagCollectionView`。
+
+### 滑动选择 API 新增
+
+- `enableSwipeSelection` 为 `TextTagCollectionView` 开启手指滑动选择。
+- `canSwipeSelectTag` / `didSwipeSelectTag` 覆盖滑动选择决策和结果。
+- 未实现 `canSwipeSelectTag` 时会回退到 `canTapTag`，因此已有选择拦截逻辑仍然生效。
 
 ---
 

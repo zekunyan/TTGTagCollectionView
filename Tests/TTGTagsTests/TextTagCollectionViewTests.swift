@@ -241,6 +241,93 @@ final class TextTagCollectionViewTests: XCTestCase {
         XCTAssertEqual(delegate.lastMovedTagId, first.tagId)
     }
 
+    func testSwipeSelectTagSelectsUnselectedTagAndNotifiesDelegate() {
+        let view = TextTagCollectionView(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
+        let delegate = SwipeSelectionDelegate()
+        view.delegate = delegate
+        view.enableSwipeSelection = true
+        let first = makeTag(width: 40, height: 20)
+        let second = makeTag(width: 40, height: 20)
+        view.add(tags: [first, second])
+        view.reload()
+
+        XCTAssertTrue(view.swipeSelectTag(at: 1))
+
+        XCTAssertFalse(first.selected)
+        XCTAssertTrue(second.selected)
+        XCTAssertEqual(delegate.canSwipeCalls, 1)
+        XCTAssertEqual(delegate.didSwipeCalls, 1)
+        XCTAssertEqual(delegate.didTapCalls, 0)
+        XCTAssertEqual(delegate.lastSwipeSelectedTagId, second.tagId)
+        XCTAssertEqual(delegate.lastSwipeSelectedIndex, 1)
+    }
+
+    func testSwipeSelectTagDoesNotDeselectAlreadySelectedTag() {
+        let view = TextTagCollectionView(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
+        let delegate = SwipeSelectionDelegate()
+        view.delegate = delegate
+        view.enableSwipeSelection = true
+        let tag = makeTag(width: 40, height: 20)
+        tag.selected = true
+        view.add(tag: tag)
+        view.reload()
+
+        XCTAssertFalse(view.swipeSelectTag(at: 0))
+
+        XCTAssertTrue(tag.selected)
+        XCTAssertEqual(delegate.canSwipeCalls, 0)
+        XCTAssertEqual(delegate.didSwipeCalls, 0)
+    }
+
+    func testSwipeSelectTagRespectsSelectionLimit() {
+        let view = TextTagCollectionView(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
+        let first = makeTag(width: 40, height: 20)
+        first.selected = true
+        let second = makeTag(width: 40, height: 20)
+        view.enableSwipeSelection = true
+        view.selectionLimit = 1
+        view.add(tags: [first, second])
+        view.reload()
+
+        XCTAssertFalse(view.swipeSelectTag(at: 1))
+
+        XCTAssertTrue(first.selected)
+        XCTAssertFalse(second.selected)
+    }
+
+    func testSwipeSelectTagRespectsDelegateCanSwipeSelect() {
+        let view = TextTagCollectionView(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
+        let delegate = SwipeSelectionDelegate()
+        delegate.allowSwipeSelect = false
+        view.delegate = delegate
+        view.enableSwipeSelection = true
+        let tag = makeTag(width: 40, height: 20)
+        view.add(tag: tag)
+        view.reload()
+
+        XCTAssertFalse(view.swipeSelectTag(at: 0))
+
+        XCTAssertFalse(tag.selected)
+        XCTAssertEqual(delegate.canSwipeCalls, 1)
+        XCTAssertEqual(delegate.didSwipeCalls, 0)
+    }
+
+    func testSwipeSelectTagFallsBackToTapGate() {
+        let view = TextTagCollectionView(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
+        let delegate = TapGateDelegate()
+        delegate.allowTap = false
+        view.delegate = delegate
+        view.enableSwipeSelection = true
+        let tag = makeTag(width: 40, height: 20)
+        view.add(tag: tag)
+        view.reload()
+
+        XCTAssertFalse(view.swipeSelectTag(at: 0))
+
+        XCTAssertFalse(tag.selected)
+        XCTAssertEqual(delegate.canTapCalls, 1)
+    }
+
     func testDragTargetIndexFallsBackToNearestTagCenter() {
         let view = TextTagCollectionView(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
         view.contentInset = .zero
@@ -345,5 +432,55 @@ private final class MoveDelegate: NSObject, TextTagCollectionViewDelegate {
         lastMovedTagId = tag.tagId
         lastMoveFromIndex = fromIndex
         lastMoveToIndex = toIndex
+    }
+}
+
+private final class SwipeSelectionDelegate: NSObject, TextTagCollectionViewDelegate {
+    var allowSwipeSelect = true
+    var canSwipeCalls = 0
+    var didSwipeCalls = 0
+    var didTapCalls = 0
+    var lastSwipeSelectedTagId: Int?
+    var lastSwipeSelectedIndex: Int?
+
+    func textTagCollectionView(
+        _ collectionView: TextTagCollectionView,
+        canSwipeSelectTag tag: TextTag,
+        at index: Int
+    ) -> Bool {
+        canSwipeCalls += 1
+        return allowSwipeSelect
+    }
+
+    func textTagCollectionView(
+        _ collectionView: TextTagCollectionView,
+        didSwipeSelectTag tag: TextTag,
+        at index: Int
+    ) {
+        didSwipeCalls += 1
+        lastSwipeSelectedTagId = tag.tagId
+        lastSwipeSelectedIndex = index
+    }
+
+    func textTagCollectionView(
+        _ collectionView: TextTagCollectionView,
+        didTapTag tag: TextTag,
+        at index: Int
+    ) {
+        didTapCalls += 1
+    }
+}
+
+private final class TapGateDelegate: NSObject, TextTagCollectionViewDelegate {
+    var allowTap = true
+    var canTapCalls = 0
+
+    func textTagCollectionView(
+        _ collectionView: TextTagCollectionView,
+        canTapTag tag: TextTag,
+        at index: Int
+    ) -> Bool {
+        canTapCalls += 1
+        return allowTap
     }
 }

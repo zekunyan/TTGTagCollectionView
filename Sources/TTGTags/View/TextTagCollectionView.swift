@@ -20,6 +20,12 @@ public protocol TextTagCollectionViewDelegate: AnyObject {
     @objc(textTagCollectionView:didTapTag:atIndex:)
     optional func textTagCollectionView(_ collectionView: TextTagCollectionView, didTapTag tag: TextTag, at index: Int)
 
+    @objc(textTagCollectionView:canSwipeSelectTag:atIndex:)
+    optional func textTagCollectionView(_ collectionView: TextTagCollectionView, canSwipeSelectTag tag: TextTag, at index: Int) -> Bool
+
+    @objc(textTagCollectionView:didSwipeSelectTag:atIndex:)
+    optional func textTagCollectionView(_ collectionView: TextTagCollectionView, didSwipeSelectTag tag: TextTag, at index: Int)
+
     @objc(textTagCollectionView:updateContentSize:)
     optional func textTagCollectionView(_ collectionView: TextTagCollectionView, updateContentSize contentSize: CGSize)
 
@@ -70,7 +76,14 @@ public final class TextTagCollectionView: UIView {
     }
 
     /// Whether tag selection is enabled. Defaults to `true`.
-    @objc public var enableTagSelection: Bool = true
+    @objc public var enableTagSelection: Bool = true {
+        didSet { updateSwipeSelectionGestureEnabled() }
+    }
+
+    /// Whether dragging across tags selects them. Defaults to `false`.
+    @objc public var enableSwipeSelection: Bool = false {
+        didSet { updateSwipeSelectionGestureEnabled() }
+    }
 
     /// Whether long-press drag reordering is enabled. Defaults to `false`.
     @objc public var enableTagReordering: Bool = false {
@@ -232,6 +245,10 @@ public final class TextTagCollectionView: UIView {
     private var tagLabels: [TextTagComponentView] = []
     private var tagCollectionView: TagCollectionView!
     private var lastLaidOutBoundsSize: CGSize = .zero
+    private var swipeSelectionPanGesture: UIPanGestureRecognizer!
+    private var swipeSelectionVisitedIndexes: Set<Int> = []
+    private var isSwipeSelecting = false
+    private var wasScrollEnabledBeforeSwipeSelection = true
     private var reorderLongPressGesture: UILongPressGestureRecognizer!
     private var dragDeleteZoneView: UIView!
     private var dragDeleteImageView: UIImageView!
@@ -293,6 +310,7 @@ public final class TextTagCollectionView: UIView {
         tagCollectionView.verticalSpacing = 8
         addSubview(tagCollectionView)
 
+        setupSwipeSelectionGesture()
         setupDragDeleteZone()
         setupReorderGesture()
     }
@@ -387,6 +405,10 @@ public final class TextTagCollectionView: UIView {
 
     public override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         guard gestureRecognizer === reorderLongPressGesture else {
+            if gestureRecognizer === swipeSelectionPanGesture {
+                guard enableTagSelection, enableSwipeSelection, dragSnapshotView == nil else { return false }
+                return indexOfTag(at: gestureRecognizer.location(in: self)) != NSNotFound
+            }
             return super.gestureRecognizerShouldBegin(gestureRecognizer)
         }
         guard enableTagReordering || enableDragToDelete else { return false }
@@ -623,6 +645,25 @@ public final class TextTagCollectionView: UIView {
         scrollToTag(at: index, position: position, animated: animated)
     }
 
+    @discardableResult
+    func swipeSelectTag(at index: Int) -> Bool {
+        guard enableTagSelection,
+              index >= 0,
+              index < tagLabels.count,
+              let tag = tagLabels[index].config,
+              !tag.selected else {
+            return false
+        }
+
+        guard canSwipeSelect(tag: tag, at: index) else { return false }
+        guard selectionLimit <= 0 || allSelectedTags().count < selectionLimit else { return false }
+
+        tag.selected = true
+        reload()
+        delegate?.textTagCollectionView?(self, didSwipeSelectTag: tag, at: index)
+        return true
+    }
+
     func targetIndexForDragLocation(_ location: CGPoint) -> Int {
         let hitIndex = indexOfTag(at: location)
         if hitIndex != NSNotFound {
@@ -647,6 +688,14 @@ public final class TextTagCollectionView: UIView {
     }
 
     // MARK: - Private
+
+    private func setupSwipeSelectionGesture() {
+        swipeSelectionPanGesture = UIPanGestureRecognizer(target: self, action: #selector(handleSwipeSelectionPan(_:)))
+        swipeSelectionPanGesture.maximumNumberOfTouches = 1
+        swipeSelectionPanGesture.cancelsTouchesInView = true
+        swipeSelectionPanGesture.isEnabled = false
+        addGestureRecognizer(swipeSelectionPanGesture)
+    }
 
     private func setupReorderGesture() {
         reorderLongPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleReorderLongPress(_:)))
@@ -709,6 +758,17 @@ public final class TextTagCollectionView: UIView {
         reorderLongPressGesture?.isEnabled = enableTagReordering || enableDragToDelete
     }
 
+    private func updateSwipeSelectionGestureEnabled() {
+        swipeSelectionPanGesture?.isEnabled = enableTagSelection && enableSwipeSelection
+    }
+
+    private func canSwipeSelect(tag: TextTag, at index: Int) -> Bool {
+        if let allowed = delegate?.textTagCollectionView?(self, canSwipeSelectTag: tag, at: index) {
+            return allowed
+        }
+        return delegate?.textTagCollectionView?(self, canTapTag: tag, at: index) ?? true
+    }
+
     private func updateDragDeleteZoneLayout() {
         guard dragDeleteZoneView != nil else { return }
         dragDeleteZoneTopConstraint.constant = dragDeleteZoneInsets.top
@@ -760,6 +820,42 @@ public final class TextTagCollectionView: UIView {
         default:
             break
         }
+    }
+
+    @objc private func handleSwipeSelectionPan(_ gesture: UIPanGestureRecognizer) {
+        let location = gesture.location(in: self)
+        switch gesture.state {
+        case .began:
+            beginSwipeSelection(at: location)
+        case .changed:
+            updateSwipeSelection(at: location)
+        case .ended, .cancelled, .failed:
+            endSwipeSelection()
+        default:
+            break
+        }
+    }
+
+    private func beginSwipeSelection(at location: CGPoint) {
+        swipeSelectionVisitedIndexes.removeAll()
+        isSwipeSelecting = true
+        wasScrollEnabledBeforeSwipeSelection = scrollView.isScrollEnabled
+        scrollView.isScrollEnabled = false
+        updateSwipeSelection(at: location)
+    }
+
+    private func updateSwipeSelection(at location: CGPoint) {
+        let index = indexOfTag(at: location)
+        guard index != NSNotFound, !swipeSelectionVisitedIndexes.contains(index) else { return }
+        swipeSelectionVisitedIndexes.insert(index)
+        swipeSelectTag(at: index)
+    }
+
+    private func endSwipeSelection() {
+        guard isSwipeSelecting else { return }
+        isSwipeSelecting = false
+        swipeSelectionVisitedIndexes.removeAll()
+        scrollView.isScrollEnabled = wasScrollEnabledBeforeSwipeSelection
     }
 
     private func beginDragging(at location: CGPoint) {

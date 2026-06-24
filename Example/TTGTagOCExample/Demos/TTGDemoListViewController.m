@@ -17,6 +17,7 @@
 #import "TTGDemoSelfSizingViewController.h"
 #import "TTGDemoAutoLayoutFormViewController.h"
 #import "TTGDemoReorderTagsViewController.h"
+#import "TTGDemoSwipeSelectionTagsViewController.h"
 
 @interface TTGDemoListItem : NSObject
 @property (nonatomic, copy) NSString *title;
@@ -97,6 +98,9 @@
         [TTGDemoListItem itemWithTitle:@"14. Reorder & delete"
                                 detail:@"Long-press drag to reorder tags or drop one into the delete zone"
                    viewControllerClass:TTGDemoReorderTagsViewController.class],
+        [TTGDemoListItem itemWithTitle:@"15. Swipe select"
+                                detail:@"Drag across tags to select multiple items"
+                   viewControllerClass:TTGDemoSwipeSelectionTagsViewController.class],
     ];
 }
 

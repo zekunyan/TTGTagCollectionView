@@ -13,6 +13,28 @@
 
 @end
 
+@interface TTGSwipeSelectionDelegate : NSObject <TTGTextTagCollectionViewDelegate>
+@property (nonatomic, assign) BOOL didAskForSwipeSelection;
+@property (nonatomic, assign) BOOL didSwipeSelect;
+@end
+
+@implementation TTGSwipeSelectionDelegate
+
+- (BOOL)textTagCollectionView:(TTGTextTagCollectionView *)collectionView
+            canSwipeSelectTag:(TTGTextTag *)tag
+                      atIndex:(NSInteger)index {
+    self.didAskForSwipeSelection = YES;
+    return YES;
+}
+
+- (void)textTagCollectionView:(TTGTextTagCollectionView *)collectionView
+            didSwipeSelectTag:(TTGTextTag *)tag
+                      atIndex:(NSInteger)index {
+    self.didSwipeSelect = YES;
+}
+
+@end
+
 @implementation Tests
 
 - (TTGTextTag *)tagWithText:(NSString *)text fontSize:(CGFloat)fontSize {
@@ -151,6 +173,19 @@
     XCTAssertEqualObjects(textTagView.dragDeleteZoneText, @"Drop here");
     XCTAssertEqualObjects(textTagView.dragDeleteZoneTextColor, UIColor.systemYellowColor);
     XCTAssertEqualObjects(textTagView.dragDeleteZoneImageTintColor, UIColor.systemGreenColor);
+}
+
+- (void)testSwipeSelectionObjCAPI {
+    TTGTextTagCollectionView *textTagView = [TTGTextTagCollectionView new];
+    textTagView.enableSwipeSelection = YES;
+    XCTAssertTrue(textTagView.enableSwipeSelection);
+
+    TTGSwipeSelectionDelegate *delegate = [TTGSwipeSelectionDelegate new];
+    TTGTextTag *tag = [self tagWithText:@"swipe" fontSize:14];
+    XCTAssertTrue([delegate textTagCollectionView:textTagView canSwipeSelectTag:tag atIndex:0]);
+    [delegate textTagCollectionView:textTagView didSwipeSelectTag:tag atIndex:0];
+    XCTAssertTrue(delegate.didAskForSwipeSelection);
+    XCTAssertTrue(delegate.didSwipeSelect);
 }
 
 - (void)testRemoveTag {

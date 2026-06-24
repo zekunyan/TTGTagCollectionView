@@ -35,6 +35,7 @@
 		D06E00701DB3D8F700EF8F56 /* TTGTagSampleData.m in Sources */ = {isa = PBXBuildFile; fileRef = D06E00301DB3D8F700EF8F52 /* TTGTagSampleData.m */; };
 		D06E00801DB3D8F700EF8F57 /* TTGDemoAttributedTagExamples.m in Sources */ = {isa = PBXBuildFile; fileRef = D06E00401DB3D8F700EF8F53 /* TTGDemoAttributedTagExamples.m */; };
 		D3A2F0020000000000000003 /* TTGDemoReorderTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A2F0020000000000000002 /* TTGDemoReorderTagsViewController.m */; };
+		D3A2F0040000000000000003 /* TTGDemoSwipeSelectionTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A2F0040000000000000002 /* TTGDemoSwipeSelectionTagsViewController.m */; };
 		OC01A0B1C2D3E4F500000018 /* TTGDemoUI.m in Sources */ = {isa = PBXBuildFile; fileRef = OC01A0B1C2D3E4F500000017 /* TTGDemoUI.m */; };
 		OC01A0B1C2D3E4F500000003 /* TTGDemoAnchorLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = OC01A0B1C2D3E4F500000002 /* TTGDemoAnchorLayoutViewController.m */; };
 		OC01A0B1C2D3E4F500000006 /* TTGDemoStackViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = OC01A0B1C2D3E4F500000005 /* TTGDemoStackViewViewController.m */; };
@@ -106,6 +107,8 @@
 		D06E00601DB3D8F700EF8F55 /* TTGDemoAttributedTagExamples.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Demos/TTGDemoAttributedTagExamples.h; sourceTree = "<group>"; };
 		D3A2F0020000000000000001 /* TTGDemoReorderTagsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Demos/TTGDemoReorderTagsViewController.h; sourceTree = "<group>"; };
 		D3A2F0020000000000000002 /* TTGDemoReorderTagsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Demos/TTGDemoReorderTagsViewController.m; sourceTree = "<group>"; };
+		D3A2F0040000000000000001 /* TTGDemoSwipeSelectionTagsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Demos/TTGDemoSwipeSelectionTagsViewController.h; sourceTree = "<group>"; };
+		D3A2F0040000000000000002 /* TTGDemoSwipeSelectionTagsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Demos/TTGDemoSwipeSelectionTagsViewController.m; sourceTree = "<group>"; };
 		OC01A0B1C2D3E4F500000001 /* TTGDemoAnchorLayoutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Demos/TTGDemoAnchorLayoutViewController.h; sourceTree = "<group>"; };
 		OC01A0B1C2D3E4F500000002 /* TTGDemoAnchorLayoutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Demos/TTGDemoAnchorLayoutViewController.m; sourceTree = "<group>"; };
 		OC01A0B1C2D3E4F500000004 /* TTGDemoStackViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Demos/TTGDemoStackViewViewController.h; sourceTree = "<group>"; };
@@ -227,6 +230,8 @@
 				OC01A0B1C2D3E4F500000011 /* TTGDemoAutoLayoutFormViewController.m */,
 				D3A2F0020000000000000001 /* TTGDemoReorderTagsViewController.h */,
 				D3A2F0020000000000000002 /* TTGDemoReorderTagsViewController.m */,
+				D3A2F0040000000000000001 /* TTGDemoSwipeSelectionTagsViewController.h */,
+				D3A2F0040000000000000002 /* TTGDemoSwipeSelectionTagsViewController.m */,
 			);
 			name = "Example for TTGTagCollectionView";
 			path = TTGTagOCExample;
@@ -470,6 +475,7 @@
 				OC01A0B1C2D3E4F500000009 /* TTGDemoSelfSizingViewController.m in Sources */,
 				OC01A0B1C2D3E4F500000012 /* TTGDemoAutoLayoutFormViewController.m in Sources */,
 				D3A2F0020000000000000003 /* TTGDemoReorderTagsViewController.m in Sources */,
+				D3A2F0040000000000000003 /* TTGDemoSwipeSelectionTagsViewController.m in Sources */,
 				OC01A0B1C2D3E4F500000015 /* TTGDemoListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
